@@ -16,7 +16,7 @@ export default function Navbar(props) {
                 className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
                 href="#pablo"
               >
-                Notus NextJS
+                NFPets
               </a>
             </Link>
             <button
@@ -36,13 +36,7 @@ export default function Navbar(props) {
           >
             <ul className="flex flex-col lg:flex-row list-none mx-auto ">
               <li className="flex items-center">
-                <a
-                  className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/overview/notus?ref=nnjs-auth-navbar"
-                >
-                  <i className="lg:text-blueGray-200 text-blueGray-400 far fa-file-alt text-lg leading-lg mr-2" />{" "}
-                  Marketplace
-                </a>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/NFT_Icon.png?20191215204608" height="50" width="50"></img>
               </li>
             </ul>
             <ul className="flex flex-col lg:flex-row list-none">
