@@ -1,11 +1,18 @@
 import React from "react";
 import Link from "next/link";
+import Router from "next/router";
+
 // components
 
 import PagesDropdown from "components/Dropdowns/PagesDropdown.js";
 
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+
+  const goToMarketPlace = () => {
+    Router.push("/marketplace");
+  };
+
   return (
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
@@ -27,6 +34,13 @@ export default function Navbar(props) {
               <i className="text-white fas fa-bars"></i>
             </button>
           </div>
+          <div>
+            <button
+              onClick={() => goToMarketPlace()}
+            >
+              marketplace
+            </button>
+          </div>
           <div
             className={
               "lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none" +
@@ -36,7 +50,7 @@ export default function Navbar(props) {
           >
             <ul className="flex flex-col lg:flex-row list-none mx-auto ">
               <li className="flex items-center">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/NFT_Icon.png?20191215204608" height="50" width="50"></img>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/NFT_Icon.png?20191215204608" height="50" width="50"></img>
               </li>
             </ul>
             <ul className="flex flex-col lg:flex-row list-none">

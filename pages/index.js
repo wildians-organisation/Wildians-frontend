@@ -5,8 +5,11 @@ import Link from "next/link";
 
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
+import { Router } from "next/router";
 
 export default function Landing() {
+  
+
   return (
     <>
       <Navbar transparent />
