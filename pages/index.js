@@ -5,10 +5,13 @@ import Link from "next/link";
 
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
-import { Router } from "next/router";
+import Router from "next/router";
 
 export default function Landing() {
   
+  const goToMarketPlace = () => {
+    Router.push("/marketplace");
+  };
 
   return (
     <>
@@ -34,6 +37,13 @@ export default function Landing() {
                   <h1 className="text-white font-semibold text-5xl">
                     Your story starts with us.
                   </h1>
+                  <div className="text-white font-semibold text-5xl">
+                      <button
+                        onClick={() => goToMarketPlace()}
+                      >
+                      Marketplace
+                    </button>
+                  </div>
                   <p className="mt-4 text-lg text-blueGray-200">
                     This is a simple example of a Landing Page you can build
                     using Notus NextJS. It features multiple CSS components
