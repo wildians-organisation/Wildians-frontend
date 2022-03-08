@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 
 // components
@@ -7,11 +7,22 @@ import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import Router from "next/router";
 
+const scrollToRef = (ref) => {
+  window.scrollTo({
+    top: ref.current.offsetTop - 50,
+    left: 0,
+    behavior: 'smooth'
+  })
+};
+
 export default function Landing() {
   
   const goToMarketPlace = () => {
     Router.push("/marketplace");
   };
+
+  const myRef = useRef(null)
+  const executeScroll = () => scrollToRef(myRef)
 
   return (
     <>
@@ -39,7 +50,7 @@ export default function Landing() {
                   </h1>
                   <div className="text-white font-semibold text-5xl">
                       <button
-                        onClick={() => goToMarketPlace()}
+                        onClick={() => executeScroll()}
                       >
                       Marketplace
                     </button>
@@ -123,12 +134,12 @@ export default function Landing() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center mt-32">
+            <div ref={myRef} className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
                   <i className="fas fa-user-friends text-xl"></i>
                 </div>
-                <h3 className="text-3xl mb-2 font-semibold leading-normal">
+                <h3 ref={myRef} className="text-3xl mb-2 font-semibold leading-normal">
                   Working with us is a pleasure
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
