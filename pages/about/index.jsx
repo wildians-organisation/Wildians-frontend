@@ -1,12 +1,8 @@
 import React from "react";
-import Router from "next/router";
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer";
 
-export default function MarketPlace() {
-  const goBack = () => {
-    Router.push("/");
-  };
+export default function About() {
   // Display items in a list with add button on each items
   return (
     <>
@@ -14,7 +10,7 @@ export default function MarketPlace() {
       <main>
         <div style={{ marginTop: 290 }}>
           <center>
-            <p>Welcome to the best marketplace of the universe!</p>
+            <p>Welcome to the best About of the universe!</p>
             <p>Work in progress...</p>
           </center>
         </div>
