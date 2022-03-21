@@ -1,6 +1,16 @@
+import Router from "next/router";
 import React from "react";
 
 export default function Footer() {
+
+  /**
+   * fonction permettant de naviguer parmis les différentes pages du footer
+   * @param {*} pageName
+   */
+  const goToIndicatedPage = (pageName) => {
+    Router.push(pageName)
+  };
+
   return (
     <>
       <footer className="relative bg-blueGray-200 pt-8 pb-6">
@@ -67,7 +77,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://www.creative-tim.com/presentation?ref=nnjs-footer"
+                        onClick={() => goToIndicatedPage("/about")}
                       >
                         About Us
                       </a>
@@ -106,15 +116,14 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://github.com/creativetimofficial/notus-nextjs/blob/main/LICENSE.md?ref=nnjs-footer"
-                      >
-                        MIT License
+                        onClick={() => goToIndicatedPage("/F.A.Q")}                      >
+                        F.A.Q
                       </a>
                     </li>
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/terms?ref=nnjs-footer"
+                        onClick={() => goToIndicatedPage("/term-of-uses")}
                       >
                         Terms & Conditions
                       </a>
@@ -122,7 +131,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/privacy?ref=nnjs-footer"
+                        onClick={() => goToIndicatedPage("/private-policy")}
                       >
                         Privacy Policy
                       </a>
@@ -130,8 +139,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/contact-us?ref=nnjs-footer"
-                      >
+                        onClick={() => goToIndicatedPage("/contact-us")}                      >
                         Contact Us
                       </a>
                     </li>
