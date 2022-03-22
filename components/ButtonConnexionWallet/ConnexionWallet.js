@@ -5,7 +5,7 @@ function ConnexionWallet() {
   const connect = useConnect();
   const handleConnect = React.useCallback(async () => {
     try {
-      await connect("mainnet", { forcePermission: true });
+      await connect(NETWORK, { forcePermission: true });
     } catch (err) {
       console.log("error in connect");
       console.error(err.message);

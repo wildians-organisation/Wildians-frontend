@@ -80,7 +80,8 @@ function useDApp({ appName }) {
           accountPkh: pkh,
         });
       } catch (err) {
-        alert(`Failed to connect ThanosWallet: ${err.message}`);
+        if(err.message != "Permission Not Granted") //when cancelling the log in
+          alert(`Failed to connect ThanosWallet: ${err.message}`);
       }
     },
     [setState, wallet]
