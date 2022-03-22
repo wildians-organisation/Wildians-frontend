@@ -80,7 +80,8 @@ function useDApp({ appName }) {
           accountPkh: pkh,
         });
       } catch (err) {
-        if(err.message != "Permission Not Granted") //when cancelling the log in
+        if (err.message != "Permission Not Granted")
+          //when cancelling the log in
           alert(`Failed to connect ThanosWallet: ${err.message}`);
       }
     },
@@ -100,26 +101,29 @@ export function useOnBlock(tezos, callback) {
   const blockHashRef = React.useRef();
 
   React.useEffect(() => {
-    let sub;
-    spawnSub();
-    return () => sub.close();
+    // let sub;
+    //spawnSub();
+    //return () => sub.close();
 
     function spawnSub() {
-      sub = tezos.stream.subscribe("head");
+      console.log("in spawnSub tezos =", tezos);
+      if (tezos) {
+        sub = tezos.stream.subscribe("head");
 
-      sub.on("data", (hash) => {
-        if (blockHashRef.current && blockHashRef.current !== hash) {
-          callback(hash);
-        }
-        blockHashRef.current = hash;
-      });
-      sub.on("error", (err) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error(err);
-        }
-        sub.close();
-        spawnSub();
-      });
+        sub.on("data", (hash) => {
+          if (blockHashRef.current && blockHashRef.current !== hash) {
+            callback(hash);
+          }
+          blockHashRef.current = hash;
+        });
+        sub.on("error", (err) => {
+          if (process.env.NODE_ENV === "development") {
+            console.error(err);
+          }
+          sub.close();
+          spawnSub();
+        });
+      }
     }
   }, [tezos, callback]);
 }
