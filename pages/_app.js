@@ -9,7 +9,8 @@ import PageChange from "components/PageChange/PageChange.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
 import { DAppProvider } from "../dapp/dapp";
-import { APP_NAME } from "../dapp/default.ts";
+import { APP_NAME } from "../dapp/default";
+
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
   document.body.classList.add("body-page-transition");
