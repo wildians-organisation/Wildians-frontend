@@ -3,6 +3,7 @@ import Link from "next/link";
 // components
 
 import IndexDropdown from "components/Dropdowns/IndexDropdown.js";
+import ConnexionWallet from "../ButtonConnexionWallet/ConnexionWallet";
 
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -19,6 +20,7 @@ export default function Navbar(props) {
                 Notus NextJS
               </a>
             </Link>
+            <ConnexionWallet></ConnexionWallet>
             <button
               className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
