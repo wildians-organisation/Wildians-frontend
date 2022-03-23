@@ -8,7 +8,7 @@ export default function WhitePaper() {
   return (
     <>
       <Navbar transparent />
-      <main>
+      <main className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
         <div style={{ marginTop: 290 }}>
           <center>
             <p>Welcome to the best white paper of the universe!</p>
