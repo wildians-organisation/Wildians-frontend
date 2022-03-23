@@ -20,7 +20,6 @@ export default function Navbar(props) {
                 Notus NextJS
               </a>
             </Link>
-            <ConnexionWallet></ConnexionWallet>
             <button
               className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
@@ -85,12 +84,7 @@ export default function Navbar(props) {
               </li>
 
               <li className="flex items-center">
-                <button
-                  className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                  type="button"
-                >
-                  <i className="fas fa-arrow-alt-circle-down"></i> Download
-                </button>
+                <ConnexionWallet></ConnexionWallet>
               </li>
             </ul>
           </div>
