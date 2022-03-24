@@ -2436,6 +2436,17 @@ select {
   max-width: 56rem;
 }
 
+.footer {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
 .max-w-full {
   max-width: 100%;
 }

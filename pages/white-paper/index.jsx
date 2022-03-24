@@ -11,7 +11,7 @@ export default function WhitePaper() {
       <main className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
         <div style={{ marginTop: 290 }}>
           <center>
-            <p>Welcome to the best white paper of the universe!</p>
+            <p>Welcome to the best white-paper page of the universe!</p>
             <p>Work in progress...</p>
           </center>
         </div>

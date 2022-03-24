@@ -8,9 +8,9 @@ export default function ContactUS() {
     <>
       <Navbar transparent />
       <main className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
-        <div style={{ marginTop: 20 }}>
+        <div style={{ marginTop: 290 }}>
           <center>
-            <p>Welcome to the best Contact us of the universe!</p>
+            <p>Welcome to the best contact-us page of the universe!</p>
             <p>Work in progress...</p>
           </center>
         </div>
