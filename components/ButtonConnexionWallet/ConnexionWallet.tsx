@@ -5,7 +5,7 @@ import {
   useOnBlock,
   useTezos,
 } from "../../dapp/dapp";
-import { NETWORK } from "../../dapp/default";
+import { DEV_NETWORK } from "../../dapp/default";
 function ConnexionWallet() {
   const connect = useConnect();
   const accountPkh = useAccountPkh();
@@ -14,7 +14,7 @@ function ConnexionWallet() {
   const [balance, setBalance] = React.useState(null);
   const handleConnect = React.useCallback(async () => {
     try {
-      await connect(NETWORK, { forcePermission: true });
+      await connect(DEV_NETWORK, { forcePermission: true });
     } catch (err) {
       console.error(err.message);
     }
