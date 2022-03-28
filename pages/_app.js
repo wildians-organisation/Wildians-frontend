@@ -8,6 +8,8 @@ import PageChange from "components/PageChange/PageChange.js";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
+import { DAppProvider } from "../dapp/dapp";
+import { APP_NAME } from "../dapp/default";
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -70,11 +72,13 @@ export default class MyApp extends App {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <title>Notus NextJS by Creative Tim</title>
+          <title>NFPets</title>
           <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
         </Head>
         <Layout>
-          <Component {...pageProps} />
+          <DAppProvider appName={APP_NAME}>
+            <Component {...pageProps} />
+          </DAppProvider>
         </Layout>
       </React.Fragment>
     );
