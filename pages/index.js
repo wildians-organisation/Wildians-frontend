@@ -11,21 +11,20 @@ const scrollToRef = (ref) => {
   window.scrollTo({
     top: ref.current.offsetTop - 50,
     left: 0,
-    behavior: 'smooth'
-  })
+    behavior: "smooth",
+  });
 };
 
 export default function Landing() {
-
   const goToMarketPlace = () => {
     Router.push("/marketplace");
   };
 
-  const myRef = useRef(null)
+  const myRef = useRef(null);
   //const executeScroll = () => scrollToRef(myRef)
 
   return (
-    <>
+    <div className="absolute inset-0 h-full flex flex-col justify-between w-full">
       <Navbar transparent />
       <main className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
         <div style={{ marginTop: 290 }}>
@@ -36,6 +35,6 @@ export default function Landing() {
         </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

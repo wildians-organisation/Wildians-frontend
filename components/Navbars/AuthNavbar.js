@@ -16,13 +16,18 @@ export default function Navbar(props) {
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="footer">
           <div id="elmtRight">
-            <ul >
-              <li >
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/NFT_Icon.png?20191215204608" height="50" width="50" onClick={() => goLandingPage()} ></img>
+            <ul>
+              <li>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/24/NFT_Icon.png?20191215204608"
+                  height="50"
+                  width="50"
+                  onClick={() => goLandingPage()}
+                ></img>
               </li>
             </ul>
           </div>
-          <div id="elmtMid" style={{ position: "relative", left: 145 }}>
+          <div id="elmtMid" className="relative -left-1">
             <a> Marketplace </a>
           </div>
           <div id="elmtLeft" style={{ display: "-webkit-inline-flex" }}>

@@ -2,20 +2,19 @@ import Router from "next/router";
 import React from "react";
 
 export default function Footer() {
-
   /**
    * fonction permettant de naviguer parmis les différentes pages du footer
    * @param {*} pageName
    */
   const goToIndicatedPage = (pageName) => {
-    Router.push(pageName)
+    Router.push(pageName);
   };
 
   return (
     <>
-      <footer className="relative bg-blueGray-200 pt-8 pb-6">
+      <footer className="relative bottom-4 bg-blueGray-200 pt-8 pb-6 ">
         <div className="flex flex-wrap items-center md:justify-between justify-center place-content-evenly">
-          <div id="footerdenhaut" className="footer" >
+          <div id="footerdenhaut" className="footer">
             <div id="elmtLeft">
               <button
                 className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
@@ -36,17 +35,26 @@ export default function Footer() {
                 <i className="fab fa-instagram"></i>
               </button>
             </div>
-            <div id="elmtMid" className="text-sm text-blueGray-500 font-semibold py-1" style={{ position: "relative", right: 6 }} >
-              <a className="text-blueGray-500 hover:text-blueGray-800"
+            <div
+              id="elmtMid"
+              className="text-sm text-blueGray-500 font-semibold py-1"
+              style={{ position: "relative", right: 6 }}
+            >
+              <a
+                className="text-blueGray-500 hover:text-blueGray-800"
                 onClick={() => goToIndicatedPage("/about")}
               >
                 About
-              </a> - <a
+              </a>{" "}
+              -{" "}
+              <a
                 className="text-blueGray-500 hover:text-blueGray-800"
                 onClick={() => goToIndicatedPage("/white-paper")}
               >
                 White-Paper
-              </a> - <a
+              </a>{" "}
+              -{" "}
+              <a
                 className="text-blueGray-500 hover:text-blueGray-800"
                 onClick={() => goToIndicatedPage("/F.A.Q")}
               >
@@ -54,13 +62,16 @@ export default function Footer() {
               </a>
             </div>
             <div id="elmtRight">
-              <a className="text-blueGray-500 hover:text-blueGray-800"
-              >
+              <a className="text-blueGray-500 hover:text-blueGray-800">
                 NFPets
-              </a>  <a
+              </a>{" "}
+              <a
                 className="text-blueGray-500 hover:text-blueGray-800"
                 onClick={() => goToIndicatedPage("/contact-us")}
-              > Contact us </a>
+              >
+                {" "}
+                Contact us{" "}
+              </a>
             </div>
           </div>
           <hr className="my-6 border-blueGray-300" />
@@ -70,11 +81,15 @@ export default function Footer() {
                 className="text-blueGray-500 hover:text-blueGray-800"
                 onClick={() => goToIndicatedPage("/terms-of-use")}
               >
-                Terms of use - </a>
+                Terms of use -{" "}
+              </a>
               <a
                 className="text-blueGray-500 hover:text-blueGray-800"
                 onClick={() => goToIndicatedPage("/privacy-policy")}
-              > Privacy policy</a>
+              >
+                {" "}
+                Privacy policy
+              </a>
             </div>
           </div>
         </div>
