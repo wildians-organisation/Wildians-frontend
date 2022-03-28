@@ -27,7 +27,7 @@ export default function Navbar(props) {
               </li>
             </ul>
           </div>
-          <div id="elmtMid" className="relative -left-1">
+          <div id="elmtMid" className="relative left-28">
             <a> Marketplace </a>
           </div>
           <div id="elmtLeft" style={{ display: "-webkit-inline-flex" }}>

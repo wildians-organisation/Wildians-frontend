@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="relative bottom-4 bg-blueGray-200 pt-8 pb-6 ">
+      <footer className="bottom-4 bg-blueGray-200 pt-8 pb-6 ">
         <div className="flex flex-wrap items-center md:justify-between justify-center place-content-evenly">
           <div id="footerdenhaut" className="footer">
             <div id="elmtLeft">
