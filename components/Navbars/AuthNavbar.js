@@ -3,6 +3,8 @@ import Link from "next/link";
 import Router from "next/router";
 import ConnexionWallet from "../ButtonConnexionWallet/ConnexionWallet";
 
+import { scrollToSection } from "pages";
+
 // components
 
 export default function Navbar(props) {
@@ -32,21 +34,21 @@ export default function Navbar(props) {
             <div className="align-middle">
               <a
                 className="text-blueGray-500 hover:text-blueGray-800"
-              //onClick={() => goToIndicatedPage("/privacy-policy")}
+              onClick={() => scrollToSection("concept")}
               >
                 {" "}
                 Concept
               </a>
               <a
                 className="text-blueGray-500 hover:text-blueGray-800"
-              //onClick={() => goToIndicatedPage("/privacy-policy")}
+                onClick={() => scrollToSection("adopt")}
               >
                 {" "}
                 Adopt
               </a>
               <a
                 className="text-blueGray-500 hover:text-blueGray-800"
-              //onClick={() => goToIndicatedPage("/privacy-policy")}
+                onClick={() => scrollToSection("roadmap")}
               >
                 {" "}
                 Roadmap

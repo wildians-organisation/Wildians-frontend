@@ -15,6 +15,24 @@ const scrollToRef = (ref) => {
   });
 };
 
+export function scrollToSection(sectionId){
+  if(sectionId == "concept"){
+    const elt = document.getElementById('idconcept')
+    elt.scrollIntoView({ behavior: 'smooth' })
+  }
+  else if(sectionId == "adopt"){
+    const elt = document.getElementById('idadopt')
+    elt.scrollIntoView({ behavior: 'smooth' })
+  }
+  else if(sectionId == "roadmap"){
+    const elt = document.getElementById('idroadmap')
+    elt.scrollIntoView({ behavior: 'smooth' })
+  }
+  else{
+
+  }
+}
+
 export default function Landing() {
   const goToMarketPlace = () => {
     Router.push("/marketplace");
@@ -36,7 +54,7 @@ export default function Landing() {
       </div>
 
       <section ref={myRef} className="block relative z-1 bg-blueGray-600">
-        <h2 className="text-xl font-semibold pb-4 text-center">
+        <h2 id="idconcept" className="text-xl font-semibold pb-4 text-center">
           Concept
         </h2>
         <div className="container mx-auto">
@@ -94,7 +112,7 @@ export default function Landing() {
       </section>
 
       <section className="block relative z-1 bg-blueGray-600">
-        <h2 className="text-xl font-semibold pb-4 text-center">
+        <h2 id="idadopt" className="text-xl font-semibold pb-4 text-center">
           Adopt
         </h2>
         <div className="container mx-auto">
@@ -152,7 +170,7 @@ export default function Landing() {
       </section>
 
       <section ref={myRef} className="block relative z-1 bg-blueGray-600">
-        <h2 className="text-xl font-semibold pb-4 text-center">
+        <h2 id="idroadmap" className="text-xl font-semibold pb-4 text-center">
           Roadmap
         </h2>
         <div className="container mx-auto">
