@@ -16,11 +16,6 @@ const scrollToRef = (ref) => {
 };
 
 export default function Landing() {
-  
-  const goToMarketPlace = () => {
-    Router.push("/marketplace");
-  };
-
   const myRef = useRef(null)
   const executeScroll = () => scrollToRef(myRef)
 
