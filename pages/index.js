@@ -15,20 +15,20 @@ const scrollToRef = (ref) => {
   });
 };
 
-export function scrollToSection(sectionId){
-  if(sectionId == "concept"){
+export function scrollToSection(sectionId) {
+  if (sectionId == "concept") {
     const elt = document.getElementById('idconcept')
     elt.scrollIntoView({ behavior: 'smooth' })
   }
-  else if(sectionId == "adopt"){
+  else if (sectionId == "adopt") {
     const elt = document.getElementById('idadopt')
     elt.scrollIntoView({ behavior: 'smooth' })
   }
-  else if(sectionId == "roadmap"){
+  else if (sectionId == "roadmap") {
     const elt = document.getElementById('idroadmap')
     elt.scrollIntoView({ behavior: 'smooth' })
   }
-  else{
+  else {
 
   }
 }
@@ -53,8 +53,10 @@ export default function Landing() {
         </div>
       </div>
 
-      <section ref={myRef} className="block relative z-1 bg-blueGray-600">
-        <h2 id="idconcept" className="text-xl font-semibold pb-4 text-center">
+
+
+      <section ref={myRef} className="block relative z-1 pb-32">
+        <h2 id="idconcept" className="text-xl font-semibold pb-4 ">
           Concept
         </h2>
         <div className="container mx-auto">
@@ -111,8 +113,8 @@ export default function Landing() {
         </div>
       </section>
 
-      <section className="block relative z-1 bg-blueGray-600">
-        <h2 id="idadopt" className="text-xl font-semibold pb-4 text-center">
+      <section className="block relative z-1 pb-32">
+        <h2 id="idadopt" className="text-xl font-semibold pb-4 ">
           Adopt
         </h2>
         <div className="container mx-auto">
@@ -169,8 +171,8 @@ export default function Landing() {
         </div>
       </section>
 
-      <section ref={myRef} className="block relative z-1 bg-blueGray-600">
-        <h2 id="idroadmap" className="text-xl font-semibold pb-4 text-center">
+      <section ref={myRef} className="block relative z-1">
+        <h2 id="idroadmap" className="text-xl font-semibold pb-4">
           Roadmap
         </h2>
         <div className="container mx-auto">
@@ -226,6 +228,7 @@ export default function Landing() {
           </div>
         </div>
       </section>
+
 
       <Footer />
     </>

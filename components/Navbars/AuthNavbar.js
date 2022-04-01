@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Router from "next/router";
 import ConnexionWallet from "../ButtonConnexionWallet/ConnexionWallet";
-
 import { scrollToSection } from "pages";
 
 // components
@@ -18,7 +17,7 @@ export default function Navbar(props) {
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="footer">
-          <div style={{ display: "-webkit-inline-flex" }}>
+          <div classname="gap-6" style={{ display: "-webkit-inline-flex" }} >
             <div id="elmtRight">
               <ul>
                 <li>
@@ -31,10 +30,10 @@ export default function Navbar(props) {
                 </li>
               </ul>
             </div>
-            <div className="align-middle">
+            <div className="flex items-center gap-6 ml-3">
               <a
                 className="text-blueGray-500 hover:text-blueGray-800"
-              onClick={() => scrollToSection("concept")}
+                onClick={() => scrollToSection("concept")}
               >
                 {" "}
                 Concept
