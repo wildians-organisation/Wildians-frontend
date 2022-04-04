@@ -28,7 +28,10 @@ export function scrollToSection(sectionId) {
     const elt = document.getElementById('idroadmap')
     elt.scrollIntoView({ behavior: 'smooth' })
   }
-  else {
+  else if (sectionId == "marketplace") {
+    const elt = document.getElementById('idmarketplace')
+    elt.scrollIntoView({ behavior: 'smooth' })
+  } else {
 
   }
 }
@@ -171,7 +174,7 @@ export default function Landing() {
         </div>
       </section>
 
-      <section ref={myRef} className="block relative z-1">
+      <section ref={myRef} className="block relative z-1 pb-32">
         <h2 id="idroadmap" className="text-xl font-semibold pb-4">
           Roadmap
         </h2>
@@ -228,7 +231,63 @@ export default function Landing() {
           </div>
         </div>
       </section>
+      <section ref={myRef} className="block relative z-1 pb-32">
+        <h2 id="idmarketplace" className="text-xl font-semibold pb-4">
+          Marketplace
+        </h2>
+        <div className="container mx-auto">
+          <div className="justify-center flex flex-wrap">
+            <div className="w-full lg:w-12/12 px-4  -mt-24">
+              <div className="flex flex-wrap">
+                <div className="w-full lg:w-4/12 px-4">
+                  <h5 className="text-xl font-semibold pb-4 text-center">
+                    Marketplace 1
+                  </h5>
+                  <Link href="/auth/login">
+                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
+                      <img
+                        alt="..."
+                        className="align-middle border-none max-w-full h-auto rounded-lg"
+                        src="/img/login.jpg"
+                      />
+                    </div>
+                  </Link>
+                </div>
 
+                <div className="w-full lg:w-4/12 px-4">
+                  <h5 className="text-xl font-semibold pb-4 text-center">
+                    Marketplace 2
+                  </h5>
+                  <Link href="/profile">
+                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
+                      <img
+                        alt="..."
+                        className="align-middle border-none max-w-full h-auto rounded-lg"
+                        src="/img/profile.jpg"
+                      />
+                    </div>
+                  </Link>
+                </div>
+
+                <div className="w-full lg:w-4/12 px-4">
+                  <h5 className="text-xl font-semibold pb-4 text-center">
+                    Marketplace 3
+                  </h5>
+                  <Link href="/landing">
+                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
+                      <img
+                        alt="..."
+                        className="align-middle border-none max-w-full h-auto rounded-lg"
+                        src="/img/landing.jpg"
+                      />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </>
