@@ -1,4 +1,4 @@
-import { useAccountPkh } from "dapp/dapp";
+import { useAccountPkh, useOnBlock, useTezos } from "../../dapp/dapp";
 import React from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
@@ -14,6 +14,22 @@ const goToIndicatedPage = (pageName) => {
 };
 
 function ConnectedButton() {
+  const tezos = useTezos();
+
+  const [balance, setBalance] = React.useState(null);
+  const loadBalance = React.useCallback(async () => {
+    if (tezos) {
+      const tezosOk = tezos;
+      const bal = await tezosOk.tz.getBalance(accountPkh);
+      setBalance(tezosOk.format("mutez", "tz", bal).toString());
+    }
+  }, [tezos, setBalance]);
+
+  React.useEffect(() => {
+    loadBalance();
+  }, [loadBalance]);
+
+  useOnBlock(tezos, loadBalance);
   const accountPkh = useAccountPkh();
   const accountPkhPreview = React.useMemo(() => {
     if (!accountPkh) return undefined;
@@ -23,68 +39,72 @@ function ConnectedButton() {
       return `${accPkh.slice(0, 7)}...${accPkh.slice(ln - 4, ln)}`;
     }
   }, [accountPkh]);
-  const [dropDown, setDropdown] = React.useState(false);
 
   return (
-    <Menu as="div" className="inline-block text-left ">
+    <div className="flex flex-row items-center gap-4">
       <div>
-        <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-          {accountPkhPreview}
-        </Menu.Button>
+        <div>{balance}</div>
       </div>
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
-      >
-        <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="px-1 py-1 ">
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${
-                    active ? "bg-violet-500 text-white" : "text-gray-900"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                  onClick={() => goToIndicatedPage("/transaction")}
-                >
-                  Transaction
-                </button>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${
-                    active ? "bg-violet-500 text-white" : "text-gray-900"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                  onClick={() => goToIndicatedPage("/settings")}
-                >
-                  Settings
-                </button>
-              )}
-            </Menu.Item>
-          </div>
-          <div className="px-1 py-1">
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${
-                    active ? "bg-violet-500 text-white" : "text-gray-900"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                  onClick={() => goToIndicatedPage("/logout")}
-                >
-                  Logout
-                </button>
-              )}
-            </Menu.Item>
-          </div>
-        </Menu.Items>
-      </Transition>
-    </Menu>
+      <Menu as="div" className="inline-block text-left ">
+        <div>
+          <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+            {accountPkhPreview}
+          </Menu.Button>
+        </div>
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <div className="px-1 py-1 ">
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`${
+                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={() => goToIndicatedPage("/transaction")}
+                  >
+                    Transaction
+                  </button>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`${
+                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={() => goToIndicatedPage("/settings")}
+                  >
+                    Settings
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+            <div className="px-1 py-1">
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`${
+                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={() => goToIndicatedPage("/logout")}
+                  >
+                    Logout
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+          </Menu.Items>
+        </Transition>
+      </Menu>
+    </div>
   );
 }
 export default ConnectedButton;
