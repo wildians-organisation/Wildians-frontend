@@ -14,7 +14,10 @@ export default function Footer() {
     <>
       <footer className="bottom-4 bg-blueGray-200 pt-8 pb-6 ">
         <div className="flex flex-wrap items-center md:justify-between justify-center place-content-evenly">
-          <div id="footerdenhaut" className="footer">
+          <div
+            id="footerdenhaut"
+            className="flex flex-row justify-between w-full items-center mx-4"
+          >
             <div id="elmtLeft">
               <button
                 className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
