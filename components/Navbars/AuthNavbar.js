@@ -21,15 +21,15 @@ export default function Navbar(props) {
     Router.push("/");
   };
 
-  function waitLandingPage(){
+  function waitLandingPage() {
     return new Promise((resolve) => {
       Router.push("/");
       resolve();
     });
   }
 
-  async function waitLandingPageAndScroll(funct, section){
-    if(Router.pathname === '/'){
+  async function waitLandingPageAndScroll(funct, section) {
+    if (Router.pathname === '/') {
       funct(section);
       return;
     }
@@ -41,7 +41,7 @@ export default function Navbar(props) {
 
   return (
     <>
-      <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+      <nav className="sticky top-0 bg-indigo-500 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="footer">
           <div className="gap-6 mr-6" style={{ display: "-webkit-inline-flex" }} >
             <div id="elmtRight">
@@ -58,27 +58,27 @@ export default function Navbar(props) {
             </div>
             <div className="flex items-center gap-6 ml-3">
               <a
-                className="text-blueGray-500 hover:text-blueGray-800"
-                onClick={() => { 
-                  waitLandingPageAndScroll(scrollToSection,"concept");
+                className="text-black hover:text-blueGray-800"
+                onClick={() => {
+                  waitLandingPageAndScroll(scrollToSection, "concept");
                 }}
               >
                 {" "}
                 Concept
               </a>
               <a
-                className="text-blueGray-500 hover:text-blueGray-800"
-                onClick={() => { 
-                  waitLandingPageAndScroll(scrollToSection,"adopt");
+                className="text-black hover:text-blueGray-800"
+                onClick={() => {
+                  waitLandingPageAndScroll(scrollToSection, "adopt");
                 }}
               >
                 {" "}
                 Adopt
               </a>
               <a
-                className="text-blueGray-500 hover:text-blueGray-800"
-                onClick={() => { 
-                  waitLandingPageAndScroll(scrollToSection,"roadmap");
+                className="text-black hover:text-blueGray-800"
+                onClick={() => {
+                  waitLandingPageAndScroll(scrollToSection, "roadmap");
                 }}
               >
                 {" "}
@@ -86,10 +86,10 @@ export default function Navbar(props) {
               </a>
             </div>
           </div>
-          <div id="elmtMid" className="text-blueGray-500 hover:text-blueGray-800">
+          <div id="elmtMid" className="text-black hover:text-blueGray-800">
             <a
-              onClick={() => { 
-                waitLandingPageAndScroll(scrollToSection,"marketplace");
+              onClick={() => {
+                waitLandingPageAndScroll(scrollToSection, "marketplace");
               }}
             >
               Marketplace

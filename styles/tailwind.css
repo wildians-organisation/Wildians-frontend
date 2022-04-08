@@ -1232,6 +1232,11 @@ select {
   background-color: rgba(236, 72, 153, var(--tw-bg-opacity));
 }
 
+.bg-indigo-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(99, 102, 241, var(--tw-bg-opacity));
+}
+
 .bg-lightBlue-500 {
   --tw-bg-opacity: 1;
   background-color: rgba(14, 165, 233, var(--tw-bg-opacity));
@@ -2080,10 +2085,6 @@ select {
 
 .-ml-20 {
   margin-left: -5rem;
-}
-
-.-mt-24 {
-  margin-top: -6rem;
 }
 
 .-mt-64 {

@@ -46,11 +46,11 @@ export default function Landing() {
 
 
 
-      <section id="idconcept" className="block relative z-1 pb-32">
+      <section id="idconcept" className="scroll-margin block relative z-1 pb-32">
         <div className="container mx-auto">
-        <h2 className="text-xl font-semibold pb-4 mt-8 justify-center text-center content-center flex">
-          Concept
-        </h2>
+          <h2 className="text-xl font-semibold pb-4 mt-8 justify-center text-center content-center flex">
+            Concept
+          </h2>
           <div className="justify-center flex flex-wrap mb-6">
             <div className="w-full lg:w-12/12 px-4">
               <div className="flex flex-wrap justify-center">
@@ -90,7 +90,7 @@ export default function Landing() {
         </div>
       </section>
 
-      <section id="idadopt" className="block relative z-1 pb-32">
+      <section id="idadopt" className="scroll-margin block relative z-1 pb-32">
         <div className="container mx-auto">
           <div className="justify-center flex flex-wrap">
             <div className="w-full lg:w-12/12 px-4">
@@ -145,11 +145,11 @@ export default function Landing() {
         </div>
       </section>
 
-      <section className="block relative z-1 pb-32">
+      <section id="idroadmap" className="scroll-margin block relative z-1 pb-32">
         <div className="container mx-auto">
-        <h2 id="idroadmap" className="text-xl font-semibold pb-4 ml-3 justify-center text-center content-center flex">
-          Roadmap
-        </h2>
+          <h2 className="text-xl font-semibold pb-4 ml-3 justify-center text-center content-center flex">
+            Roadmap
+          </h2>
           <div className="justify-center flex flex-wrap">
             <div className="w-full lg:w-12/12 px-4">
               <div className="flex flex-wrap justify-center">
@@ -187,7 +187,7 @@ export default function Landing() {
           </div>
         </div>
       </section>
-      <section className="block relative z-1 pb-32">
+      <section className="scroll-margin block relative z-1 pb-32">
         <h2 id="idmarketplace" className="text-xl font-semibold pb-4">
           Marketplace
         </h2>

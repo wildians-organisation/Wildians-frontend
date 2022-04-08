@@ -12,3 +12,7 @@
 .mt-7 {
   margin-top: 1.7rem;
 }
+
+.scroll-margin {
+  scroll-margin: 100px;
+}
