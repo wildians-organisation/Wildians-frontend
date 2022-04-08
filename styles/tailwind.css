@@ -1677,6 +1677,10 @@ select {
   border-width: 2px;
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
 .border {
   border-width: 1px;
 }
@@ -2105,6 +2109,10 @@ select {
   height: 0.5rem;
 }
 
+.h-3 {
+  height: 0.75rem;
+}
+
 .h-5 {
   height: 1.25rem;
 }
@@ -2123,6 +2131,10 @@ select {
 
 .h-12 {
   height: 3rem;
+}
+
+.h-14 {
+  height: 3.5rem;
 }
 
 .h-16 {
@@ -2261,6 +2273,10 @@ select {
 
 .m-4 {
   margin: 1rem;
+}
+
+.m-7 {
+  margin: 1.75rem;
 }
 
 .m-8 {

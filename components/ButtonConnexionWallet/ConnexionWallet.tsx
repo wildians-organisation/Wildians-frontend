@@ -1,3 +1,4 @@
+import Loading from "components/Loading/Loading";
 import React from "react";
 import {
   useConnect,
@@ -6,17 +7,22 @@ import {
   useTezos,
 } from "../../dapp/dapp";
 import { DEV_NETWORK } from "../../dapp/default";
+
 function ConnexionWallet() {
   const connect = useConnect();
   const accountPkh = useAccountPkh();
   const tezos = useTezos();
 
   const [balance, setBalance] = React.useState(null);
+  const [connecting, setConnecting] = React.useState(false)
   const handleConnect = React.useCallback(async () => {
     try {
+      setConnecting(true)
       await connect(DEV_NETWORK, { forcePermission: true });
+      setConnecting(false)
     } catch (err) {
       console.error(err.message);
+      setConnecting(false)
     }
   }, [connect]);
 
@@ -57,7 +63,7 @@ function ConnexionWallet() {
         className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
         type="button"
       >
-        {!accountPkh ? "Connect Wallet" : accountPkhPreview}
+        {!accountPkh ? connecting ? <Loading/> : "Connect to Wallet" : accountPkhPreview }
       </button>
     </div>
   );
