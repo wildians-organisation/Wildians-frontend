@@ -21,6 +21,24 @@ export default function Navbar(props) {
     Router.push("/");
   };
 
+  function waitLandingPage(){
+    return new Promise((resolve) => {
+      Router.push("/");
+      resolve();
+    });
+  }
+
+  async function waitLandingPageAndScroll(funct, section){
+    if(Router.pathname === '/'){
+      funct(section);
+      return;
+    }
+    await waitLandingPage();
+    setTimeout(() => {
+      funct(section)
+    }, 500);
+  }
+
   return (
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
@@ -41,21 +59,27 @@ export default function Navbar(props) {
             <div className="flex items-center gap-6 ml-3">
               <a
                 className="text-blueGray-500 hover:text-blueGray-800"
-                onClick={() => scrollToSection("concept")}
+                onClick={() => { 
+                  waitLandingPageAndScroll(scrollToSection,"concept");
+                }}
               >
                 {" "}
                 Concept
               </a>
               <a
                 className="text-blueGray-500 hover:text-blueGray-800"
-                onClick={() => scrollToSection("adopt")}
+                onClick={() => { 
+                  waitLandingPageAndScroll(scrollToSection,"adopt");
+                }}
               >
                 {" "}
                 Adopt
               </a>
               <a
                 className="text-blueGray-500 hover:text-blueGray-800"
-                onClick={() => scrollToSection("roadmap")}
+                onClick={() => { 
+                  waitLandingPageAndScroll(scrollToSection,"roadmap");
+                }}
               >
                 {" "}
                 Roadmap
@@ -64,7 +88,9 @@ export default function Navbar(props) {
           </div>
           <div id="elmtMid" className="text-blueGray-500 hover:text-blueGray-800">
             <a
-              onClick={() => scrollToSection("marketplace")}
+              onClick={() => { 
+                waitLandingPageAndScroll(scrollToSection,"marketplace");
+              }}
             >
               Marketplace
             </a>
