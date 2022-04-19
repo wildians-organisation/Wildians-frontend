@@ -9,13 +9,15 @@ export const [
   useAccountPkh,
   useReady,
   useConnect,
+  useDisconnect,
 ] = constate(
   useDApp,
   (v) => v.wallet,
   (v) => v.tezos,
   (v) => v.accountPkh,
   (v) => v.ready,
-  (v) => v.connect
+  (v) => v.connect,
+  (v) => v.disconnect,
 );
 
 function useDApp({ appName }) {
@@ -88,12 +90,33 @@ function useDApp({ appName }) {
     [setState, wallet]
   );
 
+  const disconnect = React.useCallback(
+    async () => {
+      try {
+        if (!wallet) {
+          throw new Error("Thanos Wallet not available");
+        }        
+        // setState({
+        //   wallet,
+        //   tezos: tzs,
+        //   accountPkh: pkh,
+        // });
+      } catch (err) {
+        if (err.message != "Permission Not Granted")
+          //when cancelling the log in
+          alert(`Failed to connect ThanosWallet: ${err.message}`);
+      }
+    },
+    [setState, wallet]
+  );
+
   return {
     wallet,
     tezos,
     accountPkh,
     ready,
     connect,
+    disconnect,
   };
 }
 

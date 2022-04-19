@@ -1,4 +1,4 @@
-import { useAccountPkh, useOnBlock, useTezos } from "../../dapp/dapp";
+import { useAccountPkh, useOnBlock, useTezos, useDisconnect } from "../../dapp/dapp";
 import React from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
@@ -12,6 +12,11 @@ import Router from "next/router";
 const goToIndicatedPage = (pageName) => {
   Router.push(pageName);
 };
+
+const disconnect = useDisconnect();
+async function callDisconnect(){
+  await disconnect();
+}
 
 function ConnectedButton() {
   const tezos = useTezos();
@@ -92,7 +97,7 @@ function ConnectedButton() {
                     className={`${
                       active ? "bg-violet-500 text-white" : "text-gray-900"
                     } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    onClick={() => goToIndicatedPage("/logout")}
+                    onClick={() => callDisconnect()}
                   >
                     Logout
                   </button>
