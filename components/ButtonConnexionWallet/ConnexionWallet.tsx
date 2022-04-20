@@ -7,6 +7,8 @@ import {
   useTezos,
 } from "../../dapp/dapp";
 import { DEV_NETWORK } from "../../dapp/default";
+import ConnectedButton from "./ConnectedButton";
+
 function ConnexionWallet() {
   const connect = useConnect();
   const accountPkh = useAccountPkh();
@@ -25,18 +27,9 @@ function ConnexionWallet() {
     }
   }, [connect]);
 
-  const accountPkhPreview = React.useMemo(() => {
-    if (!accountPkh) return undefined;
-    else {
-      const accPkh = accountPkh as unknown as string;
-      const ln = accPkh.length;
-      return `${accPkh.slice(0, 7)}...${accPkh.slice(ln - 4, ln)}`;
-    }
-  }, [accountPkh]);
-
   const loadBalance = React.useCallback(async () => {
     if (tezos) {
-      const tezosOk = tezos as any;
+      const tezosOk = tezos;
       const bal = await tezosOk.tz.getBalance(accountPkh);
       setBalance(tezosOk.format("mutez", "tz", bal).toString());
     }
@@ -64,6 +57,7 @@ function ConnexionWallet() {
       >
         {!accountPkh ? connecting ? <Loading/> : "Connect Wallet" : accountPkhPreview}
       </button>
+
     </div>
   );
 }

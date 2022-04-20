@@ -1,0 +1,18 @@
+.footer {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+  
+  .mt-7 {
+    margin-top: 1.7rem;
+  }
+  
+  .scroll-margin {
+    scroll-margin: 100px;
+  }
