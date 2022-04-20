@@ -3,7 +3,6 @@ import Link from "next/link";
 import Router from "next/router";
 import ConnexionWallet from "../ButtonConnexionWallet/ConnexionWallet.tsx";
 import { scrollToSection } from "pages";
-
 // components
 
 export default function Navbar(props) {
@@ -109,7 +108,9 @@ export default function Navbar(props) {
               <i className="fab fa-discord"></i>
             </button>
             <li className="flex items-center">
+
               <ConnexionWallet />
+
             </li>
             <button
               className="bg-white text-lightBlue-600 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3"
