@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bottom-4 bg-blueGray-200 pt-8 pb-6 ">
+      <footer className="bottom-4 bg-indigo-500 pt-4 pb-4">
         <div className="flex flex-wrap items-center md:justify-between justify-center place-content-evenly">
           <div id="footerdenhaut" className="footer">
             <div id="elmtLeft">
@@ -34,64 +34,69 @@ export default function Footer() {
               >
                 <i className="fab fa-instagram"></i>
               </button>
-            </div>
-            <div
-              id="elmtMid"
-              className="text-sm text-blueGray-500 font-semibold py-1"
-              style={{ position: "relative", right: 6 }}
-            >
               <a
-                className="text-blueGray-500 hover:text-blueGray-800"
-                onClick={() => goToIndicatedPage("/about")}
-              >
-                About
-              </a>{" "}
-              -{" "}
-              <a
-                className="text-blueGray-500 hover:text-blueGray-800"
-                onClick={() => goToIndicatedPage("/white-paper")}
-              >
-                White-Paper
-              </a>{" "}
-              -{" "}
-              <a
-                className="text-blueGray-500 hover:text-blueGray-800"
-                onClick={() => goToIndicatedPage("/F.A.Q")}
-              >
-                F.A.Q
-              </a>
-            </div>
-            <div id="elmtRight">
-              <a className="text-blueGray-500 hover:text-blueGray-800">
-                NFPets
-              </a>{" "}
-              <a
-                className="text-blueGray-500 hover:text-blueGray-800"
+                className="text-black hover:text-blueGray-800 pt-2 pl-3"
                 onClick={() => goToIndicatedPage("/contact-us")}
               >
                 {" "}
                 Contact us{" "}
               </a>
             </div>
-          </div>
-          <hr className="my-6 border-blueGray-300" />
-          <div id="footerdenbas" style={{ width: "100%", textAlign: "center" }}>
-            <div className="text-sm text-blueGray-500 font-semibold py-1">
+            <div
+              id="elmtMid"
+              className="text-sm text-black font-semibold py-1"
+              style={{ position: "relative", right: 6 }}
+            >
               <a
-                className="text-blueGray-500 hover:text-blueGray-800"
-                onClick={() => goToIndicatedPage("/terms-of-use")}
+                className="text-black hover:text-blueGray-800"
+                onClick={() => goToIndicatedPage("/about")}
               >
-                Terms of use -{" "}
-              </a>
+                About
+              </a>{" "}
+              -{" "}
               <a
-                className="text-blueGray-500 hover:text-blueGray-800"
-                onClick={() => goToIndicatedPage("/privacy-policy")}
+                className="text-black hover:text-blueGray-800"
+                onClick={() => goToIndicatedPage("/white-paper")}
               >
-                {" "}
-                Privacy policy
+                White-Paper
+              </a>{" "}
+              -{" "}
+              <a
+                className="text-black hover:text-blueGray-800"
+                onClick={() => goToIndicatedPage("/F.A.Q")}
+              >
+                F.A.Q
               </a>
+              <div className="text-sm text-black font-semibold pt-4">
+                <a
+                  className="text-black hover:text-blueGray-800"
+                  onClick={() => goToIndicatedPage("/terms-of-use")}
+                >
+                  Terms of use -{" "}
+                </a>
+                <a
+                  className="text-black hover:text-blueGray-800"
+                  onClick={() => goToIndicatedPage("/privacy-policy")}
+                >
+                  {" "}
+                  Privacy policy
+                </a>
+
+              </div>
+            </div>
+            <div id="elmtRight" className="flex flex-wrap">
+              <a className="text-black hover:text-blueGray-800 "
+              >
+                <img src="/img/logo.png" height="75" width="75" onClick={() => goLandingPage()} ></img>
+              </a>
+              <a className="text-black hover:text-blueGray-800 pt-2 pl-3">
+                NFPets{" "}
+              </a>{" "}
+
             </div>
           </div>
+
+
         </div>
       </footer>
     </>
