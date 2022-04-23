@@ -50,9 +50,9 @@ export default function Navbar(props) {
               <ul>
                 <li>
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/2/24/NFT_Icon.png?20191215204608"
-                    height="50"
-                    width="50"
+                    src="/img/logo.png"
+                    height="75"
+                    width="75"
                     onClick={() => goLandingPage()}
                   ></img>
                 </li>
