@@ -13,7 +13,7 @@ const goToIndicatedPage = (pageName) => {
   Router.push(pageName);
 };
 
-function ConnectedButton() {
+function ConnectedButton({ handleConnect }) {
   const tezos = useTezos();
 
   const [balance, setBalance] = React.useState(null);
@@ -41,11 +41,11 @@ function ConnectedButton() {
   }, [accountPkh]);
 
   return (
-    <div className="flex flex-row items-center ">
-      <div className="text-white font-bold">{balance + " "}TZ</div>
+    <div className="flex flex-row items-center   ">
+      <div className="font-bold">{balance + "TZ"}</div>
       <Menu as="div" className="inline-block text-left ">
         <div>
-          <Menu.Button className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150 ">
+          <Menu.Button className="text-xs font-bold uppercase px-1  rounded outline-none focus:outline-none lg:mr-1 lg:mb-0 ease-linear transition-all duration-150 ">
             {accountPkhPreview}
           </Menu.Button>
         </div>
@@ -66,12 +66,28 @@ function ConnectedButton() {
                     className={`${
                       active ? "bg-violet-500 text-white" : "text-gray-900"
                     } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={() => {
+                      console.log("in HandleConnect Dropdown");
+                      handleConnect();
+                    }}
+                  >
+                    Switch Wallet
+                  </button>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`${
+                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     onClick={() => goToIndicatedPage("/transaction")}
                   >
                     Transaction
                   </button>
                 )}
               </Menu.Item>
+
               <Menu.Item>
                 {({ active }) => (
                   <button

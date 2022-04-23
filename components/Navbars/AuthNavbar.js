@@ -9,9 +9,9 @@ export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   /**
- * fonction permettant de naviguer parmis les différentes pages du footer
- * @param {*} pageName
- */
+   * fonction permettant de naviguer parmis les différentes pages du footer
+   * @param {*} pageName
+   */
   const goToIndicatedPage = (pageName) => {
     Router.push(pageName);
   };
@@ -28,13 +28,13 @@ export default function Navbar(props) {
   }
 
   async function waitLandingPageAndScroll(funct, section) {
-    if (Router.pathname === '/') {
+    if (Router.pathname === "/") {
       funct(section);
       return;
     }
     await waitLandingPage();
     setTimeout(() => {
-      funct(section)
+      funct(section);
     }, 500);
   }
 
@@ -42,7 +42,10 @@ export default function Navbar(props) {
     <>
       <nav className="sticky top-0 bg-indigo-500 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="footer">
-          <div className="gap-6 mr-6" style={{ display: "-webkit-inline-flex" }} >
+          <div
+            className="gap-6 mr-6"
+            style={{ display: "-webkit-inline-flex" }}
+          >
             <div id="elmtRight">
               <ul>
                 <li>
@@ -94,7 +97,7 @@ export default function Navbar(props) {
               Marketplace
             </a>
           </div>
-          <div id="elmtLeft" style={{ display: "-webkit-inline-flex" }}>
+          <div id="elmtLeft" className="flex items-center">
             <button
               className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
               type="button"
@@ -107,13 +110,11 @@ export default function Navbar(props) {
             >
               <i className="fab fa-discord"></i>
             </button>
-            <li className="flex items-center">
 
-              <ConnexionWallet />
+            <ConnexionWallet />
 
-            </li>
             <button
-              className="bg-white text-lightBlue-600 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3"
+              className="bg-white text-lightBlue-600 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3"
               type="button"
               onClick={() => goToIndicatedPage("/mypets")}
             >
