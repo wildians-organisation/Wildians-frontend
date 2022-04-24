@@ -13,40 +13,14 @@ const goToIndicatedPage = (pageName) => {
   Router.push(pageName);
 };
 
-function ConnectedButton({ handleConnect }) {
-  const tezos = useTezos();
-
-  const [balance, setBalance] = React.useState(null);
-  const loadBalance = React.useCallback(async () => {
-    if (tezos) {
-      const tezosOk = tezos;
-      const bal = await tezosOk.tz.getBalance(accountPkh);
-      setBalance(tezosOk.format("mutez", "tz", bal).toString());
-    }
-  }, [tezos, setBalance]);
-
-  React.useEffect(() => {
-    loadBalance();
-  }, [loadBalance]);
-
-  useOnBlock(tezos, loadBalance);
-  const accountPkh = useAccountPkh();
-  const accountPkhPreview = React.useMemo(() => {
-    if (!accountPkh) return undefined;
-    else {
-      const accPkh = accountPkh;
-      const ln = accPkh.length;
-      return `${accPkh.slice(0, 7)}...${accPkh.slice(ln - 4, ln)}`;
-    }
-  }, [accountPkh]);
-
+function ConnectedButton({ walletAdress }) {
   return (
     <div className="flex flex-row items-center   ">
-      <div className="font-bold">{balance + "TZ"}</div>
+      <div className="font-bold">{"TZ"}</div>
       <Menu as="div" className="inline-block text-left ">
         <div>
           <Menu.Button className="text-xs font-bold uppercase px-1  rounded outline-none focus:outline-none lg:mr-1 lg:mb-0 ease-linear transition-all duration-150 ">
-            {accountPkhPreview}
+            {walletAdress}
           </Menu.Button>
         </div>
         <Transition
@@ -63,24 +37,8 @@ function ConnectedButton({ handleConnect }) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    onClick={() => {
-                      console.log("in HandleConnect Dropdown");
-                      handleConnect();
-                    }}
-                  >
-                    Switch Wallet
-                  </button>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    className={`${active ? "bg-violet-500 text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     onClick={() => goToIndicatedPage("/transaction")}
                   >
                     Transaction
@@ -91,9 +49,8 @@ function ConnectedButton({ handleConnect }) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    className={`${active ? "bg-violet-500 text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     onClick={() => goToIndicatedPage("/settings")}
                   >
                     Settings
@@ -105,9 +62,8 @@ function ConnectedButton({ handleConnect }) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    className={`${active ? "bg-violet-500 text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     onClick={() => goToIndicatedPage("/logout")}
                   >
                     Logout

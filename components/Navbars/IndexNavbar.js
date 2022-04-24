@@ -3,7 +3,7 @@ import Link from "next/link";
 // components
 
 import IndexDropdown from "components/Dropdowns/IndexDropdown.js";
-import ConnexionWallet from "../ButtonConnexionWallet/ConnexionWallet.tsx";
+import ConnexionWallet from "../ButtonConnexionWallet/ConnexionWallet.js";
 
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
