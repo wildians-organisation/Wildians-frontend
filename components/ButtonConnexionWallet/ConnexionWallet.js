@@ -5,6 +5,7 @@ import {
   NetworkType,
 } from "@airgap/beacon-sdk";
 import ConnectedButton from "./ConnectedButton";
+import { useState } from "react/cjs/react.production.min";
 
 function ConnexionWallet() {
   const network = { type: NetworkType.MAINNET };
@@ -17,10 +18,10 @@ function ConnexionWallet() {
 
   Tezos.setWalletProvider(wallet);
 
-  let myAddress;
+  const [myAddress, setMyAddress] = React.useState(null);
 
   const disconnect = async () => {
-    myAddress = null;
+    setMyAddress(null);
     await wallet.clearActiveAccount();
     await disconnect()
   };
@@ -33,8 +34,7 @@ function ConnexionWallet() {
       console.log("Already connected:", activeAccount.address);
 
       // You probably want to show the address in your UI somewhere.
-      myAddress = activeAccount.address;
-      console.log(myAddress, !myAddress, "caca")
+      setMyAddress(activeAccount.address);
     } else {
       // The user is NOT connected to a wallet.
 
@@ -44,14 +44,11 @@ function ConnexionWallet() {
       wallet.requestPermissions({
         network: network,
       });
-      myAddress = await wallet.getPKH();
+      let tmp = await wallet.getPKH();
+      setMyAddress(tmp);
       console.log("New connection: ", myAddress);
     }
   }
-
-  console.log("")
-  console.log("michel", myAddress)
-  console.log("")
 
   return (
     <div>
