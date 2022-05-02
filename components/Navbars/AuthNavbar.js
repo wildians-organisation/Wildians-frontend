@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Router from "next/router";
-import ConnexionWallet from "../ButtonConnexionWallet/ConnexionWallet.js";
+import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
 import { scrollToSection } from "pages";
 // components
 
@@ -111,7 +111,7 @@ export default function Navbar(props) {
               <i className="fab fa-discord"></i>
             </button>
 
-            <ConnexionWallet />
+            <ConnexionWallet></ConnexionWallet>
 
             <button
               className="bg-white text-lightBlue-600 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3"
