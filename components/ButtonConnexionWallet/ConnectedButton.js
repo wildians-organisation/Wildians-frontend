@@ -38,7 +38,7 @@ function ConnectedButton({ walletAdress, disconnect }) {
                     className={`${
                       active ? "bg-violet-500 text-white" : "text-gray-900"
                     } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    onClick={() => goToIndicatedPage("/transaction")}
+                    onClick={() => goToIndicatedPage("/Transactions")}
                   >
                     Transaction
                   </button>
@@ -51,7 +51,7 @@ function ConnectedButton({ walletAdress, disconnect }) {
                     className={`${
                       active ? "bg-violet-500 text-white" : "text-gray-900"
                     } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    onClick={() => goToIndicatedPage("/settings")}
+                    onClick={() => goToIndicatedPage("/Settings")}
                   >
                     Settings
                   </button>
