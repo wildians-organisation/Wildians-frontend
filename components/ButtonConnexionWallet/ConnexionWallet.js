@@ -1,45 +1,13 @@
 import React from "react";
-import { TezosToolkit } from "@taquito/taquito";
-import { BeaconWallet } from "@taquito/beacon-wallet";
-import { NetworkType } from "@airgap/beacon-sdk";
 import ConnectedButton from "./ConnectedButton";
+import { getMyAddress, useConnectToWallet, useDisconnect } from "dapp/dapp";
 
 export default function ConnexionWallet() {
   /*** Initializing the wallet ***/
-  const network = { type: NetworkType.MAINNET };
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
 
-  const wallet = new BeaconWallet({
-    name: "Beacon Docs",
-    preferredNetwork: network.type,
-  });
-  Tezos.setWalletProvider(wallet);
-
-  const [myAddress, setMyAddress] = React.useState(null);
-
-  /*** Function to connect to the wallet ***/
-  const connectToWallet = async () => {
-    const activeAccount = await wallet.client.getActiveAccount();
-    if (activeAccount) {
-      setMyAddress(activeAccount.address);
-    } else {
-      await wallet.requestPermissions({
-        network: network,
-      });
-      let tmp = await wallet.getPKH();
-
-      setMyAddress(tmp);
-    }
-  };
-
-  /*** Function to connect to the wallet ***/
-  const disconnect = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    await wallet.clearActiveAccount();
-    await wallet.disconnect();
-
-    setMyAddress(null);
-  };
+  const myAddress = getMyAddress();
+  const connectToWallet = useConnectToWallet();
+  const disconnect = useDisconnect();
 
   /*** Render ***/
   return (

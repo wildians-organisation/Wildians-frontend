@@ -1,129 +1,54 @@
 import React from "react";
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import { NetworkType } from "@airgap/beacon-sdk";
 import constate from "constate";
-import { TempleWallet } from "@temple-wallet/dapp";
 
-export const [
-  DAppProvider,
-  useWallet,
-  useTezos,
-  useAccountPkh,
-  useReady,
-  useConnect,
-] = constate(
-  useDApp,
-  (v) => v.wallet,
-  (v) => v.tezos,
-  (v) => v.accountPkh,
-  (v) => v.ready,
-  (v) => v.connect
-);
-
-function useDApp({ appName }) {
-  const [{ wallet, tezos, accountPkh }, setState] = React.useState(() => ({
-    wallet: null,
-    tezos: null,
-    accountPkh: null,
-  }));
-
-  const ready = Boolean(tezos);
-
-  React.useEffect(() => {
-    return TempleWallet.onAvailabilityChange(async (available) => {
-      if (available) {
-        let perm;
-        try {
-          perm = await TempleWallet.getCurrentPermission();
-        } catch {}
-
-        const wlt = new TempleWallet(appName, perm);
-        setState({
-          wallet: wlt,
-          tezos: wlt.connected ? wlt.toTezos() : null,
-          accountPkh: wlt.connected ? await wlt.getPKH() : null,
-        });
-      } else {
-        setState({
-          wallet: null,
-          tezos: null,
-          accountPkh: null,
-        });
-      }
-    });
-  }, [appName, setState]);
-
-  React.useEffect(() => {
-    if (wallet && wallet.connected) {
-      return TempleWallet.onPermissionChange((perm) => {
-        if (!perm) {
-          setState({
-            wallet: new TempleWallet(appName),
-            tezos: null,
-            accountPkh: null,
-          });
-        }
-      });
-    }
-  }, [wallet, appName, setState]);
-
-  const connect = React.useCallback(
-    async (network, opts) => {
-      try {
-        if (!wallet) {
-          throw new Error("Thanos Wallet not available");
-        }
-        await wallet.connect(network, opts);
-        const tzs = wallet.toTezos();
-        const pkh = await tzs.wallet.pkh();
-        setState({
-          wallet,
-          tezos: tzs,
-          accountPkh: pkh,
-        });
-      } catch (err) {
-        if (err.message != "Permission Not Granted")
-          //when cancelling the log in
-          alert(`Failed to connect ThanosWallet: ${err.message}`);
-      }
-    },
-    [setState, wallet]
+export const [DAppProvider, getMyAddress, useConnectToWallet, useDisconnect] =
+  constate(
+    useDApp,
+    (v) => v.myAddress,
+    (v) => v.connectToWallet,
+    (v) => v.disconnect
   );
 
-  return {
-    wallet,
-    tezos,
-    accountPkh,
-    ready,
-    connect,
-  };
-}
+function useDApp({ appName }) {
+  const network = { type: NetworkType.MAINNET };
+  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const wallet = new BeaconWallet({
+    name: "Beacon Docs",
+    preferredNetwork: network.type,
+  });
+  Tezos.setWalletProvider(wallet);
 
-export function useOnBlock(tezos, callback) {
-  const blockHashRef = React.useRef();
+  const [myAddress, setMyAddress] = React.useState(null);
+  /*** Function to connect to the wallet ***/
+  const connectToWallet = async () => {
+    const activeAccount = await wallet.client.getActiveAccount();
+    if (activeAccount) {
+      setMyAddress(activeAccount.address);
+    } else {
+      await wallet.requestPermissions({
+        network: network,
+      });
+      let tmp = await wallet.getPKH();
 
-  React.useEffect(() => {
-    // let sub;
-    //spawnSub();
-    //return () => sub.close();
-
-    function spawnSub() {
-      console.log("in spawnSub tezos =", tezos);
-      if (tezos) {
-        sub = tezos.stream.subscribe("head");
-
-        sub.on("data", (hash) => {
-          if (blockHashRef.current && blockHashRef.current !== hash) {
-            callback(hash);
-          }
-          blockHashRef.current = hash;
-        });
-        sub.on("error", (err) => {
-          if (process.env.NODE_ENV === "development") {
-            console.error(err);
-          }
-          sub.close();
-          spawnSub();
-        });
-      }
+      setMyAddress(tmp);
     }
-  }, [tezos, callback]);
+  };
+
+  /*** Function to connect to the wallet ***/
+  const disconnect = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await wallet.clearActiveAccount();
+    await wallet.disconnect();
+
+    setMyAddress(null);
+  };
+
+  return {
+    myAddress,
+    connectToWallet,
+    disconnect,
+  };
 }
