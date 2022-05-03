@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment} from "react";
+import { Fragment } from "react";
 import Router from "next/router";
 
 /**
@@ -11,7 +11,7 @@ const goToIndicatedPage = (pageName) => {
   Router.push(pageName);
 };
 
-function ConnectedButton({ walletAdress }) {
+function ConnectedButton({ walletAdress, disconnect }) {
   return (
     <div className="flex flex-row items-center   ">
       <div className="font-bold">{"TZ"}</div>
@@ -35,8 +35,9 @@ function ConnectedButton({ walletAdress }) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`${active ? "bg-violet-500 text-white" : "text-gray-900"
-                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    className={`${
+                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     onClick={() => goToIndicatedPage("/transaction")}
                   >
                     Transaction
@@ -47,8 +48,9 @@ function ConnectedButton({ walletAdress }) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`${active ? "bg-violet-500 text-white" : "text-gray-900"
-                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    className={`${
+                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     onClick={() => goToIndicatedPage("/settings")}
                   >
                     Settings
@@ -60,9 +62,10 @@ function ConnectedButton({ walletAdress }) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`${active ? "bg-violet-500 text-white" : "text-gray-900"
-                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    onClick={() => goToIndicatedPage("/logout")}
+                    className={`${
+                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={disconnect}
                   >
                     Logout
                   </button>

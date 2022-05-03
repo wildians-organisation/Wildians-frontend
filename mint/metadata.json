@@ -1,0 +1,13 @@
+{
+  "name": "max belle barbe",
+  "symbol": "TUT",
+  "description": "First NFT",
+  "decimals": 0,
+  "isTransferable": true,
+  "shouldPreferSymbol": false,
+  "isBooleanAmount": true,
+  "artifactUri": "ipfs://bafkreihylgoaorpik7cdhynvnpbil7a2werlzkvkrmocncnvnjvjlbzmbi",
+  "displayUri": "ipfs://bafkreihylgoaorpik7cdhynvnpbil7a2werlzkvkrmocncnvnjvjlbzmbi",
+  "thumbnailUri": "ipfs://bafkreihylgoaorpik7cdhynvnpbil7a2werlzkvkrmocncnvnjvjlbzmbi",
+  "creators": ["nfpets"]
+}
