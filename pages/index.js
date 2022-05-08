@@ -5,25 +5,22 @@ import Link from "next/link";
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import Router from "next/router";
+import Mint from "components/Mint/Mint";
 
 export function scrollToSection(sectionId) {
   if (sectionId == "concept") {
-    const elt = document.getElementById('idconcept')
-    elt.scrollIntoView({ behavior: 'smooth' })
-  }
-  else if (sectionId == "adopt") {
-    const elt = document.getElementById('idadopt')
-    elt.scrollIntoView({ behavior: 'smooth' })
-  }
-  else if (sectionId == "roadmap") {
-    const elt = document.getElementById('idroadmap')
-    elt.scrollIntoView({ behavior: 'smooth' })
-  }
-  else if (sectionId == "marketplace") {
-    const elt = document.getElementById('idmarketplace')
-    elt.scrollIntoView({ behavior: 'smooth' })
+    const elt = document.getElementById("idconcept");
+    elt.scrollIntoView({ behavior: "smooth" });
+  } else if (sectionId == "adopt") {
+    const elt = document.getElementById("idadopt");
+    elt.scrollIntoView({ behavior: "smooth" });
+  } else if (sectionId == "roadmap") {
+    const elt = document.getElementById("idroadmap");
+    elt.scrollIntoView({ behavior: "smooth" });
+  } else if (sectionId == "marketplace") {
+    const elt = document.getElementById("idmarketplace");
+    elt.scrollIntoView({ behavior: "smooth" });
   } else {
-
   }
 }
 
@@ -37,6 +34,7 @@ export default function Landing() {
       <Navbar transparent />
       <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
         <div style={{ marginTop: 290 }}>
+          <Mint />
           <center>
             <p>Welcome to NFPets !!!</p>
             <p>Work in progress...</p>
@@ -44,9 +42,10 @@ export default function Landing() {
         </div>
       </div>
 
-
-
-      <section id="idconcept" className="scroll-margin block relative z-1 pb-32">
+      <section
+        id="idconcept"
+        className="scroll-margin block relative z-1 pb-32"
+      >
         <div className="container mx-auto">
           <h2 className="text-xl font-semibold pb-4 mt-8 justify-center text-center content-center flex">
             Concept
@@ -54,36 +53,28 @@ export default function Landing() {
           <div className="justify-center flex flex-wrap mb-6">
             <div className="w-full lg:w-12/12 px-4">
               <div className="flex flex-wrap justify-center">
-                <h5>
-                  Some things about us . . .
-                </h5>
+                <h5>Some things about us . . .</h5>
               </div>
             </div>
           </div>
           <div className="justify-center flex flex-wrap mb-6">
             <div className="w-full lg:w-12/12 px-4">
               <div className="flex flex-wrap justify-center">
-                <h5>
-                  Other things . . .
-                </h5>
+                <h5>Other things . . .</h5>
               </div>
             </div>
           </div>
           <div className="justify-center flex flex-wrap mb-6">
             <div className="w-full lg:w-12/12 px-4">
               <div className="flex flex-wrap justify-center">
-                <h5>
-                  Some things about us . . .
-                </h5>
+                <h5>Some things about us . . .</h5>
               </div>
             </div>
           </div>
           <div className="justify-center flex flex-wrap mb-6">
             <div className="w-full lg:w-12/12 px-4">
               <div className="flex flex-wrap justify-center">
-                <h5>
-                  Other things . . .
-                </h5>
+                <h5>Other things . . .</h5>
               </div>
             </div>
           </div>
@@ -145,7 +136,10 @@ export default function Landing() {
         </div>
       </section>
 
-      <section id="idroadmap" className="scroll-margin block relative z-1 pb-32">
+      <section
+        id="idroadmap"
+        className="scroll-margin block relative z-1 pb-32"
+      >
         <div className="container mx-auto">
           <h2 className="text-xl font-semibold pb-4 ml-3 justify-center text-center content-center flex">
             Roadmap
