@@ -24,12 +24,19 @@ function useDApp({ appName }) {
   const network = { type: NetworkType.ITHACANET };
   // const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const Tezos = new TezosToolkit("https://rpc.ithacanet.teztnets.xyz");
-  const wallet = new BeaconWallet({
-    name: "Beacon Docs",
-    preferredNetwork: network.type,
-  });
-  Tezos.setWalletProvider(wallet);
+  const [wallet, setWallet] = React.useState(null);
 
+  React.useEffect(() => {
+    (async () => {
+      if (wallet === null) {
+        const _wallet = new (
+          await import("@taquito/beacon-wallet")
+        ).BeaconWallet({ name: "Demo" });
+        setWallet(_wallet);
+        Tezos.setWalletProvider(_wallet);
+      }
+    })();
+  }, []);
   const [myAddress, setMyAddress] = React.useState(null);
   /*** Function to connect to the wallet ***/
   const connectToWallet = async () => {
@@ -75,7 +82,7 @@ function useDApp({ appName }) {
         "tz1fm7T5D5EyEa5aJWMzAvSwZcwAdwUfDx5C",
         1,
         MichelsonMap.fromLiteral({ "": urlBytes }),
-        4
+        5
       )
       .send();
     console.log("after mint : ", op);

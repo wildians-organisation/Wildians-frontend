@@ -15,7 +15,7 @@ function Mint() {
   const mint = useMint(
     "tz1fm7T5D5EyEa5aJWMzAvSwZcwAdwUfDx5C",
     "ipfs://bafkreibnrkfp3byylib5nii7aphpomudcdsbwn252xc4l6yykymaem7tfy",
-    4
+    6
   );
 
   return (
