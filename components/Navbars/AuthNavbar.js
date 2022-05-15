@@ -3,10 +3,15 @@ import Link from "next/link";
 import Router from "next/router";
 import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
 import { scrollToSection } from "pages";
+import { MyContext } from "pages";
 // components
 
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+
+  /*------------------------------------------------------*/
+  const { count, increment } = React.useContext(MyContext);
+  /*------------------------------------------------------*/
 
   /**
    * fonction permettant de naviguer parmis les différentes pages du footer
@@ -86,6 +91,7 @@ export default function Navbar(props) {
                 {" "}
                 Roadmap
               </a>
+              <div onClick={increment}>price: {count}</div>
             </div>
           </div>
           <div id="elmtMid" className="text-black hover:text-blueGray-800">

@@ -1,10 +1,15 @@
 import Link from "next/link";
+import React from "react";
 
 // components
 
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import Router from "next/router";
+
+/*------------------------------------------------------*/
+export const MyContext = React.createContext()
+/*------------------------------------------------------*/
 
 export function scrollToSection(sectionId) {
   if (sectionId == "concept") {
@@ -32,9 +37,21 @@ export default function Landing() {
     Router.push("/marketplace");
   };
 
+  /*------------------------------------------------------*/
+  const [count, updateCount] = React.useState(0)
+  function increment() {
+    updateCount(count + 1)
+  }
+  /*------------------------------------------------------*/
+
+  /*------------------------------------------------------
+  ligne 52 -> 54
+  ------------------------------------------------------*/
   return (
     <>
-      <Navbar transparent />
+      <MyContext.Provider value={{ count, increment }}>
+        <Navbar transparent />
+      </MyContext.Provider>
       <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
         <div style={{ marginTop: 290 }}>
           <center>
