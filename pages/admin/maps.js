@@ -22,4 +22,4 @@ export default function Maps() {
   );
 }
 
-Maps.layout = Admin;
+// Maps.layout = Admin;

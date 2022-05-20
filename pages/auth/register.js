@@ -120,4 +120,4 @@ export default function Register() {
   );
 }
 
-Register.layout = Auth;
+// Register.layout = Auth;

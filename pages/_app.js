@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
-
+import DefaultLayout from "layouts/Default"
 import PageChange from "components/PageChange/PageChange.js";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -11,6 +11,7 @@ import "styles/tailwind.css";
 import "styles/footer.css";
 import { DAppProvider } from "../dapp/dapp";
 import { APP_NAME } from "../dapp/default";
+
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -64,7 +65,7 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
-    const Layout = Component.layout || (({ children }) => <>{children}</>);
+    const Layout = (({ children }) => <>{children}</>);
 
     return (
       <React.Fragment>
@@ -76,9 +77,12 @@ export default class MyApp extends App {
           <title>NFPets</title>
         </Head>
         <Layout>
-          <DAppProvider appName={APP_NAME}>
-            <Component {...pageProps} />
-          </DAppProvider>
+          <DefaultLayout>
+            {process.browser && <DAppProvider appName={APP_NAME}>
+              <Component {...pageProps} />
+            </DAppProvider>
+            }
+          </DefaultLayout>
         </Layout>
       </React.Fragment>
     );

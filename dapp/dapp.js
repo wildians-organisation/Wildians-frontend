@@ -14,7 +14,7 @@ export const [DAppProvider, getMyAddress, useConnectToWallet, useDisconnect] =
 
 function useDApp({ appName }) {
   const network = { type: NetworkType.MAINNET };
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io"); // TODO: url env variable
   const wallet = new BeaconWallet({
     name: "Beacon Docs",
     preferredNetwork: network.type,

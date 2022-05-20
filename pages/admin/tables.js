@@ -23,4 +23,4 @@ export default function Tables() {
   );
 }
 
-Tables.layout = Admin;
+// Tables.layout = Admin;

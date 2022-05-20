@@ -7,6 +7,10 @@ import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import Router from "next/router";
 
+// layout for page
+
+import Auth from "layouts/Auth.js";
+
 /*------------------------------------------------------*/
 /*------------------------------------------------------*/
 
@@ -36,13 +40,6 @@ export default function Landing() {
     Router.push("/marketplace");
   };
 
-  /*------------------------------------------------------*/
-
-  /*------------------------------------------------------*/
-
-  /*------------------------------------------------------
-  ligne 52 -> 54
-  ------------------------------------------------------*/
   return (
     <>
       <Navbar transparent />
@@ -260,3 +257,4 @@ export default function Landing() {
     </>
   );
 }
+

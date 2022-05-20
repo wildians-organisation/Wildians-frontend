@@ -117,4 +117,4 @@ export default function Login() {
   );
 }
 
-Login.layout = Auth;
+// Login.layout = Auth;

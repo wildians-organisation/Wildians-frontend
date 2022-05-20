@@ -2,6 +2,9 @@ import React from "react";
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer";
 
+import Auth from "layouts/Auth.js";
+
+
 export default function About() {
     // Display items in a list with add button on each items
     return (
@@ -18,3 +21,5 @@ export default function About() {
             <Footer />
         </div>);
 };
+
+// Login.layout = Auth;
