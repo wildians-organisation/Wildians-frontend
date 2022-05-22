@@ -5,15 +5,15 @@ import React from "react";
 // components
 
 import Navbar from "components/Navbars/AuthNavbar.js";
+//import Navbar from "components/Navbars/IndexNavbar";
 
 export default function DefaultLayout({ children }) {
     return (
         <>
-            {/* <Navbar transparent /> */}
             <div>
-                bonjour PICOLA
+                { /*<Navbar transparent />*/ }
             </div>
-            <div className="px-4 md:px-10 mx-auto w-full -m-24">
+            <div>
                 {children}
             </div>
         </>
