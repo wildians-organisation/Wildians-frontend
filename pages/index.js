@@ -42,7 +42,6 @@ export default function Landing() {
 
   return (
     <>
-      <Navbar transparent />
       <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
         <div style={{ marginTop: 290 }}>
           <center>
@@ -252,8 +251,6 @@ export default function Landing() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

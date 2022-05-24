@@ -5,6 +5,8 @@ import Head from "next/head";
 import Router from "next/router";
 import DefaultLayout from "layouts/Default"
 import PageChange from "components/PageChange/PageChange.js";
+import Navbar from "components/Navbars/AuthNavbar";
+import Footer from "components/Footers/Footer";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
@@ -76,6 +78,7 @@ export default class MyApp extends App {
           />
           <title>NFPets</title>
         </Head>
+        <Navbar></Navbar>
         <Layout>
           <DefaultLayout>
             {process.browser && <DAppProvider appName={APP_NAME}>
@@ -84,6 +87,7 @@ export default class MyApp extends App {
             }
           </DefaultLayout>
         </Layout>
+        <Footer></Footer>
       </React.Fragment>
     );
   }

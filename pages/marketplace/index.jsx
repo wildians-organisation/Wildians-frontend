@@ -9,7 +9,6 @@ export default function MarketPlace() {
   // Display items in a list with add button on each items
   return (
     <>
-      <Navbar transparent />
       <main>
         <div style={{ marginTop: 290 }}>
           <center>

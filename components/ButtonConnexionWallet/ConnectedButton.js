@@ -3,6 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import Router from "next/router";
 
+
 /**
  * fonction permettant de naviguer parmis les différentes pages du footer
  * @param {*} pageName
@@ -35,12 +36,11 @@ function ConnectedButton({ walletAdress, disconnect }) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    onClick={() => goToIndicatedPage("/Transactions")}
+                    className={`${active ? "bg-violet-500 text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={() => goToIndicatedPage("/transactions")}
                   >
-                    Transaction
+                    Transactions
                   </button>
                 )}
               </Menu.Item>
@@ -48,10 +48,9 @@ function ConnectedButton({ walletAdress, disconnect }) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    onClick={() => goToIndicatedPage("/Settings")}
+                    className={`${active ? "bg-violet-500 text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={() => goToIndicatedPage("/settings")}
                   >
                     Settings
                   </button>
@@ -62,9 +61,8 @@ function ConnectedButton({ walletAdress, disconnect }) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    className={`${active ? "bg-violet-500 text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     onClick={disconnect}
                   >
                     Logout

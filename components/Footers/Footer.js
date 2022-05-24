@@ -49,7 +49,7 @@ export default function Footer() {
             >
               <a
                 className="text-black hover:text-blueGray-800"
-                onClick={() => goToIndicatedPage("/about")}
+                onClick={() => goToIndicatedPage("/about-us")}
               >
                 About
               </a>{" "}
