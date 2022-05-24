@@ -6,6 +6,7 @@
   "repository": "https://github.com/creativetimofficial/notus-nextjs",
   "license": "MIT",
   "dependencies": {
+    "@babel/runtime": "^7.18.0",
     "@fortawesome/fontawesome-free": "5.15.3",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
