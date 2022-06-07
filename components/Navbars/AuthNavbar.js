@@ -50,6 +50,7 @@ export default function Navbar(props) {
               <ul>
                 <li>
                   <img
+                    id="buttonLogo"
                     src="/img/logo.png"
                     height="75"
                     width="75"
@@ -60,6 +61,7 @@ export default function Navbar(props) {
             </div>
             <div className="flex items-center gap-6 ml-3">
               <a
+                id="buttonConcept"
                 className="text-black hover:text-blueGray-800"
                 onClick={() => {
                   waitLandingPageAndScroll(scrollToSection, "concept");
@@ -69,6 +71,7 @@ export default function Navbar(props) {
                 Concept
               </a>
               <a
+                id="buttonAdopt"
                 className="text-black hover:text-blueGray-800"
                 onClick={() => {
                   waitLandingPageAndScroll(scrollToSection, "adopt");
@@ -78,6 +81,7 @@ export default function Navbar(props) {
                 Adopt
               </a>
               <a
+                id="buttonRoadmap"
                 className="text-black hover:text-blueGray-800"
                 onClick={() => {
                   waitLandingPageAndScroll(scrollToSection, "roadmap");
@@ -90,6 +94,7 @@ export default function Navbar(props) {
           </div>
           <div id="elmtMid" className="text-black hover:text-blueGray-800">
             <a
+              id="buttonMarketplace"
               onClick={() => {
                 waitLandingPageAndScroll(scrollToSection, "marketplace");
               }}
@@ -114,6 +119,7 @@ export default function Navbar(props) {
             <ConnexionWallet />
 
             <button
+              id="buttonMyPets"
               className="bg-white text-lightBlue-600 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3"
               type="button"
               onClick={() => goToIndicatedPage("/mypets")}
