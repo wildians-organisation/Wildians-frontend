@@ -26,3 +26,6 @@ yarn-error.log*
 out/
 
 commit.sh
+
+yarn.lock
+pages/index.test.js
