@@ -6,7 +6,6 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import * as config from '../../config/config.js'
 import { address } from "pages/transactions";
-import { amount } from "pages/transactions";
 
 export default function ConnexionWallet() {
   const network = { type: NetworkType.ITHACANET };
@@ -43,14 +42,13 @@ export default function ConnexionWallet() {
 
     /*** Function to mint the nft ***/
     mintNFT = async (url, token_id) => {
-      console.log(adress, amount, "ihfhahfihzeihofhiozehfihefhiehiaehi")
+      console.log(address, "ihfhahfihzeihofhiozehfihefhiehiaehi")
       await disconnect();
       await connectToWallet();
       const nftToMint = 1;
       const contract = await getSmartContract();
       url = char2Bytes(url);
-      const cost = amount;
-      const op = await contract.methods.big_boi_mint(address, nftToMint, cost, MichelsonMap.fromLiteral({ '': url }), token_id).send({ amount: amount });
+      const op = await contract.methods.big_boi_mint(address, nftToMint, 1000 * 1000000, MichelsonMap.fromLiteral({ '': url }), token_id).send({ amount: 1000 });
       return await op.confirmation(3);
     };
 
