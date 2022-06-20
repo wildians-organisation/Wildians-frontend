@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, createContext, useContext } from "react";
 import ConnectedButton from "./ConnectedButton";
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
 import { char2Bytes } from '@taquito/tzip16';
@@ -7,15 +8,18 @@ import { NetworkType } from "@airgap/beacon-sdk";
 import * as config from '../../config/config.js'
 import { address } from "pages/transactions";
 
-export default function ConnexionWallet() {
-  const network = { type: NetworkType.ITHACANET };
-  const Tezos = new TezosToolkit(config.RPC_URL); // TODO: url env variable
-
-  const wallet = new BeaconWallet({
+const network = { type: NetworkType.ITHACANET };
+const Tezos = new TezosToolkit(config.RPC_URL); // TODO: url env variable
+const walletContext = React.createContext(
+  new BeaconWallet({
     name: config.NAME,
     preferredNetwork: config.NETWORK,
-  });
+  })
+);
 
+export default function ConnexionWallet() {
+
+  const wallet = useContext(walletContext);
   Tezos.setWalletProvider(wallet);
 
   const [myAddress, setMyAddress] = React.useState(null);

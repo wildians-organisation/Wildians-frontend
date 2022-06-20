@@ -5,14 +5,11 @@ import Head from "next/head";
 import Router from "next/router";
 import DefaultLayout from "layouts/Default"
 import PageChange from "components/PageChange/PageChange.js";
-import Navbar from "components/Navbars/AuthNavbar";
 import Footer from "components/Footers/Footer";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
-import "styles/footer.css";
-import { DAppProvider } from "../dapp/dapp";
-import { APP_NAME } from "../dapp/default";
+import "styles/footer.css"; 
 
 
 Router.events.on("routeChangeStart", (url) => {
@@ -67,8 +64,6 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
-    const Layout = (({ children }) => <>{children}</>);
-
     return (
       <React.Fragment>
         <Head>
@@ -78,15 +73,9 @@ export default class MyApp extends App {
           />
           <title>NFPets</title>
         </Head>
-        <Navbar></Navbar>
-        <Layout>
-          <DefaultLayout>
-            {process.browser && <DAppProvider appName={APP_NAME}>
-              <Component {...pageProps} />
-            </DAppProvider>
-            }
-          </DefaultLayout>
-        </Layout>
+        <DefaultLayout>
+          <Component {...pageProps} />
+        </DefaultLayout>
         <Footer></Footer>
       </React.Fragment>
     );

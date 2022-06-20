@@ -10,9 +10,7 @@ import Navbar from "components/Navbars/AuthNavbar.js";
 export default function DefaultLayout({ children }) {
     return (
         <>
-            <div>
-                { /*<Navbar transparent />*/ }
-            </div>
+            <Navbar transparent />
             <div>
                 {children}
             </div>
