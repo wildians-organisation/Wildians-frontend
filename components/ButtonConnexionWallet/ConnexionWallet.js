@@ -64,7 +64,7 @@ export default function ConnexionWallet() {
   return (
     <div>
       <button
-        onClick={() => mintNFT("ipfs://bafkreihf6wzky7hxrky4efde3tdxxu6xdarwyoagddvsraoxfmskz2pzr4", 2)}
+        onClick={() => mintNFT("ipfs://bafkreidkhfi4d66eh437o7z3pijtbiioitqjmcnro6tbn77o3hhcqv7sme", 0)}
         className="bg-white text-lightBlue-600  active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3  ease-linear transition-all duration-150"
         type="button"
       >
