@@ -2,6 +2,10 @@ import React from "react";
 
 export var address = "";
 
+const sendData = () => {
+  address = document.querySelector('#address').value;
+}
+
 export default function Transactions() {
 
   return (
