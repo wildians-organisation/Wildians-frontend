@@ -8,9 +8,6 @@ import { scrollToSection } from "pages";
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
-  /*------------------------------------------------------*/
-  /*------------------------------------------------------*/
-
   /**
    * fonction permettant de naviguer parmis les différentes pages du footer
    * @param {*} pageName
@@ -19,10 +16,17 @@ export default function Navbar(props) {
     Router.push(pageName);
   };
 
+  /**
+   * Fonction permettant de naviguer vers la landing page
+   */
   const goLandingPage = () => {
     Router.push("/");
   };
 
+  /**
+   * Fonction qui permet de naviguer et d'attendre la landing page
+   * @return {*} 
+   */
   function waitLandingPage() {
     return new Promise((resolve) => {
       Router.push("/");
@@ -30,7 +34,14 @@ export default function Navbar(props) {
     });
   }
 
-  async function waitLandingPageAndScroll(funct, section) {
+/**
+ * Fonction qui te fait scroll à un endroit précis dans la landing page
+ * lorsqu'on l'appelle
+ * @param {*} funct
+ * @param {*} section
+ * @return {*} 
+ */
+async function waitLandingPageAndScroll(funct, section) {
     if (Router.pathname === "/") {
       funct(section);
       return;

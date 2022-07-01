@@ -1,12 +1,11 @@
 import React from "react";
-import { useState, createContext, useContext } from "react";
+import { useContext } from "react";
 import ConnectedButton from "./ConnectedButton";
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
 import { char2Bytes } from '@taquito/tzip16';
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import * as config from '../../config/config.js'
-import { address } from "pages/transactions";
 
 const network = { type: NetworkType.ITHACANET };
 const Tezos = new TezosToolkit(config.RPC_URL); // TODO: url env variable
@@ -46,13 +45,12 @@ export default function ConnexionWallet() {
 
     /*** Function to mint the nft ***/
     mintNFT = async (url, token_id) => {
-      console.log(address, "ihfhahfihzeihofhiozehfihefhiehiaehi")
       await disconnect();
       await connectToWallet();
       const nftToMint = 1;
       const contract = await getSmartContract();
       url = char2Bytes(url);
-      const op = await contract.methods.big_boi_mint(address, nftToMint, 1000 * 1000000, MichelsonMap.fromLiteral({ '': url }), token_id).send({ amount: 1000 });
+      const op = await contract.methods.big_boi_mint("tz1QQTyMYNP33e8bgkmHgnP7DUUgsyi6G63k", nftToMint, 1000 * 1000000, MichelsonMap.fromLiteral({ '': url }), token_id).send({ amount: 1000 });
       return await op.confirmation(3);
     };
 
