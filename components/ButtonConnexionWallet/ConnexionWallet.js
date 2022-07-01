@@ -8,7 +8,7 @@ import { NetworkType } from "@airgap/beacon-sdk";
 import * as config from '../../config/config.js'
 import { address } from "pages/transactions";
 
-const network = { type: NetworkType.ITHACANET };
+const network = { type: NetworkType.JAKARTANET };
 const Tezos = new TezosToolkit(config.RPC_URL); // TODO: url env variable
 const walletContext = React.createContext(
   new BeaconWallet({
@@ -52,7 +52,9 @@ export default function ConnexionWallet() {
       const nftToMint = 1;
       const contract = await getSmartContract();
       url = char2Bytes(url);
-      const op = await contract.methods.big_boi_mint(address, nftToMint, 1000 * 1000000, MichelsonMap.fromLiteral({ '': url }), token_id).send({ amount: 1000 });
+      //const op = await contract.methods.big_boi_mint("tz1fjN84qaxBV5q6Py1HRkaxGRW55tv64u2h", nftToMint, 1000 * 1000000, MichelsonMap.fromLiteral({ '': url }), token_id).send({ amount: 1000 });
+      const op = await contract.methods.mint("tz1fjN84qaxBV5q6Py1HRkaxGRW55tv64u2h", nftToMint, MichelsonMap.fromLiteral({ '': url }), 1).send();
+
       return await op.confirmation(3);
     };
 
