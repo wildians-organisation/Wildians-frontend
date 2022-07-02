@@ -14,6 +14,12 @@ module.exports = {
       ...colors,
     },
     extend: {
+      colors: {
+        beige: "#F8FFE9",
+      },
+      fontFamily: {
+        goghbold: ["GOGH-BOLD", "cursive"],
+      },
       minHeight: {
         "screen-75": "75vh",
       },
@@ -69,6 +75,10 @@ module.exports = {
       },
       backgroundSize: {
         full: "100%",
+      },
+      backgroundImage: {
+        "banner-p": "url('../public/img/banner.png')",
+        "mid-bg": "url('../public/img/section_1.png')",
       },
     },
   },

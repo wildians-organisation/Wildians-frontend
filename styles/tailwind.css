@@ -1232,11 +1232,6 @@ select {
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
 
-.bg-pink-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(236, 72, 153, var(--tw-bg-opacity));
-}
-
 .bg-purple-200 {
   --tw-bg-opacity: 1;
   background-color: rgba(233, 213, 255, var(--tw-bg-opacity));
@@ -1290,11 +1285,6 @@ select {
 .bg-orange-200 {
   --tw-bg-opacity: 1;
   background-color: rgba(254, 215, 170, var(--tw-bg-opacity));
-}
-
-.bg-orange-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(249, 115, 22, var(--tw-bg-opacity));
 }
 
 .bg-red-200 {
@@ -1374,6 +1364,14 @@ select {
 
 .bg-none {
   background-image: none;
+}
+
+.bg-banner-p {
+  background-image: url('../public/img/banner.png');
+}
+
+.bg-mid-bg {
+  background-image: url('../public/img/section_1.png');
 }
 
 .bg-opacity-50 {
@@ -1964,6 +1962,10 @@ select {
   clear: none;
 }
 
+.font-goghbold {
+  font-family: GOGH-BOLD, cursive;
+}
+
 .font-normal {
   font-weight: 400;
 }
@@ -2024,6 +2026,10 @@ select {
   height: 4rem;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .h-24 {
   height: 6rem;
 }
@@ -2034,6 +2040,10 @@ select {
 
 .h-full {
   height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .h-350-px {
@@ -2647,10 +2657,6 @@ select {
   padding-left: 2.5rem;
 }
 
-.pt-12 {
-  padding-top: 3rem;
-}
-
 .pt-16 {
   padding-top: 4rem;
 }
@@ -2999,6 +3005,11 @@ select {
   color: rgba(51, 65, 85, var(--tw-text-opacity));
 }
 
+.text-beige {
+  --tw-text-opacity: 1;
+  color: rgba(248, 255, 233, var(--tw-text-opacity));
+}
+
 .hover\:text-lightBlue-600:hover {
   --tw-text-opacity: 1;
   color: rgba(2, 132, 199, var(--tw-text-opacity));
@@ -3241,6 +3252,10 @@ select {
   width: 3rem;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
 .w-56 {
   width: 14rem;
 }
@@ -3259,6 +3274,10 @@ select {
 
 .w-full {
   width: 100%;
+}
+
+.z-2 {
+  z-index: 2;
 }
 
 .z-10 {
@@ -3474,6 +3493,12 @@ select {
           animation: spin 1s linear infinite;
 }
 
+@font-face {
+  font-family: "GOGH-BOLD";
+
+  src: url("../public/fonts/Gogh-ExtraBold.otf");
+}
+
 @media (min-width: 640px) {
   .sm\:mt-0 {
     margin-top: 0px;
@@ -3568,10 +3593,6 @@ select {
 
   .md\:pb-2 {
     padding-bottom: 0.5rem;
-  }
-
-  .md\:pt-32 {
-    padding-top: 8rem;
   }
 
   .md\:fixed {
@@ -3750,10 +3771,6 @@ select {
 @media (min-width: 1280px) {
   .xl\:mb-0 {
     margin-bottom: 0px;
-  }
-
-  .xl\:w-3\/12 {
-    width: 25%;
   }
 
   .xl\:w-4\/12 {
