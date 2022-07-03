@@ -16,6 +16,7 @@ module.exports = {
     extend: {
       colors: {
         beige: "#F8FFE9",
+        bordeau: "#951F2B",
       },
       fontFamily: {
         goghbold: ["GOGH-BOLD", "cursive"],
