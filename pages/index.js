@@ -7,6 +7,7 @@ import Footer from "components/Footers/Footer.js";
 import Router from "next/router";
 import Header from "components/Headers/Header";
 import Midpart from "components/MidPart/Midpart";
+import SecondPart from "components/SecondPart/SecondPart";
 
 export function scrollToSection(sectionId) {
   if (sectionId == "concept") {
@@ -33,6 +34,7 @@ export default function Landing() {
   return (
     <div className="">
       <Header />
+      <SecondPart />
       <Midpart />
     </div>
   );
