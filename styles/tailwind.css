@@ -2338,6 +2338,10 @@ select {
   margin-top: 8rem;
 }
 
+.mt-64 {
+  margin-top: 16rem;
+}
+
 .mr-auto {
   margin-right: auto;
 }
@@ -2348,6 +2352,10 @@ select {
 
 .-ml-20 {
   margin-left: -5rem;
+}
+
+.-mt-44 {
+  margin-top: -11rem;
 }
 
 .-mt-64 {
@@ -2752,8 +2760,8 @@ select {
   bottom: 1rem;
 }
 
-.left-28 {
-  left: 7rem;
+.left-48 {
+  left: 12rem;
 }
 
 .top-auto {
@@ -3040,6 +3048,16 @@ select {
 .text-greeny {
   --tw-text-opacity: 1;
   color: rgba(144, 224, 211, var(--tw-text-opacity));
+}
+
+.text-darkGreen {
+  --tw-text-opacity: 1;
+  color: rgba(45, 86, 80, var(--tw-text-opacity));
+}
+
+.text-wildianBlack {
+  --tw-text-opacity: 1;
+  color: rgba(48, 38, 28, var(--tw-text-opacity));
 }
 
 .hover\:text-lightBlue-600:hover {

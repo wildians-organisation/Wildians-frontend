@@ -41,7 +41,7 @@ export default function Header() {
         </div>
         <div className="flex items-center justify-end ">
           <div className="flex items-center justify-center bg-bordeau rounded-3xl w-44 h-12 mr-6">
-            <div className=" text-beige justify-end mr-1 text-2xl">JOIN US</div>
+            <div className="text-beige justify-end mr-1 text-2xl">JOIN US</div>
             <img
               className="w-7 h-7"
               src={"/img/discord_f8ffe9.png"}

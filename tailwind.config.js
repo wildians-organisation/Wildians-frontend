@@ -18,6 +18,9 @@ module.exports = {
         beige: "#F8FFE9",
         bordeau: "#951F2B",
         greeny: "#90E0D3",
+        darkGreen: "#2D5650",
+        wildianBlack: "#30261C",
+
       },
       fontFamily: {
         goghbold: ["GOGH-BOLD", "cursive"],
