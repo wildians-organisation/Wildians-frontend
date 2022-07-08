@@ -2314,6 +2314,10 @@ select {
   margin-top: 2rem;
 }
 
+.ml-9 {
+  margin-left: 2.25rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -2324,6 +2328,10 @@ select {
 
 .mb-12 {
   margin-bottom: 3rem;
+}
+
+.ml-12 {
+  margin-left: 3rem;
 }
 
 .mt-16 {
@@ -2342,8 +2350,16 @@ select {
   margin-top: 6rem;
 }
 
+.ml-24 {
+  margin-left: 6rem;
+}
+
 .mt-32 {
   margin-top: 8rem;
+}
+
+.ml-40 {
+  margin-left: 10rem;
 }
 
 .mt-64 {
@@ -2368,10 +2384,6 @@ select {
 
 .-mt-64 {
   margin-top: -16rem;
-}
-
-.hover\:-mt-4:hover {
-  margin-top: -1rem;
 }
 
 .max-w-sm {
@@ -2400,10 +2412,6 @@ select {
 
 .min-h-screen {
   min-height: 100vh;
-}
-
-.min-h-screen-75 {
-  min-height: 75vh;
 }
 
 .min-w-0 {
@@ -2684,10 +2692,6 @@ select {
   padding-left: 0.75rem;
 }
 
-.pt-4 {
-  padding-top: 1rem;
-}
-
 .pr-4 {
   padding-right: 1rem;
 }
@@ -2710,14 +2714,6 @@ select {
 
 .pl-10 {
   padding-left: 2.5rem;
-}
-
-.pt-16 {
-  padding-top: 4rem;
-}
-
-.pb-32 {
-  padding-bottom: 8rem;
 }
 
 .placeholder-blueGray-300::-webkit-input-placeholder {
@@ -2780,16 +2776,12 @@ select {
   left: 0px;
 }
 
-.bottom-4 {
-  bottom: 1rem;
+.top-48 {
+  top: 12rem;
 }
 
 .left-48 {
   left: 12rem;
-}
-
-.top-48 {
-  top: 12rem;
 }
 
 .top-auto {
@@ -2966,11 +2958,6 @@ select {
 .text-white {
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
-}
-
-.text-pink-400 {
-  --tw-text-opacity: 1;
-  color: rgba(244, 114, 182, var(--tw-text-opacity));
 }
 
 .text-indigo-600 {
@@ -3380,10 +3367,6 @@ select {
 
 .w-full {
   width: 100%;
-}
-
-.z-2 {
-  z-index: 2;
 }
 
 .z-10 {

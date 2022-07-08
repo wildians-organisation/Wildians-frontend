@@ -12,93 +12,93 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bottom-4 bg-indigo-500 pt-4 pb-4">
-        <div className="flex flex-wrap items-center md:justify-between justify-center place-content-evenly">
-          <div id="footerdenhaut" className="footer">
-            <div id="elmtLeft">
-              <button
-                className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                type="button"
-              >
-                <i className="fab fa-twitter"></i>
-              </button>
-              <button
-                className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                type="button"
-              >
-                <i className="fab fa-discord"></i>
-              </button>
-              <button
-                className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                type="button"
-              >
-                <i className="fab fa-instagram"></i>
-              </button>
-              <a
-                className="text-black hover:text-blueGray-800 pt-2 pl-3"
-                onClick={() => goToIndicatedPage("/contact-us")}
-              >
-                {" "}
-                Contact us{" "}
-              </a>
-            </div>
-            <div
-              id="elmtMid"
-              className="text-sm text-black font-semibold py-1"
-              style={{ position: "relative", right: 6 }}
-            >
-              <a
-                className="text-black hover:text-blueGray-800"
-                onClick={() => goToIndicatedPage("/about")}
-              >
-                About
-              </a>{" "}
-              -{" "}
-              <a
-                className="text-black hover:text-blueGray-800"
-                onClick={() => goToIndicatedPage("/white-paper")}
-              >
-                White-Paper
-              </a>{" "}
-              -{" "}
-              <a
-                className="text-black hover:text-blueGray-800"
-                onClick={() => goToIndicatedPage("/F.A.Q")}
-              >
-                F.A.Q
-              </a>
-              <div className="text-sm text-black font-semibold pt-4">
-                <a
-                  className="text-black hover:text-blueGray-800"
-                  onClick={() => goToIndicatedPage("/terms-of-use")}
-                >
-                  Terms of use -{" "}
-                </a>
-                <a
-                  className="text-black hover:text-blueGray-800"
-                  onClick={() => goToIndicatedPage("/privacy-policy")}
-                >
-                  {" "}
-                  Privacy policy
-                </a>
-
+      <div>
+        <div name="first-part" className="flex items-center ml-40">
+          <div name="big-logo">
+            <img
+              className="w-56 h-40"
+              src={"/img/logo_36544f.png"}
+              alt="twitter_logo"
+            />
+          </div>
+          <div name="main-text" className="ml-24">
+            <div name="firstPart-MainText" className="flex items-center">
+              <p className="text-6xl tracking-[.75em] font-bold text-greeny">ENTER THE </p>
+              <div name="logoInText" className="flex ml-9">
+                <img
+                  className="w-8 h-8"
+                  src={"/img/discord_403831.png"}
+                  alt="discord_logo"
+                />
+                <img
+                  className="w-8 h-8 ml-2"
+                  src={"/img/insta_403831.png"}
+                  alt="twitter_logo"
+                />
+                <img
+                  className="w-8 h-8 ml-2"
+                  src={"/img/twitter_403831.png"}
+                  alt="twitter_logo"
+                />
+                <img
+                  className="w-8 h-8 ml-2"
+                  src={"/img/tiktok_403831.png"}
+                  alt="twitter_logo"
+                />
               </div>
             </div>
-            <div id="elmtRight" className="flex flex-wrap">
-              <a className="text-black hover:text-blueGray-800 "
-              >
-                <img src="/img/logo.png" height="75" width="75" onClick={() => goLandingPage()} ></img>
-              </a>
-              <a className="text-black hover:text-blueGray-800 pt-2 pl-3">
-                NFPets{" "}
-              </a>{" "}
+            <p className="text-6xl tracking-[.75em] font-bold text-greeny">WILDIANS COMMUNITY</p>
+          </div>
+        </div>
 
-            </div>
+        <div name="second-part" className="text-center mb-4 mt-16">
+          <div name="top-part">
+            <a
+              className="text-base"
+              onClick={() => goToIndicatedPage("/about")}
+            >
+              About us
+            </a>
+            <a className="text-xl ml-12">
+              {" "}|{" "}
+            </a>
+            <a
+              className="text-base ml-12"
+              onClick={() => goToIndicatedPage("/white-paper")}
+            >
+              White-Paper
+            </a>
+            <a className="text-xl ml-12">
+              {" "}|{" "}
+            </a>
+            <a
+              className="text-base ml-12"
+              onClick={() => goToIndicatedPage("/F.A.Q")}
+            >
+              F.A.Q
+            </a>
           </div>
 
+          <div name="bottom-part" className="">
+            <a
+              className="text-xs"
+              onClick={() => goToIndicatedPage("/terms-of-use")}
+            >
+              Terms of use
+            </a>
+            <a className="text-xl ml-12">
+              {" "}|{" "}
+            </a>
+            <a
+              className="text-xs ml-12"
+              onClick={() => goToIndicatedPage("/privacy-policy")}
+            >
+              Privacy policy
+            </a>
 
+          </div>
         </div>
-      </footer>
+      </div>
     </>
   );
 }

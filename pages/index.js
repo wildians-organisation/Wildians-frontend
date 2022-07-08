@@ -1,8 +1,3 @@
-import Link from "next/link";
-
-// components
-
-import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import Router from "next/router";
 import Header from "components/Headers/Header";
@@ -36,6 +31,7 @@ export default function Landing() {
       <Header />
       <SecondPart />
       <Midpart />
+      <Footer />
     </div>
   );
 }
