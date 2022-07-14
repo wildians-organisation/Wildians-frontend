@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <>
-      <div>
+      <div className="bg-whiteBroke">
         <div name="first-part" className="flex items-center ml-40">
           <div name="big-logo">
             <img
@@ -23,7 +23,9 @@ export default function Footer() {
           </div>
           <div name="main-text" className="ml-24">
             <div name="firstPart-MainText" className="flex items-center">
-              <p className="text-6xl tracking-[.75em] font-bold text-greeny">ENTER THE </p>
+              <p className="text-6xl tracking-[.75em] font-bold text-greeny">
+                ENTER THE{" "}
+              </p>
               <div name="logoInText" className="flex ml-9">
                 <img
                   className="w-8 h-8"
@@ -47,7 +49,9 @@ export default function Footer() {
                 />
               </div>
             </div>
-            <p className="text-6xl tracking-[.75em] font-bold text-greeny">WILDIANS COMMUNITY</p>
+            <p className="text-6xl tracking-[.75em] font-bold text-greeny">
+              WILDIANS COMMUNITY
+            </p>
           </div>
         </div>
 
@@ -59,18 +63,14 @@ export default function Footer() {
             >
               About us
             </a>
-            <a className="text-xl ml-12">
-              {" "}|{" "}
-            </a>
+            <a className="text-xl ml-12"> | </a>
             <a
               className="text-base ml-12"
               onClick={() => goToIndicatedPage("/white-paper")}
             >
               White-Paper
             </a>
-            <a className="text-xl ml-12">
-              {" "}|{" "}
-            </a>
+            <a className="text-xl ml-12"> | </a>
             <a
               className="text-base ml-12"
               onClick={() => goToIndicatedPage("/F.A.Q")}
@@ -86,16 +86,13 @@ export default function Footer() {
             >
               Terms of use
             </a>
-            <a className="text-xl ml-12">
-              {" "}|{" "}
-            </a>
+            <a className="text-xl ml-12"> | </a>
             <a
               className="text-xs ml-12"
               onClick={() => goToIndicatedPage("/privacy-policy")}
             >
               Privacy policy
             </a>
-
           </div>
         </div>
       </div>

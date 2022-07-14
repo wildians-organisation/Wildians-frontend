@@ -20,6 +20,7 @@ module.exports = {
         greeny: "#90E0D3",
         darkGreen: "#2D5650",
         wildianBlack: "#30261C",
+        whiteBroke: "#FCFDFA",
       },
 
       fontFamily: {
@@ -32,6 +33,9 @@ module.exports = {
         55: "55rem",
         "10vw": "10vw",
         "6vw": "6vw",
+        "5vw": "5vw",
+
+        "4vw": "4vw",
       },
       opacity: {
         80: ".8",

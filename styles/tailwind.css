@@ -1342,6 +1342,11 @@ select {
   background-color: rgba(149, 31, 43, var(--tw-bg-opacity));
 }
 
+.bg-whiteBroke {
+  --tw-bg-opacity: 1;
+  background-color: rgba(252, 253, 250, var(--tw-bg-opacity));
+}
+
 .focus\:bg-white:focus {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
@@ -2059,6 +2064,10 @@ select {
   height: 10rem;
 }
 
+.h-80 {
+  height: 20rem;
+}
+
 .h-96 {
   height: 24rem;
 }
@@ -2133,6 +2142,10 @@ select {
 
 .text-6vw {
   font-size: 6vw;
+}
+
+.text-4vw {
+  font-size: 4vw;
 }
 
 .leading-none {
@@ -2360,10 +2373,6 @@ select {
   margin-left: 10rem;
 }
 
-.mt-64 {
-  margin-top: 16rem;
-}
-
 .mr-auto {
   margin-right: auto;
 }
@@ -2374,10 +2383,6 @@ select {
 
 .-ml-20 {
   margin-left: -5rem;
-}
-
-.-mt-44 {
-  margin-top: -11rem;
 }
 
 .-mt-64 {
@@ -3674,6 +3679,11 @@ select {
     justify-content: space-between;
   }
 
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
   .md\:mt-4 {
     margin-top: 1rem;
   }
@@ -3812,6 +3822,11 @@ select {
 
   .lg\:order-3 {
     order: 3;
+  }
+
+  .lg\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 
   .lg\:mb-0 {
