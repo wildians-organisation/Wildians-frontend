@@ -20,8 +20,8 @@ module.exports = {
         greeny: "#90E0D3",
         darkGreen: "#2D5650",
         wildianBlack: "#30261C",
-
       },
+
       fontFamily: {
         goghbold: ["GOGH-BOLD", "cursive"],
       },
@@ -30,6 +30,8 @@ module.exports = {
       },
       fontSize: {
         55: "55rem",
+        "10vw": "10vw",
+        "6vw": "6vw",
       },
       opacity: {
         80: ".8",

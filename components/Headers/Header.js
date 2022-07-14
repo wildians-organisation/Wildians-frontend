@@ -10,11 +10,11 @@ export default function Header() {
         <div className="flex justify-around items-center">
           <div className="flex items-center">
             <img
-              className="w-28 h-20"
+              className="w-14 h-auto md:w-28 lg:w-42"
               src={"/img/logo_header.png"}
               alt="header_logo"
             />
-            <div className="text-beige text-5xl">ILDIANS</div>
+            <div className="text-beige text-6vw">ILDIANS</div>
           </div>
           <div className="flex ">
             <img
@@ -31,7 +31,7 @@ export default function Header() {
         </div>
         <div>
           <div className="text-center flex flex-col items-center mt-24 mb-6">
-            <div className="text-beige text-8xl">COMING SOON</div>
+            <div className="text-beige text-10vw">COMING SOON</div>
             <img
               className="w-56 h-40"
               src={"/img/logo_header.png"}
