@@ -6,7 +6,7 @@
   "repository": "https://github.com/creativetimofficial/notus-nextjs",
   "license": "MIT",
   "engines": {
-    "node": "16.14.2",
+    "node": "16.16.0",
     "npm": "8.5.0"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@temple-wallet/dapp": "^6.1.1",
     "chart.js": "2.9.4",
     "constate": "^3.3.0",
+    "cypress": "^10.3.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "headlessui": "^0.0.0",
