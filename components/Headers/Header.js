@@ -1,6 +1,5 @@
 import React from "react";
 // components
-import Image from "next/image";
 
 export default function Header() {
   return (
