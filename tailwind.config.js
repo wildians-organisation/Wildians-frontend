@@ -90,6 +90,7 @@ module.exports = {
       backgroundImage: {
         "banner-p": "url('../public/img/banner.png')",
         "mid-bg": "url('../public/img/section_1.png')",
+        "tree-bg": "url('../public/img/antlers-crop.png')",
       },
     },
   },

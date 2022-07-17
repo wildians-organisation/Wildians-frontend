@@ -33,7 +33,7 @@ export default function Header() {
           <div className="text-center flex flex-col items-center mt-24 mb-6">
             <div className="text-beige text-10vw">COMING SOON</div>
             <img
-              className="w-56 h-40"
+              className="w-28 h-auto md:w-42 lg:w-56"
               src={"/img/logo_header.png"}
               alt="header_logo"
             />

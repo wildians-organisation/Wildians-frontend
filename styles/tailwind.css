@@ -1384,12 +1384,20 @@ select {
   background-image: url('../public/img/section_1.png');
 }
 
+.bg-tree-bg {
+  background-image: url('../public/img/antlers-crop.png');
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
 
 .bg-center {
   background-position: center;
+}
+
+.bg-right {
+  background-position: right;
 }
 
 .bg-repeat {
@@ -2142,10 +2150,6 @@ select {
 
 .text-6vw {
   font-size: 6vw;
-}
-
-.text-4vw {
-  font-size: 4vw;
 }
 
 .leading-none {
@@ -3369,6 +3373,10 @@ select {
   width: 6rem;
 }
 
+.w-28 {
+  width: 7rem;
+}
+
 .w-36 {
   width: 9rem;
 }
@@ -3884,6 +3892,10 @@ select {
   .lg\:hover\:text-blueGray-200:hover {
     --tw-text-opacity: 1;
     color: rgba(226, 232, 240, var(--tw-text-opacity));
+  }
+
+  .lg\:w-56 {
+    width: 14rem;
   }
 
   .lg\:w-auto {
