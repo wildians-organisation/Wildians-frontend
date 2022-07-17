@@ -13,43 +13,43 @@ export default function Footer() {
   return (
     <>
       <div className="bg-whiteBroke">
-        <div name="first-part" className="flex items-center ml-40">
+        <div name="first-part" className="flex items-center  md:ml-20">
           <div name="big-logo">
             <img
-              className="w-56 h-40"
+              className="w-28 h-auto md:w-42 lg:w-56"
               src={"/img/logo_36544f.png"}
-              alt="twitter_logo"
+              alt="wildians-logo"
             />
           </div>
-          <div name="main-text" className="ml-24">
+          <div name="main-text" className="ml-8">
             <div name="firstPart-MainText" className="flex items-center">
-              <p className="text-6xl tracking-[.75em] font-bold text-greeny">
-                ENTER THE{" "}
+              <p className=" tracking-[.75em] font-bold text-greeny text-3xl md:text-5xl lg:text-6xl">
+                ENTER THE
               </p>
-              <div name="logoInText" className="flex ml-9">
+              <div name="logoInText" className="flex md:ml-9">
                 <img
-                  className="w-8 h-8"
+                  className="w-4 h-auto md:w-8 lg:w-10 ml-2"
                   src={"/img/discord_403831.png"}
                   alt="discord_logo"
                 />
                 <img
-                  className="w-8 h-8 ml-2"
+                  className="w-4 h-auto md:w-8 lg:w-10 ml-2"
                   src={"/img/insta_403831.png"}
                   alt="twitter_logo"
                 />
                 <img
-                  className="w-8 h-8 ml-2"
+                  className="w-4 h-auto md:w-8 lg:w-10 ml-2"
                   src={"/img/twitter_403831.png"}
                   alt="twitter_logo"
                 />
                 <img
-                  className="w-8 h-8 ml-2"
+                  className="w-4 h-auto md:w-8 lg:w-10 ml-2"
                   src={"/img/tiktok_403831.png"}
                   alt="twitter_logo"
                 />
               </div>
             </div>
-            <p className="text-6xl tracking-[.75em] font-bold text-greeny">
+            <p className="tracking-[.75em] font-bold text-greeny text-3xl md:text-5xl lg:text-6xl">
               WILDIANS COMMUNITY
             </p>
           </div>
