@@ -2788,6 +2788,10 @@ select {
   bottom: 1rem;
 }
 
+.bottom-28 {
+  bottom: 7rem;
+}
+
 .top-48 {
   top: 12rem;
 }
@@ -3080,6 +3084,16 @@ select {
 .text-greeny {
   --tw-text-opacity: 1;
   color: rgba(144, 224, 211, var(--tw-text-opacity));
+}
+
+.text-darkGreen {
+  --tw-text-opacity: 1;
+  color: rgba(45, 86, 80, var(--tw-text-opacity));
+}
+
+.text-wildianBlack {
+  --tw-text-opacity: 1;
+  color: rgba(48, 38, 28, var(--tw-text-opacity));
 }
 
 .hover\:text-lightBlue-600:hover {
