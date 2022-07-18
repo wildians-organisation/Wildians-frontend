@@ -7,26 +7,26 @@ function SecondPart() {
         <p className=" tracking-[.75em] text-4xl md:text-5xl lg:text-6xl font-bold text-greeny ">
           WILDIANS
         </p>
-        <p className="tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl text-greeny ">
+        <p className="tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl text-wildianBlack ">
           IS A UNIQUE PROJECT
         </p>
-        <p className="tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl text-greeny">
+        <p className="tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl text-wildianBlack">
           BUILT AROUND
         </p>
-        <p className=" tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl font-bold  text-greeny ">
+        <p className=" tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl font-bold  text-wildianBlack ">
           TEZOS BLOCKCHAIN.
         </p>
         <br />
-        <p className=" tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl text-greeny">
+        <p className=" tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl text-wildianBlack">
           ADOPT YOUR{" "}
-          <a className=" tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl font-bold text-greeny ">
+          <a className=" tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl font-bold text-darkGreen ">
             WILDLY
           </a>
           ,
         </p>
-        <p className=" tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl text-greeny absolute  ">
+        <p className=" tracking-[.75em]  text-4xl md:text-5xl lg:text-6xl text-wildianBlack absolute  ">
           BE A PART OF A{" "}
-          <a className=" tracking-[.75em] text-4xl md:text-5xl lg:text-6xl font-bold text-greeny ">
+          <a className=" tracking-[.75em] text-4xl md:text-5xl lg:text-6xl font-bold text-wildianBlack ">
             BETTER WORLD
           </a>
           .
