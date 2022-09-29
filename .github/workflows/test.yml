@@ -1,9 +1,5 @@
 name: Development workflow
 
-on:
-  push:
-    branches:
-      - feature/maquetteV1Header
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,5 +15,5 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: 'nfpets-frontend-test'
-          heroku_email: 'ares.chain.tech@gmail.com'
+          heroku_app_name: "nfpets-frontend-test"
+          heroku_email: "ares.chain.tech@gmail.com"
