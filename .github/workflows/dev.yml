@@ -3,14 +3,15 @@ name: Development workflow
 on:
   push:
     branches:
-      - dev
+      - feature/ci
 jobs:
 
   prettier: 
     runs-on: ubuntu-latest
     steps:
-    - name: run Prettier
+    - name: Prettier
       uses: actions/checkout@v2
+    - name: Prettier check
       run : npx prettier './**/*.{js,jsx,ts,tsx,html}' --check | echo y
 
 
