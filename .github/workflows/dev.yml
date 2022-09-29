@@ -5,19 +5,29 @@ on:
     branches:
       - dev
 jobs:
-  build:
-    runs-on: ubuntu-latest
 
+  prettier: 
+    runs-on: ubuntu-latest
     steps:
-      - name: Development Code
-        uses: actions/checkout@v2
-      - name: Use Node.js 17.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 17.x
-      - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: 'nfpets-frontend-dev'
-          heroku_email: 'ares.chain.tech@gmail.com'
+    - name: run Prettier
+      uses: actions/checkout@v2
+      run : 
+      run : npx prettier './**/*.{js,jsx,ts,tsx,html,css,scss}' --check | echo y
+
+
+  # build:
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Development Code
+  #       uses: actions/checkout@v2
+  #     - name: Use Node.js 17.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 17.x
+  #     - name: Deploy to Heroku
+  #       uses: akhileshns/heroku-deploy@v3.12.12
+  #       with:
+  #         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+  #         heroku_app_name: 'nfpets-frontend-dev'
+  #         heroku_email: 'ares.chain.tech@gmail.com'
