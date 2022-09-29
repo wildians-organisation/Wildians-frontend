@@ -12,7 +12,7 @@ jobs:
     - name: Prettier
       uses: actions/checkout@v2
     - name: Prettier check
-      run : npx prettier './**/*.{js,jsx,ts,tsx,html}' --check | echo y
+      run : npx prettier 'dapp/**/*.{js,jsx,ts,tsx,html}' --check
 
 
   # build:
