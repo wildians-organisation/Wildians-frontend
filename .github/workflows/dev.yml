@@ -3,21 +3,25 @@ name: Development workflow
 on:
   push:
     branches:
-      - dev
+      - feature/ci
 jobs:
-  build:
+  prettier:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Development Code
+      - name: Prettier
         uses: actions/checkout@v2
-      - name: Use Node.js 17.x
-        uses: actions/setup-node@v1
+      - name: Prettier check
+        run: npx prettier 'dapp/**/*.{js,jsx,ts,tsx,html}' --check
+
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v4.x.x # use the explicit version number
         with:
-          node-version: 17.x
-      - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: 'nfpets-frontend-dev'
-          heroku_email: 'ares.chain.tech@gmail.com'
+          build: npm run build
+          start: npm start
