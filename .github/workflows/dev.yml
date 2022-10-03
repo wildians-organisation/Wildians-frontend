@@ -19,7 +19,9 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: run cypress tests with firefox
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         timeout-minutes: 10
         with:
           browser: firefox
+          build: yarn run build
+          start: yarn run dev
