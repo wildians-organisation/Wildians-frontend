@@ -26,5 +26,3 @@ yarn-error.log*
 out/
 
 commit.sh
-
-yarn.lock
