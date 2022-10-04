@@ -3,13 +3,14 @@ import { useContext } from "react";
 import ConnectedButton from "./ConnectedButton";
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
 import { char2Bytes } from '@taquito/tzip16';
-import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
+import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from '../../config/config.js'
 
 const token_id = 0;
 const network = { type: NetworkType.JAKARTANET };
-const Tezos = new TezosToolkit(config.RPC_URL); // TODO: url env variable
+//const Tezos = new TezosToolkit(config.RPC_URL); // TODO: url env variable
+/*
 const walletContext = React.createContext(
   new BeaconWallet({
     name: config.NAME,
@@ -17,10 +18,36 @@ const walletContext = React.createContext(
   })
 )
 
-export default function ConnexionWallet() {
+/*
+const [wallet, setWallet] = useState < null | BeaconWallet > (null);
 
-  const wallet = useContext(walletContext);
-  Tezos.setWalletProvider(wallet);
+const [Tezos, setTezos] = useState(new TezosToolkit("https://mainnet-tezos.giganode.io"))
+
+useEffect(() => {
+  (async () => {
+    if (wallet === null) {
+      const _wallet = new (await import("@taquito/beacon-wallet")).BeaconWallet({ name: "Demo" });
+      setWallet(_wallet)
+      Tezos.setWalletProvider(_wallet);
+    }
+  })();
+}, []);
+*/
+
+export default function ConnexionWallet() {
+  const [wallet, setWallet] = React.useState({}); //
+  const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL))
+
+  React.useEffect(() => {
+    (async () => {
+
+      console.log("AAAAAAAAA")
+      const _wallet = new BeaconWallet({ name: "Demo" });
+      setWallet(_wallet)
+      Tezos.setWalletProvider(_wallet);
+
+    })();
+  }, []);
 
   const [myAddress, setMyAddress] = React.useState(null);
 
@@ -88,4 +115,3 @@ export default function ConnexionWallet() {
     </div>
   );
 }
-
