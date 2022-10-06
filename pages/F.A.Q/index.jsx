@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer";
+import Footer from "components/LandingPage/Footer";
 
 
 export default function FAQ() {

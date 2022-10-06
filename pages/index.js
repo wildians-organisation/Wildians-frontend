@@ -1,8 +1,8 @@
-import Footer from "components/Footers/Footer.js";
+import Footer from "components/LandingPage/Footer.js";
 import Router from "next/router";
-import Header from "components/Headers/Header";
-import Midpart from "components/MidPart/Midpart";
-import SecondPart from "components/SecondPart/SecondPart";
+import Header from "components/LandingPage/Header";
+import Midpart from "components/LandingPage/Midpart";
+import SecondPart from "components/LandingPage/SecondPart";
 
 export function scrollToSection(sectionId) {
   if (sectionId == "concept") {

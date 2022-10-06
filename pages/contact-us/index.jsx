@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "components/Footers/Footer";
+import Footer from "components/LandingPage/Footer";
 import Navbar from "components/Navbars/AuthNavbar.js";
 
 export default function ContactUS() {
