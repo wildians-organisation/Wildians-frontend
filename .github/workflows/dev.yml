@@ -1,6 +1,12 @@
 name: Development workflow
 
-on: [push]
+on:
+  # runs on pushes to the main branch
+  push:
+    branches: [dev]
+  # also runs inside pull requests that target the main branch
+  pull_request:
+    branches: [dev]
 
 jobs:
   prettier:
