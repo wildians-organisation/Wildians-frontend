@@ -1,47 +1,22 @@
 import React from "react";
-import { useContext } from "react";
 import ConnectedButton from "./ConnectedButton";
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
 import { char2Bytes } from '@taquito/tzip16';
 import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import * as config from '../../config/config.js'
+import * as config from '../../config/config.js';
 
 const token_id = 0;
+const nftToMint = 1;
 const network = { type: NetworkType.JAKARTANET };
-//const Tezos = new TezosToolkit(config.RPC_URL); // TODO: url env variable
-/*
-const walletContext = React.createContext(
-  new BeaconWallet({
-    name: config.NAME,
-    preferredNetwork: config.NETWORK,
-  })
-)
 
-/*
-const [wallet, setWallet] = useState < null | BeaconWallet > (null);
-
-const [Tezos, setTezos] = useState(new TezosToolkit("https://mainnet-tezos.giganode.io"))
-
-useEffect(() => {
-  (async () => {
-    if (wallet === null) {
-      const _wallet = new (await import("@taquito/beacon-wallet")).BeaconWallet({ name: "Demo" });
-      setWallet(_wallet)
-      Tezos.setWalletProvider(_wallet);
-    }
-  })();
-}, []);
-*/
-
+/*** Function to connect to wallet, with useState to avoid creating multiple instances ***/
 export default function ConnexionWallet() {
-  const [wallet, setWallet] = React.useState({}); //
+  const [wallet, setWallet] = React.useState({});
   const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL))
 
   React.useEffect(() => {
     (async () => {
-
-      console.log("AAAAAAAAA")
       const _wallet = new BeaconWallet({ name: "Demo" });
       setWallet(_wallet)
       Tezos.setWalletProvider(_wallet);
@@ -75,7 +50,6 @@ export default function ConnexionWallet() {
     mintNFT = async (url, token_id) => {
       await disconnect();
       await connectToWallet();
-      const nftToMint = 1;
       const contract = await getSmartContract();
       url = char2Bytes(url);
       const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();

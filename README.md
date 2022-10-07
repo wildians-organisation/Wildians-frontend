@@ -179,7 +179,7 @@ notus-nextjs
 │   │   └── register.js
 │   ├── index.js
 │   ├── landing.js
-│   └── profile.js
+│   └── 
 └── tailwind.config.js
 ```
 

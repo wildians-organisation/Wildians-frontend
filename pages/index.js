@@ -1,19 +1,8 @@
 import Link from "next/link";
 import React from "react";
 
-// components
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer.js";
-import Router from "next/router";
-
-// layout for page
-
-import Auth from "layouts/Auth.js";
-
-/*------------------------------------------------------*/
-/*------------------------------------------------------*/
-
+// scroll to selected sections
 export function scrollToSection(sectionId) {
   if (sectionId == "concept") {
     const elt = document.getElementById('idconcept')
@@ -30,15 +19,10 @@ export function scrollToSection(sectionId) {
   else if (sectionId == "marketplace") {
     const elt = document.getElementById('idmarketplace')
     elt.scrollIntoView({ behavior: 'smooth' })
-  } else {
-
   }
 }
 
 export default function Landing() {
-  const goToMarketPlace = () => {
-    Router.push("/marketplace");
-  };
 
   return (
     <>

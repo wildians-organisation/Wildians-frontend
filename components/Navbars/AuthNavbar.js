@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Router from "next/router";
 import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
 import { scrollToSection } from "pages";

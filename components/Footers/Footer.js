@@ -84,10 +84,10 @@ export default function Footer() {
 
               </div>
             </div>
-            <div id="elmtRight" className="flex flex-wrap">
+            <div id="elmtRight" className="flex flex-wrap" onClick={() => goToIndicatedPage("/")}>
               <a className="text-black hover:text-blueGray-800 "
               >
-                <img src="/img/logo.png" height="75" width="75" onClick={() => goLandingPage()} ></img>
+                <img src="/img/logo.png" height="75" width="75"></img>
               </a>
               <a className="text-black hover:text-blueGray-800 pt-2 pl-3">
                 NFPets{" "}
