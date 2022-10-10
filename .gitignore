@@ -27,4 +27,5 @@ out/
 
 commit.sh
 
-yarn.lock
+cypress/videos
+cypress/screenshots

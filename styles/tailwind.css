@@ -1232,11 +1232,6 @@ select {
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
 
-.bg-pink-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(236, 72, 153, var(--tw-bg-opacity));
-}
-
 .bg-purple-200 {
   --tw-bg-opacity: 1;
   background-color: rgba(233, 213, 255, var(--tw-bg-opacity));
@@ -1292,11 +1287,6 @@ select {
   background-color: rgba(254, 215, 170, var(--tw-bg-opacity));
 }
 
-.bg-orange-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(249, 115, 22, var(--tw-bg-opacity));
-}
-
 .bg-red-200 {
   --tw-bg-opacity: 1;
   background-color: rgba(254, 202, 202, var(--tw-bg-opacity));
@@ -1347,6 +1337,16 @@ select {
   background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
 }
 
+.bg-bordeau {
+  --tw-bg-opacity: 1;
+  background-color: rgba(149, 31, 43, var(--tw-bg-opacity));
+}
+
+.bg-whiteBroke {
+  --tw-bg-opacity: 1;
+  background-color: rgba(252, 253, 250, var(--tw-bg-opacity));
+}
+
 .focus\:bg-white:focus {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
@@ -1376,12 +1376,28 @@ select {
   background-image: none;
 }
 
+.bg-banner-p {
+  background-image: url('../public/img/banner.png');
+}
+
+.bg-mid-bg {
+  background-image: url('../public/img/section_1.png');
+}
+
+.bg-tree-bg {
+  background-image: url('../public/img/antlers-crop.png');
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
 
 .bg-center {
   background-position: center;
+}
+
+.bg-right {
+  background-position: right;
 }
 
 .bg-repeat {
@@ -1494,6 +1510,10 @@ select {
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-3xl {
+  border-radius: 1.5rem;
 }
 
 .rounded-full {
@@ -1964,6 +1984,10 @@ select {
   clear: none;
 }
 
+.font-goghbold {
+  font-family: GOGH-BOLD, cursive;
+}
+
 .font-normal {
   font-weight: 400;
 }
@@ -2000,6 +2024,14 @@ select {
   height: 1.25rem;
 }
 
+.h-6 {
+  height: 1.5rem;
+}
+
+.h-7 {
+  height: 1.75rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -2028,12 +2060,20 @@ select {
   height: 6rem;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
 .h-auto {
   height: auto;
 }
 
 .h-full {
   height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .h-350-px {
@@ -2078,6 +2118,11 @@ select {
   line-height: 2rem;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
@@ -2086,6 +2131,14 @@ select {
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
+}
+
+.text-10vw {
+  font-size: 10vw;
+}
+
+.text-6vw {
+  font-size: 6vw;
 }
 
 .leading-none {
@@ -2265,6 +2318,10 @@ select {
   margin-top: 2rem;
 }
 
+.ml-8 {
+  margin-left: 2rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -2277,12 +2334,24 @@ select {
   margin-bottom: 3rem;
 }
 
+.ml-12 {
+  margin-left: 3rem;
+}
+
 .mt-16 {
   margin-top: 4rem;
 }
 
+.ml-16 {
+  margin-left: 4rem;
+}
+
 .mt-20 {
   margin-top: 5rem;
+}
+
+.mt-24 {
+  margin-top: 6rem;
 }
 
 .mt-32 {
@@ -2647,10 +2716,6 @@ select {
   padding-left: 2.5rem;
 }
 
-.pt-12 {
-  padding-top: 3rem;
-}
-
 .pt-16 {
   padding-top: 4rem;
 }
@@ -2721,6 +2786,18 @@ select {
 
 .bottom-4 {
   bottom: 1rem;
+}
+
+.bottom-28 {
+  bottom: 7rem;
+}
+
+.top-48 {
+  top: 12rem;
+}
+
+.left-48 {
+  left: 12rem;
 }
 
 .top-auto {
@@ -2999,6 +3076,26 @@ select {
   color: rgba(51, 65, 85, var(--tw-text-opacity));
 }
 
+.text-beige {
+  --tw-text-opacity: 1;
+  color: rgba(248, 255, 233, var(--tw-text-opacity));
+}
+
+.text-greeny {
+  --tw-text-opacity: 1;
+  color: rgba(144, 224, 211, var(--tw-text-opacity));
+}
+
+.text-darkGreen {
+  --tw-text-opacity: 1;
+  color: rgba(45, 86, 80, var(--tw-text-opacity));
+}
+
+.text-wildianBlack {
+  --tw-text-opacity: 1;
+  color: rgba(48, 38, 28, var(--tw-text-opacity));
+}
+
 .hover\:text-lightBlue-600:hover {
   --tw-text-opacity: 1;
   color: rgba(2, 132, 199, var(--tw-text-opacity));
@@ -3225,8 +3322,20 @@ select {
   width: 0.25rem;
 }
 
+.w-4 {
+  width: 1rem;
+}
+
 .w-5 {
   width: 1.25rem;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.w-7 {
+  width: 1.75rem;
 }
 
 .w-8 {
@@ -3241,6 +3350,18 @@ select {
   width: 3rem;
 }
 
+.w-14 {
+  width: 3.5rem;
+}
+
+.w-28 {
+  width: 7rem;
+}
+
+.w-40 {
+  width: 10rem;
+}
+
 .w-56 {
   width: 14rem;
 }
@@ -3253,12 +3374,24 @@ select {
   width: 50%;
 }
 
+.w-4\/12 {
+  width: 33.333333%;
+}
+
+.w-5\/12 {
+  width: 41.666667%;
+}
+
 .w-6\/12 {
   width: 50%;
 }
 
 .w-full {
   width: 100%;
+}
+
+.z-2 {
+  z-index: 2;
 }
 
 .z-10 {
@@ -3351,6 +3484,10 @@ select {
 
 .rotate-180 {
   --tw-rotate: 180deg;
+}
+
+.-rotate-90 {
+  --tw-rotate: -90deg;
 }
 
 .transition-all {
@@ -3474,6 +3611,12 @@ select {
           animation: spin 1s linear infinite;
 }
 
+@font-face {
+  font-family: "GOGH-BOLD";
+
+  src: url("../public/fonts/Gogh-ExtraBold.otf");
+}
+
 @media (min-width: 640px) {
   .sm\:mt-0 {
     margin-top: 0px;
@@ -3525,12 +3668,39 @@ select {
     justify-content: space-between;
   }
 
+  .md\:h-12 {
+    height: 3rem;
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
   .md\:mt-4 {
     margin-top: 1rem;
   }
 
   .md\:mb-4 {
     margin-bottom: 1rem;
+  }
+
+  .md\:ml-9 {
+    margin-left: 2.25rem;
+  }
+
+  .md\:ml-20 {
+    margin-left: 5rem;
   }
 
   .md\:ml-64 {
@@ -3570,10 +3740,6 @@ select {
     padding-bottom: 0.5rem;
   }
 
-  .md\:pt-32 {
-    padding-top: 8rem;
-  }
-
   .md\:fixed {
     position: fixed;
   }
@@ -3601,6 +3767,30 @@ select {
 
   .md\:text-left {
     text-align: left;
+  }
+
+  .md\:w-8 {
+    width: 2rem;
+  }
+
+  .md\:w-20 {
+    width: 5rem;
+  }
+
+  .md\:w-24 {
+    width: 6rem;
+  }
+
+  .md\:w-28 {
+    width: 7rem;
+  }
+
+  .md\:w-40 {
+    width: 10rem;
+  }
+
+  .md\:w-44 {
+    width: 11rem;
   }
 
   .md\:w-64 {
@@ -3665,6 +3855,11 @@ select {
     order: 3;
   }
 
+  .lg\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
   .lg\:mb-0 {
     margin-bottom: 0px;
   }
@@ -3722,6 +3917,18 @@ select {
     color: rgba(226, 232, 240, var(--tw-text-opacity));
   }
 
+  .lg\:w-10 {
+    width: 2.5rem;
+  }
+
+  .lg\:w-52 {
+    width: 13rem;
+  }
+
+  .lg\:w-56 {
+    width: 14rem;
+  }
+
   .lg\:w-auto {
     width: auto;
   }
@@ -3750,10 +3957,6 @@ select {
 @media (min-width: 1280px) {
   .xl\:mb-0 {
     margin-bottom: 0px;
-  }
-
-  .xl\:w-3\/12 {
-    width: 25%;
   }
 
   .xl\:w-4\/12 {

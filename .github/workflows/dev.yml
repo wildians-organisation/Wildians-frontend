@@ -1,23 +1,32 @@
 name: Development workflow
 
 on:
+  # runs on pushes to the main branch
   push:
-    branches:
-      - dev
-jobs:
-  build:
-    runs-on: ubuntu-latest
+    branches: [dev]
+  # also runs inside pull requests that target the main branch
+  pull_request:
+    branches: [dev]
 
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
     steps:
-      - name: Development Code
+      - name: Prettier
         uses: actions/checkout@v2
-      - name: Use Node.js 17.x
-        uses: actions/setup-node@v1
+      - name: Prettier check
+        run: npx prettier 'dapp/**/*.{js,jsx,ts,tsx,html}' --check
+
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: run cypress tests with firefox
+        uses: cypress-io/github-action@v4
+        timeout-minutes: 10
         with:
-          node-version: 17.x
-      - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: 'nfpets-frontend-dev'
-          heroku_email: 'ares.chain.tech@gmail.com'
+          build: yarn run build
+          start: yarn run dev

@@ -14,11 +14,28 @@ module.exports = {
       ...colors,
     },
     extend: {
+      colors: {
+        beige: "#F8FFE9",
+        bordeau: "#951F2B",
+        greeny: "#90E0D3",
+        darkGreen: "#2D5650",
+        wildianBlack: "#30261C",
+        whiteBroke: "#FCFDFA",
+      },
+
+      fontFamily: {
+        goghbold: ["GOGH-BOLD", "cursive"],
+      },
       minHeight: {
         "screen-75": "75vh",
       },
       fontSize: {
         55: "55rem",
+        "10vw": "10vw",
+        "6vw": "6vw",
+        "5vw": "5vw",
+
+        "4vw": "4vw",
       },
       opacity: {
         80: ".8",
@@ -69,6 +86,11 @@ module.exports = {
       },
       backgroundSize: {
         full: "100%",
+      },
+      backgroundImage: {
+        "banner-p": "url('../public/img/banner.png')",
+        "mid-bg": "url('../public/img/section_1.png')",
+        "tree-bg": "url('../public/img/antlers-crop.png')",
       },
     },
   },
