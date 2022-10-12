@@ -27,10 +27,10 @@ jobs:
     needs:
       - cypress-run
     steps:
-      - name: checkout
+      - name: Build application
         uses: actions/checkout@v2
-      - name: build
-        run: yarn run build
+        with:
+          build: yarn run build
       
       - name: check
         run: ls
