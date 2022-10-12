@@ -28,6 +28,7 @@ jobs:
       - cypress-run
     steps:
       - name: build
+        uses: actions/checkout@v2
         run: yarn run build
       
       - name: check
