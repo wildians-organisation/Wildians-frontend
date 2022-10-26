@@ -6,9 +6,9 @@ import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from '../../config/config.js';
 
-const token_id = 0;
+var token_id = 0;
 const nftToMint = 1;
-const network = { type: NetworkType.JAKARTANET };
+const network = { type: NetworkType.GHOSTNET };
 
 /*** Function to connect to wallet, with useState to avoid creating multiple instances ***/
 export default function ConnexionWallet() {
@@ -47,13 +47,16 @@ export default function ConnexionWallet() {
   },
 
     /*** Function to mint the nft ***/
-    mintNFT = async (url, token_id) => {
+    mintNFT = async (url) => {
       await disconnect();
       await connectToWallet();
       const contract = await getSmartContract();
       url = char2Bytes(url);
-      const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
-      this.token_id += 1;
+      const activeAccount = await wallet.client.getActiveAccount();
+      console.log(activeAccount.address);
+      //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
+      const op = await contract.methods.big_boi_mint(activeAccount.address, nftToMint, 1000 * 1000000, MichelsonMap.fromLiteral({ '': url }), token_id).send({ amount: 1000 });
+      token_id += 1;
       return await op.confirmation(3);
     };
 
@@ -69,7 +72,7 @@ export default function ConnexionWallet() {
   return (
     <div>
       <button
-        onClick={() => mintNFT(config.SMART_CONTRACT, token_id)}
+        onClick={() => mintNFT(config.SMART_CONTRACT)}
         className="bg-white text-lightBlue-600  active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3  ease-linear transition-all duration-150"
         type="button"
       >
