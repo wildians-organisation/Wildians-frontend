@@ -30,3 +30,11 @@ jobs:
         with:
           build: yarn run build
           start: yarn run dev
+
+  status-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the status
+        run: actions/checkout@v2
+      - name: run cypress tests with firefox
+        uses: cypress-io/github-action@v4
