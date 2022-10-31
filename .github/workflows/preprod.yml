@@ -3,10 +3,10 @@ name: preprod workflow
 on:
   # runs on pushes to the main branch
   push:
-    branches: [preprod]
+    branches: [dev]
   # also runs inside pull requests that target the main branch
   pull_request:
-    branches: [preprod]
+    branches: [dev]
 
 jobs:
   cypress-run:
@@ -30,8 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check status of the web app
-      - run : curl -I  https://storage.googleapis.com/aerobic-guide-364710-website/index.html | grep "HTTP/2 200"
-      
+      - run: curl -I  https://storage.googleapis.com/aerobic-guide-364710-website/index.html | grep "HTTP/2 200"
+
   deploy-app:
     runs-on: ubuntu-latest
     needs:
