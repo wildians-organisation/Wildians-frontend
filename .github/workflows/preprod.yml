@@ -34,7 +34,7 @@ jobs:
         with:
           credentials_json: "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
       - name: Check status of the web app
-        run: curl -I  https://storage.googleapis.com/storage/v1/b/aerobic-guide-364710-dev | grep "HTTP/2 200"
+        run: curl -I  https://storage.googleapis.com/storage/v1/b/aerobic-guide-364710-dev
 
   deploy-app:
     runs-on: ubuntu-latest
