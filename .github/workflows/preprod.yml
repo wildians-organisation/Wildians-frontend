@@ -29,8 +29,12 @@ jobs:
   status-check:
     runs-on: ubuntu-latest
     steps:
+      - id: "auth"
+        uses: "google-github-actions/auth@v0"
+        with:
+          credentials_json: "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
       - name: Check status of the web app
-        run: curl -I  https://storage.googleapis.com/aerobic-guide-364710-website/index.html | grep "HTTP/2 200"
+        run: curl -I  https://storage.googleapis.com/storage/v1/b/aerobic-guide-364710-dev | grep "HTTP/2 200"
 
   deploy-app:
     runs-on: ubuntu-latest
