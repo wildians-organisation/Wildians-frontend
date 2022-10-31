@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check status of the web app
-      - run: curl -I  https://storage.googleapis.com/aerobic-guide-364710-website/index.html | grep "HTTP/2 200"
+        run: curl -I  https://storage.googleapis.com/aerobic-guide-364710-website/index.html | grep "HTTP/2 200"
 
   deploy-app:
     runs-on: ubuntu-latest
