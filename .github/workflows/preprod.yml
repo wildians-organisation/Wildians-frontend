@@ -3,10 +3,10 @@ name: preprod workflow
 on:
   # runs on pushes to the main branch
   push:
-    branches: [dev]
+    branches: [preprod]
   # also runs inside pull requests that target the main branch
   pull_request:
-    branches: [dev]
+    branches: [preprod]
 
 jobs:
   cypress-run:
@@ -33,6 +33,7 @@ jobs:
         run: curl -I  https://storage.googleapis.com/aerobic-guide-364710-website/index.html | grep "HTTP/2 200"
 
   deploy-app:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     needs:
       - cypress-run
