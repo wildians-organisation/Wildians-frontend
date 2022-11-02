@@ -6,7 +6,7 @@
   "repository": "https://github.com/creativetimofficial/notus-nextjs",
   "license": "MIT",
   "dependencies": {
-    "@airgap/beacon-sdk": "^3.0.0",
+    "@airgap/beacon-sdk": "^3.3.0",
     "@fortawesome/fontawesome-free": "5.15.3",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
