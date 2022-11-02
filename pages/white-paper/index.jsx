@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function WhitePaper() {
   // Display items in a list with add button on each items
   return (

@@ -15,6 +15,7 @@ const network = { type: NetworkType.JAKARTANET };
 /*** Function to connect to wallet, with useState to avoid creating multiple instances ***/
 export default function ConnexionWallet() {
   const [wallet, setWallet] = React.useState({});
+  const [myNFT, setMyNFT] = React.useState({});
   const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL))
 
   React.useEffect(() => {
@@ -73,11 +74,20 @@ export default function ConnexionWallet() {
 
   const fetchData = async () => {
     try {
+      let tmp_nft = []
       const response = await axios.get(
         `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${myAddress}`
       );
-      let mynft = response['data'];
-      console.log(mynft);
+      for (let i = 0; i < response['data'].length; i++) {
+        let tmp_obj = {
+          name: response['data'][i]['token']['metadata']['name'],
+          creators: response['data'][i]['token']['metadata']['creators'][0],
+          displayUri: response['data'][i]['token']['metadata']['displayUri'],
+          description: response['data'][i]['token']['metadata']['description'],
+        }
+        tmp_nft.push(tmp_obj)
+      }
+      setMyNFT(tmp_nft);
     } catch (e) {
       console.log(e);
     }
