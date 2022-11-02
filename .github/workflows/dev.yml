@@ -15,8 +15,8 @@ jobs:
       - name: Prettier
         uses: actions/checkout@v2
       - name: Prettier check
-      - run: npx prettier --write pages/ 
-      - run: npx prettier  'pages/**/*.{js,jsx,ts,tsx,html}' --check
+        run: npx prettier --write pages/ && prettier 'pages/**/*.{js,jsx,ts,tsx,html}' --check
+
 
   cypress-run:
     runs-on: ubuntu-latest
