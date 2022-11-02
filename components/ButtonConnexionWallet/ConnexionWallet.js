@@ -5,6 +5,8 @@ import { char2Bytes } from '@taquito/tzip16';
 import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from '../../config/config.js';
+import axios from 'axios';
+
 
 const token_id = 0;
 const nftToMint = 1;
@@ -20,7 +22,6 @@ export default function ConnexionWallet() {
       const _wallet = new BeaconWallet({ name: "Demo" });
       setWallet(_wallet)
       Tezos.setWalletProvider(_wallet);
-
     })();
   }, []);
 
@@ -40,29 +41,46 @@ export default function ConnexionWallet() {
     }
   };
 
-  /*** Function to get the smart contract ***/
-  const getSmartContract = async () => {
-    const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
-    return contract;
-  },
-
-    /*** Function to mint the nft ***/
-    mintNFT = async (url, token_id) => {
-      await disconnect();
-      await connectToWallet();
-      const contract = await getSmartContract();
-      url = char2Bytes(url);
-      const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
-      this.token_id += 1;
-      return await op.confirmation(3);
-    };
-
   /*** Function to disconnect to the wallet ***/
   const disconnect = async () => {
+    console.log("");
+    console.log("starting point");
+    await fetchData();
+    console.log("ending point");
+    console.log("");
     await new Promise((resolve) => setTimeout(resolve, 1000));
     await wallet.clearActiveAccount();
     await wallet.disconnect();
     setMyAddress(null);
+  };
+
+  /*** Function to get the smart contract ***/
+  const getSmartContract = async () => {
+    const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
+    return contract;
+  };
+
+  /*** Function to mint the nft ***/
+  const mintNFT = async (url, token_id) => {
+    await disconnect();
+    await connectToWallet();
+    const contract = await getSmartContract();
+    url = char2Bytes(url);
+    const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
+    this.token_id += 1;
+    return await op.confirmation(3);
+  };
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${myAddress}`
+      );
+      let mynft = response['data'];
+      console.log(mynft);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   /*** Render ***/
@@ -88,4 +106,4 @@ export default function ConnexionWallet() {
       </button>
     </div>
   );
-}
+};
