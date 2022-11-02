@@ -1,9 +1,6 @@
 name: Development workflow
 
 on:
-  # runs on pushes to the main branch
-  push:
-    branches: [dev]
   # also runs inside pull requests that target the main branch
   pull_request:
     branches: [dev]
@@ -36,7 +33,7 @@ jobs:
           start: yarn run dev
 
   deploy-app:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     environment: dev
     runs-on: ubuntu-latest
     needs:
