@@ -1,9 +1,14 @@
 name: Development workflow
 
-on:
-  # also runs inside pull requests that target the main branch
-  pull_request:
-    branches: [dev]
+on: 
+  push: 
+    branches-ignore:
+      - 'preprod'
+      - 'main'
+  pull_request: 
+    branches-ignore:
+      - 'preprod'
+      - 'main'
 
 jobs:
   prettier:
@@ -12,7 +17,7 @@ jobs:
       - name: Prettier
         uses: actions/checkout@v2
       - name: Prettier check
-        run: npx prettier 'dapp/**/*.{js,jsx,ts,tsx,html}' --check
+        run: npx prettier --write pages/ && prettier 'pages/**/*.{js,jsx,ts,tsx,html}' --check
 
   cypress-run:
     runs-on: ubuntu-latest
