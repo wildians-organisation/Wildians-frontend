@@ -3,7 +3,6 @@
 const { TezosToolkit } = require("@taquito/taquito");
 const { NetworkType } = require("@airgap/beacon-sdk");
 const { BeaconWallet } = require("@taquito/beacon-wallet");
-const { CONTRACT_ADDRESS } = require('../config/config.js');
 
 const network = { type: NetworkType.GHOSTNET };
 const wallet = new BeaconWallet({ name: "Test" });
@@ -17,6 +16,6 @@ test('Check API connectivity', async () => {
 });
 
 test('Check Smart Contract', async () => {
-    const contract = await Tezos.wallet.at(CONTRACT_ADDRESS);
+    const contract = await Tezos.wallet.at('KT1LSrvFWU9DKwSP1zqyDSEUw4b6qLWuaii8');
     expect(contract).not.toBe(null);
 });
