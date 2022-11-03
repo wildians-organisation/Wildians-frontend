@@ -12,13 +12,11 @@
     "@heroicons/react": "^1.0.6",
     "@popperjs/core": "2.9.1",
     "@tailwindcss/forms": "0.2.1",
-    "@taquito/beacon-wallet": "^12.0.3",
-    "@taquito/taquito": "^12.0.3",
+    "@taquito/beacon-wallet": "^12.1.1",
+    "@taquito/taquito": "^12.1.1",
     "@taquito/tzip16": "^12.1.1",
-    "@temple-wallet/dapp": "^6.1.0",
     "chart.js": "2.9.4",
     "constate": "^3.3.0",
-    "cypress": "^10.11.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "headlessui": "^0.0.0",
@@ -57,6 +55,7 @@
   },
   "devDependencies": {
     "autoprefixer": "10.2.5",
+    "cypress": "^10.11.0",
     "husky": "^7.0.4",
     "postcss": "8.2.8"
   }

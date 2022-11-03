@@ -2013,7 +2013,7 @@
   dependencies:
     mini-svg-data-uri "^1.2.3"
 
-"@taquito/beacon-wallet@^12.0.3":
+"@taquito/beacon-wallet@^12.1.1":
   version "12.1.1"
   resolved "https://registry.yarnpkg.com/@taquito/beacon-wallet/-/beacon-wallet-12.1.1.tgz#87c1d3da98d7ae691d7701507a34d8ec15ada034"
   integrity sha512-+1sTbIbTwhHe7fyckWM/lJ09SrNPhFGLtLPfaz88xoFG2GlV1/BCzE+U6KDf7qhcUHTcp/rr7EjOU3pm8YmwBw==
@@ -2061,7 +2061,7 @@
     "@taquito/utils" "^12.1.1"
     bignumber.js "^9.0.2"
 
-"@taquito/taquito@^12.0.3", "@taquito/taquito@^12.1.1":
+"@taquito/taquito@^12.1.1":
   version "12.1.1"
   resolved "https://registry.yarnpkg.com/@taquito/taquito/-/taquito-12.1.1.tgz#5cb5a6bdc5c44801962e5c7f96284ff19e868424"
   integrity sha512-HvbtClQ7isrDd17X/LEKkPzzeVYA8EMUem3qrkl9qvDO6FpJx/QLbUpYfT2PC0pLUkSrzdLGzmESHAOZhcksaw==
@@ -2101,13 +2101,6 @@
     buffer "^6.0.3"
     elliptic "^6.5.4"
     typedarray-to-buffer "^4.0.0"
-
-"@temple-wallet/dapp@^6.1.0":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@temple-wallet/dapp/-/dapp-6.1.1.tgz#55530ecd4b9109fa8977afdd03255ce208ebe76d"
-  integrity sha512-k01pM2Bmdt3w6/kmXsFiCJRAAwSuhKVKAQtsg8rrxfThrI5/yxvoWUliytIlYPZTHt7HAhHjch0ahLI7Jx764w==
-  dependencies:
-    nanoid "^3.1.30"
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -9065,7 +9058,7 @@ nan@^2.12.1:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.16.0.tgz#664f43e45460fb98faf00edca0bb0d7b8dce7916"
   integrity sha512-UdAqHyFngu7TfQKsCBgAA6pWDkT8MAO7d0jyOecVhN5354xbLqdn8mV9Tat9gepAupm0bt2DbeaSC8vS52MuFA==
 
-nanoid@^3.1.16, nanoid@^3.1.20, nanoid@^3.1.30, nanoid@^3.3.4:
+nanoid@^3.1.16, nanoid@^3.1.20, nanoid@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
   integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
