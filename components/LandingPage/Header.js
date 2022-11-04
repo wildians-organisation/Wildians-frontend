@@ -1,5 +1,6 @@
 import React from "react";
 // components
+import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
 
 export default function Header() {
   return (
@@ -27,6 +28,14 @@ export default function Header() {
               alt="twitter_logo"
             />
           </div>
+          {/*<button className="flex items-center justify-end ">
+            <div className="flex items-center justify-center bg-bordeau rounded-3xl w-40 h-8 md:w-44 md:h-12 mr-6 bottom-28">
+              <div className="text-beige justify-end mr-1 text-xl md:text-2xl">
+                CONNECT
+              </div>
+            </div>
+          </button>*/}
+          <ConnexionWallet></ConnexionWallet>
         </div>
         <div>
           <div className="text-center flex flex-col items-center mt-24 mb-6">
