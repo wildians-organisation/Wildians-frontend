@@ -16,10 +16,10 @@ export default function Header() {
             />
             <div className="text-beige text-6vw">ILDIANS</div>
           </div>
-          <div className="md:hidden">
+          <div className="md:hidden ">
             <HeaderDropdown />
           </div>
-          <div className="md:flex hidden">
+          <div className="md:flex hidden md:items-center">
             <img
               className="w-6 h-6 mr-4"
               src={"/img/discord_f8ffe9.png"}

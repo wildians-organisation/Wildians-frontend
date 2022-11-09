@@ -19,7 +19,6 @@ function ConnectedButton({ walletAdress, disconnect }) {
     )}`;
   return (
     <div className="flex flex-row items-center   ">
-      <div className="font-bold">TZ</div>
       <Menu as="div" className="inline-block text-left ">
         <div>
           <Menu.Button className="text-xs font-bold uppercase px-1  rounded outline-none focus:outline-none lg:mr-1 lg:mb-0 ease-linear transition-all duration-150 ">
