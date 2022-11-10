@@ -5,6 +5,7 @@ import { char2Bytes } from "@taquito/tzip16";
 import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from "../../config/config.js";
+import axios from "axios";
 
 var token_id = 0;
 const nftToMint = 1;
@@ -15,6 +16,7 @@ export default function ConnexionWallet() {
   const [wallet, setWallet] = React.useState({});
   const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
   const [myAddress, setMyAddress] = React.useState(null);
+  const [myNFTs, setMyNFTs] = React.useState({});
 
   React.useEffect(() => {
     (async () => {
@@ -71,6 +73,27 @@ export default function ConnexionWallet() {
     await wallet.clearActiveAccount();
     await wallet.disconnect();
     setMyAddress(null);
+  };
+
+  const fetchData = async () => {
+    let tmp_nft = []
+    try {
+      const response = await axios.get(
+        `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${myAddress}`
+      );
+      for (let i = 0; i < response['data'].length; i++) {
+        let tmp_obj = {
+          name: response['data'][i]['token']['metadata']['name'],
+          creators: response['data'][i]['token']['metadata']['creators'][0],
+          displayUri: response['data'][i]['token']['metadata']['displayUri'],
+          description: response['data'][i]['token']['metadata']['description'],
+        }
+        tmp_nft.push(tmp_obj)
+      }
+      setMyNFTs(tmp_nft);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   /*** Render ***/
