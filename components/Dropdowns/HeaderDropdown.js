@@ -1,32 +1,27 @@
 import React from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
-import Router from "next/router";
+import { FaBars } from "react-icons/fa";
+import { IconContext } from "react-icons";
+import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
 
-/**
- * fonction permettant de naviguer parmis les différentes pages du footer
- * @param {*} pageName
- */
-const goToIndicatedPage = (pageName) => {
-  Router.push(pageName);
-};
-
-function ConnectedButton({ walletAdress, disconnect }) {
-  const truncate = (input) =>
-    `${input.substring(0, 5)}...${input.substring(
-      input.length - 5,
-      input.length
-    )}`;
+function HeaderDropdown() {
   return (
     <div className="flex flex-row items-center   ">
-      <Menu as="div" className="inline-block text-left ">
+      <Menu as="div" className="relative inline-block text-left ">
         <div>
           <Menu.Button className="text-xs font-bold uppercase px-1  rounded outline-none focus:outline-none lg:mr-1 lg:mb-0 ease-linear transition-all duration-150 ">
-            {truncate(walletAdress)}
+            <IconContext.Provider
+              value={{
+                color: "white",
+                className: "global-class-name",
+                size: "2em",
+              }}
+            >
+              <FaBars className="white" />
+            </IconContext.Provider>
           </Menu.Button>
         </div>
         <Transition
-          as={Fragment}
           enter="transition ease-out duration-100"
           enterFrom="transform opacity-0 scale-95"
           enterTo="transform opacity-100 scale-100"
@@ -34,7 +29,7 @@ function ConnectedButton({ walletAdress, disconnect }) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (
@@ -44,7 +39,7 @@ function ConnectedButton({ walletAdress, disconnect }) {
                     } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     onClick={() => goToIndicatedPage("/transactions")}
                   >
-                    Transactions
+                    Twitter
                   </button>
                 )}
               </Menu.Item>
@@ -57,24 +52,11 @@ function ConnectedButton({ walletAdress, disconnect }) {
                     } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     onClick={() => goToIndicatedPage("/settings")}
                   >
-                    Settings
+                    Discord
                   </button>
                 )}
               </Menu.Item>
-            </div>
-            <div className="px-1 py-1">
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    onClick={disconnect}
-                  >
-                    Logout
-                  </button>
-                )}
-              </Menu.Item>
+              <Menu.Item>{({ active }) => <ConnexionWallet />}</Menu.Item>
             </div>
           </Menu.Items>
         </Transition>
@@ -82,4 +64,5 @@ function ConnectedButton({ walletAdress, disconnect }) {
     </div>
   );
 }
-export default ConnectedButton;
+
+export default HeaderDropdown;

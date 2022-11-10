@@ -1,12 +1,12 @@
 import React from "react";
 // components
 import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
+import HeaderDropdown from "components/Dropdowns/HeaderDropdown";
 
 export default function Header() {
   return (
     <>
-      {/*<img src={"/banner.png"} alt="Logo"></img>*/}
-      <div className="h-screen bg-cover  bg-banner-p font-goghbold p-4">
+      <div className=" bg-cover  bg-banner-p font-goghbold p-4 h-500-px">
         <div className="flex justify-around items-center">
           <div className="flex items-center">
             <img
@@ -16,7 +16,10 @@ export default function Header() {
             />
             <div className="text-beige text-6vw">ILDIANS</div>
           </div>
-          <div className="flex ">
+          <div className="md:hidden ">
+            <HeaderDropdown />
+          </div>
+          <div className="md:flex hidden md:items-center">
             <img
               className="w-6 h-6 mr-4"
               src={"/img/discord_f8ffe9.png"}
@@ -27,15 +30,9 @@ export default function Header() {
               src={"/img/twitter_f8ffe9.png"}
               alt="twitter_logo"
             />
+
+            <ConnexionWallet></ConnexionWallet>
           </div>
-          {/*<button className="flex items-center justify-end ">
-            <div className="flex items-center justify-center bg-bordeau rounded-3xl w-40 h-8 md:w-44 md:h-12 mr-6 bottom-28">
-              <div className="text-beige justify-end mr-1 text-xl md:text-2xl">
-                CONNECT
-              </div>
-            </div>
-          </button>*/}
-          <ConnexionWallet></ConnexionWallet>
         </div>
         <div>
           <div className="text-center flex flex-col items-center mt-24 mb-6">
