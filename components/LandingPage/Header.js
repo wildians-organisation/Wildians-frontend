@@ -2,6 +2,11 @@ import React from "react";
 // components
 import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
 import HeaderDropdown from "components/Dropdowns/HeaderDropdown";
+import Router from "next/router";
+
+const goToIndicatedPage = (pageName) => {
+  Router.push(pageName);
+};
 
 export default function Header() {
   return (

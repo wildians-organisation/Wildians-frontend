@@ -6,6 +6,7 @@ import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from "../../config/config.js";
 import axios from "axios";
+import Link from "next/link";
 
 var token_id = 0;
 const nftToMint = 1;
@@ -16,7 +17,6 @@ export default function ConnexionWallet() {
   const [wallet, setWallet] = React.useState({});
   const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
   const [myAddress, setMyAddress] = React.useState(null);
-  const [myNFTs, setMyNFTs] = React.useState({});
 
   React.useEffect(() => {
     (async () => {
@@ -75,27 +75,6 @@ export default function ConnexionWallet() {
     setMyAddress(null);
   };
 
-  const fetchData = async () => {
-    let tmp_nft = []
-    try {
-      const response = await axios.get(
-        `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${myAddress}`
-      );
-      for (let i = 0; i < response['data'].length; i++) {
-        let tmp_obj = {
-          name: response['data'][i]['token']['metadata']['name'],
-          creators: response['data'][i]['token']['metadata']['creators'][0],
-          displayUri: response['data'][i]['token']['metadata']['displayUri'],
-          description: response['data'][i]['token']['metadata']['description'],
-        }
-        tmp_nft.push(tmp_obj)
-      }
-      setMyNFTs(tmp_nft);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   /*** Render ***/
   return (
     <div className="md:flex items-center md:w-min">
@@ -114,9 +93,16 @@ export default function ConnexionWallet() {
         {!myAddress ? (
           "Connect Wallet"
         ) : (
-          <ConnectedButton walletAdress={myAddress} disconnect={disconnect} />
-        )}
+          <ConnectedButton walletAdress={myAddress} disconnect={disconnect} />)}
       </button>
+      <Link 
+        className="text-gray-900 group flex rounded-md items-center w-full px-2 py-2 md:h-min md:text-sm md:bg-white md:text-lightBlue-600  md:active:bg-blueGray-600 md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150"
+        href={{ 
+            pathname: "/my-nfts/",
+            query: { address: myAddress },
+          }}
+          as={`/my-nfts/${myAddress}`}
+          >Hello</Link>
     </div>
   );
 }
