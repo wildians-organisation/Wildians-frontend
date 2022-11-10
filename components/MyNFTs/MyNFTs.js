@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 
-export default function MyNFTs() {
+export default function MyNFTs(props) {
 
-    const [myNFTs, setMyNFTs] = React.useState({});
+    const [myNFTs, setMyNFTs] = React.useState([]);
 
-    const fetchData = async () => {
+    const fetchData = async (myAddress) => {
         let tmp_nft = []
         try {
           const response = await axios.get(
@@ -27,9 +27,20 @@ export default function MyNFTs() {
       };
 
     useEffect(() => {
-        console.log("Sup")
-        const { data } = getQueryParams(window.location.search);
-        console.log(data)
+      console.log(props)
+        if (props.myAddress) {
+            fetchData(props.myAddress);
+            console.log(myNFTs)
+        }
     }
-    , [myAddress]);
+    , [props.myAddress]);
+
+    return (
+        <div>
+            <h1>My NFTs</h1>
+            <div>
+                hi
+            </div>
+        </div>
+    );
 };
