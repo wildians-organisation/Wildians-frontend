@@ -55,7 +55,7 @@ jobs:
         run: |
           yarn global add @lhci/cli@0.3.x
           yarn run build
-          lhci autorun || echo LHCI failed!
+          lhci autorun
 
   deploy-app:
     if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
