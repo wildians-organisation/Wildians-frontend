@@ -54,7 +54,8 @@ jobs:
       - name: run Lighthouse CI
         run: |
           yarn global add @lhci/cli@0.3.x
-          lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"
+          yarn run build
+          lhci autorun || echo LHCI failed!
 
   deploy-app:
     if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
