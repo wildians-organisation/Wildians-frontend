@@ -53,7 +53,7 @@ jobs:
       - run : yarn install --frozen-lockfile
       - name: run Lighthouse CI
         run: |
-          yarn install -g @lhci/cli@0.3.x
+          yarn global add @lhci/cli@0.3.x
           lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"
 
   deploy-app:
