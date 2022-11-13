@@ -3,7 +3,7 @@ module.exports = {
       collect: {
         numberOfRuns: 5,
         staticDistDir: './out',
-        // startServerCommand: 'yarn run dev',
+        startServerCommand: 'yarn run build',
         url: ['http://localhost:3000']
       },
       upload: {
