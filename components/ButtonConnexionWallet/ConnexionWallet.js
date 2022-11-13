@@ -1,6 +1,6 @@
 import React from "react";
 import ConnectedButton from "./ConnectedButton";
-import MyNFTs from "../MyNFTs/MyNFTs";
+import MyNFTs from "../ListNFTs/MyNFTs";
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
 import { char2Bytes } from "@taquito/tzip16";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -94,20 +94,22 @@ export default function ConnexionWallet() {
         {!myAddress ? (
           "Connect Wallet"
         ) : (
-          <ConnectedButton walletAdress={myAddress} disconnect={disconnect} />)}
+          <ConnectedButton walletAdress={myAddress} disconnect={disconnect} />
+        )}
       </button>
-      {/* <Link 
-        className="text-gray-900 group flex rounded-md items-center w-full px-2 py-2 md:h-min md:text-sm md:bg-white md:text-lightBlue-600  md:active:bg-blueGray-600 md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150"
-        href={{ 
+      {myAddress && (
+        <Link
+          className="text-white"
+          href={{
             pathname: "/my-nfts/",
-            query: { address: myAddress },
           }}
-          as={`/my-nfts/${myAddress}`}
-          >Hello</Link> */}
-          {!myAddress ? (
-            "") : (
-              <MyNFTs myAddress={myAddress} />
-            )}
+          as={`/my-nfts/`}
+        >
+          <div className="text-gray-900 group flex rounded-md cursor-pointer items-center w-full px-2 py-2 md:whitespace-nowrap md:h-min md:text-sm md:bg-white md:text-lightBlue-600  md:active:bg-blueGray-600 md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150">
+            My collection
+          </div>
+        </Link>
+      )}
     </div>
   );
 }
