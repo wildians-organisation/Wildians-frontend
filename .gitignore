@@ -29,3 +29,5 @@ commit.sh
 
 cypress/videos
 cypress/screenshots
+
+.lighthouseci
