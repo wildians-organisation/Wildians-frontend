@@ -1,15 +1,13 @@
 import React from "react";
 import ConnectedButton from "./ConnectedButton";
-import MyNFTs from "../ListNFTs/MyNFTs";
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
 import { char2Bytes } from "@taquito/tzip16";
 import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from "../../config/config.js";
-import axios from "axios";
 import Link from "next/link";
 
-var token_id = 0;
+let token_id = 0;
 const nftToMint = 1;
 const network = { type: NetworkType.GHOSTNET };
 
@@ -17,7 +15,7 @@ const network = { type: NetworkType.GHOSTNET };
 export default function ConnexionWallet() {
   const [wallet, setWallet] = React.useState({});
   const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
-  const [myAddress, setMyAddress] = React.useState(null);
+  const [userAddress, setUserAddress] = React.useState(null);
 
   React.useEffect(() => {
     (async () => {
@@ -25,19 +23,25 @@ export default function ConnexionWallet() {
       setWallet(_wallet);
       Tezos.setWalletProvider(_wallet);
     })();
+    if (typeof window !== "undefined")
+      if (window.localStorage.getItem("beacon:accounts")) {
+        setUserAddress(
+          JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
+        );
+      }
   }, []);
 
   /*** Function to connect to the wallet ***/
   const connectToWallet = async () => {
     const activeAccount = await wallet.client.getActiveAccount();
     if (activeAccount) {
-      setMyAddress(activeAccount.address);
+      setUserAddress(activeAccount.address);
     } else {
       await wallet.requestPermissions({
         network: network,
       });
       let tmp = await wallet.getPKH();
-      setMyAddress(tmp);
+      setUserAddress(tmp);
     }
   };
 
@@ -73,7 +77,7 @@ export default function ConnexionWallet() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     await wallet.clearActiveAccount();
     await wallet.disconnect();
-    setMyAddress(null);
+    setUserAddress(null);
   };
 
   /*** Render ***/
@@ -91,19 +95,19 @@ export default function ConnexionWallet() {
         className="text-gray-900 group flex rounded-md items-center w-full px-2 py-2 md:h-min md:text-sm md:bg-white md:text-lightBlue-600  md:active:bg-blueGray-600 md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150"
         type="button"
       >
-        {!myAddress ? (
+        {!userAddress ? (
           "Connect Wallet"
         ) : (
-          <ConnectedButton walletAdress={myAddress} disconnect={disconnect} />
+          <ConnectedButton walletAdress={userAddress} disconnect={disconnect} />
         )}
       </button>
-      {myAddress && (
+      {userAddress && (
         <Link
           className="text-white"
           href={{
             pathname: "/my-nfts/",
           }}
-          as={`/my-nfts/`}
+          as={`/nft-collection/`}
         >
           <div className="text-gray-900 group flex rounded-md cursor-pointer items-center w-full px-2 py-2 md:whitespace-nowrap md:h-min md:text-sm md:bg-white md:text-lightBlue-600  md:active:bg-blueGray-600 md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150">
             My collection

@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-export default function MyNFTs(props) {
-  const [myNFTs, setMyNFTs] = React.useState([]);
-  //get from local storage beacon:accounts and get the address
+
+
+export default function UserNFTs(props) {
+  const [userNFTs, setUserNFTs] = React.useState([]);
 
   const [userAddress, setUserAddress] = React.useState("");
 
-  console.log(userAddress);
 
-  const fetchData = async (myAddress) => {
+  const fetchData = async (userAddressToFetch) => {
     let tmp_nft = [];
     try {
       const response = await axios.get(
-        `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${myAddress}`
+        `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
       );
       for (let i = 0; i < response["data"].length; i++) {
         let tmp_obj = {
@@ -23,7 +23,7 @@ export default function MyNFTs(props) {
         };
         tmp_nft.push(tmp_obj);
       }
-      setMyNFTs(tmp_nft);
+      setUserNFTs(tmp_nft);
     } catch (e) {
       console.log(e);
     }
@@ -38,27 +38,11 @@ export default function MyNFTs(props) {
   }, [userAddress]);
 
   return (
-    // <div>
-    //   <h1>My NFTs</h1>
-    //   <div>hi</div>
-    //   {myNFTs.map((nft) => (
-    //     <div>
-    //       <div>{nft.name}</div>
-    //       <div>{nft.creators}</div>
-    //       <div>{nft.displayUri}</div>
-    //       <div>{nft.description}</div>
-
-    //       <img
-    //         src={nft.displayUri.replace("ipfs://", "https://ipfs.io/ipfs/")}
-    //       />
-    //     </div>
-    //   ))}
-    // </div>
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="text-black text-6vw  font-goghbold">My Collection</div>
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {myNFTs.map((nft, key) => (
+          {userNFTs.map((nft, key) => (
             <div key={key}>
               <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                 <img
