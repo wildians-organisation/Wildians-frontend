@@ -8,19 +8,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
 import "styles/footer.css";
 
-Router.events.on("routeChangeStart", (url) => {
-  console.log(`Loading: ${url}`);
-  document.body.classList.add("body-page-transition");
-  ReactDOM.render(document.getElementById("page-transition"));
-});
-Router.events.on("routeChangeComplete", () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
-  document.body.classList.remove("body-page-transition");
-});
-Router.events.on("routeChangeError", () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
-  document.body.classList.remove("body-page-transition");
-});
 
 export default class MyApp extends App {
   componentDidMount() {
