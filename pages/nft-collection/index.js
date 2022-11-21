@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 
-
 export default function UserNFTs(props) {
   const [userNFTs, setUserNFTs] = React.useState([]);
 
   const [userAddress, setUserAddress] = React.useState("");
-
 
   const fetchData = async (userAddressToFetch) => {
     let tmp_nft = [];
