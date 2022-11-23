@@ -2,7 +2,7 @@ import React from "react";
 
 function SecondPart() {
   return (
-    <div className="flex items-center w-full h-96 bg-whiteBroke bg-tree-bg bg-blend-hard-light bg-right bg-no-repeat">
+    <div className="tree flex items-center w-full h-96 bg-whiteBroke bg-tree-bg bg-blend-hard-light bg-right bg-no-repeat">
       <div className="ml-16  ">
         <p className=" tracking-[.75em] text-4xl md:text-5xl lg:text-6xl font-bold text-greeny ">
           WILDIANS

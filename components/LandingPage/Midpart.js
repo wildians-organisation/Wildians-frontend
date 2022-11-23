@@ -7,7 +7,7 @@ function Midpart() {
         <div className="text-center text-4xl md:text-5xl lg:text-6xl text-greeny">
           HOW DOES THIS WORK
         </div>
-        <div className="flex justify-evenly items-center text-beige mt-12">
+        <div className="explanationPart flex justify-evenly items-center text-beige mt-12">
           <div className="flex flex-col justify-center items-center w-4/12">
             <img
               className="w-10 h-auto md:w-20 lg:w-30"
