@@ -80,7 +80,6 @@ export default function ConnexionWallet() {
           token_id
         )
         .send({ amount: 1000 });
-      token_id += 1;
       return await op.confirmation(3);
     };
 
