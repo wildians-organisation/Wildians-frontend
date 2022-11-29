@@ -6,8 +6,8 @@ import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from "../../config/config.js";
 import Link from "next/link";
+import axios from "axios";
 
-let token_id = 0;
 const nftToMint = 1;
 const network = { type: NetworkType.GHOSTNET };
 
@@ -16,7 +16,7 @@ export default function ConnexionWallet() {
   const [wallet, setWallet] = React.useState({});
   const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
   const [userAddress, setUserAddress] = React.useState(null);
-
+  const [token_id, setToken_id] = React.useState(-1);
   React.useEffect(() => {
     (async () => {
       const _wallet = new BeaconWallet({ name: "Demo" });
@@ -29,8 +29,20 @@ export default function ConnexionWallet() {
           JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
         );
       }
+    setToken_id(getTokenID());
   }, []);
 
+  const getTokenID = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/`
+      );
+      const tokenID = Number(response.data.all_tokens);
+      setToken_id(tokenID);
+    } catch (e) {
+      console.error(e);
+    }
+  };
   /*** Function to connect to the wallet ***/
   const connectToWallet = async () => {
     const activeAccount = await wallet.client.getActiveAccount();
