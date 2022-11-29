@@ -13,7 +13,7 @@ export default function Admin() {
     );
     console.log("response len = " + response.data.length);
     const nbrNftMinted = response.data.length;
-    setNbrToken(nbrNftMinted);
+    setNbrToken(nbrNftMinted - 1);
     let tmp = [];
     response.data.forEach((element) => {
       if (element.operation.type != "origination") {
