@@ -5,10 +5,7 @@ on:
     branches-ignore:
       - 'preprod'
       - 'main'
-  pull_request: 
-    branches-ignore:
-      - 'preprod'
-      - 'main'
+
   workflow_dispatch:
 
 jobs:
