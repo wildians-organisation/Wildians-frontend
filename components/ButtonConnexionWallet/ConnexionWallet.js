@@ -75,7 +75,7 @@ export default function ConnexionWallet() {
         .big_boi_mint(
           activeAccount.address,
           nftToMint,
-          1000 * 1000000,
+          1000 * config.TEZOS_CONVERTER,
           MichelsonMap.fromLiteral({ "": url }),
           token_id
         )

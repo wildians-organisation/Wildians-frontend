@@ -9,56 +9,60 @@ export default function Admin() {
   const [clientsAddress, setClientsAddress] = React.useState([]);
   const [userAddress, setUserAddress] = React.useState("");
   const [userNFTs, setUserNFTs] = React.useState([]);
+  const [tezosAmount, setTezosAmount] = React.useState(0);
 
   React.useEffect(() => {
-    if (typeof window !== "undefined")
+    if (
+      typeof window !== "undefined" &&
+      window.localStorage.getItem("beacon:accounts")
+    )
       setUserAddress(
         JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
       );
-  }
-  );
+  });
 
-
+  // Get informations about the smartcontract with the tzkt api
   const getContractInformations = async () => {
     const response = await axios.get(
       `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
     );
-    console.log("response len = " + response.data.length);
     const nbrNftMinted = response.data.length;
     setNbrToken(nbrNftMinted - 1);
     let tmp = [];
-
+    let tmpAmount = 0;
     var wallets = new Map();
     response.data.forEach((element) => {
       if (element.operation.type != "origination") {
-        tmp.push(element.operation.parameter.value.address);
-        if (wallets.has(element.operation.parameter.value.address)) {
-          wallets.set(
-            element.operation.parameter.value.address,
-            wallets.get(element.operation.parameter.value.address) + 1
-          );
-        }
-        else {
-          wallets.set(element.operation.parameter.value.address, 1);
+        let data_value = element.operation.parameter.value;
+
+        tmpAmount += data_value.cost / config.TEZOS_CONVERTER;
+        tmp.push(data_value.address);
+        if (wallets.has(data_value.address)) {
+          wallets.set(data_value.address, wallets.get(data_value.address) + 1);
+        } else {
+          wallets.set(data_value.address, 1);
         }
       }
     });
     setClientsAddress(tmp);
     setUserNFTs(wallets);
+    setTezosAmount(tmpAmount);
   };
 
+  // Get the number of NFTs of the wallet connected
   const getNFTMintByUser = async () => {
     const response = await axios.get(
       `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
     );
-    console.log("response len = " + response.data.length);
     var nb = 0;
     response.data.forEach((element) => {
-      if (element.operation.type != "origination" && element.operation.parameter.value.address == userAddress) {
+      if (
+        element.operation.type != "origination" &&
+        element.operation.parameter.value.address == userAddress
+      ) {
         nb = nb + 1;
       }
     });
-    console.log("nb = " + nb);
     setNbNFTConnectedAdress(nb);
   };
 
@@ -67,22 +71,40 @@ export default function Admin() {
     getNFTMintByUser();
   }, []);
 
-  const listItems2 = Array.from(userNFTs).map((addr) => <li>{addr[0]} : {addr[1]}</li>);
+  const listItems2 = Array.from(userNFTs).map((addr, id) => (
+    <li key={id}>
+      {addr[0]} : {addr[1]}
+    </li>
+  ));
 
   return (
     <>
       <main className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
-        <div style={{ marginTop: 290 }}>
-          <center>
-            <p>Number of token: {nbrToken}</p>
-            <ul>{listItems2}</ul>
-          </center>
-        </div>
-        <div style={{ marginTop: 290, marginLeft: 100 }}>
-          <center>
-            <p>Adress connected: {userAddress}</p>
-            <p>Number of tokens of connected address: {nbNFTConnectedAdress}</p>
-          </center>
+        <div className="flex">
+          <div style={{ marginTop: 290 }}>
+            <center>
+              <p>Number of token: {nbrToken}</p>
+              <ul>{listItems2}</ul>
+            </center>
+          </div>
+          <div style={{ marginTop: 290, marginLeft: 100 }}>
+            <center>
+              <p>Adress connected: {userAddress}</p>
+              <p>
+                Number of tokens of connected address: {nbNFTConnectedAdress}
+              </p>
+            </center>
+          </div>
+          <div style={{ marginTop: 290, marginLeft: 100 }}>
+            <center>
+              <p>Tezos Generated: {tezosAmount}</p>
+              <p>
+                Tezos donated to association:{" "}
+                {tezosAmount * config.ASSOCIATION_PART}
+              </p>
+              <p>Tezos for us: {tezosAmount * config.WILDIANS_PART}</p>
+            </center>
+          </div>
         </div>
       </main>
     </>
