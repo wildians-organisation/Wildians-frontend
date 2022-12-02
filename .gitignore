@@ -31,3 +31,5 @@ cypress/videos
 cypress/screenshots
 
 .lighthouseci
+
+.env

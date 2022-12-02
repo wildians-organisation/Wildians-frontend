@@ -17,6 +17,10 @@ export default function ConnexionWallet() {
   const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
   const [userAddress, setUserAddress] = React.useState(null);
   const [token_id, setToken_id] = React.useState(-1);
+  const [isAdmin, setIsAdmin] = React.useState(
+    config.ADMIN_ADDRESS.indexOf(userAddress) !== -1
+  );
+
   React.useEffect(() => {
     (async () => {
       const _wallet = new BeaconWallet({ name: "Demo" });
@@ -27,6 +31,11 @@ export default function ConnexionWallet() {
       if (window.localStorage.getItem("beacon:accounts")) {
         setUserAddress(
           JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
+        );
+        setIsAdmin(
+          config.ADMIN_ADDRESS.indexOf(
+            JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
+          ) !== -1
         );
       }
     setToken_id(getTokenID());
@@ -48,12 +57,16 @@ export default function ConnexionWallet() {
     const activeAccount = await wallet.client.getActiveAccount();
     if (activeAccount) {
       setUserAddress(activeAccount.address);
+      config.ADMIN_ADDRESS.indexOf(activeAccount.address) !== -1
+        ? setIsAdmin(true)
+        : null;
     } else {
       await wallet.requestPermissions({
         network: network,
       });
       let tmp = await wallet.getPKH();
       setUserAddress(tmp);
+      config.ADMIN_ADDRESS.indexOf(tmp) !== -1 ? setIsAdmin(true) : null;
     }
   };
 
@@ -89,6 +102,7 @@ export default function ConnexionWallet() {
     await wallet.clearActiveAccount();
     await wallet.disconnect();
     setUserAddress(null);
+    setIsAdmin(false);
   };
 
   /*** Render ***/
@@ -101,9 +115,9 @@ export default function ConnexionWallet() {
       >
         Mint NFT
       </button>
-      <button
+      <div
         onClick={() => connectToWallet()}
-        className="text-gray-900 group flex rounded-md items-center w-full px-2 py-2 md:h-min md:text-sm md:bg-white md:text-lightBlue-600  md:active:bg-blueGray-600 md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150"
+        className="text-gray-900 cursor-pointer group flex rounded-md items-center w-full px-2 py-2 md:h-min md:text-sm md:bg-white md:text-lightBlue-600  md:active:bg-blueGray-600 md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150"
         type="button"
       >
         {!userAddress ? (
@@ -111,11 +125,19 @@ export default function ConnexionWallet() {
         ) : (
           <ConnectedButton walletAdress={userAddress} disconnect={disconnect} />
         )}
-      </button>
+      </div>
+
       {userAddress && (
         <Link className="text-white" href="nft-collection">
           <div className="text-gray-900 group flex rounded-md cursor-pointer items-center w-full px-2 py-2 md:whitespace-nowrap md:h-min md:text-sm md:bg-white md:text-lightBlue-600  md:active:bg-blueGray-600 md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150">
             My collection
+          </div>
+        </Link>
+      )}
+      {userAddress && isAdmin && (
+        <Link className="text-white" href="admin">
+          <div className="text-gray-900 group flex rounded-md cursor-pointer items-center w-full px-2 py-2 md:whitespace-nowrap md:h-min md:text-sm md:bg-white md:text-lightBlue-600  md:active:bg-blueGray-600 md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150">
+            Admin
           </div>
         </Link>
       )}

@@ -2,12 +2,6 @@ import React from "react";
 // components
 import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
 import HeaderDropdown from "components/Dropdowns/HeaderDropdown";
-import Router from "next/router";
-import Link from "next/link";
-
-const goToIndicatedPage = (pageName) => {
-  Router.push(pageName);
-};
 
 export default function Header() {
   return (
@@ -36,11 +30,6 @@ export default function Header() {
               src={"/img/twitter_f8ffe9.png"}
               alt="twitter_logo"
             />
-            <Link className="text-white" href="admin">
-              <div className="text-gray-900 group flex rounded-md cursor-pointer items-center w-full px-2 py-2 md:whitespace-nowrap md:h-min md:text-sm md:bg-white md:text-lightBlue-600  md:active:bg-blueGray-600 md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150">
-                Admin
-              </div>
-            </Link>
 
             <ConnexionWallet></ConnexionWallet>
           </div>
