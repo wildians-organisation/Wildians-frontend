@@ -2,7 +2,7 @@ import React from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import Router from "next/router";
-
+ 
 /**
  * fonction permettant de naviguer parmis les différentes pages du footer
  * @param {*} pageName
