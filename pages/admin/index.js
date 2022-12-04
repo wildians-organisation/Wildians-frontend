@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import * as config from "../../config/config.js";
+import NotAllowed from "../../components/NotAllowed/NotAllowed";
 
 export default function Admin() {
   // Display items in a list with add button on each items
@@ -10,15 +11,21 @@ export default function Admin() {
   const [userAddress, setUserAddress] = React.useState("");
   const [userNFTs, setUserNFTs] = React.useState([]);
   const [tezosAmount, setTezosAmount] = React.useState(0);
-
+  const [isAdmin, setIsAdmin] = React.useState(false);
   React.useEffect(() => {
     if (
       typeof window !== "undefined" &&
       window.localStorage.getItem("beacon:accounts")
-    )
+    ) {
       setUserAddress(
         JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
       );
+      setIsAdmin(
+        config.ADMIN_ADDRESS.indexOf(
+          JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
+        ) !== -1
+      );
+    }
   });
 
   // Get informations about the smartcontract with the tzkt api
@@ -80,32 +87,36 @@ export default function Admin() {
   return (
     <>
       <main className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
-        <div className="flex">
-          <div style={{ marginTop: 290 }}>
-            <center>
-              <p>Number of token: {nbrToken}</p>
-              <ul>{listItems2}</ul>
-            </center>
+        {isAdmin ? (
+          <div className="flex">
+            <div style={{ marginTop: 290 }}>
+              <center>
+                <p>Number of token: {nbrToken}</p>
+                <ul>{listItems2}</ul>
+              </center>
+            </div>
+            <div style={{ marginTop: 290, marginLeft: 100 }}>
+              <center>
+                <p>Adress connected: {userAddress}</p>
+                <p>
+                  Number of tokens of connected address: {nbNFTConnectedAdress}
+                </p>
+              </center>
+            </div>
+            <div style={{ marginTop: 290, marginLeft: 100 }}>
+              <center>
+                <p>Tezos Generated: {tezosAmount}</p>
+                <p>
+                  Tezos donated to association:{" "}
+                  {tezosAmount * config.ASSOCIATION_PART}
+                </p>
+                <p>Tezos for us: {tezosAmount * config.WILDIANS_PART}</p>
+              </center>
+            </div>
           </div>
-          <div style={{ marginTop: 290, marginLeft: 100 }}>
-            <center>
-              <p>Adress connected: {userAddress}</p>
-              <p>
-                Number of tokens of connected address: {nbNFTConnectedAdress}
-              </p>
-            </center>
-          </div>
-          <div style={{ marginTop: 290, marginLeft: 100 }}>
-            <center>
-              <p>Tezos Generated: {tezosAmount}</p>
-              <p>
-                Tezos donated to association:{" "}
-                {tezosAmount * config.ASSOCIATION_PART}
-              </p>
-              <p>Tezos for us: {tezosAmount * config.WILDIANS_PART}</p>
-            </center>
-          </div>
-        </div>
+        ) : (
+          <NotAllowed />
+        )}
       </main>
     </>
   );
