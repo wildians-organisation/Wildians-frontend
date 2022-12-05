@@ -1,12 +1,48 @@
 name: preprod workflow
 
 on:
-  # runs on pushes to the main branch
-  push:
+  pull_request:
     branches: [preprod]
 
- 
+
 jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: 16.17.1
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: run cypress tests with firefox
+        uses: cypress-io/github-action@v4
+        timeout-minutes: 10
+        with:
+          build: yarn run build
+          start: yarn run dev
+
+  lhci:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 16.17.1
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.17.1
+      - name: Install
+        run: |
+          npm install -g yarn
+      - run : yarn install --frozen-lockfile
+      - name: run Lighthouse CI
+        run: |
+          yarn global add @lhci/cli@0.3.x
+          yarn run build
+          lhci autorun
+
   deploy-app:
     if: github.event_name == 'push'
     environment: preprod
