@@ -11,16 +11,6 @@ export default function Admin() {
   const [userNFTs, setUserNFTs] = React.useState([]);
   const [tezosAmount, setTezosAmount] = React.useState(0);
 
-  React.useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      window.localStorage.getItem("beacon:accounts")
-    )
-      setUserAddress(
-        JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
-      );
-  });
-
   // Get informations about the smartcontract with the tzkt api
   const getContractInformations = async () => {
     const response = await axios.get(
@@ -50,15 +40,15 @@ export default function Admin() {
   };
 
   // Get the number of NFTs of the wallet connected
-  const getNFTMintByUser = async () => {
+  const getNFTMintByUser = async (userAdress) => {
     const response = await axios.get(
       `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
     );
     var nb = 0;
     response.data.forEach((element) => {
       if (
-        element.operation.type != "origination" &&
-        element.operation.parameter.value.address == userAddress
+        element.operation.type !== "origination" &&
+        element.operation.parameter.value.address === userAdress
       ) {
         nb = nb + 1;
       }
@@ -66,9 +56,17 @@ export default function Admin() {
     setNbNFTConnectedAdress(nb);
   };
 
-  React.useEffect(() => {
-    getContractInformations();
-    getNFTMintByUser();
+  React.useEffect(async () => {
+    if (
+      typeof window !== "undefined" &&
+      window.localStorage.getItem("beacon:accounts")
+    ) {
+      setUserAddress(
+        JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
+      );
+      getContractInformations();
+      getNFTMintByUser(JSON.parse(localStorage.getItem("beacon:accounts"))[0].address);
+    }
   }, []);
 
   const listItems2 = Array.from(userNFTs).map((addr, id) => (
