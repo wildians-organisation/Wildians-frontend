@@ -26,7 +26,7 @@ export default function Footer() {
               <p className=" tracking-[.75em] font-bold text-greeny text-3xl md:text-5xl lg:text-6xl">
                 ENTER THE
               </p>
-              <div name="logoInText" className="flex md:ml-9">
+              <div name="logoInText" className="logoFooter flex md:ml-9">
                 <img
                   className="w-4 h-auto md:w-8 lg:w-10 ml-2"
                   src={"/img/discord_403831.png"}

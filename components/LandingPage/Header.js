@@ -6,27 +6,27 @@ import HeaderDropdown from "components/Dropdowns/HeaderDropdown";
 export default function Header() {
   return (
     <>
-      <div className=" bg-cover  bg-banner-p font-goghbold p-4 h-500-px">
+      <div className="headerBackground bg-cover  bg-banner-p font-goghbold p-4 h-500-px">
         <div className="flex justify-around items-center">
           <div className="flex items-center">
             <img
-              className="w-14 h-auto md:w-28 lg:w-42"
+              className="w-14 h-auto md:w-28 lg:w-42 headerLogo"
               src={"/img/logo_header.png"}
               alt="header_logo"
             />
             <div className="text-beige text-6vw">ILDIANS</div>
           </div>
-          <div className="md:hidden ">
+          <div className="md:hidden" id="dropdown">
             <HeaderDropdown />
           </div>
           <div className="md:flex hidden md:items-center">
             <img
-              className="w-6 h-6 mr-4"
+              className="headerDiscord w-6 h-6 mr-4"
               src={"/img/discord_f8ffe9.png"}
               alt="discord_logo"
             />
             <img
-              className="w-6 h-6"
+              className="headerTwitter w-6 h-6"
               src={"/img/twitter_f8ffe9.png"}
               alt="twitter_logo"
             />
