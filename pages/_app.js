@@ -8,7 +8,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
 import "styles/footer.css";
 
-
 export default class MyApp extends App {
   componentDidMount() {
     let comment = document.createComment(`
@@ -41,6 +40,7 @@ export default class MyApp extends App {
 
     return { pageProps };
   }
+
   render() {
     const { Component, pageProps } = this.props;
 

@@ -9,7 +9,8 @@ module.exports = {
     tezos_converter: process.env.TEZOS_CONVERTER,
     association_part: process.env.ASSOCIATION_PART,
     wildians_part: process.env.WILDIANS_PART,
-    admin_address: process.env.ADMIN_ADDRESS,
+    admin_username: process.env.ADMIN_USERNAME,
+    admin_password: process.env.ADMIN_PASSWORD,
   },
   trailingSlash: true,
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import * as config from "../../config/config.js";
-import NotAllowed from "../../components/NotAllowed/NotAllowed";
+import Login from "../../components/Login/Login.js";
 
 export default function Admin() {
   // Display items in a list with add button on each items
@@ -20,13 +20,12 @@ export default function Admin() {
       setUserAddress(
         JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
       );
-      setIsAdmin(
-        config.ADMIN_ADDRESS.indexOf(
-          JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
-        ) !== -1
-      );
     }
-  });
+    if (isAdmin) {
+      getContractInformations();
+      getNFTMintByUser();
+    }
+  }, [isAdmin]);
 
   // Get informations about the smartcontract with the tzkt api
   const getContractInformations = async () => {
@@ -73,11 +72,6 @@ export default function Admin() {
     setNbNFTConnectedAdress(nb);
   };
 
-  React.useEffect(() => {
-    getContractInformations();
-    getNFTMintByUser();
-  }, []);
-
   const listItems2 = Array.from(userNFTs).map((addr, id) => (
     <li key={id}>
       {addr[0]} : {addr[1]}
@@ -115,7 +109,7 @@ export default function Admin() {
             </div>
           </div>
         ) : (
-          <NotAllowed />
+          <Login setIsAdmin={setIsAdmin} />
         )}
       </main>
     </>

@@ -17,9 +17,7 @@ export default function ConnexionWallet() {
   const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
   const [userAddress, setUserAddress] = React.useState(null);
   const [token_id, setToken_id] = React.useState(-1);
-  const [isAdmin, setIsAdmin] = React.useState(
-    config.ADMIN_ADDRESS.indexOf(userAddress) !== -1
-  );
+  const [isAdmin, setIsAdmin] = React.useState(true);
 
   React.useEffect(() => {
     (async () => {
@@ -31,11 +29,6 @@ export default function ConnexionWallet() {
       if (window.localStorage.getItem("beacon:accounts")) {
         setUserAddress(
           JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
-        );
-        setIsAdmin(
-          config.ADMIN_ADDRESS.indexOf(
-            JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
-          ) !== -1
         );
       }
     setToken_id(getTokenID());
@@ -57,19 +50,14 @@ export default function ConnexionWallet() {
     const activeAccount = await wallet.client.getActiveAccount();
     if (activeAccount) {
       setUserAddress(activeAccount.address);
-      config.ADMIN_ADDRESS.indexOf(activeAccount.address) !== -1
-        ? setIsAdmin(true)
-        : null;
     } else {
       await wallet.requestPermissions({
         network: network,
       });
       let tmp = await wallet.getPKH();
       setUserAddress(tmp);
-      config.ADMIN_ADDRESS.indexOf(tmp) !== -1 ? setIsAdmin(true) : null;
     }
   };
-
   /*** Function to get the smart contract ***/
   const getSmartContract = async () => {
       const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);

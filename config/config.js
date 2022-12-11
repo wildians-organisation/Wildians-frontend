@@ -6,4 +6,5 @@ export const SMART_CONTRACT = process.env.smart_contract;
 export const TEZOS_CONVERTER = process.env.tezos_converter;
 export const ASSOCIATION_PART = process.env.association_part;
 export const WILDIANS_PART = process.env.wildians_part;
-export const ADMIN_ADDRESS = process.env.admin_address;
+export const ADMIN_USERNAME = process.env.admin_username;
+export const ADMIN_PASSWORD = process.env.admin_password;
