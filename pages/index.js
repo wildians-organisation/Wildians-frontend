@@ -3,6 +3,8 @@ import Router from "next/router";
 import Header from "components/LandingPage/Header";
 import Midpart from "components/LandingPage/Midpart";
 import SecondPart from "components/LandingPage/SecondPart";
+import TopPart from "components/LandingPage/TopPart";
+import BottomPart from "components/LandingPage/BottomPart";
 
 export function scrollToSection(sectionId) {
   if (sectionId == "concept") {
@@ -28,10 +30,12 @@ export default function Landing() {
 
   return (
     <div className="">
-      <Header />
+      {/* <Header />
       <SecondPart />
       <Midpart />
-      <Footer />
+      <Footer /> */}
+      <TopPart />
+      <BottomPart />
     </div>
   );
 }
