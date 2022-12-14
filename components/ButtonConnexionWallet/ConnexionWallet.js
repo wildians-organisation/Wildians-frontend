@@ -7,6 +7,16 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from "../../config/config.js";
 import Link from "next/link";
 import axios from "axios";
+// import { initializeApp } from 'firebase/app';
+// import { getFunctions } from 'firebase/functions';
+
+// const app = initializeApp({
+//   projectId: 'aerobic-guide-364710',
+//   apiKey: '### FIREBASE API KEY ###',
+//   authDomain: '### FIREBASE AUTH DOMAIN ###',
+// });
+// const functions = app.firebase.functions();
+// const addWallet = functions.httpsCallable('addWallet');
 
 const nftToMint = 1;
 const network = { type: NetworkType.GHOSTNET };
@@ -32,6 +42,16 @@ export default function ConnexionWallet() {
     setToken_id(getTokenID());
   }, []);
 
+  /*** Function to add wallet adress to firebase ***/
+  // const addWalletToFirebase = async (walletAddress) => {
+  //   try {
+  //     const response = await addWallet({ walletAddress });
+  //     console.log(response);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
+
   const getTokenID = async () => {
     try {
       const response = await axios.get(
@@ -54,14 +74,15 @@ export default function ConnexionWallet() {
       });
       let tmp = await wallet.getPKH();
       setUserAddress(tmp);
+      //addWalletToFirebase(tmp);
     }
   };
 
   /*** Function to get the smart contract ***/
   const getSmartContract = async () => {
-      const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
-      return contract;
-    },
+    const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
+    return contract;
+  },
     /*** Function to mint the nft ***/
     mintNFT = async (url) => {
       await disconnect();

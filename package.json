@@ -17,6 +17,7 @@
     "@taquito/tzip16": "^12.1.1",
     "chart.js": "2.9.4",
     "constate": "^3.3.0",
+    "firebase": "9.15.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "headlessui": "^0.0.0",
