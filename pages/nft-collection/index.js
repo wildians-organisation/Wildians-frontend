@@ -13,6 +13,7 @@ export default function UserNFTs(props) {
         `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
       );
       for (let i = 0; i < response["data"].length; i++) {
+        if (response["data"][i]["token"]["metadata"] == null) continue;
         let tmp_obj = {
           name: response["data"][i]["token"]["metadata"]["name"],
           creators: response["data"][i]["token"]["metadata"]["creators"][0],
@@ -23,7 +24,7 @@ export default function UserNFTs(props) {
       }
       setUserNFTs(tmp_nft);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -39,6 +40,7 @@ export default function UserNFTs(props) {
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="text-black text-6vw  font-goghbold">My Collection</div>
+
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {userNFTs.map((nft, key) => (
             <div key={key}>
