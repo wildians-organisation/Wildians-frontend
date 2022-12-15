@@ -53,13 +53,16 @@ export default class MyApp extends App {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <title>Wildians</title>
-          <script>
-            var script = document.createElement('script'); script.dataset.cache
-            = true; script.dataset.websiteId =
-            'b25f950c-8e53-400e-afef-df879dabda06';
-            script.src='https://s.abla.io/abla.js';
-            document.getElementsByTagName('head')[0].appendChild(script);
-          </script>
+          <script
+          dangerouslySetInnerHTML={{
+            __html: `
+                var script = document.createElement('script'); 
+                script.dataset.cache = true; 
+                script.dataset.websiteId = "b25f950c-8e53-400e-afef-df879dabda06";
+                script.src="https://s.abla.io/abla.js";
+                document.getElementsByTagName("head")[0].appendChild(script);
+            `}}
+          />
         </Head>
         <Layout>
           <Component {...pageProps} />

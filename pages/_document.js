@@ -14,13 +14,6 @@ class MyDocument extends Document {
             sizes="76x76"
             href="/img/brand/apple-icon.png"
           />
-          <script>
-            var script = document.createElement('script'); script.dataset.cache
-            = true; script.dataset.websiteId =
-            'b25f950c-8e53-400e-afef-df879dabda06';
-            script.src='https://s.abla.io/abla.js';
-            document.getElementsByTagName('head')[0].appendChild(script);
-          </script>
         </Head>
         <body className="text-blueGray-700 antialiased">
           <div id="page-transition"></div>
