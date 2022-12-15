@@ -11,13 +11,13 @@ import { initializeApp } from 'firebase/app';
 import { getFunctions, httpsCallable } from 'firebase/functions';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBSHruPb10RXmD9pV71vsoXFhltiUztJME",
-  authDomain: "aerobic-guide-364710.firebaseapp.com",
-  databaseURL: "https://aerobic-guide-364710-default-rtdb.europe-west1.firebasedatabase.app/",
-  projectId: "aerobic-guide-364710",
-  storageBucket: "aerobic-guide-364710.appspot.com",
-  messagingSenderId: "56985705002",
-  appId: "1:56985705002:web:add456f54103a40817c153"
+  apiKey: `${config.GCPAPIKEY}`,
+  authDomain: `${config.GCPAUTHDOMAIN}`,
+  databaseURL: `${config.GCPDATABASEURL}`,
+  projectId: `${config.GCPPROJECTID}`,
+  storageBucket: `${config.GCPSTORAGEBUCKET}`,
+  messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
+  appId: `${config.GCPAPPID}`,
 };
 
 const app = initializeApp(firebaseConfig);
