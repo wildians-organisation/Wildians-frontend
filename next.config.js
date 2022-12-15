@@ -11,4 +11,8 @@ module.exports = {
     wildians_part: process.env.WILDIANS_PART,
   },
   trailingSlash: true,
+  images: {
+    loader: "akamai",
+    path: "./",
+  },
 };

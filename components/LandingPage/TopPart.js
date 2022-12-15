@@ -3,17 +3,22 @@ import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
 import HeaderDropdown from "components/Dropdowns/HeaderDropdown";
 import Link from "next/link";
 import Image from "next/image";
-
 function TopPart() {
   return (
     <>
       <div className="headerBackground bg-cover  bg-forest-bg font-goghbold p-4 h-500-px">
         <div className="flex justify-around items-center">
           <div className="flex items-center">
-            <img
+            {/* <img
               className="w-14 h-auto md:w-28 lg:w-42 headerLogo"
               src={"/img/logo_header.png"}
               alt="header_logo"
+            /> */}
+            <Image
+              src={"/img/logo_header.png"}
+              alt="Wildians logo"
+              width={60}
+              height={40}
             />
             <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
               THE PROJECT

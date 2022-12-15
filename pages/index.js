@@ -1,8 +1,3 @@
-import Footer from "components/LandingPage/Footer.js";
-import Router from "next/router";
-import Header from "components/LandingPage/Header";
-import Midpart from "components/LandingPage/Midpart";
-import SecondPart from "components/LandingPage/SecondPart";
 import TopPart from "components/LandingPage/TopPart";
 import BottomPart from "components/LandingPage/BottomPart";
 
@@ -24,16 +19,8 @@ export function scrollToSection(sectionId) {
 }
 
 export default function Landing() {
-  const goToMarketPlace = () => {
-    Router.push("/marketplace");
-  };
-
   return (
     <div className="">
-      {/* <Header />
-      <SecondPart />
-      <Midpart />
-      <Footer /> */}
       <TopPart />
       <BottomPart />
     </div>
