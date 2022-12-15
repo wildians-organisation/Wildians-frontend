@@ -7,16 +7,23 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from "../../config/config.js";
 import Link from "next/link";
 import axios from "axios";
-// import { initializeApp } from 'firebase/app';
-// import { getFunctions } from 'firebase/functions';
+import { initializeApp } from 'firebase/app';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 
-// const app = initializeApp({
-//   projectId: 'aerobic-guide-364710',
-//   apiKey: '### FIREBASE API KEY ###',
-//   authDomain: '### FIREBASE AUTH DOMAIN ###',
-// });
-// const functions = app.firebase.functions();
-// const addWallet = functions.httpsCallable('addWallet');
+const firebaseConfig = {
+  apiKey: "AIzaSyBSHruPb10RXmD9pV71vsoXFhltiUztJME",
+  authDomain: "aerobic-guide-364710.firebaseapp.com",
+  databaseURL: "https://aerobic-guide-364710-default-rtdb.europe-west1.firebasedatabase.app/",
+  projectId: "aerobic-guide-364710",
+  storageBucket: "aerobic-guide-364710.appspot.com",
+  messagingSenderId: "56985705002",
+  appId: "1:56985705002:web:add456f54103a40817c153"
+};
+
+const app = initializeApp(firebaseConfig);
+const functions = getFunctions(app);
+functions.region = 'europe-west1';
+const addWallet = httpsCallable(functions, 'addWallet');
 
 const nftToMint = 1;
 const network = { type: NetworkType.GHOSTNET };
@@ -43,14 +50,14 @@ export default function ConnexionWallet() {
   }, []);
 
   /*** Function to add wallet adress to firebase ***/
-  // const addWalletToFirebase = async (walletAddress) => {
-  //   try {
-  //     const response = await addWallet({ walletAddress });
-  //     console.log(response);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
+  const addWalletToFirebase = async (walletAddress) => {
+    try {
+      const response = await addWallet({ "value": walletAddress });
+      console.log(response);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const getTokenID = async () => {
     try {
@@ -74,7 +81,7 @@ export default function ConnexionWallet() {
       });
       let tmp = await wallet.getPKH();
       setUserAddress(tmp);
-      //addWalletToFirebase(tmp);
+      addWalletToFirebase(tmp);
     }
   };
 
