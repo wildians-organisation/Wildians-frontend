@@ -9,6 +9,14 @@ module.exports = {
     tezos_converter: process.env.TEZOS_CONVERTER,
     association_part: process.env.ASSOCIATION_PART,
     wildians_part: process.env.WILDIANS_PART,
+
+    gcp_api_key: process.env.GCPAPIKEY,
+    gcp_auth_domain: process.env.GCPAUTHDOMAIN,
+    gcp_database_url: process.env.GCPDATABASEURL,
+    gcp_project_id: process.env.GCPPROJECTID,
+    gcp_storage_bucket: process.env.GCPSTORAGEBUCKET,
+    gcp_messaging_sender_id: process.env.GCPMESSAGINGSENDERID,
+    gcp_app_id: process.env.GCPAPPID,
   },
   trailingSlash: true,
 };
