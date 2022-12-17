@@ -69,7 +69,6 @@ jobs:
           npm install -g yarn
       - run: yarn install --frozen-lockfile
       - name: run Lighthouse CI
-        if: environnement === 'dev'
         run: |
           yarn global add @lhci/cli@0.3.x
           yarn run build
