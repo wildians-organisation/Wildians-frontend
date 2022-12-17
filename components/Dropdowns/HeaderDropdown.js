@@ -7,9 +7,16 @@ import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
 function HeaderDropdown() {
   return (
     <div className="flex flex-row items-center dropdown">
-      <Menu as="div" className="relative inline-block text-left ">
+      <Menu
+        as="div"
+        className="relative inline-block text-left "
+        alt="Dropdown Menu"
+      >
         <div>
-          <Menu.Button className="text-xs font-bold uppercase px-1  rounded outline-none focus:outline-none lg:mr-1 lg:mb-0 ease-linear transition-all duration-150 ">
+          <Menu.Button
+            className="text-xs font-bold uppercase px-1  rounded outline-none focus:outline-none lg:mr-1 lg:mb-0 ease-linear transition-all duration-150 "
+            alt="Dropdown Button"
+          >
             <IconContext.Provider
               value={{
                 color: "white",

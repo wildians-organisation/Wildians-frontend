@@ -28,10 +28,12 @@ module.exports = {
         darkGreen: "#2D5650",
         wildianBlack: "#30261C",
         whiteBroke: "#FCFDFA",
+        greenkaki: "#36544F",
       },
 
       fontFamily: {
         goghbold: ["GOGH-BOLD", "cursive"],
+        mulishItalic: ["Mulish", "cursive"],
       },
       minHeight: {
         "screen-75": "75vh",
@@ -97,6 +99,8 @@ module.exports = {
         "banner-p": "url('../public/img/banner.png')",
         "mid-bg": "url('../public/img/section_1.png')",
         "tree-bg": "url('../public/img/antlers-crop.png')",
+        "forest-bg": "url('../public/img/v2/visuels/ELWINFOREST.jpg')",
+        "wood-bg": "url('../public/img/v2/visuels/wood_texture.png')",
       },
     },
   },

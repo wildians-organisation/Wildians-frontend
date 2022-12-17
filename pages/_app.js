@@ -1,8 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
-import Router from "next/router";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";

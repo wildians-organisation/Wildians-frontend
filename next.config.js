@@ -19,4 +19,8 @@ module.exports = {
     gcp_app_id: process.env.GCPAPPID,
   },
   trailingSlash: true,
+  images: {
+    loader: "akamai",
+    path: "./",
+  },
 };
