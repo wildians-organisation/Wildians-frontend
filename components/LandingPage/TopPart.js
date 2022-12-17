@@ -15,9 +15,10 @@ function TopPart() {
               alt="header_logo"
             /> */}
             <Image
+              className="headerLogo"
               src={"/img/logo_header.png"}
               alt="Wildians logo"
-              width={60}
+              width={56}
               height={40}
             />
             <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
