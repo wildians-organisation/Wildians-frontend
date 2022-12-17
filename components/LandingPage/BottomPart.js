@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Deer from "../Wildian/Deer";
-import Wolf from "components/Wildian/wolf";
+import Wolf from "components/Wildian/Wolf";
 import Bull from "components/Wildian/Bull";
 
 function BottomPart() {
@@ -12,9 +12,10 @@ function BottomPart() {
           GET YOUR WILDIANS
         </div>
         <div className="m-auto h-77px w-576px text-center font-normal leading-5 text-beige">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam ut risus
-          viverra scelerisque. In metus tellus, congue id turpis scelerisque, vulputate
-          suscipit velit. Nunc pretium ipsum id venenatis fringilla.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam
+          ut risus viverra scelerisque. In metus tellus, congue id turpis
+          scelerisque, vulputate suscipit velit. Nunc pretium ipsum id venenatis
+          fringilla.
         </div>
         <div className="explanationPart flex justify-evenly items-center text-beige mt-12">
           <Deer></Deer>
