@@ -36,7 +36,6 @@ jobs:
   lhci:
     name: Lighthouse CI
     runs-on: ubuntu-latest
-    environment: dev
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 16.17.1
