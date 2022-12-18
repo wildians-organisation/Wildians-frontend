@@ -34,6 +34,7 @@ jobs:
           start: yarn run dev
 
   lhci:
+    if: github.ref == 'refs/heads/dev'
     name: Lighthouse CI
     runs-on: ubuntu-latest
     environment: dev
