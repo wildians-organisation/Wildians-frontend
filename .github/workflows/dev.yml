@@ -86,6 +86,27 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16.17.1
+      - name: Setup .env varibale
+        working-directory: .
+        run: |
+          cat <<EOF > .env
+            NETWORK=${{ secrets.NETWORK }}
+            RPC_URL=${{ secrets.RPC_URL }}
+            SMART_CONTRACT=${{ secrets.SMART_CONTRACT }}
+            TEZOS_CONVERTER=${{ secrets.TEZOS_CONVERTER }}
+            WILDIANS_PART=${{ secrets.WILDIANS_PART }}
+            ASSOCIATION_PART=${{ secrets.ASSOCIATION_PART }}
+            BUCKET_NAME=${{ secrets.BUCKET_NAME }}
+            CONTRACT_ADRESS=${{ secrets.CONTRACT_ADRESS }}
+            GCPAPIKEY=${{ secrets.GCPAPIKEY }}
+            GCPAPPID=${{ secrets.GCPAPPID }}
+            GCPAUTHDOMAIN=${{ secrets.GCPAUTHDOMAIN }}
+            GCPDATABASEURL=${{ secrets.GCPDATABASEURL }}
+            GCPMESSAGINGSENDERID=${{ secrets.GCPMESSAGINGSENDERID }}
+            GCPPROJECTID=${{ secrets.GCPPROJECTID }}
+            GCPSTORAGEBUCKET=${{ secrets.GCPSTORAGEBUCKET }}
+            NAME=${{ secrets.NAME }}
+          EOF
       - run: npm install -g yarn
       - run: yarn install --frozen-lockfile
       - run: yarn build
