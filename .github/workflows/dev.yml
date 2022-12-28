@@ -7,8 +7,34 @@ on:
       - "main"
 
 jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prettier
+        uses: actions/checkout@v2
+      - name: Prettier check
+        run: npx prettier --write pages/ && npx prettier 'pages/**/*.{js,jsx,ts,tsx,html}' --check
+
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: 16.17.1
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: run cypress tests with firefox
+        uses: cypress-io/github-action@v4
+        timeout-minutes: 10
+        with:
+          build: yarn run build
+          start: yarn run dev
+
   lhci:
-    #if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/dev'
     name: Lighthouse CI
     runs-on: ubuntu-latest
     environment: dev
@@ -22,22 +48,22 @@ jobs:
         working-directory: .
         run: |
           cat <<EOF > .env
-            NETWORK=${{secrets.NETWORK}}
-            RPC_URL=${{secrets.RPC_URL}}
-            SMART_CONTRACT=${{secrets.SMART_CONTRACT}}
-            TEZOS_CONVERTER=${{secrets.TEZOS_CONVERTER}}
-            WILDIANS_PART=${{secrets.WILDIANS_PART}}
-            ASSOCIATION_PART=${{secrets.ASSOCIATION_PART}}
-            BUCKET_NAME=${{secrets.BUCKET_NAME}}
-            CONTRACT_ADRESS=${{secrets.CONTRACT_ADRESS}}
-            GCPAPIKEY=${{secrets.GCPAPIKEY}}
-            GCPAPPID=${{secrets.GCPAPPID}}
-            GCPAUTHDOMAIN=${{secrets.GCPAUTHDOMAIN}}
-            GCPDATABASEURL=${{secrets.GCPDATABASEURL}}
-            GCPMESSAGINGSENDERID=${{secrets.GCPMESSAGINGSENDERID}}
-            GCPPROJECTID=${{secrets.GCPPROJECTID}}
-            GCPSTORAGEBUCKET=${{secrets.GCPSTORAGEBUCKET}}
-            NAME=${{secrets.NAME}}
+            NETWORK=${{ secrets.NETWORK }}
+            RPC_URL=${{ secrets.RPC_URL }}
+            SMART_CONTRACT=${{ secrets.SMART_CONTRACT }}
+            TEZOS_CONVERTER=${{ secrets.TEZOS_CONVERTER }}
+            WILDIANS_PART=${{ secrets.WILDIANS_PART }}
+            ASSOCIATION_PART=${{ secrets.ASSOCIATION_PART }}
+            BUCKET_NAME=${{ secrets.BUCKET_NAME }}
+            CONTRACT_ADRESS=${{ secrets.CONTRACT_ADRESS }}
+            GCPAPIKEY=${{ secrets.GCPAPIKEY }}
+            GCPAPPID=${{ secrets.GCPAPPID }}
+            GCPAUTHDOMAIN=${{ secrets.GCPAUTHDOMAIN }}
+            GCPDATABASEURL=${{ secrets.GCPDATABASEURL }}
+            GCPMESSAGINGSENDERID=${{ secrets.GCPMESSAGINGSENDERID }}
+            GCPPROJECTID=${{ secrets.GCPPROJECTID }}
+            GCPSTORAGEBUCKET=${{ secrets.GCPSTORAGEBUCKET }}
+            NAME=${{ secrets.NAME }}
           EOF
       - name: Install
         run: |
@@ -48,3 +74,50 @@ jobs:
           yarn global add @lhci/cli@0.3.x
           yarn run build
           lhci autorun
+
+  deploy-app:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    environment: dev
+    runs-on: ubuntu-latest
+    needs:
+      - cypress-run
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.17.1
+      - name: Setup .env varibale
+        working-directory: .
+        run: |
+          cat <<EOF > .env
+            NETWORK=${{ secrets.NETWORK }}
+            RPC_URL=${{ secrets.RPC_URL }}
+            SMART_CONTRACT=${{ secrets.SMART_CONTRACT }}
+            TEZOS_CONVERTER=${{ secrets.TEZOS_CONVERTER }}
+            WILDIANS_PART=${{ secrets.WILDIANS_PART }}
+            ASSOCIATION_PART=${{ secrets.ASSOCIATION_PART }}
+            BUCKET_NAME=${{ secrets.BUCKET_NAME }}
+            CONTRACT_ADRESS=${{ secrets.CONTRACT_ADRESS }}
+            GCPAPIKEY=${{ secrets.GCPAPIKEY }}
+            GCPAPPID=${{ secrets.GCPAPPID }}
+            GCPAUTHDOMAIN=${{ secrets.GCPAUTHDOMAIN }}
+            GCPDATABASEURL=${{ secrets.GCPDATABASEURL }}
+            GCPMESSAGINGSENDERID=${{ secrets.GCPMESSAGINGSENDERID }}
+            GCPPROJECTID=${{ secrets.GCPPROJECTID }}
+            GCPSTORAGEBUCKET=${{ secrets.GCPSTORAGEBUCKET }}
+            NAME=${{ secrets.NAME }}
+          EOF
+      - run: npm install -g yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - id: "auth"
+        uses: "google-github-actions/auth@v0"
+        with:
+          credentials_json: "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
+      - id: "upload-folder"
+        uses: "google-github-actions/upload-cloud-storage@v0"
+        with:
+          path: ./out/
+          project_id: "${{ secrets.GCP_PROJECT }}"
+          destination: "${{ secrets.BUCKET_NAME }}"
+          parent: false
