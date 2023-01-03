@@ -1,6 +1,18 @@
 import React from "react";
 import axios from "axios";
 import * as config from "../../config/config.js";
+import { initializeApp } from "firebase/app";
+import { getFunctions, httpsCallable } from "firebase/functions";
+
+const firebaseConfig = {
+  apiKey: `${config.GCPAPIKEY}`,
+  authDomain: `${config.GCPAUTHDOMAIN}`,
+  databaseURL: `${config.GCPDATABASEURL}`,
+  projectId: `${config.GCPPROJECTID}`,
+  storageBucket: `${config.GCPSTORAGEBUCKET}`,
+  messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
+  appId: `${config.GCPAPPID}`,
+};
 
 export default function Admin() {
   // Display items in a list with add button on each items
@@ -11,6 +23,19 @@ export default function Admin() {
   const [userNFTs, setUserNFTs] = React.useState([]);
   const [tezosAmount, setTezosAmount] = React.useState(0);
 
+  const app = initializeApp(firebaseConfig);
+  const functions = getFunctions(app);
+  functions.region = "europe-west1";
+  const countWallets = httpsCallable(functions, "countWallets");
+  /*** Function to add wallet adress to firebase ***/
+  const getWallets = async () => {
+    try {
+      const response = await countWallets();
+      console.log("caca", response);
+    } catch (e) {
+      console.error(e);
+    }
+  };
   // Get informations about the smartcontract with the tzkt api
   const getContractInformations = async () => {
     const response = await axios.get(
@@ -65,7 +90,10 @@ export default function Admin() {
         JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
       );
       getContractInformations();
-      getNFTMintByUser(JSON.parse(localStorage.getItem("beacon:accounts"))[0].address);
+      getNFTMintByUser(
+        JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
+      );
+      getWallets();
     }
   }, []);
 
