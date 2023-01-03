@@ -100,7 +100,7 @@ jobs:
           envkey_WILDIANS_PART: ${{ secrets.WILDIANS_PART }}
           envkey_ASSOCIATION_PART: ${{ secrets.ASSOCIATION_PART }}
           envkey_BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
-          envkey_CONTRACT_ADRESS: ${{ secrets.CONTRACT_ADRESS }}
+          envkey_CONTRACT_ADDRESS: ${{ secrets.CONTRACT_ADDRESS }}
           envkey_GCPAPIKEY: ${{ secrets.GCPAPIKEY }}
           envkey_GCPAPPID: ${{ secrets.GCPAPPID }}
           envkey_GCPAUTHDOMAIN: ${{ secrets.GCPAUTHDOMAIN }}
