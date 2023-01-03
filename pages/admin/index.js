@@ -22,7 +22,7 @@ export default function Admin() {
   const [userAddress, setUserAddress] = React.useState("");
   const [userNFTs, setUserNFTs] = React.useState([]);
   const [tezosAmount, setTezosAmount] = React.useState(0);
-
+  const [numberWallets, setNumberWallets] = React.useState(0);
   const app = initializeApp(firebaseConfig);
   const functions = getFunctions(app);
   functions.region = "europe-west1";
@@ -31,7 +31,7 @@ export default function Admin() {
   const getWallets = async () => {
     try {
       const response = await countWallets();
-      console.log("caca", response);
+      setNumberWallets(response.data);
     } catch (e) {
       console.error(e);
     }
@@ -119,6 +119,7 @@ export default function Admin() {
               <p>
                 Number of tokens of connected address: {nbNFTConnectedAdress}
               </p>
+              <p>Number of unique wallets connected: {numberWallets}</p>
             </center>
           </div>
           <div style={{ marginTop: 290, marginLeft: 100 }}>
