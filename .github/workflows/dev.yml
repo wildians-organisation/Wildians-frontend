@@ -16,7 +16,6 @@ jobs:
         run: npx prettier --write pages/ && npx prettier 'pages/**/*.{js,jsx,ts,tsx,html}' --check
 
   cypress-run:
-    environment: dev
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,27 +26,6 @@ jobs:
           node-version: 16.17.1
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          file_name: .env
-          fail_on_empty: true
-          envkey_NETWORK: ${{ secrets.NETWORK }}
-          envkey_RPC_URL: ${{ secrets.RPC_URL }}
-          envkey_SMART_CONTRACT: ${{ secrets.SMART_CONTRACT }}
-          envkey_TEZOS_CONVERTER: ${{ secrets.TEZOS_CONVERTER }}
-          envkey_WILDIANS_PART: ${{ secrets.WILDIANS_PART }}
-          envkey_ASSOCIATION_PART: ${{ secrets.ASSOCIATION_PART }}
-          envkey_BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
-          envkey_CONTRACT_ADDRESS: ${{ secrets.CONTRACT_ADDRESS }}
-          envkey_GCPAPIKEY: ${{ secrets.GCPAPIKEY }}
-          envkey_GCPAPPID: ${{ secrets.GCPAPPID }}
-          envkey_GCPAUTHDOMAIN: ${{ secrets.GCPAUTHDOMAIN }}
-          envkey_GCPDATABASEURL: ${{ secrets.GCPDATABASEURL }}
-          envkey_GCPMESSAGINGSENDERID: ${{ secrets.GCPMESSAGINGSENDERID }}
-          envkey_GCPPROJECTID: ${{ secrets.GCPPROJECTID }}
-          envkey_GCPSTORAGEBUCKET: ${{ secrets.GCPSTORAGEBUCKET }}
-          envkey_NAME: ${{ secrets.NAME }}
       - name: run cypress tests with chrome
         uses: cypress-io/github-action@v5
         timeout-minutes: 10
