@@ -16,6 +16,7 @@ jobs:
         run: npx prettier --write pages/ && npx prettier 'pages/**/*.{js,jsx,ts,tsx,html}' --check
 
   cypress-run:
+    environment: dev
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
