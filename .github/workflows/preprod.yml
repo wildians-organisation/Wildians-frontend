@@ -1,7 +1,7 @@
 name: preprod workflow
 
 on:
-  pull_request:
+  push:
     branches: [preprod]
 
 
