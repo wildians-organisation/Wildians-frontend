@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import * as cors from "cors";
-
+import * as config from "../../config/config.js";
 const admin = require("firebase-admin");
 admin.initializeApp();
 
@@ -8,7 +8,7 @@ admin.initializeApp();
 const corsHandler = cors({ origin: "*" });
 
 export const addWallet = functions
-  .region("europe-west1")
+  .region(config.BUCKET_REGION)
   .https.onRequest((request, response) => {
     corsHandler(request, response, async () => {
       //get realtime database
@@ -32,7 +32,7 @@ export const addWallet = functions
   });
 
 export const countWallets = functions
-  .region("europe-west1")
+  .region(config.BUCKET_REGION)
   .https.onRequest((request, response) => {
     corsHandler(request, response, async () => {
       const db = admin.database();

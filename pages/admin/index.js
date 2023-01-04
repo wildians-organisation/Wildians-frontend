@@ -25,7 +25,7 @@ export default function Admin() {
   const [numberWallets, setNumberWallets] = React.useState(0);
   const app = initializeApp(firebaseConfig);
   const functions = getFunctions(app);
-  functions.region = "europe-west1";
+  functions.region = config.BUCKET_REGION;
   const countWallets = httpsCallable(functions, "countWallets");
   /*** Function to add wallet adress to firebase ***/
   const getWallets = async () => {
