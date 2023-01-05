@@ -1,9 +1,9 @@
-beforeEach(() => {
-  cy.visit("http://localhost:3000");
-  cy.wait(15000);
-});
-
 describe("check different component", () => {
+  before(function() {
+    cy.visit('http://localhost:3000');
+    cy.wait(15000);
+  });
+
   context("check display default resolution", () => {
     //Check dropdown is not visible
     it("Check if dropdown is not visible", () => {
@@ -46,7 +46,6 @@ context("iphone-X resolution", () => {
     // run these tests as if in a mobile browser
     // and ensure our responsive UI is correct
     cy.viewport("iphone-x");
-    cy.wait(15000);
   });
 
   it("Check if dropdown is present", () => {
