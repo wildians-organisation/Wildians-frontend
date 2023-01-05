@@ -1,6 +1,7 @@
 describe("check different component", () => {
   before(function() {
     cy.visit('http://localhost:3000');
+    cy.ignore('CORS');
     cy.wait(15000);
   });
 
