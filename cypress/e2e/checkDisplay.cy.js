@@ -1,4 +1,5 @@
 beforeEach(() => {
+  cy.wait(15000);
   cy.visit("http://localhost:3000");
 });
 
@@ -42,6 +43,7 @@ describe("check different component", () => {
 });
 context("iphone-X resolution", () => {
   beforeEach(() => {
+    cy.wait(15000);
     // run these tests as if in a mobile browser
     // and ensure our responsive UI is correct
     cy.viewport("iphone-x");
