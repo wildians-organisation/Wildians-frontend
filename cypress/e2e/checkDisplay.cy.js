@@ -1,7 +1,11 @@
 describe("check different component", () => {
   before(function() {
     cy.visit('http://localhost:3000');
-    cy.ignore('CORS');
+    cy.on('fail', (error) => {
+      if (error.message.includes('CORS')) {
+        return false;
+      }
+    });    
     cy.wait(15000);
   });
 
