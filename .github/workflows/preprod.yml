@@ -67,6 +67,7 @@ jobs:
           envkey_GCPMESSAGINGSENDERID: ${{ secrets.GCPMESSAGINGSENDERID }}
           envkey_GCPPROJECTID: ${{ secrets.GCPPROJECTID }}
           envkey_GCPSTORAGEBUCKET: ${{ secrets.GCPSTORAGEBUCKET }}
+          envkey_BUCKET_REGION: ${{ secrets.BUCKET_REGION }}
           envkey_NAME: ${{ secrets.NAME }}
       - name: Install
         run: |
@@ -109,6 +110,7 @@ jobs:
           envkey_GCPMESSAGINGSENDERID: ${{ secrets.GCPMESSAGINGSENDERID }}
           envkey_GCPPROJECTID: ${{ secrets.GCPPROJECTID }}
           envkey_GCPSTORAGEBUCKET: ${{ secrets.GCPSTORAGEBUCKET }}
+          envkey_BUCKET_REGION: ${{ secrets.BUCKET_REGION }}
           envkey_NAME: ${{ secrets.NAME }}
       - run: npm install -g yarn
       - run: yarn install --frozen-lockfile
