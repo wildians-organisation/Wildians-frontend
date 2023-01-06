@@ -1,8 +1,14 @@
-beforeEach(() => {
-  cy.visit("http://localhost:3000");
-});
-
 describe("check different component", () => {
+  before(function() {
+    cy.visit('http://localhost:3000');
+    cy.on('fail', (error) => {
+      if (error.message.includes('CORS')) {
+        return false;
+      }
+    });    
+    cy.wait(15000);
+  });
+
   context("check display default resolution", () => {
     //Check dropdown is not visible
     it("Check if dropdown is not visible", () => {

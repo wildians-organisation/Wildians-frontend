@@ -9,7 +9,7 @@ module.exports = {
     tezos_converter: process.env.TEZOS_CONVERTER,
     association_part: process.env.ASSOCIATION_PART,
     wildians_part: process.env.WILDIANS_PART,
-
+    bucket_region: process.env.BUCKET_REGION,
     gcp_api_key: process.env.GCPAPIKEY,
     gcp_auth_domain: process.env.GCPAUTHDOMAIN,
     gcp_database_url: process.env.GCPDATABASEURL,
