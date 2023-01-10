@@ -1,8 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Deer from "../Wildian/Deer";
-import Wolf from "components/Wildian/Wolf";
-import Bull from "components/Wildian/Bull";
+import * as config from "../../config/config.js";
+import Wildians from "components/Wildian/Wildians";
 
 function BottomPart() {
   return (
@@ -18,9 +17,9 @@ function BottomPart() {
           fringilla.
         </div>
         <div className="explanationPart flex justify-evenly items-center text-beige mt-12">
-          <Deer></Deer>
-          <Wolf></Wolf>
-          <Bull></Bull>
+          <Wildians image={"/img/v2/visuels/Deer.png"} title="Deer_3D" pillar="ENVIRONNEMENT" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam ut risus viverra scelerisque." nft_adress={config.DEER_NFT} />
+          <Wildians image={"/img/v2/visuels/Wolf.png"} title="Wolf_3D" pillar="SOCIETY" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam ut risus viverra scelerisque." nft_adress={config.WOLF_NFT} />
+          <Wildians image={"/img/v2/visuels/Bull.png"} title="Bull_3D" pillar="ECONOMY" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam ut risus viverra scelerisque." nft_adress={config.BULL_NFT} />
         </div>
       </div>
     </div>

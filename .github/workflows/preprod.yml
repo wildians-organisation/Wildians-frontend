@@ -50,7 +50,9 @@ jobs:
           fail_on_empty: true
           envkey_NETWORK: ${{ secrets.NETWORK }}
           envkey_RPC_URL: ${{ secrets.RPC_URL }}
-          envkey_SMART_CONTRACT: ${{ secrets.SMART_CONTRACT }}
+          envkey_WOLF_NFT: ${{ secrets.WOLF_NFT }}
+          envkey_DEER_NFT: ${{ secrets.DEER_NFT }}
+          envkey_BULL_NFT: ${{ secrets.BULL_NFT }}
           envkey_TEZOS_CONVERTER: ${{ secrets.TEZOS_CONVERTER }}
           envkey_WILDIANS_PART: ${{ secrets.WILDIANS_PART }}
           envkey_ASSOCIATION_PART: ${{ secrets.ASSOCIATION_PART }}
@@ -93,7 +95,9 @@ jobs:
           fail_on_empty: true
           envkey_NETWORK: ${{ secrets.NETWORK }}
           envkey_RPC_URL: ${{ secrets.RPC_URL }}
-          envkey_SMART_CONTRACT: ${{ secrets.SMART_CONTRACT }}
+          envkey_WOLF_NFT: ${{ secrets.WOLF_NFT }}
+          envkey_DEER_NFT: ${{ secrets.DEER_NFT }}
+          envkey_BULL_NFT: ${{ secrets.BULL_NFT }}
           envkey_TEZOS_CONVERTER: ${{ secrets.TEZOS_CONVERTER }}
           envkey_WILDIANS_PART: ${{ secrets.WILDIANS_PART }}
           envkey_ASSOCIATION_PART: ${{ secrets.ASSOCIATION_PART }}
