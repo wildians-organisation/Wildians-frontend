@@ -7,18 +7,15 @@ function Header() {
   return (
     <div className="flex justify-around items-center">
       <div className="flex items-center">
-        {/* <img
-              className="w-14 h-auto md:w-28 lg:w-42 headerLogo"
-              src={"/img/logo_header.png"}
-              alt="header_logo"
-            /> */}
-        <Image
-          className="headerLogo"
-          src={"/img/logo_header.png"}
-          alt="Wildians logo"
-          width={56}
-          height={40}
-        />
+        <a href="/">
+          <Image
+            className="headerLogo"
+            src={"/img/logo_header.png"}
+            alt="Wildians logo"
+            width={56}
+            height={40}
+          />
+        </a>
         <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
           THE PROJECT
         </div>
