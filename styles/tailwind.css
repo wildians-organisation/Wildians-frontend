@@ -15487,6 +15487,11 @@ select {
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
   }
 
+  .md\:bg-gray-200 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(228, 228, 231, var(--tw-bg-opacity));
+  }
+
   .md\:bg-greeny {
     --tw-bg-opacity: 1;
     background-color: rgba(144, 224, 211, var(--tw-bg-opacity));
@@ -15504,6 +15509,10 @@ select {
 
   .md\:rounded {
     border-radius: 0.25rem;
+  }
+
+  .md\:rounded-lg {
+    border-radius: 0.5rem;
   }
 
   .md\:rounded-full {
@@ -15559,6 +15568,10 @@ select {
     line-height: 1;
   }
 
+  .md\:m-auto {
+    margin: auto;
+  }
+
   .md\:mb-0 {
     margin-bottom: 0px;
   }
@@ -15579,6 +15592,10 @@ select {
     margin-left: 5rem;
   }
 
+  .md\:ml-32 {
+    margin-left: 8rem;
+  }
+
   .md\:max-w-4xl {
     max-width: 56rem;
   }
@@ -15591,6 +15608,10 @@ select {
   .md\:focus\:outline-none:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
+  }
+
+  .md\:overflow-hidden {
+    overflow: hidden;
   }
 
   .md\:py-2 {
@@ -15663,6 +15684,10 @@ select {
 
   .md\:w-44 {
     width: 11rem;
+  }
+
+  .md\:w-11\/12 {
+    width: 91.666667%;
   }
 
   .md\:w-min {

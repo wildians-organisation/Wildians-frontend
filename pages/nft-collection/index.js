@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import NFTCardMobile from "../../components/NFTCard/NFTCardMobile";
 import NFTCard from "../../components/NFTCard/NFTCard";
+
 import Header from "../../components/Header/Header";
 export default function UserNFTs(props) {
   const [userNFTs, setUserNFTs] = React.useState([]);
@@ -48,7 +50,10 @@ export default function UserNFTs(props) {
         </div>
         {userNFTs.map((nft, key) => (
           <div key={key} className="m-8">
-            <div className="aspect-w-1 aspect-h-1 w-11/12 m-auto overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+            <div className="md:hidden aspect-w-1 aspect-h-1 w-11/12 m-auto overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+              <NFTCardMobile metadata={nft} />
+            </div>
+            <div className="md:flex hidden md:aspect-w-1 md:aspect-h-1 md:w-11/12 md:m-auto md:overflow-hidden md:rounded-lg md:bg-gray-200 md:xl:aspect-w-7 md:xl:aspect-h-8">
               <NFTCard metadata={nft} />
             </div>
           </div>
