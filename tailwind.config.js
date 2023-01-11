@@ -1,5 +1,6 @@
 const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   purge: {
@@ -29,11 +30,13 @@ module.exports = {
         wildianBlack: "#30261C",
         whiteBroke: "#FCFDFA",
         greenkaki: "#36544F",
+        attributegreen: "#3D5953",
       },
 
       fontFamily: {
         goghbold: ["GOGH-BOLD", "cursive"],
-        mulishItalic: ["Mulish", "cursive"],
+        mulish: ["MULISH", "GOGH-BOLD", "cursive"],
+        sans: ["MULISH", "sans-serif"],
       },
       minHeight: {
         "screen-75": "75vh",

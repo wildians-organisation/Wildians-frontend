@@ -337,7 +337,7 @@ ul {
  */
 
 html {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
+  font-family: MULISH, sans-serif; /* 1 */
   line-height: 1.5; /* 2 */
 }
 
@@ -2962,6 +2962,11 @@ select {
   background-color: rgba(252, 253, 250, var(--tw-bg-opacity));
 }
 
+.bg-attributegreen {
+  --tw-bg-opacity: 1;
+  background-color: rgba(61, 89, 83, var(--tw-bg-opacity));
+}
+
 .focus\:bg-white:focus {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
@@ -2970,6 +2975,11 @@ select {
 .focus\:bg-gray-200:focus {
   --tw-bg-opacity: 1;
   background-color: rgba(228, 228, 231, var(--tw-bg-opacity));
+}
+
+.active\:bg-blueGray-50:active {
+  --tw-bg-opacity: 1;
+  background-color: rgba(248, 250, 252, var(--tw-bg-opacity));
 }
 
 .bg-none {
@@ -5699,7 +5709,7 @@ select {
 }
 
 .font-sans {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: MULISH, sans-serif;
 }
 
 .font-serif {
@@ -5714,8 +5724,8 @@ select {
   font-family: GOGH-BOLD, cursive;
 }
 
-.font-mulishItalic {
-  font-family: Mulish, cursive;
+.font-mulish {
+  font-family: MULISH, GOGH-BOLD, cursive;
 }
 
 .font-thin {
@@ -11603,6 +11613,11 @@ select {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.hover\:shadow-md:hover {
+  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 * {
   --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
   --tw-ring-offset-width: 0px;
@@ -13059,6 +13074,11 @@ select {
   color: rgba(54, 84, 79, var(--tw-text-opacity));
 }
 
+.hover\:text-blueGray-800:hover {
+  --tw-text-opacity: 1;
+  color: rgba(30, 41, 59, var(--tw-text-opacity));
+}
+
 .text-opacity-0 {
   --tw-text-opacity: 0;
 }
@@ -13465,12 +13485,28 @@ select {
   width: 50%;
 }
 
+.w-1\/4 {
+  width: 25%;
+}
+
+.w-2\/5 {
+  width: 40%;
+}
+
+.w-3\/5 {
+  width: 60%;
+}
+
 .w-4\/12 {
   width: 33.333333%;
 }
 
 .w-5\/12 {
   width: 41.666667%;
+}
+
+.w-11\/12 {
+  width: 91.666667%;
 }
 
 .w-full {
@@ -15423,6 +15459,12 @@ select {
   src: url("../public/fonts/Gogh-ExtraBold.otf");
 }
 
+@font-face {
+  font-family: "MULISH";
+
+  src: url("../public/fonts/Mulish/Mulish-VariableFont_wght.ttf");
+}
+
 @media (min-width: 640px) {
   .sm\:px-6 {
     padding-left: 1.5rem;
@@ -15440,6 +15482,16 @@ select {
 }
 
 @media (min-width: 768px) {
+  .md\:bg-white {
+    --tw-bg-opacity: 1;
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  }
+
+  .md\:bg-gray-200 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(228, 228, 231, var(--tw-bg-opacity));
+  }
+
   .md\:bg-greeny {
     --tw-bg-opacity: 1;
     background-color: rgba(144, 224, 211, var(--tw-bg-opacity));
@@ -15450,8 +15502,17 @@ select {
     background-color: rgba(54, 84, 79, var(--tw-bg-opacity));
   }
 
+  .md\:active\:bg-blueGray-600:active {
+    --tw-bg-opacity: 1;
+    background-color: rgba(71, 85, 105, var(--tw-bg-opacity));
+  }
+
   .md\:rounded {
     border-radius: 0.25rem;
+  }
+
+  .md\:rounded-lg {
+    border-radius: 0.5rem;
   }
 
   .md\:rounded-full {
@@ -15476,6 +15537,10 @@ select {
 
   .md\:font-bold {
     font-weight: 700;
+  }
+
+  .md\:h-12 {
+    height: 3rem;
   }
 
   .md\:text-xs {
@@ -15503,6 +15568,10 @@ select {
     line-height: 1;
   }
 
+  .md\:m-auto {
+    margin: auto;
+  }
+
   .md\:mb-0 {
     margin-bottom: 0px;
   }
@@ -15513,6 +15582,18 @@ select {
 
   .md\:ml-3 {
     margin-left: 0.75rem;
+  }
+
+  .md\:ml-9 {
+    margin-left: 2.25rem;
+  }
+
+  .md\:ml-20 {
+    margin-left: 5rem;
+  }
+
+  .md\:ml-32 {
+    margin-left: 8rem;
   }
 
   .md\:max-w-4xl {
@@ -15527,6 +15608,10 @@ select {
   .md\:focus\:outline-none:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
+  }
+
+  .md\:overflow-hidden {
+    overflow: hidden;
   }
 
   .md\:py-2 {
@@ -15547,6 +15632,11 @@ select {
   .md\:hover\:shadow-lg:hover {
     --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+
+  .md\:text-lightBlue-600 {
+    --tw-text-opacity: 1;
+    color: rgba(2, 132, 199, var(--tw-text-opacity));
   }
 
   .md\:text-greenkaki {
@@ -15572,8 +15662,32 @@ select {
     white-space: nowrap;
   }
 
+  .md\:w-8 {
+    width: 2rem;
+  }
+
+  .md\:w-20 {
+    width: 5rem;
+  }
+
+  .md\:w-24 {
+    width: 6rem;
+  }
+
   .md\:w-28 {
     width: 7rem;
+  }
+
+  .md\:w-40 {
+    width: 10rem;
+  }
+
+  .md\:w-44 {
+    width: 11rem;
+  }
+
+  .md\:w-11\/12 {
+    width: 91.666667%;
   }
 
   .md\:w-min {
@@ -15621,6 +15735,18 @@ select {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:w-10 {
+    width: 2.5rem;
+  }
+
+  .lg\:w-52 {
+    width: 13rem;
+  }
+
+  .lg\:w-56 {
+    width: 14rem;
   }
 
   .lg\:grid-cols-3 {
