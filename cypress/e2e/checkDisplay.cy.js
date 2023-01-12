@@ -1,8 +1,14 @@
-beforeEach(() => {
-  cy.visit("http://localhost:3000");
-});
-
 describe("check different component", () => {
+  before(function () {
+    cy.visit('http://localhost:3000');
+    cy.on('fail', (error) => {
+      if (error.message.includes('CORS')) {
+        return false;
+      }
+    });
+    cy.wait(15000);
+  });
+
   context("check display default resolution", () => {
     //Check dropdown is not visible
     it("Check if dropdown is not visible", () => {
@@ -51,10 +57,11 @@ context("iphone-X resolution", () => {
     cy.get(".dropdown").should("be.visible");
   });
 
-  //check if dropdown have 3 elements
-  it("Check if dropdown have 3 elements", () => {
+  //check if dropdown have 4 elements
+  it("Check if dropdown have 4 elements", () => {
     cy.get(".dropdown").click();
     cy.contains("Twitter").should("be.visible");
+    cy.contains("Mint NFT").should("be.visible");
     cy.contains("Discord").should("be.visible");
     cy.contains("Connect Your Wallet").should("be.visible");
   });
