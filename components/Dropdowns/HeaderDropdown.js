@@ -41,9 +41,8 @@ function HeaderDropdown() {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    className={`${active ? "bg-violet-500 text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     onClick={() => goToIndicatedPage("/transactions")}
                   >
                     Twitter
@@ -54,16 +53,17 @@ function HeaderDropdown() {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    className={`${active ? "bg-violet-500 text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     onClick={() => goToIndicatedPage("/settings")}
                   >
                     Discord
                   </button>
                 )}
               </Menu.Item>
-              <Menu.Item>{({ active }) => <ConnexionWallet />}</Menu.Item>
+              <Menu.Item id="connexion_item">
+                {({ active }) => <ConnexionWallet />}
+              </Menu.Item>
             </div>
           </Menu.Items>
         </Transition>
