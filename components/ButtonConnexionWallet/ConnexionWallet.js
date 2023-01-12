@@ -31,8 +31,10 @@ export default function ConnexionWallet() {
   const [wallet, setWallet] = React.useState({});
   const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
   const [userAddress, setUserAddress] = React.useState(null);
+
   React.useEffect(() => {
     (async () => {
+      setUserAddress(localStorage.getItem("userAdress"));
       const _wallet = new BeaconWallet({ name: "Demo" });
       setWallet(_wallet);
       Tezos.setWalletProvider(_wallet);
@@ -55,12 +57,14 @@ export default function ConnexionWallet() {
     const activeAccount = await wallet.client.getActiveAccount();
     if (activeAccount) {
       setUserAddress(activeAccount.address);
+      localStorage.setItem("userAdress", activeAccount.address);
     } else {
       await wallet.requestPermissions({
         network: network,
       });
       let tmp = await wallet.getPKH();
       setUserAddress(tmp);
+      localStorage.setItem("userAdress", tmp);
       addWalletToFirebase(tmp);
     }
   };
@@ -70,6 +74,7 @@ export default function ConnexionWallet() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     await wallet.clearActiveAccount();
     await wallet.disconnect();
+    localStorage.removeItem("userAdress");
     setUserAddress(null);
   };
 
