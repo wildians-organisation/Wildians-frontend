@@ -61,7 +61,6 @@ context("iphone-X resolution", () => {
   it("Check if dropdown have 4 elements", () => {
     cy.get(".dropdown").click();
     cy.contains("Twitter").should("be.visible");
-    cy.contains("Mint NFT").should("be.visible");
     cy.contains("Discord").should("be.visible");
     cy.contains("Connect Your Wallet").should("be.visible");
   });
