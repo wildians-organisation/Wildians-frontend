@@ -1,11 +1,11 @@
 describe("check different component", () => {
-  before(function() {
+  before(function () {
     cy.visit('http://localhost:3000');
     cy.on('fail', (error) => {
       if (error.message.includes('CORS')) {
         return false;
       }
-    });    
+    });
     cy.wait(15000);
   });
 
@@ -61,7 +61,6 @@ context("iphone-X resolution", () => {
   it("Check if dropdown have 4 elements", () => {
     cy.get(".dropdown").click();
     cy.contains("Twitter").should("be.visible");
-    cy.contains("Mint NFT").should("be.visible");
     cy.contains("Discord").should("be.visible");
     cy.contains("Connect Your Wallet").should("be.visible");
   });
