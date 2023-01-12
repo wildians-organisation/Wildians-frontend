@@ -5,6 +5,7 @@ import Head from "next/head";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
 import "styles/footer.css";
+import "../components/NFTCard/NFTCard.css";
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -52,14 +53,15 @@ export default class MyApp extends App {
           />
           <title>Wildians</title>
           <script
-          dangerouslySetInnerHTML={{
-            __html: `
+            dangerouslySetInnerHTML={{
+              __html: `
                 var script = document.createElement('script'); 
                 script.dataset.cache = true; 
                 script.dataset.websiteId = "b25f950c-8e53-400e-afef-df879dabda06";
                 script.src="https://s.abla.io/abla.js";
                 document.getElementsByTagName("head")[0].appendChild(script);
-            `}}
+            `,
+            }}
           />
         </Head>
         <Layout>

@@ -8,7 +8,7 @@ export const BULL_NFT = process.env.bull_nft;
 export const TEZOS_CONVERTER = process.env.tezos_converter;
 export const ASSOCIATION_PART = Number(process.env.association_part);
 export const WILDIANS_PART = Number(process.env.wildians_part);
-
+export const BUCKET_REGION = process.env.bucket_region;
 export const GCPAPIKEY = process.env.gcp_api_key;
 export const GCPAUTHDOMAIN = process.env.gcp_auth_domain;
 export const GCPDATABASEURL = process.env.gcp_database_url;

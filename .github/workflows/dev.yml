@@ -26,12 +26,24 @@ jobs:
           node-version: 16.17.1
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-      - name: run cypress tests with firefox
-        uses: cypress-io/github-action@v4
+      - name: run cypress tests with chrome
+        uses: cypress-io/github-action@v5
         timeout-minutes: 10
         with:
+          browser: chrome
+          configFile: baseUrl=http://localhost:3000
           build: yarn run build
           start: yarn run dev
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+         name: cypress-screenshots
+         path: ./cypress/screenshots
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+         name: cypress-videos
+         path: ./cypress/videos
 
   lhci:
     if: github.ref == 'refs/heads/dev'
@@ -47,7 +59,6 @@ jobs:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1.3
         with:
-          some_other_variable: foobar
           file_name: .env
           fail_on_empty: true
           envkey_NETWORK: ${{ secrets.NETWORK }}
@@ -67,6 +78,7 @@ jobs:
           envkey_GCPMESSAGINGSENDERID: ${{ secrets.GCPMESSAGINGSENDERID }}
           envkey_GCPPROJECTID: ${{ secrets.GCPPROJECTID }}
           envkey_GCPSTORAGEBUCKET: ${{ secrets.GCPSTORAGEBUCKET }}
+          envkey_BUCKET_REGION: ${{ secrets.BUCKET_REGION }}
           envkey_NAME: ${{ secrets.NAME }}
       - name: Install
         run: |
@@ -92,7 +104,6 @@ jobs:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1.3
         with:
-          some_other_variable: foobar
           file_name: .env
           fail_on_empty: true
           envkey_NETWORK: ${{ secrets.NETWORK }}
@@ -112,6 +123,7 @@ jobs:
           envkey_GCPMESSAGINGSENDERID: ${{ secrets.GCPMESSAGINGSENDERID }}
           envkey_GCPPROJECTID: ${{ secrets.GCPPROJECTID }}
           envkey_GCPSTORAGEBUCKET: ${{ secrets.GCPSTORAGEBUCKET }}
+          envkey_BUCKET_REGION: ${{ secrets.BUCKET_REGION }}
           envkey_NAME: ${{ secrets.NAME }}
       - run: npm install -g yarn
       - run: yarn install --frozen-lockfile
