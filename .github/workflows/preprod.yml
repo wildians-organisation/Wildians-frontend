@@ -1,6 +1,8 @@
 name: preprod workflow
 
 on:
+  repository_dispatch:
+    types: [deploy-preprod]
   push:
     branches: [preprod]
 
