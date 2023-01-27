@@ -105,33 +105,35 @@ export default function Admin() {
 
   return (
     <>
-      <main className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
-        <div className="flex">
-          <div style={{ marginTop: 290 }}>
-            <center>
-              <p>Number of token: {nbrToken}</p>
-              <ul>{listItems2}</ul>
-            </center>
-          </div>
-          <div style={{ marginTop: 290, marginLeft: 100 }}>
-            <center>
-              <p>Adress connected: {userAddress}</p>
-              <p>
-                Number of tokens of connected address: {nbNFTConnectedAdress}
-              </p>
-              <p>Number of unique wallets connected: {numberWallets}</p>
-            </center>
-          </div>
-          <div style={{ marginTop: 290, marginLeft: 100 }}>
-            <center>
-              <p>Tezos Generated: {tezosAmount}</p>
-              <p>
-                Tezos donated to association:{" "}
-                {tezosAmount * config.ASSOCIATION_PART}
-              </p>
-              <p>Tezos for us: {tezosAmount * config.WILDIANS_PART}</p>
-            </center>
-          </div>
+      <main className="relative pt-16 pb-32 flex content-center items-center justify-center h-screen">
+        <div className="place-content-stretch flex">
+          <table className="table-auto">
+            <thead className="bg-whiteBroke">
+              <tr>
+                <th className="px-4 py-2">Number of token</th>
+                <th className="px-4 py-2">Adress connected</th>
+                <th className="px-4 py-2">Tezos Generated</th>
+              </tr>
+            </thead>
+            <tbody className="bg-emerald-200">
+              <tr>
+                <td className="border px-4 py-2">Number of token: {nbrToken}</td>
+                <td className="border px-4 py-2">Adress connected: {userAddress}</td>
+                <td className="border px-4 py-2">Tezos Generated: {tezosAmount}</td>
+
+              </tr>
+              <tr>
+                <td className="border px-4 py-2">{listItems2}</td>
+                <td className="border px-4 py-2">Number of tokens of connected address: {nbNFTConnectedAdress}</td>
+                <td className="border px-4 py-2">Tezos donated to association:{" "} {tezosAmount * config.ASSOCIATION_PART}</td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2"></td>
+                <td className="border px-4 py-2">Number of unique wallets connected: {numberWallets}</td>
+                <td className="border px-4 py-2">Tezos for us: {tezosAmount * config.WILDIANS_PART}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </main>
     </>

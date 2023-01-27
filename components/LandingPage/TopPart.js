@@ -7,7 +7,9 @@ function TopPart() {
         <Header />
         <div className="flex flex-col justify-center h-screen md:ml-32">
           <div className="text-beige text-4xl  font-mulish w-1/2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Welcome to the Wildians !
+            <br />
+            Join the adventure by buying your first NFT for sustainable development !
           </div>
           <div
             style={{ width: "fit-content" }}
