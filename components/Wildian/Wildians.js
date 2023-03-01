@@ -7,7 +7,6 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import axios from "axios";
 
-
 const nftToMint = 1;
 
 const network = { type: NetworkType.GHOSTNET };
@@ -22,7 +21,6 @@ function Wildians(Wildians) {
 
     const getTokenID = async () => {
         try {
-
             const response = await axios.get(
                 `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/`
             );
@@ -42,12 +40,12 @@ function Wildians(Wildians) {
         if (typeof window !== "undefined") {
             if (window.localStorage.getItem("beacon:accounts")) {
                 setUserAddress(
-                    JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
+                    JSON.parse(localStorage.getItem("beacon:accounts"))[0]
+                        .address
                 );
             }
             setToken_id(getTokenID());
-        }
-        else {
+        } else {
             connectToWallet();
             setToken_id(getTokenID());
         }
@@ -60,7 +58,7 @@ function Wildians(Wildians) {
             setUserAddress(activeAccount.address);
         } else {
             await wallet.requestPermissions({
-                network: network,
+                network: network
             });
             let tmp = await wallet.getPKH();
             setUserAddress(tmp);
@@ -77,9 +75,9 @@ function Wildians(Wildians) {
 
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
-        const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
-        return contract;
-    },
+            const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
+            return contract;
+        },
         /*** Function to mint the nft ***/
         mintNFT = async (url) => {
             await disconnect();
@@ -100,7 +98,6 @@ function Wildians(Wildians) {
                 .send({ amount: 1000 });
             return await op.confirmation(3);
         };
-
 
     return (
         <div className="flex flex-col justify-center items-center w-4/12">

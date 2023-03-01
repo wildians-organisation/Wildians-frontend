@@ -32,6 +32,7 @@
     "start": "next start -p $PORT",
     "build": "next build && next export",
     "dev": "next dev",
+    "prettier": "prettier --write .",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
     "build:tailwind": "tailwind build styles/index.css -o styles/tailwind.css",
     "prepare": "husky install",
@@ -59,6 +60,7 @@
     "autoprefixer": "10.2.5",
     "cypress": "^10.11.0",
     "husky": "^7.0.4",
-    "postcss": "8.2.8"
+    "postcss": "8.2.8",
+    "prettier": "2.8.4"
   }
 }

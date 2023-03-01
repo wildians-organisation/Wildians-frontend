@@ -8,8 +8,8 @@ import "styles/footer.css";
 import "../components/NFTCard/NFTCard.css";
 
 export default class MyApp extends App {
-  componentDidMount() {
-    let comment = document.createComment(`
+    componentDidMount() {
+        let comment = document.createComment(`
 
 =========================================================
 * Notus NextJS - v1.1.0 based on Tailwind Starter Kit by Creative Tim
@@ -28,46 +28,46 @@ export default class MyApp extends App {
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 `);
-    document.insertBefore(comment, document.documentElement);
-  }
-  static async getInitialProps({ Component, router, ctx }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
+        document.insertBefore(comment, document.documentElement);
     }
+    static async getInitialProps({ Component, router, ctx }) {
+        let pageProps = {};
 
-    return { pageProps };
-  }
-  render() {
-    const { Component, pageProps } = this.props;
+        if (Component.getInitialProps) {
+            pageProps = await Component.getInitialProps(ctx);
+        }
 
-    const Layout = Component.layout || (({ children }) => <>{children}</>);
+        return { pageProps };
+    }
+    render() {
+        const { Component, pageProps } = this.props;
 
-    return (
-      <React.Fragment>
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          <title>Wildians</title>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+        const Layout = Component.layout || (({ children }) => <>{children}</>);
+
+        return (
+            <React.Fragment>
+                <Head>
+                    <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                    />
+                    <title>Wildians</title>
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `
                 var script = document.createElement('script'); 
                 script.dataset.cache = true; 
                 script.dataset.websiteId = "b25f950c-8e53-400e-afef-df879dabda06";
                 script.src="https://s.abla.io/abla.js";
                 document.getElementsByTagName("head")[0].appendChild(script);
-            `,
-            }}
-          />
-        </Head>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </React.Fragment>
-    );
-  }
+            `
+                        }}
+                    />
+                </Head>
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
+            </React.Fragment>
+        );
+    }
 }
