@@ -110,56 +110,6 @@ export default function Admin() {
 
     return (
         <>
-            {/* <main className="relative pt-16 pb-32 flex content-center items-center justify-center h-screen">
-                <div className="place-content-stretch flex">
-                    <table className="table-auto">
-                        <thead className="bg-whiteBroke">
-                            <tr>
-                                <th className="px-4 py-2">Number of token</th>
-                                <th className="px-4 py-2">Adress connected</th>
-                                <th className="px-4 py-2">Tezos Generated</th>
-                            </tr>
-                        </thead>
-                        <tbody className="bg-emerald-200">
-                            <tr>
-                                <td className="border px-4 py-2">
-                                    Number of token: {nbrToken}
-                                </td>
-                                <td className="border px-4 py-2">
-                                    Adress connected: {userAddress}
-                                </td>
-                                <td className="border px-4 py-2">
-                                    Tezos Generated: {tezosAmount}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="border px-4 py-2">
-                                    {listItems2}
-                                </td>
-                                <td className="border px-4 py-2">
-                                    Number of tokens of connected address:{" "}
-                                    {nbNFTConnectedAdress}
-                                </td>
-                                <td className="border px-4 py-2">
-                                    Tezos donated to association:{" "}
-                                    {tezosAmount * config.ASSOCIATION_PART}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="border px-4 py-2"></td>
-                                <td className="border px-4 py-2">
-                                    Number of unique wallets connected:{" "}
-                                    {numberWallets}
-                                </td>
-                                <td className="border px-4 py-2">
-                                    Tezos for us:{" "}
-                                    {tezosAmount * config.WILDIANS_PART}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </main> */}
             <div className="bg-gray-100">
                 <Layout>
                     <p className="text-gray-700 text-3xl mb-16 font-bold">
