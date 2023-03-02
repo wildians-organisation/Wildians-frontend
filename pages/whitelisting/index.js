@@ -3,7 +3,7 @@ import axios from "axios";
 import * as config from "../../config/config.js";
 import { initializeApp } from "firebase/app";
 import { getFunctions, httpsCallable } from "firebase/functions";
-import Layout from "../../components/AdminDashboard/Layout";
+import Layout from "../../components/AdminDashBoard/Layout";
 import { Component } from "react/cjs/react.production.min.js";
 
 const firebaseConfig = {
