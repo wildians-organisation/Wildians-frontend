@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
-import SideBar from "./SideBar";
+import SideBar from "./Sidebar";
 import TopBar from "./TopBar";
 import { Transition } from "@headlessui/react";
 
