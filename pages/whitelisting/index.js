@@ -163,36 +163,15 @@ export default function Admin() {
             <div className="bg-gray-100">
                 <Layout>
                     <p className="text-gray-700 text-3xl mb-16 font-bold">
-                        Tableau de bord
+                        Whitelisting
                     </p>
+
                     <div className="grid lg:grid-cols-3 gap-5 mb-16">
-                        <div className="rounded bg-white h-40 shadow-sm">
-                            Tezos for us: {tezosAmount * config.WILDIANS_PART}
-                        </div>
-                        <div className="rounded bg-white h-40 shadow-sm">
-                            {" "}
-                            Tezos donated to association:{" "}
-                            {tezosAmount * config.ASSOCIATION_PART}
-                        </div>
-                        <div className="rounded bg-white h-40 shadow-sm">
-                        Number of token: {nbrToken}
-                        </div>
+                        <div className="rounded bg-white h-40 shadow-sm"></div>
+                        <div className="rounded bg-white h-40 shadow-sm"></div>
+                        <div className="rounded bg-white h-40 shadow-sm"></div>
                     </div>
-                    <div className="grid bg-white h-96 shadow-sm">
-                        <div className="border px-4 py-2">
-                        Tezos Generated: {tezosAmount}
-                        </div>
-                        <div className="border px-4 py-2">
-                            Adress connected: {userAddress}
-                        </div>
-                        <div className="border px-4 py-2">
-                            Number of unique wallets connected: {numberWallets}
-                        </div>
-                        <div className="border px-4 py-2">
-                            Number of tokens of connected address:{" "}
-                            {nbNFTConnectedAdress}
-                        </div>
-                    </div>
+                    <div className="grid col-1 bg-white h-96 shadow-sm"></div>
                 </Layout>
             </div>
         </>
