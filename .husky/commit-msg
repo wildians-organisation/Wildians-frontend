@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+COMMIT_MSG="$(cat $1)"
+PATTERN="[[a-zA-Z]*][ ][ a-zA-Z0-9_-]*"
+
+if ! [[ "$COMMIT_MSG" =~ $PATTERN ]]; then
+  echo Bad commit message $COMMIT_MSG. It must be in the format of '[SOMETHING] message here' 
+  exit 1
+fi
