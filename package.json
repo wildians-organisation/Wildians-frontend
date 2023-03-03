@@ -1,66 +1,66 @@
 {
-  "name": "notus-nextjs",
-  "homepage": "https://demos.creative-tim.com/notus-nextjs",
-  "version": "1.1.0",
-  "description": "Notus NextJS - A free Tailwind CSS, NextJS and React Ui Kit and Admin by Creative Tim.",
-  "repository": "https://github.com/creativetimofficial/notus-nextjs",
-  "license": "MIT",
-  "dependencies": {
-    "@airgap/beacon-sdk": "^3.3.0",
-    "@fortawesome/fontawesome-free": "5.15.3",
-    "@headlessui/react": "^1.5.0",
-    "@heroicons/react": "^1.0.6",
-    "@popperjs/core": "2.9.1",
-    "@tailwindcss/forms": "0.2.1",
-    "@taquito/beacon-wallet": "^12.1.1",
-    "@taquito/taquito": "^12.1.1",
-    "@taquito/tzip16": "^12.1.1",
-    "chart.js": "2.9.4",
-    "constate": "^3.3.0",
-    "firebase": "9.15.0",
-    "gulp": "4.0.2",
-    "gulp-append-prepend": "1.0.8",
-    "headlessui": "^0.0.0",
-    "next": "10.0.9",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-icons": "^4.6.0",
-    "react-scripts": "4.0.3",
-    "tailwindcss": "2.0.4"
-  },
-  "scripts": {
-    "start": "next start -p $PORT",
-    "build": "next build && next export",
-    "dev": "next dev",
-    "prettier": "prettier --write .",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
-    "build:tailwind": "tailwind build styles/index.css -o styles/tailwind.css",
-    "prepare": "husky install",
-    "test": "jest"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "optionalDependencies": {
-    "typescript": "4.2.3"
-  },
-  "devDependencies": {
-    "autoprefixer": "10.2.5",
-    "cypress": "^10.11.0",
-    "husky": "^7.0.4",
-    "postcss": "8.2.8",
-    "prettier": "2.8.4"
-  }
+    "name": "notus-nextjs",
+    "homepage": "https://demos.creative-tim.com/notus-nextjs",
+    "version": "1.1.0",
+    "description": "Notus NextJS - A free Tailwind CSS, NextJS and React Ui Kit and Admin by Creative Tim.",
+    "repository": "https://github.com/creativetimofficial/notus-nextjs",
+    "license": "MIT",
+    "dependencies": {
+        "@airgap/beacon-sdk": "3.3.0",
+        "@fortawesome/fontawesome-free": "5.15.3",
+        "@headlessui/react": "1.5.0",
+        "@heroicons/react": "1.0.6",
+        "@popperjs/core": "2.9.1",
+        "@tailwindcss/forms": "0.2.1",
+        "@taquito/beacon-wallet": "12.1.1",
+        "@taquito/taquito": "12.1.1",
+        "@taquito/tzip16": "12.1.1",
+        "chart.js": "2.9.4",
+        "constate": "3.3.0",
+        "firebase": "9.15.0",
+        "gulp": "4.0.2",
+        "gulp-append-prepend": "1.0.8",
+        "headlessui": "0.0.0",
+        "next": "10.0.9",
+        "react": "17.0.1",
+        "react-dom": "17.0.1",
+        "react-icons": "4.6.0",
+        "react-scripts": "4.0.3",
+        "tailwindcss": "2.0.4"
+    },
+    "scripts": {
+        "start": "next start -p $PORT",
+        "build": "next build && next export",
+        "dev": "next dev",
+        "prettier": "prettier --write .",
+        "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
+        "build:tailwind": "tailwind build styles/index.css -o styles/tailwind.css",
+        "prepare": "husky install",
+        "test": "jest"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "optionalDependencies": {
+        "typescript": "4.2.3"
+    },
+    "devDependencies": {
+        "autoprefixer": "10.2.5",
+        "cypress": "10.11.0",
+        "husky": "7.0.4",
+        "postcss": "8.2.8",
+        "prettier": "2.8.4"
+    }
 }
