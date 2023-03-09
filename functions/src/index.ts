@@ -1,37 +1,50 @@
 import * as functions from "firebase-functions";
 import * as cors from "cors";
-import * as config from "../../config/config.js";
+import { database, firestore } from "firebase-admin";
+import DataSnapshot = database.DataSnapshot;
+import Timestamp = firestore.Timestamp;
 const admin = require("firebase-admin");
 admin.initializeApp();
 
-//enabling cors
+// Enable CORS
 const corsHandler = cors({ origin: "*" });
 
 export const addWallet = functions
-    .region(config.BUCKET_REGION)
+    .region("europe-west1")
     .https.onRequest((request, response) => {
         corsHandler(request, response, async () => {
-            //get realtime database
-
+            // Get real time database
             const db = admin.database();
+
             const ref = db.ref("users");
 
-            const childValue = request.body.data.value;
-            //response.send(childValue);
+            const walletAddress = request.body.data.value;
+            const now = Timestamp.now();
+            let exist = false;
 
-            ref.orderByValue()
-                .equalTo(childValue)
-                .once("value", (snapshot: { exists: () => any }) => {
-                    if (!snapshot.exists()) {
-                        // If the child does not exist, add it to the reference
-                        ref.push(childValue);
+            await ref.once("value", (dataSnapshot: DataSnapshot) => {
+                dataSnapshot.forEach((snapshot) => {
+                    if (snapshot.val().walletAddress === walletAddress) {
+                        exist = true;
+                        snapshot.ref.update({
+                            lastConnection: now
+                        });
                     }
                 });
+            });
+
+            if (!exist) {
+                ref.push({
+                    walletAddress: walletAddress,
+                    firstConnection: now,
+                    lastConnection: now
+                });
+            }
         });
     });
 
 export const countWallets = functions
-    .region(config.BUCKET_REGION)
+    .region("europe-west1")
     .https.onRequest((request, response) => {
         corsHandler(request, response, async () => {
             const db = admin.database();
