@@ -1,5 +1,5 @@
 {
-        "@airgap/beacon-sdk": "3.3.0",
+    "@airgap/beacon-sdk": "3.3.0",
     "name": "notus-nextjs",
     "homepage": "https://demos.creative-tim.com/notus-nextjs",
     "version": "1.1.0",
@@ -9,9 +9,9 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "5.15.3",
         "@headlessui/react": "1.5.0",
-    "@heroicons/react": "2.0.16",
-    "@popperjs/core": "2.9.1",
-    "@tailwindcss/forms": "0.2.1",
+        "@heroicons/react": "2.0.16",
+        "@popperjs/core": "2.9.1",
+        "@tailwindcss/forms": "0.2.1",
         "@taquito/beacon-wallet": "12.1.1",
         "@taquito/taquito": "12.1.1",
         "@taquito/tzip16": "12.1.1",
