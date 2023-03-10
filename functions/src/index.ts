@@ -1,8 +1,7 @@
 import * as functions from "firebase-functions";
 import * as cors from "cors";
-import { database, firestore } from "firebase-admin";
+import { database } from "firebase-admin";
 import DataSnapshot = database.DataSnapshot;
-import Timestamp = firestore.Timestamp;
 const admin = require("firebase-admin");
 admin.initializeApp();
 
@@ -20,7 +19,7 @@ export const addWallet = functions
             const ref = db.ref("users");
 
             const walletAddress = request.body.data.value;
-            const now = Timestamp.now();
+            const now = Date.now();
             let exist = false;
 
             await ref.once("value", (dataSnapshot: DataSnapshot) => {
@@ -83,17 +82,16 @@ export const getUsersMonth = functions
             // Go to the path "users"
             const ref = db.ref("users");
             let count = 0;
-            const currentMonth = Timestamp.now().getMonth();
+            const currentMonth = new Date().getMonth();
 
             // Get a snapshot of the path
             await ref.once("value", (dataSnapshot: DataSnapshot) => {
                 dataSnapshot.forEach((snapshot: DataSnapshot) => {
                     const snapshotValue = snapshot.val();
-                    const currentUserTimestamp = Timestamp(
-                        snapshotValue.seconds.toInt(),
-                        snapshotValue.nanoseconds.toInt()
+                    const currentUserDate = new Date(
+                        snapshotValue.lastConnection
                     );
-                    if (currentUserTimestamp.getMonth() === currentMonth) {
+                    if (currentUserDate.getMonth() === currentMonth) {
                         count++;
                     }
                 });
