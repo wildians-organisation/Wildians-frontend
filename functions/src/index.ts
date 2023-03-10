@@ -9,6 +9,7 @@ admin.initializeApp();
 // Enable CORS
 const corsHandler = cors({ origin: "*" });
 
+// Add or update a user when sign in
 export const addWallet = functions
     .region("europe-west1")
     .https.onRequest((request, response) => {
@@ -57,6 +58,7 @@ export const countWallets = functions
         });
     });
 
+// Get all users data from the database.
 export const getUsers = functions
     .region("europe-west1")
     .https.onRequest((request, response) => {
