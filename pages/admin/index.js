@@ -27,6 +27,7 @@ export default function Admin() {
     const [transacAmount, setTransacAmount] = React.useState(0);
     const [clientAmount, setClientAmount] = React.useState(0);
     const [numberWallets, setNumberWallets] = React.useState(0);
+    const [lastTransacWallets, setlastTransacWallets] = React.useState(new Map());
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
@@ -52,6 +53,7 @@ export default function Admin() {
         let totalTransac = 0;
         let totalClient = 0;
         var wallets = new Map();
+        var lastTransacWallet = new Map();
         response.data.forEach((element) => {
             if (element.operation.type != "origination") {
                 let data_value = element.operation.parameter.value;
@@ -64,10 +66,12 @@ export default function Admin() {
                         wallets.get(data_value.address) + 1
                     );
                     totalTransac = totalTransac + 1;
+                    lastTransacWallet.set(data_value.address,element.timestamp);
                 } else {
                     wallets.set(data_value.address, 1);
                     totalTransac = totalTransac + 1;
                     totalClient = totalClient + 1;
+                    lastTransacWallet.set(data_value.address,element.timestamp);
                 }
             }
         });
@@ -76,6 +80,7 @@ export default function Admin() {
         setTezosAmount(tmpAmount);
         setTransacAmount(totalTransac);
         setClientAmount(totalClient);
+        setlastTransacWallets(lastTransacWallet);
     };
 
     // Get the number of NFTs of the wallet connected
@@ -121,7 +126,8 @@ export default function Admin() {
         <React.Fragment>
             <tr>
                 <td className="border px-4 py-2">{addr[0]}</td>
-                <td className="border px-4 py-2">{addr[1]}</td>
+                <td className="border px-4 py-2 text-center">{addr[1]}</td>
+                <td className="border px-4 py-2">{new Date(lastTransacWallets.get(addr[0])).toLocaleString()}</td>
             </tr>
         </React.Fragment>
     ));
@@ -133,11 +139,7 @@ export default function Admin() {
                     <p className="text-gray-700 text-3xl mb-16 font-bold">
                         Wallet Info
                     </p>
-                    <div className="grid lg:grid-cols-3 gap-5 mb-16">
-                        <div className="rounded bg-white h-40 shadow-sm">
-                            {" "}
-                            Nombre de wallet unique connecté: {numberWallets}
-                        </div>
+                    <div className="container m-auto grid grid-cols-2 gap-4">
                         <div className="rounded bg-white h-40 shadow-sm">
                             {" "}
                             Total transaction: {transacAmount}
@@ -147,43 +149,18 @@ export default function Admin() {
                             Total client wallet: {clientAmount}
                         </div>
                     </div>
-                    <div className="grid lg:grid-row-2 gap-5 mb-16">
-                        <caption>Wallet connecté</caption>
-                        <table className="table">
-                            <thead className="bg-whiteBroke">
-                                <tr>
-                                    <th className="border px-4 py-2">
-                                        Adresse Wallet
-                                    </th>
-                                    <th className="border px-4 py-2">
-                                        Nombre de token
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td className="border px-4 py-2">
-                                        {" "}
-                                        {userAddress}
-                                    </td>
-                                    <td className="border px-4 py-2">
-                                        {" "}
-                                        {nbNFTConnectedAdress}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <caption>
-                            Historique des wallets avec transaction
-                        </caption>
+                    <div className="grid lg:grid-row-1 gap-5 mb-16">
                         <table className="table">
                             <thead className="bg-whiteBroke">
                                 <tr>
                                     <th className="b‡order px-4 py-2">
-                                        Adresse Wallet
+                                        Wallet Address
                                     </th>
                                     <th className="border px-4 py-2">
-                                        Nombre de transaction
+                                        Total transaction
+                                    </th>
+                                    <th className="border px-4 py-2">
+                                        Last transaction
                                     </th>
                                 </tr>
                             </thead>
