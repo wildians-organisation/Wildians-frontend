@@ -113,7 +113,7 @@ export default function Admin() {
             <div className="bg-gray-100">
                 <Layout>
                     <p className="text-gray-700 text-3xl mb-16 font-bold">
-                        Revenus
+                        Finance
                     </p>
 
                     <div className="grid lg:grid-cols-3 gap-5 mb-16">
@@ -131,7 +131,7 @@ export default function Admin() {
                     </div>
 
                     <div className="grid col-1 bg-white h-96 shadow-sm">
-                    <div className="rounded bg-white h-40 shadow-sm">
+                        <div className="rounded bg-white h-40 shadow-sm">
                             {" "}
                             Number of token: {nbrToken}
                         </div>
