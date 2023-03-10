@@ -24,7 +24,10 @@ export default function Admin() {
     const [userAddress, setUserAddress] = React.useState("");
     const [userNFTs, setUserNFTs] = React.useState([]);
     const [tezosAmount, setTezosAmount] = React.useState(0);
+    const [transacAmount, setTransacAmount] = React.useState(0);
+    const [clientAmount, setClientAmount] = React.useState(0);
     const [numberWallets, setNumberWallets] = React.useState(0);
+    const [lastTransacWallets, setlastTransacWallets] = React.useState(new Map());
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
@@ -47,7 +50,10 @@ export default function Admin() {
         setNbrToken(nbrNftMinted - 1);
         let tmp = [];
         let tmpAmount = 0;
+        let totalTransac = 0;
+        let totalClient = 0;
         var wallets = new Map();
+        var lastTransacWallet = new Map();
         response.data.forEach((element) => {
             if (element.operation.type != "origination") {
                 let data_value = element.operation.parameter.value;
@@ -59,14 +65,22 @@ export default function Admin() {
                         data_value.address,
                         wallets.get(data_value.address) + 1
                     );
+                    totalTransac = totalTransac + 1;
+                    lastTransacWallet.set(data_value.address,element.timestamp);
                 } else {
                     wallets.set(data_value.address, 1);
+                    totalTransac = totalTransac + 1;
+                    totalClient = totalClient + 1;
+                    lastTransacWallet.set(data_value.address,element.timestamp);
                 }
             }
         });
         setClientsAddress(tmp);
         setUserNFTs(wallets);
         setTezosAmount(tmpAmount);
+        setTransacAmount(totalTransac);
+        setClientAmount(totalClient);
+        setlastTransacWallets(lastTransacWallet);
     };
 
     // Get the number of NFTs of the wallet connected
@@ -108,40 +122,50 @@ export default function Admin() {
         </li>
     ));
 
+    const arrayTest = Array.from(userNFTs).map((addr, id) => (
+        <React.Fragment>
+            <tr>
+                <td className="border px-4 py-2">{addr[0]}</td>
+                <td className="border px-4 py-2 text-center">{addr[1]}</td>
+                <td className="border px-4 py-2">{new Date(lastTransacWallets.get(addr[0])).toLocaleString()}</td>
+            </tr>
+        </React.Fragment>
+    ));
+
     return (
         <>
             <div className="bg-gray-100">
                 <Layout>
                     <p className="text-gray-700 text-3xl mb-16 font-bold">
-                        Tableau de bord
+                        Wallet Info
                     </p>
-                    <div className="grid lg:grid-cols-3 gap-5 mb-16">
+                    <div className="container m-auto grid grid-cols-2 gap-4">
                         <div className="rounded bg-white h-40 shadow-sm">
-                            Tezos for us: {tezosAmount * config.WILDIANS_PART}
+                            {" "}
+                            Total transaction: {transacAmount}
                         </div>
                         <div className="rounded bg-white h-40 shadow-sm">
                             {" "}
-                            Tezos donated to association:{" "}
-                            {tezosAmount * config.ASSOCIATION_PART}
-                        </div>
-                        <div className="rounded bg-white h-40 shadow-sm">
-                        Number of token: {nbrToken}
+                            Total client wallet: {clientAmount}
                         </div>
                     </div>
-                    <div className="grid bg-white h-96 shadow-sm">
-                        <div className="border px-4 py-2">
-                        Tezos Generated: {tezosAmount}
-                        </div>
-                        <div className="border px-4 py-2">
-                            Adress connected: {userAddress}
-                        </div>
-                        <div className="border px-4 py-2">
-                            Number of unique wallets connected: {numberWallets}
-                        </div>
-                        <div className="border px-4 py-2">
-                            Number of tokens of connected address:{" "}
-                            {nbNFTConnectedAdress}
-                        </div>
+                    <div className="grid lg:grid-row-1 gap-5 mb-16">
+                        <table className="table">
+                            <thead className="bg-whiteBroke">
+                                <tr>
+                                    <th className="b‡order px-4 py-2">
+                                        Wallet Address
+                                    </th>
+                                    <th className="border px-4 py-2">
+                                        Total transaction
+                                    </th>
+                                    <th className="border px-4 py-2">
+                                        Last transaction
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>{arrayTest}</tbody>
+                        </table>
                     </div>
                 </Layout>
             </div>
