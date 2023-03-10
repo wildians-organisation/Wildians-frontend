@@ -26,8 +26,11 @@ export default function Admin() {
     const [tezosAmount, setTezosAmount] = React.useState(0);
     const [transacAmount, setTransacAmount] = React.useState(0);
     const [clientAmount, setClientAmount] = React.useState(0);
+    const [currentMonthConnexion, setCurrentMonthConnexion] = React.useState(0);
     const [numberWallets, setNumberWallets] = React.useState(0);
-    const [lastTransacWallets, setlastTransacWallets] = React.useState(new Map());
+    const [lastTransacWallets, setlastTransacWallets] = React.useState(
+        new Map()
+    );
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
@@ -41,6 +44,18 @@ export default function Admin() {
             console.error(e);
         }
     };
+
+    //Get the number of connexion this month
+    const countMonthConnexion = httpsCallable(functions, "getUsers");
+    const getMonthConnexion = async () => {
+        try {
+            const response = await countMonthConnexion();
+            setNumberWallets(response.data);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
     // Get informations about the smartcontract with the tzkt api
     const getContractInformations = async () => {
         const response = await axios.get(
@@ -66,12 +81,18 @@ export default function Admin() {
                         wallets.get(data_value.address) + 1
                     );
                     totalTransac = totalTransac + 1;
-                    lastTransacWallet.set(data_value.address,element.timestamp);
+                    lastTransacWallet.set(
+                        data_value.address,
+                        element.timestamp
+                    );
                 } else {
                     wallets.set(data_value.address, 1);
                     totalTransac = totalTransac + 1;
                     totalClient = totalClient + 1;
-                    lastTransacWallet.set(data_value.address,element.timestamp);
+                    lastTransacWallet.set(
+                        data_value.address,
+                        element.timestamp
+                    );
                 }
             }
         });
@@ -127,7 +148,9 @@ export default function Admin() {
             <tr>
                 <td className="border px-4 py-2">{addr[0]}</td>
                 <td className="border px-4 py-2 text-center">{addr[1]}</td>
-                <td className="border px-4 py-2">{new Date(lastTransacWallets.get(addr[0])).toLocaleString()}</td>
+                <td className="border px-4 py-2">
+                    {new Date(lastTransacWallets.get(addr[0])).toLocaleString()}
+                </td>
             </tr>
         </React.Fragment>
     ));
@@ -139,7 +162,8 @@ export default function Admin() {
                     <p className="text-gray-700 text-3xl mb-16 font-bold">
                         Wallet Info
                     </p>
-                    <div className="container m-auto grid grid-cols-2 gap-4">
+
+                    <div className="grid lg:grid-cols-3 gap-5 mb-16">
                         <div className="rounded bg-white h-40 shadow-sm">
                             {" "}
                             Total transaction: {transacAmount}
@@ -148,9 +172,13 @@ export default function Admin() {
                             {" "}
                             Total client wallet: {clientAmount}
                         </div>
+                        <div className="rounded bg-white h-40 shadow-sm">
+                            {" "}
+                            Total connexion this month: {currentMonthConnexion}
+                        </div>
                     </div>
-                    <div className="grid lg:grid-row-1 gap-5 mb-16">
-                        <table className="table">
+                    <div className="grid col-1 bg-white h-96 shadow-sm">
+                        <table className="table-auto">
                             <thead className="bg-whiteBroke">
                                 <tr>
                                     <th className="b‡order px-4 py-2">
