@@ -71,3 +71,34 @@ export const getUsers = functions
             });
         });
     });
+
+// Get number of connections of the current month
+export const getUsersMonth = functions
+    .region("europe-west1")
+    .https.onRequest((request, response) => {
+        corsHandler(request, response, async () => {
+            // Connect to the db
+            const db = admin.database();
+
+            // Go to the path "users"
+            const ref = db.ref("users");
+            let count = 0;
+            const currentMonth = Timestamp.now().getMonth();
+
+            // Get a snapshot of the path
+            await ref.once("value", (dataSnapshot: DataSnapshot) => {
+                dataSnapshot.forEach((snapshot: DataSnapshot) => {
+                    const snapshotValue = snapshot.val();
+                    const currentUserTimestamp = Timestamp(
+                        snapshotValue.seconds.toInt(),
+                        snapshotValue.nanoseconds.toInt()
+                    );
+                    if (currentUserTimestamp.getMonth() === currentMonth) {
+                        count++;
+                    }
+                });
+            });
+
+            response.send(count);
+        });
+    });
