@@ -56,3 +56,16 @@ export const countWallets = functions
             });
         });
     });
+
+export const getUsers = functions
+    .region("europe-west1")
+    .https.onRequest((request, response) => {
+        corsHandler(request, response, async () => {
+            const db = admin.database();
+            const ref = db.ref("users");
+
+            await ref.once("value", (dataSnapshot: DataSnapshot) => {
+                response.send(dataSnapshot.val());
+            });
+        });
+    });
