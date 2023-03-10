@@ -37,14 +37,14 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                             <ComputerDesktopIcon className="h-5 w-5" />
                         </div>
                         <div>
-                            <p>Tableau de bord</p>
+                            <p>Wallet info</p>
                         </div>
                     </div>
                 </Link>
-                <Link href="/revenus">
+                <Link href="/finance">
                     <div
                         className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-                            router.pathname == "/revenus"
+                            router.pathname == "/finance"
                                 ? "bg-greeny text-greenkaki"
                                 : "text-beige md:hover:bg-greenkaki md:hover:text-greeny"
                         }`}
@@ -53,7 +53,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                             <BanknotesIcon className="h-5 w-5" />
                         </div>
                         <div>
-                            <p>Revenus</p>
+                            <p>Finance</p>
                         </div>
                     </div>
                 </Link>
