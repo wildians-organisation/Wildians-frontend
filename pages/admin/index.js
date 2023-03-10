@@ -24,6 +24,8 @@ export default function Admin() {
     const [userAddress, setUserAddress] = React.useState("");
     const [userNFTs, setUserNFTs] = React.useState([]);
     const [tezosAmount, setTezosAmount] = React.useState(0);
+    const [transacAmount, setTransacAmount] = React.useState(0);
+    const [clientAmount, setClientAmount] = React.useState(0);
     const [numberWallets, setNumberWallets] = React.useState(0);
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
@@ -47,6 +49,8 @@ export default function Admin() {
         setNbrToken(nbrNftMinted - 1);
         let tmp = [];
         let tmpAmount = 0;
+        let totalTransac = 0;
+        let totalClient = 0;
         var wallets = new Map();
         response.data.forEach((element) => {
             if (element.operation.type != "origination") {
@@ -59,14 +63,19 @@ export default function Admin() {
                         data_value.address,
                         wallets.get(data_value.address) + 1
                     );
+                    totalTransac = totalTransac + 1;
                 } else {
                     wallets.set(data_value.address, 1);
+                    totalTransac = totalTransac + 1;
+                    totalClient = totalClient + 1;
                 }
             }
         });
         setClientsAddress(tmp);
         setUserNFTs(wallets);
         setTezosAmount(tmpAmount);
+        setTransacAmount(totalTransac);
+        setClientAmount(totalClient);
     };
 
     // Get the number of NFTs of the wallet connected
@@ -108,40 +117,78 @@ export default function Admin() {
         </li>
     ));
 
+    const arrayTest = Array.from(userNFTs).map((addr, id) => (
+        <React.Fragment>
+            <tr>
+                <td className="border px-4 py-2">{addr[0]}</td>
+                <td className="border px-4 py-2">{addr[1]}</td>
+            </tr>
+        </React.Fragment>
+    ));
+
     return (
         <>
             <div className="bg-gray-100">
                 <Layout>
                     <p className="text-gray-700 text-3xl mb-16 font-bold">
-                        Tableau de bord
+                        Wallet Info
                     </p>
                     <div className="grid lg:grid-cols-3 gap-5 mb-16">
                         <div className="rounded bg-white h-40 shadow-sm">
-                            Tezos for us: {tezosAmount * config.WILDIANS_PART}
+                            {" "}
+                            Nombre de wallet unique connecté: {numberWallets}
                         </div>
                         <div className="rounded bg-white h-40 shadow-sm">
                             {" "}
-                            Tezos donated to association:{" "}
-                            {tezosAmount * config.ASSOCIATION_PART}
+                            Total transaction: {transacAmount}
                         </div>
                         <div className="rounded bg-white h-40 shadow-sm">
-                        Number of token: {nbrToken}
+                            {" "}
+                            Total client wallet: {clientAmount}
                         </div>
                     </div>
-                    <div className="grid bg-white h-96 shadow-sm">
-                        <div className="border px-4 py-2">
-                        Tezos Generated: {tezosAmount}
-                        </div>
-                        <div className="border px-4 py-2">
-                            Adress connected: {userAddress}
-                        </div>
-                        <div className="border px-4 py-2">
-                            Number of unique wallets connected: {numberWallets}
-                        </div>
-                        <div className="border px-4 py-2">
-                            Number of tokens of connected address:{" "}
-                            {nbNFTConnectedAdress}
-                        </div>
+                    <div className="grid lg:grid-row-2 gap-5 mb-16">
+                        <caption>Wallet connecté</caption>
+                        <table className="table">
+                            <thead className="bg-whiteBroke">
+                                <tr>
+                                    <th className="border px-4 py-2">
+                                        Adresse Wallet
+                                    </th>
+                                    <th className="border px-4 py-2">
+                                        Nombre de token
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td className="border px-4 py-2">
+                                        {" "}
+                                        {userAddress}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                        {" "}
+                                        {nbNFTConnectedAdress}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <caption>
+                            Historique des wallets avec transaction
+                        </caption>
+                        <table className="table">
+                            <thead className="bg-whiteBroke">
+                                <tr>
+                                    <th className="b‡order px-4 py-2">
+                                        Adresse Wallet
+                                    </th>
+                                    <th className="border px-4 py-2">
+                                        Nombre de transaction
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>{arrayTest}</tbody>
+                        </table>
                     </div>
                 </Layout>
             </div>
