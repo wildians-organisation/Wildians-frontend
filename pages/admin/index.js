@@ -133,11 +133,6 @@ export default function Admin() {
         </li>
     ));
 
-    /*
-    arrayTest.push({adress:{addr[0]},transac:{addr[1]},last:{new Date(lastTransacWallets.get(addr[0])).toLocaleString()}});
-        this
-    */
-
     //create a list of the last transaction of each wallet
 
     const data = Array.from(userNFTs, ([key, value]) => {
