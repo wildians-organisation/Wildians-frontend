@@ -76,7 +76,9 @@ const data = [
 export default function TransactionChart() {
     return (
         <div>
-            <strong className="text-gray-700 font-medium">Connexion /Transaction</strong>
+            <strong className="text-gray-700 font-medium">
+                Connexion /Transaction
+            </strong>
             <div className="bg-white h-96 shadow-sm">
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart
@@ -90,7 +92,10 @@ export default function TransactionChart() {
                             bottom: 0
                         }}
                     >
-                        <CartesianGrid strokeDasharray="3 3 0 0" vertical={false} />
+                        <CartesianGrid
+                            strokeDasharray="3 3 0 0"
+                            vertical={false}
+                        />
                         <XAxis dataKey="name" />
                         <YAxis />
                         <Tooltip />
