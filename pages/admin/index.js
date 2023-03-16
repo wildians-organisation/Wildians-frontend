@@ -6,6 +6,8 @@ import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "../../components/AdminDashBoard/Layout";
 import TopCards from "components/AdminDashBoard/TopCards.js";
 import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
+import TransactionChart from "components/AdminDashBoard/TransactionChart.js"
+import RecentOrders from "components/AdminDashBoard/RecentOrders.js"
 
 const firebaseConfig = {
     apiKey: `${config.GCPAPIKEY}`,
@@ -28,9 +30,7 @@ export default function Admin() {
     const [transacAmount, setTransacAmount] = React.useState(0);
     const [clientAmount, setClientAmount] = React.useState(0);
     const [numberWallets, setNumberWallets] = React.useState(0);
-    const [lastTransacWallets, setlastTransacWallets] = React.useState(
-        new Map()
-    );
+    const [lastTransacWallets, setlastTransacWallets] = React.useState(new Map());
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
@@ -131,17 +131,25 @@ export default function Admin() {
         </li>
     ));
 
-    const arrayTest = Array.from(userNFTs).map((addr, id) => (
-        <React.Fragment>
-            <tr>
-                <td className="border px-4 py-2">{addr[0]}</td>
-                <td className="border px-4 py-2 text-center">{addr[1]}</td>
-                <td className="border px-4 py-2">
-                    {new Date(lastTransacWallets.get(addr[0])).toLocaleString()}
-                </td>
-            </tr>
-        </React.Fragment>
-    ));
+    /*
+    arrayTest.push({adress:{addr[0]},transac:{addr[1]},last:{new Date(lastTransacWallets.get(addr[0])).toLocaleString()}});
+        this
+    */
+
+
+    //create a list of the last transaction of each wallet
+
+
+    const data = Array.from(userNFTs, ([key, value]) => {
+        console.log
+        const element = { adress: key, transac: value, last: new Date(lastTransacWallets.get(key)).toLocaleString()};
+        return { adress: element.adress, transac: element.transac, last: element.last };
+      });
+      
+
+    console.log(data);
+
+
 
     return (
         <>
@@ -149,7 +157,8 @@ export default function Admin() {
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
                     Wallet info
                 </p>
-                <DashboardStatsGrid></DashboardStatsGrid>
+                <DashboardStatsGrid/>
+                <TransactionChart />
             </Layout>
         </>
     );

@@ -5,6 +5,8 @@ import { initializeApp } from "firebase/app";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "components/AdminDashBoard/Layout.js";
 import { Component } from "react/cjs/react.production.min.js";
+import FinanceStatsGrid from "components/AdminDashBoard/FinanceStatsGrid.js";
+import OrganisationRepartition from "components/AdminDashBoard/OrganisationRepartition.js";
 
 const firebaseConfig = {
     apiKey: `${config.GCPAPIKEY}`,
@@ -114,27 +116,8 @@ export default function Admin() {
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
                     Finance
                 </p>
-
-                <div className="grid lg:grid-cols-3 gap-5 mb-16">
-                    <div className="rounded bg-white h-40 shadow-sm">
-                        Tezos Generated: {tezosAmount}
-                    </div>
-                    <div className="rounded bg-white h-40 shadow-sm">
-                        Tezos for us: {tezosAmount * config.WILDIANS_PART}
-                    </div>
-                    <div className="rounded bg-white h-40 shadow-sm">
-                        {" "}
-                        Tezos donated to association:{" "}
-                        {tezosAmount * config.ASSOCIATION_PART}
-                    </div>
-                </div>
-
-                <div className="grid col-1 bg-white h-96 shadow-sm">
-                    <div className="rounded bg-white h-40 shadow-sm">
-                        {" "}
-                        Number of token: {nbrToken}
-                    </div>
-                </div>
+                <FinanceStatsGrid/>
+                <OrganisationRepartition/>
             </Layout>
         </>
     );

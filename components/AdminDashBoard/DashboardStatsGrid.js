@@ -54,6 +54,7 @@ export default function DashboardStatsGrid() {
                         <strong className="text-xl text-gray-700 font-semibold">
                             03/14/2023
                         </strong>
+                        <span className="text-xl text-gray-700 p-3">21:51</span>
                     </div>
                 </div>
             </BoxWrapper>
