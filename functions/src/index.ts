@@ -1,5 +1,6 @@
 import * as functions from "firebase-functions";
 import * as cors from "cors";
+import { initializeYearConnections } from "./utils/utils";
 import { database } from "firebase-admin";
 import DataSnapshot = database.DataSnapshot;
 const admin = require("firebase-admin");
@@ -40,6 +41,8 @@ export const addWallet = functions
                     lastConnection: now
                 });
             }
+
+            response.send("yes");
         });
     });
 
@@ -72,7 +75,7 @@ export const getUsers = functions
     });
 
 // Get number of connections of the current month
-export const getUsersMonth = functions
+export const getYearConnections = functions
     .region("europe-west1")
     .https.onRequest((request, response) => {
         corsHandler(request, response, async () => {
@@ -81,8 +84,8 @@ export const getUsersMonth = functions
 
             // Go to the path "users"
             const ref = db.ref("users");
-            let count = 0;
-            const currentMonth = new Date().getMonth();
+            let yearConnections: number[] = initializeYearConnections();
+            let currentYear = new Date().getFullYear();
 
             // Get a snapshot of the path
             await ref.once("value", (dataSnapshot: DataSnapshot) => {
@@ -91,12 +94,14 @@ export const getUsersMonth = functions
                     const currentUserDate = new Date(
                         snapshotValue.lastConnection
                     );
-                    if (currentUserDate.getMonth() === currentMonth) {
-                        count++;
+                    if (currentUserDate.getFullYear() === currentYear) {
+                        ++yearConnections[currentUserDate.getMonth()];
                     }
                 });
             });
 
-            response.send(count);
+            response.send({
+                yearConnections: yearConnections
+            });
         });
     });
