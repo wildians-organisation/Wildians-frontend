@@ -48,7 +48,7 @@ export default function Layout({ children }) {
                 <SideBar showNav={showNav} />
             </Transition>
             <main
-                className={`pt-16 transition-all duration-[400ms] ${
+                className={` bg-gray-100 min-h-screen pt-16 transition-all duration-[400ms] ${
                     showNav && !isMobile ? "pl-56" : ""
                 }`}
             >
