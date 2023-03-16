@@ -31,7 +31,7 @@ export default function FinanceStatsGrid() {
                 </div>
                 <div className="pl-4">
                     <span className="text-sm text-gray-500 font-light">
-                        Tezos for us:
+                        Tezos for us
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
@@ -47,7 +47,7 @@ export default function FinanceStatsGrid() {
                 </div>
                 <div className="pl-4">
                     <span className="text-sm text-gray-500 font-light">
-                        Tezos donated to association:
+                        Tezos donated to association
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
