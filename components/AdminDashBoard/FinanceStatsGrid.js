@@ -1,7 +1,7 @@
 import {
     IoWalletOutline,
     IoAccessibilityOutline,
-    IoRocketSharp,
+    IoRocketSharp
 } from "react-icons/io5";
 
 export default function FinanceStatsGrid() {
@@ -13,13 +13,15 @@ export default function FinanceStatsGrid() {
                 </div>
                 <div className="pl-4">
                     <span className="text-sm text-gray-500 font-light">
-                    Tezos Generated
+                        Tezos Generated
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
                             4567890
                         </strong>
-                        <span className="text-sm text-green-500 pl-2">+10000</span>
+                        <span className="text-sm text-green-500 pl-2">
+                            +10000
+                        </span>
                     </div>
                 </div>
             </BoxWrapper>
@@ -45,11 +47,11 @@ export default function FinanceStatsGrid() {
                 </div>
                 <div className="pl-4">
                     <span className="text-sm text-gray-500 font-light">
-                        Tezos donated to association: 
+                        Tezos donated to association:
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                        2000
+                            2000
                         </strong>
                         <span className="text-sm text-red-500 pl-2">-600</span>
                     </div>
