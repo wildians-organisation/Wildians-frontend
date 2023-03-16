@@ -141,18 +141,10 @@ export default function Admin() {
     //create a list of the last transaction of each wallet
 
     const data = Array.from(userNFTs, ([key, value]) => {
-        console.log;
-        const element = {
-            adress: key,
-            transac: value,
-            last: new Date(lastTransacWallets.get(key)).toLocaleString()
-        };
-        return {
-            adress: element.adress,
-            transac: element.transac,
-            last: element.last
-        };
-    });
+        const element = { adress: key, transac: value, last: new Date(lastTransacWallets.get(key)).toLocaleString()};
+        return { adress: element.adress, transac: element.transac, last: element.last };
+      });
+      
 
     console.log(data);
 
@@ -164,6 +156,7 @@ export default function Admin() {
                 </p>
                 <DashboardStatsGrid />
                 <TransactionChart />
+                <RecentOrders recentTransacData={data}/>
             </Layout>
         </>
     );
