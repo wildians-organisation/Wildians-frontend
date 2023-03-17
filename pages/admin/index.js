@@ -5,7 +5,6 @@ import { initializeApp } from "firebase/app";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "../../components/AdminDashBoard/Layout";
 import TopCards from "components/AdminDashBoard/TopCards.js";
-import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
 import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
