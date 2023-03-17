@@ -5,6 +5,8 @@ import { initializeApp } from "firebase/app";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "../../components/AdminDashBoard/Layout";
 import TopCards from "components/AdminDashBoard/TopCards.js";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
 import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
 import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
@@ -34,6 +36,7 @@ export default function Admin() {
         new Map()
     );
     const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
     const countWallets = httpsCallable(functions, "countWallets");
