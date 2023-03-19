@@ -21,7 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const functions = getFunctions(app);
 functions.region = "europe-west1";
-const addWallet = httpsCallable(functions, "addWallet");
+const addWallet = httpsCallable(functions, "walletControllers-addWallet");
 
 const network = { type: NetworkType.GHOSTNET };
 

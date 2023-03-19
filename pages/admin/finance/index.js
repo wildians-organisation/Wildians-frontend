@@ -30,7 +30,10 @@ export default function Admin() {
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
-    const countWallets = httpsCallable(functions, "countWallets");
+    const countWallets = httpsCallable(
+        functions,
+        "statisticsController-countWallets"
+    );
     /*** Function to add wallet adress to firebase ***/
     const getWallets = async () => {
         try {
