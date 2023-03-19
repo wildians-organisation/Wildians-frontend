@@ -1,13 +1,12 @@
 import React from "react";
 import axios from "axios";
-import * as config from "../../config/config.js";
+import * as config from "../../../config/config.js";
 import { initializeApp } from "firebase/app";
 import { getFunctions, httpsCallable } from "firebase/functions";
-import Layout from "../../components/AdminDashBoard/Layout";
-import TopCards from "components/AdminDashBoard/TopCards.js";
-import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
-import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
-import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
+import Layout from "components/AdminDashBoard/Layout.js";
+import { Component } from "react/cjs/react.production.min.js";
+import FinanceStatsGrid from "components/AdminDashBoard/FinanceStatsGrid.js";
+import OrganisationRepartition from "components/AdminDashBoard/OrganisationRepartition.js";
 
 const firebaseConfig = {
     apiKey: `${config.GCPAPIKEY}`,
@@ -27,12 +26,7 @@ export default function Admin() {
     const [userAddress, setUserAddress] = React.useState("");
     const [userNFTs, setUserNFTs] = React.useState([]);
     const [tezosAmount, setTezosAmount] = React.useState(0);
-    const [transacAmount, setTransacAmount] = React.useState(0);
-    const [clientAmount, setClientAmount] = React.useState(0);
     const [numberWallets, setNumberWallets] = React.useState(0);
-    const [lastTransacWallets, setlastTransacWallets] = React.useState(
-        new Map()
-    );
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
@@ -46,18 +40,6 @@ export default function Admin() {
             console.error(e);
         }
     };
-
-    //Get the number of connexion this month
-    const countMonthConnexion = httpsCallable(functions, "getUsers");
-    const getMonthConnexion = async () => {
-        try {
-            const response = await countMonthConnexion();
-            setNumberWallets(response.data);
-        } catch (e) {
-            console.error(e);
-        }
-    };
-
     // Get informations about the smartcontract with the tzkt api
     const getContractInformations = async () => {
         const response = await axios.get(
@@ -67,10 +49,7 @@ export default function Admin() {
         setNbrToken(nbrNftMinted - 1);
         let tmp = [];
         let tmpAmount = 0;
-        let totalTransac = 0;
-        let totalClient = 0;
         var wallets = new Map();
-        var lastTransacWallet = new Map();
         response.data.forEach((element) => {
             if (element.operation.type != "origination") {
                 let data_value = element.operation.parameter.value;
@@ -82,28 +61,14 @@ export default function Admin() {
                         data_value.address,
                         wallets.get(data_value.address) + 1
                     );
-                    totalTransac = totalTransac + 1;
-                    lastTransacWallet.set(
-                        data_value.address,
-                        element.timestamp
-                    );
                 } else {
                     wallets.set(data_value.address, 1);
-                    totalTransac = totalTransac + 1;
-                    totalClient = totalClient + 1;
-                    lastTransacWallet.set(
-                        data_value.address,
-                        element.timestamp
-                    );
                 }
             }
         });
         setClientsAddress(tmp);
         setUserNFTs(wallets);
         setTezosAmount(tmpAmount);
-        setTransacAmount(totalTransac);
-        setClientAmount(totalClient);
-        setlastTransacWallets(lastTransacWallet);
     };
 
     // Get the number of NFTs of the wallet connected
@@ -145,32 +110,14 @@ export default function Admin() {
         </li>
     ));
 
-    //create a list of the last transaction of each wallet
-
-    const data = Array.from(userNFTs, ([key, value]) => {
-        const element = {
-            adress: key,
-            transac: value,
-            last: new Date(lastTransacWallets.get(key)).toLocaleString()
-        };
-        return {
-            adress: element.adress,
-            transac: element.transac,
-            last: element.last
-        };
-    });
-
-    console.log(data);
-
     return (
         <>
             <Layout>
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
-                    Wallet info
+                    Finance
                 </p>
-                <DashboardStatsGrid />
-                <TransactionChart />
-                <RecentOrders recentTransacData={data} />
+                <FinanceStatsGrid />
+                <OrganisationRepartition />
             </Layout>
         </>
     );

@@ -41,10 +41,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                         </div>
                     </div>
                 </Link>
-                <Link href="/finance">
+                <Link href="/admin/finance">
                     <div
                         className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-                            router.pathname == "/finance"
+                            router.pathname == "/admin/finance"
                                 ? "bg-greeny text-greenkaki"
                                 : "text-beige md:hover:bg-greenkaki md:hover:text-greeny"
                         }`}
@@ -57,10 +57,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                         </div>
                     </div>
                 </Link>
-                <Link href="/whitelisting">
+                <Link href="/admin/whitelisting">
                     <div
                         className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-                            router.pathname == "/whitelisting"
+                            router.pathname == "/admin/whitelisting"
                                 ? "bg-greeny text-greenkaki"
                                 : "text-beige md:hover:bg-greenkaki md:hover:text-greeny"
                         }`}
