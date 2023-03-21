@@ -25,12 +25,14 @@ export const getConnectionStats = functions
         corsHandler(request, response, async () => {
             let yearConnections: number[] = initializeYearConnections();
             let lastTwoWeeksConnections = 0;
+            let lastOneMonthConnections = 0;
 
             const ref = getRefUsers();
 
             const now = new Date();
             const currentYear = now.getFullYear();
             const nowMinusTwoWeeks = new Date(now.getDate() - 14);
+            const nowMinusOneMonth = new Date(now.getDate() - 30);
 
             // Get a snapshot of the path
             await ref.once("value", (dataSnapshot: DataSnapshot) => {
@@ -48,13 +50,20 @@ export const getConnectionStats = functions
                         ) {
                             ++lastTwoWeeksConnections;
                         }
+                        if (
+                            currentUserDate.getTime() >=
+                            nowMinusOneMonth.getTime()
+                        ) {
+                            ++lastOneMonthConnections;
+                        }
                     }
                 });
             });
 
             response.send({
                 yearConnections,
-                lastTwoWeeksConnections
+                lastTwoWeeksConnections,
+                lastOneMonthConnections
             });
         });
     });
