@@ -25,6 +25,7 @@ export default function Admin() {
     const [clientsAddress, setClientsAddress] = React.useState([]);
     const [userAddress, setUserAddress] = React.useState("");
     const [userNFTs, setUserNFTs] = React.useState([]);
+    const [listUsers, setListUsers] = React.useState([]);
     const [tezosAmount, setTezosAmount] = React.useState(0);
     const [numberWallets, setNumberWallets] = React.useState(0);
     const app = initializeApp(firebaseConfig);
@@ -48,6 +49,7 @@ export default function Admin() {
         const nbrNftMinted = response.data.length;
         setNbrToken(nbrNftMinted - 1);
         let tmp = [];
+        let tmpUsers = [];
         let tmpAmount = 0;
         var wallets = new Map();
         response.data.forEach((element) => {
@@ -63,12 +65,14 @@ export default function Admin() {
                     );
                 } else {
                     wallets.set(data_value.address, 1);
+                    tmpUsers.push(data_value.address);
                 }
             }
         });
         setClientsAddress(tmp);
         setUserNFTs(wallets);
         setTezosAmount(tmpAmount);
+        setListUsers(tmpUsers);
     };
 
     // Get the number of NFTs of the wallet connected
@@ -88,6 +92,41 @@ export default function Admin() {
         setNbNFTConnectedAdress(nb);
     };
 
+    const data_finance = [
+        { name: "ENVIRONMENT", value: 0 },
+        { name: "SOCIETY", value: 0 },
+        { name: "ECONOMY", value: 0 }
+    ];
+
+
+    const fetchData = async (userAddressToFetch) => {
+        let tmp_nft = [];
+        try {
+            const response = await axios.get(
+                `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
+            );
+            for (let i = 0; i < response["data"].length; i++) {
+                console.log(response["data"][i]["token"]["metadata"]);
+                if (response["data"][i]["token"]["metadata"] == null) continue;
+                else {
+                    if (response["data"][i]["token"]["metadata"]["name"] == "BICHE")
+                    {
+                        data_finance[0].value = data_finance[0].value + 1;
+                    }
+                    else if (response["data"][i]["token"]["metadata"]["name"] == "WOLF")
+                    {
+                        data_finance[1].value = data_finance[1].value + 1;
+                    }
+                    else if (response["data"][i]["token"]["metadata"]["name"] == "BULL")
+                    {
+                        data_finance[2].value = data_finance[2].value + 1;
+                    }
+                }
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    };
     React.useEffect(async() => {
         if (
             typeof window !== "undefined" &&
@@ -101,51 +140,24 @@ export default function Admin() {
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
             getWallets();
+            for (let j = 0; j < listUsers.length; j++)
+            {
+                fetchData(listUsers[j]);
+            }
+
         }
     }, []);
 
-    const data_finance = [
-        { name: "ENVIRONMENT", value: 0 },
-        { name: "SOCIETY", value: 0 },
-        { name: "ECONOMY", value: 0 }
-    ];
-
-
-    const fetchData = async() => {
-        for (let j = 0; j < userNFTs.length; j++) {
-            try {
-                const response = await axios.get(
-                    `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userNFTs[j].address}`
-                );
-                for (let i = 0; i < response["data"].length; i++) {
-                    if (response["data"][i]["token"]["metadata"] == null) continue;
-                    else {
-                        if (response["data"][i]["token"]["metadata"]["name"] == "BICHE") data_finance[0].value += 1
-                        else if (response["data"][i]["token"]["metadata"]["name"] == "WOLF") data_finance[1].value += 1
-                        else if (response["data"][i]["token"]["metadata"]["name"] == "BULL") data_finance[2].value += 1
-                    }
-
-                }
-            } catch (e) {
-                console.error(e);
-            }
-        }
-    };
-
-    return ( <
-        >
-        <
-        Layout >
-        <
-        p className = "text-gray-700 text-3xl mb-16 font-bold" >
-        Finance <
-        /p> <
-        FinanceStatsGrid / >
-        <
-        OrganisationRepartition data = {
-            data_finance
-        }
-        /  >   { userNFTs } < /
-        Layout > < / >
+    
+    return (
+        <>
+            <Layout>
+                <p className="text-gray-700 text-3xl mb-16 font-bold">
+                    Finance
+                </p>
+                <FinanceStatsGrid />
+                <OrganisationRepartition data={data_finance} />
+            </Layout>
+        </>
     );
 }
