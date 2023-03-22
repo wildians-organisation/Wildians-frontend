@@ -38,7 +38,7 @@ export default function Admin() {
     functions.region = config.BUCKET_REGION;
     const countWallets = httpsCallable(functions, "countWallets");
     /*** Function to add wallet adress to firebase ***/
-    const getWallets = async () => {
+    const getWallets = async() => {
         try {
             const response = await countWallets();
             setNumberWallets(response.data);
@@ -47,7 +47,7 @@ export default function Admin() {
         }
     };
     // Get informations about the smartcontract with the tzkt api
-    const getContractInformations = async () => {
+    const getContractInformations = async() => {
         const response = await axios.get(
             `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
         );
@@ -95,7 +95,7 @@ export default function Admin() {
     };
 
     // Get the number of NFTs of the wallet connected
-    const getNFTMintByUser = async (userAdress) => {
+    const getNFTMintByUser = async(userAdress) => {
         const response = await axios.get(
             `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
         );
@@ -111,7 +111,7 @@ export default function Admin() {
         setNbNFTConnectedAdress(nb);
     };
 
-    React.useEffect(async () => {
+    React.useEffect(async() => {
         if (
             typeof window !== "undefined" &&
             window.localStorage.getItem("beacon:accounts")
@@ -126,12 +126,6 @@ export default function Admin() {
             getWallets();
         }
     }, []);
-
-    const listItems2 = Array.from(userNFTs).map((addr, id) => (
-        <li key={id}>
-            {addr[0]} : {addr[1]}
-        </li>
-    ));
 
     //create a list of the last transaction of each wallet
 
@@ -148,16 +142,22 @@ export default function Admin() {
         };
     });
 
-    return (
-        <>
-            <Layout>
-                <p className="text-gray-700 text-3xl mb-16 font-bold">
-                    Wallet info
-                </p>
-                <DashboardStatsGrid />
-                <TransactionChart />
-                <RecentOrders recentTransacData={data} />
-            </Layout>
-        </>
+
+    return ( <
+        >
+        <
+        Layout >
+        <
+        p className = "text-gray-700 text-3xl mb-16 font-bold" >
+        Wallet info <
+        /p> <
+        DashboardStatsGrid / >
+        <
+        TransactionChart / >
+        <
+        RecentOrders recentTransacData = { data }
+        /> < /
+        Layout > <
+        />
     );
 }

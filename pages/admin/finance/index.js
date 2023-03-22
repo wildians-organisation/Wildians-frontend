@@ -32,7 +32,7 @@ export default function Admin() {
     functions.region = config.BUCKET_REGION;
     const countWallets = httpsCallable(functions, "countWallets");
     /*** Function to add wallet adress to firebase ***/
-    const getWallets = async () => {
+    const getWallets = async() => {
         try {
             const response = await countWallets();
             setNumberWallets(response.data);
@@ -41,7 +41,7 @@ export default function Admin() {
         }
     };
     // Get informations about the smartcontract with the tzkt api
-    const getContractInformations = async () => {
+    const getContractInformations = async() => {
         const response = await axios.get(
             `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
         );
@@ -72,7 +72,7 @@ export default function Admin() {
     };
 
     // Get the number of NFTs of the wallet connected
-    const getNFTMintByUser = async (userAdress) => {
+    const getNFTMintByUser = async(userAdress) => {
         const response = await axios.get(
             `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
         );
@@ -88,7 +88,7 @@ export default function Admin() {
         setNbNFTConnectedAdress(nb);
     };
 
-    React.useEffect(async () => {
+    React.useEffect(async() => {
         if (
             typeof window !== "undefined" &&
             window.localStorage.getItem("beacon:accounts")
@@ -104,21 +104,48 @@ export default function Admin() {
         }
     }, []);
 
-    const listItems2 = Array.from(userNFTs).map((addr, id) => (
-        <li key={id}>
-            {addr[0]} : {addr[1]}
-        </li>
-    ));
+    const data_finance = [
+        { name: "ENVIRONMENT", value: 0 },
+        { name: "SOCIETY", value: 0 },
+        { name: "ECONOMY", value: 0 }
+    ];
 
-    return (
-        <>
-            <Layout>
-                <p className="text-gray-700 text-3xl mb-16 font-bold">
-                    Finance
-                </p>
-                <FinanceStatsGrid />
-                <OrganisationRepartition />
-            </Layout>
-        </>
+
+    const fetchData = async() => {
+        for (let j = 0; j < userNFTs.length; j++) {
+            try {
+                const response = await axios.get(
+                    `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userNFTs[j].address}`
+                );
+                for (let i = 0; i < response["data"].length; i++) {
+                    if (response["data"][i]["token"]["metadata"] == null) continue;
+                    else {
+                        if (response["data"][i]["token"]["metadata"]["name"] == "BICHE") data_finance[0].value += 1
+                        else if (response["data"][i]["token"]["metadata"]["name"] == "WOLF") data_finance[1].value += 1
+                        else if (response["data"][i]["token"]["metadata"]["name"] == "BULL") data_finance[2].value += 1
+                    }
+
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+    };
+
+    return ( <
+        >
+        <
+        Layout >
+        <
+        p className = "text-gray-700 text-3xl mb-16 font-bold" >
+        Finance <
+        /p> <
+        FinanceStatsGrid / >
+        <
+        OrganisationRepartition data = {
+            data_finance
+        }
+        /  >   { userNFTs } < /
+        Layout > < / >
     );
 }

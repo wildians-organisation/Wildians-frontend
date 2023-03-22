@@ -2,7 +2,7 @@ import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 
 const data = [
-    { name: "ENVIRONNEMENT", value: 500 },
+    { name: "ENVIRONMENT", value: 500 },
     { name: "SOCIETY", value: 550 },
     { name: "ECONOMY", value: 950 }
 ];
@@ -22,49 +22,50 @@ const renderCustomizedLabel = ({
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
-    return (
-        <text
-            x={x}
-            y={y}
-            fill="white"
-            textAnchor={x > cx ? "start" : "end"}
-            dominantBaseline="central"
-        >
-            {`${(percent * 100).toFixed(0)}%`}
-        </text>
+    return ( <
+        text x = { x }
+        y = { y }
+        fill = "white"
+        textAnchor = { x > cx ? "start" : "end" }
+        dominantBaseline = "central" > { `${(percent * 100).toFixed(0)}%` } <
+        /text>
     );
 };
 
-export default function OrganisationRepartition() {
-    return (
-        <div>
-            <strong className="text-gray-700 font-medium">
-                ONG Repartition
-            </strong>
-            <div className="bg-white h-96 shadow-sm">
-                <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                        <Pie
-                            data={data}
-                            cx="50%"
-                            cy="45%"
-                            labelLine={false}
-                            label={renderCustomizedLabel}
-                            outerRadius={105}
-                            fill="#8884d8"
-                            dataKey="value"
-                        >
-                            {data.map((_, index) => (
-                                <Cell
-                                    key={`cell-${index}`}
-                                    fill={COLORS[index % COLORS.length]}
-                                />
-                            ))}
-                        </Pie>
-                        <Legend />
-                    </PieChart>
-                </ResponsiveContainer>
-            </div>
-        </div>
+export default function OrganisationRepartition({ data }) {
+    return ( <
+        div >
+        <
+        strong className = "text-gray-700 font-medium" >
+        ONG Repartition <
+        /strong> <
+        div className = "bg-white h-96 shadow-sm" >
+        <
+        ResponsiveContainer width = "100%"
+        height = "100%" >
+        <
+        PieChart >
+        <
+        Pie data = { data }
+        cx = "50%"
+        cy = "45%"
+        labelLine = { false }
+        label = { renderCustomizedLabel }
+        outerRadius = { 105 }
+        fill = "#8884d8"
+        dataKey = "value" > {
+            data.map((_, index) => ( <
+                Cell key = { `cell-${index}` }
+                fill = { COLORS[index % COLORS.length] }
+                />
+            ))
+        } <
+        /Pie> <
+        Legend / >
+        <
+        /PieChart> < /
+        ResponsiveContainer > <
+        /div> < /
+        div >
     );
 }
