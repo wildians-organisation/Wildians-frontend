@@ -34,7 +34,11 @@ export default function ConnexionWallet() {
 
     React.useEffect(() => {
         (async () => {
-            setUserAddress(localStorage.getItem("userAdress"));
+            const initialUserAdress = localStorage.getItem("userAdress");
+            setUserAddress(initialUserAdress);
+            if (initialUserAdress !== null) {
+                addWalletToFirebase(initialUserAdress);
+            }
             const _wallet = new BeaconWallet({ name: "Demo" });
             setWallet(_wallet);
             Tezos.setWalletProvider(_wallet);
