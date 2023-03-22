@@ -2,9 +2,9 @@ import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 
 const data = [
-    { name: "WWF", value: 500 },
-    { name: "Unicef", value: 550 },
-    { name: "Croix Rouge", value: 950 }
+    { name: "ENVIRONNEMENT", value: 500 },
+    { name: "SOCIETY", value: 550 },
+    { name: "ECONOMY", value: 950 }
 ];
 
 const RADIAN = Math.PI / 180;
