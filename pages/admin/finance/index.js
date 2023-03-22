@@ -15,7 +15,8 @@ const firebaseConfig = {
     projectId: `${config.GCPPROJECTID}`,
     storageBucket: `${config.GCPSTORAGEBUCKET}`,
     messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
-    appId: `${config.GCPAPPID}`
+    appId: `${config.GCPAPPID}`,
+    measurementId: `${config.MEASUREMENTID}`
 };
 
 export default function Admin() {
