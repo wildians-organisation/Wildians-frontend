@@ -28,12 +28,17 @@ export default function Admin() {
     const [listUsers, setListUsers] = React.useState([]);
     const [tezosAmount, setTezosAmount] = React.useState(0);
     const [numberWallets, setNumberWallets] = React.useState(0);
+    const [dataFinance, setDataFinance] = React.useState([
+        { name: "ENVIRONMENT", value: 0 },
+        { name: "SOCIETY", value: 0 },
+        { name: "ECONOMY", value: 0 }
+    ]);
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
     const countWallets = httpsCallable(functions, "countWallets");
     /*** Function to add wallet adress to firebase ***/
-    const getWallets = async() => {
+    const getWallets = async () => {
         try {
             const response = await countWallets();
             setNumberWallets(response.data);
@@ -42,7 +47,7 @@ export default function Admin() {
         }
     };
     // Get informations about the smartcontract with the tzkt api
-    const getContractInformations = async() => {
+    const getContractInformations = async () => {
         const response = await axios.get(
             `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
         );
@@ -76,7 +81,7 @@ export default function Admin() {
     };
 
     // Get the number of NFTs of the wallet connected
-    const getNFTMintByUser = async(userAdress) => {
+    const getNFTMintByUser = async (userAdress) => {
         const response = await axios.get(
             `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
         );
@@ -92,42 +97,54 @@ export default function Admin() {
         setNbNFTConnectedAdress(nb);
     };
 
-    const data_finance = [
-        { name: "ENVIRONMENT", value: 0 },
-        { name: "SOCIETY", value: 0 },
-        { name: "ECONOMY", value: 0 }
-    ];
-
-
-    const fetchData = async (userAddressToFetch) => {
-        let tmp_nft = [];
+    const fetchData = async () => {
         try {
+            for (let j = 0; j < listUsers.length; j++) {
             const response = await axios.get(
-                `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
+                `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${listUsers[j]}`
             );
             for (let i = 0; i < response["data"].length; i++) {
-                console.log(response["data"][i]["token"]["metadata"]);
                 if (response["data"][i]["token"]["metadata"] == null) continue;
                 else {
-                    if (response["data"][i]["token"]["metadata"]["name"] == "BICHE")
-                    {
-                        data_finance[0].value = data_finance[0].value + 1;
+                    if (
+                        response["data"][i]["token"]["metadata"]["name"] ==
+                        "BICHE"
+                    ) {
+                        setDataFinance((prevState) => {
+                            const newData = [...prevState];
+                            newData[0].value = newData[0].value + 1;
+                            return newData;
+                        });
                     }
-                    else if (response["data"][i]["token"]["metadata"]["name"] == "WOLF")
-                    {
-                        data_finance[1].value = data_finance[1].value + 1;
+                    if (
+                        response["data"][i]["token"]["metadata"]["name"] ==
+                        "WOLF"
+                    ) {
+                        setDataFinance((prevState) => {
+                            const newData = [...prevState];
+                            newData[1].value = newData[1].value + 1;
+                            return newData;
+                        });
                     }
-                    else if (response["data"][i]["token"]["metadata"]["name"] == "BULL")
-                    {
-                        data_finance[2].value = data_finance[2].value + 1;
+                    if (
+                        response["data"][i]["token"]["metadata"]["name"] ==
+                        "BULL"
+                    ) {
+                        setDataFinance((prevState) => {
+                            const newData = [...prevState];
+                            newData[2].value = newData[2].value + 1;
+                            return newData;
+                        });
                     }
                 }
             }
+        }
         } catch (e) {
             console.error(e);
         }
     };
-    React.useEffect(async() => {
+
+    React.useEffect(async () => {
         if (
             typeof window !== "undefined" &&
             window.localStorage.getItem("beacon:accounts")
@@ -140,11 +157,7 @@ export default function Admin() {
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
             getWallets();
-            for (let j = 0; j < listUsers.length; j++)
-            {
-                fetchData(listUsers[j]);
-            }
-
+            fetchData();
         }
     }, []);
 
@@ -156,7 +169,7 @@ export default function Admin() {
                     Finance
                 </p>
                 <FinanceStatsGrid />
-                <OrganisationRepartition data={data_finance} />
+                <OrganisationRepartition data={dataFinance} />
             </Layout>
         </>
     );
