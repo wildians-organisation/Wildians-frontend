@@ -2,7 +2,7 @@ import * as functions from "firebase-functions";
 import { database } from "firebase-admin";
 import DataSnapshot = database.DataSnapshot;
 import { corsHandler } from "./utils";
-import { getRefUsers } from "../data/data";
+import { getRefStatsConnections, getRefUsers } from "../data/data";
 
 // Add or update a user when sign in
 export const addWallet = functions
@@ -10,9 +10,10 @@ export const addWallet = functions
     .https.onRequest((request, response) => {
         corsHandler(request, response, async () => {
             const ref = getRefUsers();
+            const refStats = getRefStatsConnections();
 
             const walletAddress = request.body.data.value;
-            const now = Date.now();
+            const now = new Date();
             let exist = false;
 
             await ref.once("value", (dataSnapshot: DataSnapshot) => {
@@ -20,17 +21,31 @@ export const addWallet = functions
                     if (snapshot.val().walletAddress === walletAddress) {
                         exist = true;
                         snapshot.ref.update({
-                            lastConnection: now
+                            lastConnection: now.getTime()
                         });
                     }
                 });
             });
 
+            await refStats.once("value", (snapshot: DataSnapshot) => {
+                const refLastTwoWeeks = snapshot
+                    .child("lastTwoWeeksConnections")
+                    .child("current");
+                refLastTwoWeeks.ref.set(refLastTwoWeeks.val() + 1);
+            });
+
+            await refStats.once("value", (snapshot: DataSnapshot) => {
+                const refLastTwoWeeks = snapshot
+                    .child("lastMonthConnections")
+                    .child("current");
+                refLastTwoWeeks.ref.set(refLastTwoWeeks.val() + 1);
+            });
+
             if (!exist) {
                 ref.push({
                     walletAddress: walletAddress,
-                    firstConnection: now,
-                    lastConnection: now
+                    firstConnection: now.getTime(),
+                    lastConnection: now.getTime()
                 });
             }
 

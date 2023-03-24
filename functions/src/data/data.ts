@@ -6,4 +6,8 @@ function getRefUsers() {
     return db.ref("users");
 }
 
-export { getRefUsers };
+function getRefStatsConnections() {
+    return db.ref("stats/connections");
+}
+
+export { getRefUsers, getRefStatsConnections };
