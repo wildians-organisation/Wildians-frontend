@@ -5,7 +5,6 @@ import { initializeApp } from "firebase/app";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "../../components/AdminDashBoard/Layout";
 import TopCards from "components/AdminDashBoard/TopCards.js";
-import { getAnalytics, isSupported } from "firebase/analytics";
 import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
 import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
 import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
@@ -34,8 +33,8 @@ export default function Admin() {
     const [lastTransacWallets, setlastTransacWallets] = React.useState(
         new Map()
     );
+    const [totalMonthTransac, setTotalMonthTransac] = React.useState(0);
     const app = initializeApp(firebaseConfig);
-    const analytics = isSupported().then(yes => yes ? getAnalytics(app) : null);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
     const countWallets = httpsCallable(functions, "countWallets");
@@ -55,14 +54,21 @@ export default function Admin() {
         );
         const nbrNftMinted = response.data.length;
         setNbrToken(nbrNftMinted - 1);
+        const currentDate = new Date();
+        const thirtyDaysAgo = currentDate.setDate(currentDate.getDate() - 30);
         let tmp = [];
         let tmpAmount = 0;
         let totalTransac = 0;
         let totalClient = 0;
         var wallets = new Map();
         var lastTransacWallet = new Map();
+        let tmpTotalMonthTransac = 0;
         response.data.forEach((element) => {
             if (element.operation.type != "origination") {
+                let transactionDate = new Date(element.timestamp);
+                if (transactionDate >= thirtyDaysAgo) {
+                    tmpTotalMonthTransac = tmpTotalMonthTransac + 1;
+                }
                 let data_value = element.operation.parameter.value;
 
                 tmpAmount += data_value.cost / config.TEZOS_CONVERTER;
@@ -94,6 +100,7 @@ export default function Admin() {
         setTransacAmount(totalTransac);
         setClientAmount(totalClient);
         setlastTransacWallets(lastTransacWallet);
+        setTotalMonthTransac(tmpTotalMonthTransac);
     };
 
     // Get the number of NFTs of the wallet connected
@@ -150,15 +157,13 @@ export default function Admin() {
         };
     });
 
-    console.log(data);
-
     return (
         <>
             <Layout>
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
                     Wallet info
                 </p>
-                <DashboardStatsGrid />
+                <DashboardStatsGrid totalMonthTransaction={totalMonthTransac} />
                 <TransactionChart />
                 <RecentOrders recentTransacData={data} />
             </Layout>
