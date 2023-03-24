@@ -7,7 +7,7 @@ import {
     IoTrendingUpOutline
 } from "react-icons/io5";
 
-export default function DashboardStatsGrid() {
+export default function DashboardStatsGrid( {totalMonthTransaction} ) {
     return (
         <div className="grid lg:grid-cols-3 gap-5 mb-16">
             <BoxWrapper>
@@ -84,7 +84,7 @@ export default function DashboardStatsGrid() {
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            16
+                            15
                         </strong>
                         <span className="text-sm text-red-500 pl-2">-43</span>
                     </div>
@@ -100,9 +100,8 @@ export default function DashboardStatsGrid() {
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            16
+                            { totalMonthTransaction }
                         </strong>
-                        <span className="text-sm text-red-500 pl-2">-43</span>
                     </div>
                 </div>
             </BoxWrapper>

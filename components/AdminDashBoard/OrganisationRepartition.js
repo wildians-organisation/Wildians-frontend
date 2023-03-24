@@ -1,7 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 
-
 const RADIAN = Math.PI / 180;
 const COLORS = ["#609966", "#9DC08B", "#40513B"];
 
@@ -30,7 +29,7 @@ const renderCustomizedLabel = ({
     );
 };
 
-export default function OrganisationRepartition({data}) {
+export default function OrganisationRepartition({ data }) {
     return (
         <div>
             <strong className="text-gray-700 font-medium">

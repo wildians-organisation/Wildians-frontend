@@ -100,45 +100,46 @@ export default function Admin() {
     const fetchData = async () => {
         try {
             for (let j = 0; j < listUsers.length; j++) {
-            const response = await axios.get(
-                `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${listUsers[j]}`
-            );
-            for (let i = 0; i < response["data"].length; i++) {
-                if (response["data"][i]["token"]["metadata"] == null) continue;
-                else {
-                    if (
-                        response["data"][i]["token"]["metadata"]["name"] ==
-                        "BICHE"
-                    ) {
-                        setDataFinance((prevState) => {
-                            const newData = [...prevState];
-                            newData[0].value = newData[0].value + 1;
-                            return newData;
-                        });
-                    }
-                    if (
-                        response["data"][i]["token"]["metadata"]["name"] ==
-                        "WOLF"
-                    ) {
-                        setDataFinance((prevState) => {
-                            const newData = [...prevState];
-                            newData[1].value = newData[1].value + 1;
-                            return newData;
-                        });
-                    }
-                    if (
-                        response["data"][i]["token"]["metadata"]["name"] ==
-                        "BULL"
-                    ) {
-                        setDataFinance((prevState) => {
-                            const newData = [...prevState];
-                            newData[2].value = newData[2].value + 1;
-                            return newData;
-                        });
+                const response = await axios.get(
+                    `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${listUsers[j]}`
+                );
+                for (let i = 0; i < response["data"].length; i++) {
+                    if (response["data"][i]["token"]["metadata"] == null)
+                        continue;
+                    else {
+                        if (
+                            response["data"][i]["token"]["metadata"]["name"] ==
+                            "BICHE"
+                        ) {
+                            setDataFinance((prevState) => {
+                                const newData = [...prevState];
+                                newData[0].value = newData[0].value + 1;
+                                return newData;
+                            });
+                        }
+                        if (
+                            response["data"][i]["token"]["metadata"]["name"] ==
+                            "WOLF"
+                        ) {
+                            setDataFinance((prevState) => {
+                                const newData = [...prevState];
+                                newData[1].value = newData[1].value + 1;
+                                return newData;
+                            });
+                        }
+                        if (
+                            response["data"][i]["token"]["metadata"]["name"] ==
+                            "BULL"
+                        ) {
+                            setDataFinance((prevState) => {
+                                const newData = [...prevState];
+                                newData[2].value = newData[2].value + 1;
+                                return newData;
+                            });
+                        }
                     }
                 }
             }
-        }
         } catch (e) {
             console.error(e);
         }
@@ -161,7 +162,6 @@ export default function Admin() {
         }
     }, []);
 
-    
     return (
         <>
             <Layout>
