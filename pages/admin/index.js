@@ -127,12 +127,6 @@ export default function Admin() {
         }
     }, []);
 
-    const listItems2 = Array.from(userNFTs).map((addr, id) => (
-        <li key={id}>
-            {addr[0]} : {addr[1]}
-        </li>
-    ));
-
     //create a list of the last transaction of each wallet
 
     const data = Array.from(userNFTs, ([key, value]) => {
