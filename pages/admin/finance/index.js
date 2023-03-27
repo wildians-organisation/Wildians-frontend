@@ -89,8 +89,9 @@ export default function Admin() {
         console.log("hello");
         console.log(userAddressToFetch);
         try {
+            for (let j = 0; j < listUsers.length; j++) {
             const response = await axios.get(
-                `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
+                `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${listUsers[j]}`
             );
             console.log(response.status);
             for (let i = 0; i < response["data"].length; i++) {
@@ -131,6 +132,7 @@ export default function Admin() {
                     }
                 }
             }
+        }
         } catch (e) {
             console.error(e);
         }
