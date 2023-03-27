@@ -51,7 +51,7 @@ export default function Admin() {
     // Get informations about the smartcontract with the tzkt api
     const getContractInformations = async () => {
         const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
+            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history?limit=1000`
         );
         const nbrNftMinted = response.data.length;
         setNbrToken(nbrNftMinted - 1);
@@ -62,6 +62,9 @@ export default function Admin() {
         var wallets = new Map();
         var lastTransacWallet = new Map();
         response.data.forEach((element) => {
+            if(element.operation.type == "transaction") {
+                totalTransac = totalTransac + 1;
+            }
             if (element.operation.type != "origination") {
                 let data_value = element.operation.parameter.value;
 
@@ -72,14 +75,9 @@ export default function Admin() {
                         data_value.address,
                         wallets.get(data_value.address) + 1
                     );
-                    totalTransac = totalTransac + 1;
-                    lastTransacWallet.set(
-                        data_value.address,
-                        element.timestamp
-                    );
+                    
                 } else {
                     wallets.set(data_value.address, 1);
-                    totalTransac = totalTransac + 1;
                     totalClient = totalClient + 1;
                     lastTransacWallet.set(
                         data_value.address,
@@ -99,7 +97,7 @@ export default function Admin() {
     // Get the number of NFTs of the wallet connected
     const getNFTMintByUser = async (userAdress) => {
         const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
+            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history?limit=1000`
         );
         var nb = 0;
         response.data.forEach((element) => {
@@ -129,11 +127,6 @@ export default function Admin() {
         }
     }, []);
 
-    const listItems2 = Array.from(userNFTs).map((addr, id) => (
-        <li key={id}>
-            {addr[0]} : {addr[1]}
-        </li>
-    ));
 
     //create a list of the last transaction of each wallet
 
@@ -150,7 +143,7 @@ export default function Admin() {
         };
     });
 
-    console.log(data);
+    const lastTransac = (data != undefined && data.length > 0)?data[0].last:"Erreur";
 
     return (
         <>
@@ -158,7 +151,7 @@ export default function Admin() {
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
                     Wallet info
                 </p>
-                <DashboardStatsGrid />
+                <DashboardStatsGrid  lastTransac={lastTransac} totalTransac={transacAmount}/>
                 <TransactionChart />
                 <RecentOrders recentTransacData={data} />
             </Layout>
