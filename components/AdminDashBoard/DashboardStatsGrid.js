@@ -27,38 +27,6 @@ export default function DashboardStatsGrid() {
                 </div>
             </BoxWrapper>
             <BoxWrapper>
-                <div className="rounded-full h-12 w-12 flex items-center justify-center bg-orange-200">
-                    <IoSwapHorizontalOutline className="text-2xl text-white" />
-                </div>
-                <div className="pl-4">
-                    <span className="text-sm text-gray-500 font-light">
-                        Total Transaction
-                    </span>
-                    <div className="flex items-center">
-                        <strong className="text-xl text-gray-700 font-semibold">
-                            25
-                        </strong>
-                        <span className="text-sm text-green-500 pl-2">+3</span>
-                    </div>
-                </div>
-            </BoxWrapper>
-            <BoxWrapper>
-                <div className="rounded-full h-12 w-12 flex items-center justify-center bg-yellow-200">
-                    <IoTrendingUpOutline className="text-2xl text-white" />
-                </div>
-                <div className="pl-4">
-                    <span className="text-sm text-gray-500 font-light">
-                        Last Transaction
-                    </span>
-                    <div className="flex items-center">
-                        <strong className="text-xl text-gray-700 font-semibold">
-                            03/14/2023
-                        </strong>
-                        <span className="text-xl text-gray-700 p-3">21:51</span>
-                    </div>
-                </div>
-            </BoxWrapper>
-            <BoxWrapper>
                 <div className="rounded-full h-12 w-12 flex items-center justify-center bg-red-200">
                     <IoPersonAdd className="text-2xl text-white" />
                 </div>
@@ -90,6 +58,41 @@ export default function DashboardStatsGrid() {
                     </div>
                 </div>
             </BoxWrapper>
+ 
+            <BoxWrapper>
+                <div className="rounded-full h-12 w-12 flex items-center justify-center bg-orange-200">
+                    <IoSwapHorizontalOutline className="text-2xl text-white" />
+                </div>
+                <div className="pl-4">
+                    <span className="text-sm text-gray-500 font-light">
+                        Total Transaction
+                    </span>
+                    <div className="flex items-center">
+                        <strong className="text-xl text-gray-700 font-semibold">
+                            25
+                        </strong>
+                        <span className="text-sm text-green-500 pl-2">+3</span>
+                    </div>
+                </div>
+            </BoxWrapper>
+
+            <BoxWrapper>
+                <div className="rounded-full h-12 w-12 flex items-center justify-center bg-yellow-200">
+                    <IoTrendingUpOutline className="text-2xl text-white" />
+                </div>
+                <div className="pl-4">
+                    <span className="text-sm text-gray-500 font-light">
+                        Last Transaction
+                    </span>
+                    <div className="flex items-center">
+                        <strong className="text-xl text-gray-700 font-semibold">
+                            03/14/2023
+                        </strong>
+                        <span className="text-xl text-gray-700 p-3">21:51</span>
+                    </div>
+                </div>
+            </BoxWrapper>
+            
             <BoxWrapper>
                 <div className="rounded-full h-12 w-12 flex items-center justify-center bg-purple-200">
                     <IoRecordingOutline className="text-2xl text-white" />

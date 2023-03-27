@@ -73,10 +73,6 @@ export default function Admin() {
                         wallets.get(data_value.address) + 1
                     );
                     totalTransac = totalTransac + 1;
-                    lastTransacWallet.set(
-                        data_value.address,
-                        element.timestamp
-                    );
                 } else {
                     wallets.set(data_value.address, 1);
                     totalTransac = totalTransac + 1;
@@ -121,12 +117,12 @@ export default function Admin() {
             setUserAddress(
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
-            getContractInformations();
             getNFTMintByUser(
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
-            getWallets();
         }
+        getContractInformations();
+        getWallets();
     }, []);
 
     const listItems2 = Array.from(userNFTs).map((addr, id) => (
