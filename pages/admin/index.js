@@ -35,7 +35,9 @@ export default function Admin() {
         new Map()
     );
     const app = initializeApp(firebaseConfig);
-    const analytics = isSupported().then(yes => yes ? getAnalytics(app) : null);
+    const analytics = isSupported().then((yes) =>
+        yes ? getAnalytics(app) : null
+    );
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
     const countWallets = httpsCallable(functions, "countWallets");
@@ -62,7 +64,7 @@ export default function Admin() {
         var wallets = new Map();
         var lastTransacWallet = new Map();
         response.data.forEach((element) => {
-            if(element.operation.type == "transaction") {
+            if (element.operation.type == "transaction") {
                 totalTransac = totalTransac + 1;
             }
             if (element.operation.type != "origination") {
@@ -75,7 +77,6 @@ export default function Admin() {
                         data_value.address,
                         wallets.get(data_value.address) + 1
                     );
-                    
                 } else {
                     wallets.set(data_value.address, 1);
                     totalClient = totalClient + 1;
@@ -127,7 +128,6 @@ export default function Admin() {
         }
     }, []);
 
-
     //create a list of the last transaction of each wallet
 
     const data = Array.from(userNFTs, ([key, value]) => {
@@ -143,7 +143,8 @@ export default function Admin() {
         };
     });
 
-    const lastTransac = (data != undefined && data.length > 0)?data[0].last:"Erreur";
+    const lastTransac =
+        data != undefined && data.length > 0 ? data[0].last : "Erreur";
 
     return (
         <>
@@ -151,7 +152,10 @@ export default function Admin() {
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
                     Wallet info
                 </p>
-                <DashboardStatsGrid  lastTransac={lastTransac} totalTransac={transacAmount}/>
+                <DashboardStatsGrid
+                    lastTransac={lastTransac}
+                    totalTransac={transacAmount}
+                />
                 <TransactionChart />
                 <RecentOrders recentTransacData={data} />
             </Layout>
