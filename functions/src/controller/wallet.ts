@@ -2,7 +2,7 @@ import * as functions from "firebase-functions";
 import { database } from "firebase-admin";
 import DataSnapshot = database.DataSnapshot;
 import { corsHandler } from "./utils";
-import { getRefStatsConnections, getRefUsers } from "../data/data";
+import { getRefUsers } from "../data/data";
 
 // Add or update a user when sign in
 export const addWallet = functions
@@ -10,7 +10,6 @@ export const addWallet = functions
     .https.onRequest((request, response) => {
         corsHandler(request, response, async () => {
             const ref = getRefUsers();
-            const refStats = getRefStatsConnections();
 
             const walletAddress = request.body.data.value;
             const now = new Date();
@@ -25,20 +24,6 @@ export const addWallet = functions
                         });
                     }
                 });
-            });
-
-            await refStats.once("value", (snapshot: DataSnapshot) => {
-                const refLastTwoWeeks = snapshot
-                    .child("lastTwoWeeksConnections")
-                    .child("current");
-                refLastTwoWeeks.ref.set(refLastTwoWeeks.val() + 1);
-            });
-
-            await refStats.once("value", (snapshot: DataSnapshot) => {
-                const refLastTwoWeeks = snapshot
-                    .child("lastMonthConnections")
-                    .child("current");
-                refLastTwoWeeks.ref.set(refLastTwoWeeks.val() + 1);
             });
 
             if (!exist) {
