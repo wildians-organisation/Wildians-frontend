@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import { database } from "firebase-admin";
 import DataSnapshot = database.DataSnapshot;
-import { corsHandler, initializeYearConnections } from "./utils";
+import { addDays, corsHandler, initializeYearConnections } from "./utils";
 import { getRefUsers } from "../data/data";
 
 export const countWallets = functions
@@ -30,8 +30,8 @@ export const getConnectionStats = functions
 
             const now = new Date();
             const currentYear = now.getFullYear();
-            const nowMinusTwoWeeks = new Date(now.getDate() - 14);
-            const nowMinusOneMonth = new Date(now.getDate() - 30);
+            const nowMinusTwoWeeks = addDays(now, -14);
+            const nowMinusOneMonth = addDays(now, -30);
 
             // Get a snapshot of the path
             await ref.once("value", (dataSnapshot: DataSnapshot) => {
