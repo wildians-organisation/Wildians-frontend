@@ -15,12 +15,13 @@ function BottomPart() {
                     association. Which one will you choose?
                 </div>
                 <div className="explanationPart flex justify-evenly items-center text-beige mt-12">
-                    <Wildians
+                <Wildians
                         image={"/img/v2/visuels/Deer.png"}
                         title="Deer_3D"
                         pillar="ENVIRONNEMENT"
                         description="With the deer contribute directly to the WWF."
                         nft_adress={config.DEER_NFT}
+                        ong_wallet="tz1PzMwAJ4w4DnmzgNTDKPSBPN861ourF8Lp"
                     />
                     <Wildians
                         image={"/img/v2/visuels/Wolf.png"}
@@ -28,6 +29,7 @@ function BottomPart() {
                         pillar="SOCIETY"
                         description="With the wolf contribute directly to Greenpeace."
                         nft_adress={config.WOLF_NFT}
+                        ong_wallet="tz1M9Ku6NrEnvDCWcRx7GCZspPsbGEdBVoyT"
                     />
                     <Wildians
                         image={"/img/v2/visuels/Bull.png"}
@@ -35,6 +37,7 @@ function BottomPart() {
                         pillar="ECONOMY"
                         description="With the bull contribute directly to Unicef."
                         nft_adress={config.BULL_NFT}
+                        ong_wallet="tz1PzMwAJ4w4DnmzgNTDKPSBPN861ourF8Lp"
                     />
                 </div>
             </div>
