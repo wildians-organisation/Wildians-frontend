@@ -34,11 +34,27 @@ export default function Admin() {
     const [lastTransacWallets, setlastTransacWallets] = React.useState(
         new Map()
     );
+    const [connectionStats, setConnectionStats] = React.useState("");
     const app = initializeApp(firebaseConfig);
-    const analytics = isSupported().then(yes => yes ? getAnalytics(app) : null);
+    const analytics = isSupported().then((yes) =>
+        yes ? getAnalytics(app) : null
+    );
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
     const countWallets = httpsCallable(functions, "countWallets");
+    const connectionStatsCall = httpsCallable(
+        functions,
+        "statisticsController-getConnectionStats"
+    );
+    const getConnectionStats = async () => {
+        try {
+            const response = await connectionStatsCall();
+            setConnectionStats(response.data);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
     /*** Function to add wallet adress to firebase ***/
     const getWallets = async () => {
         try {
@@ -55,7 +71,7 @@ export default function Admin() {
         );
         const nbrNftMinted = response.data.length;
         setNbrToken(nbrNftMinted - 1);
-        let tmp = [];
+
         let tmpAmount = 0;
         let totalTransac = 0;
         let totalClient = 0;
@@ -127,6 +143,7 @@ export default function Admin() {
             );
             getWallets();
         }
+        getConnectionStats();
     }, []);
 
     const listItems2 = Array.from(userNFTs).map((addr, id) => (
@@ -158,7 +175,7 @@ export default function Admin() {
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
                     Wallet info
                 </p>
-                <DashboardStatsGrid />
+                <DashboardStatsGrid connectionStats={connectionStats} />
                 <TransactionChart />
                 <RecentOrders recentTransacData={data} />
             </Layout>
