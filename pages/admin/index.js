@@ -163,7 +163,7 @@ export default function Admin() {
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
                     Wallet info
                 </p>
-                <DashboardStatsGrid totalMonthTransaction={totalMonthTransac} />
+                <DashboardStatsGrid totalMonthTransaction={totalMonthTransac} totalClient={clientAmount} />
                 <TransactionChart />
                 <RecentOrders recentTransacData={data} />
             </Layout>
