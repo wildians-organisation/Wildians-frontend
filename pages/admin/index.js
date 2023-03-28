@@ -5,7 +5,6 @@ import { initializeApp } from "firebase/app";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "../../components/AdminDashBoard/Layout";
 import TopCards from "components/AdminDashBoard/TopCards.js";
-import { getAnalytics, isSupported } from "firebase/analytics";
 import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
 import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
 import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
@@ -17,7 +16,8 @@ const firebaseConfig = {
     projectId: `${config.GCPPROJECTID}`,
     storageBucket: `${config.GCPSTORAGEBUCKET}`,
     messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
-    appId: `${config.GCPAPPID}`
+    appId: `${config.GCPAPPID}`,
+    measurementId: `${config.MEASUREMENTID}`
 };
 
 export default function Admin() {
@@ -34,14 +34,19 @@ export default function Admin() {
     const [lastTransacWallets, setlastTransacWallets] = React.useState(
         new Map()
     );
+    const [totalMonthTransac, setTotalMonthTransac] = React.useState(0);
     const [connectionStats, setConnectionStats] = React.useState("");
+    
     const app = initializeApp(firebaseConfig);
     const analytics = isSupported().then((yes) =>
         yes ? getAnalytics(app) : null
     );
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
-    const countWallets = httpsCallable(functions, "countWallets");
+    const countWallets = httpsCallable(
+        functions,
+        "statisticsController-countWallets"
+    );
     const connectionStatsCall = httpsCallable(
         functions,
         "statisticsController-getConnectionStats"
@@ -54,7 +59,7 @@ export default function Admin() {
             console.log(e);
         }
     };
-
+    
     /*** Function to add wallet adress to firebase ***/
     const getWallets = async () => {
         try {
@@ -64,21 +69,43 @@ export default function Admin() {
             console.error(e);
         }
     };
+
+    //Get the number of connexion this month
+    const countMonthConnexion = httpsCallable(functions, "getUsers");
+    const getMonthConnexion = async () => {
+        try {
+            const response = await countMonthConnexion();
+            setNumberWallets(response.data);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
     // Get informations about the smartcontract with the tzkt api
     const getContractInformations = async () => {
         const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
+            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history?limit=1000`
         );
         const nbrNftMinted = response.data.length;
         setNbrToken(nbrNftMinted - 1);
-
+        const currentDate = new Date();
+        const thirtyDaysAgo = currentDate.setDate(currentDate.getDate() - 30);
+        let tmp = [];
         let tmpAmount = 0;
         let totalTransac = 0;
         let totalClient = 0;
         var wallets = new Map();
         var lastTransacWallet = new Map();
+        let tmpTotalMonthTransac = 0;
         response.data.forEach((element) => {
+            if (element.operation.type == "transaction") {
+                totalTransac = totalTransac + 1;
+            }
             if (element.operation.type != "origination") {
+                let transactionDate = new Date(element.timestamp);
+                if (transactionDate >= thirtyDaysAgo) {
+                    tmpTotalMonthTransac = tmpTotalMonthTransac + 1;
+                }
                 let data_value = element.operation.parameter.value;
 
                 tmpAmount += data_value.cost / config.TEZOS_CONVERTER;
@@ -88,14 +115,8 @@ export default function Admin() {
                         data_value.address,
                         wallets.get(data_value.address) + 1
                     );
-                    totalTransac = totalTransac + 1;
-                    lastTransacWallet.set(
-                        data_value.address,
-                        element.timestamp
-                    );
                 } else {
                     wallets.set(data_value.address, 1);
-                    totalTransac = totalTransac + 1;
                     totalClient = totalClient + 1;
                     lastTransacWallet.set(
                         data_value.address,
@@ -110,12 +131,13 @@ export default function Admin() {
         setTransacAmount(totalTransac);
         setClientAmount(totalClient);
         setlastTransacWallets(lastTransacWallet);
+        setTotalMonthTransac(tmpTotalMonthTransac);
     };
 
     // Get the number of NFTs of the wallet connected
     const getNFTMintByUser = async (userAdress) => {
         const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
+            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history?limit=1000`
         );
         var nb = 0;
         response.data.forEach((element) => {
@@ -137,20 +159,14 @@ export default function Admin() {
             setUserAddress(
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
-            getContractInformations();
             getNFTMintByUser(
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
-            getWallets();
         }
         getConnectionStats();
+        getContractInformations();
+        getWallets();
     }, []);
-
-    const listItems2 = Array.from(userNFTs).map((addr, id) => (
-        <li key={id}>
-            {addr[0]} : {addr[1]}
-        </li>
-    ));
 
     //create a list of the last transaction of each wallet
 
@@ -167,7 +183,8 @@ export default function Admin() {
         };
     });
 
-    console.log(data);
+    const lastTransac =
+        data != undefined && data.length > 0 ? data[0].last : "Erreur";
 
     return (
         <>
@@ -175,7 +192,11 @@ export default function Admin() {
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
                     Wallet info
                 </p>
-                <DashboardStatsGrid connectionStats={connectionStats} />
+                <DashboardStatsGrid
+                    lastTransac={lastTransac}
+                    totalTransac={transacAmount}
+                    connectionStats={connectionStats}
+                />
                 <TransactionChart />
                 <RecentOrders recentTransacData={data} />
             </Layout>
