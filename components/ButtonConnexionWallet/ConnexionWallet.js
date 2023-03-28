@@ -15,13 +15,14 @@ const firebaseConfig = {
     projectId: `${config.GCPPROJECTID}`,
     storageBucket: `${config.GCPSTORAGEBUCKET}`,
     messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
-    appId: `${config.GCPAPPID}`
+    appId: `${config.GCPAPPID}`,
+    measurementId: `${config.MEASUREMENTID}`
 };
 
 const app = initializeApp(firebaseConfig);
 const functions = getFunctions(app);
 functions.region = "europe-west1";
-const addWallet = httpsCallable(functions, "addWallet");
+const addWallet = httpsCallable(functions, "walletControllers-addWallet");
 
 const network = { type: NetworkType.GHOSTNET };
 
@@ -33,7 +34,11 @@ export default function ConnexionWallet() {
 
     React.useEffect(() => {
         (async () => {
-            setUserAddress(localStorage.getItem("userAdress"));
+            const initialUserAdress = localStorage.getItem("userAdress");
+            setUserAddress(initialUserAdress);
+            if (initialUserAdress !== null) {
+                addWalletToFirebase(initialUserAdress);
+            }
             const _wallet = new BeaconWallet({ name: "Demo" });
             setWallet(_wallet);
             Tezos.setWalletProvider(_wallet);

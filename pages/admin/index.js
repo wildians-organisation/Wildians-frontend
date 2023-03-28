@@ -16,7 +16,8 @@ const firebaseConfig = {
     projectId: `${config.GCPPROJECTID}`,
     storageBucket: `${config.GCPSTORAGEBUCKET}`,
     messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
-    appId: `${config.GCPAPPID}`
+    appId: `${config.GCPAPPID}`,
+    measurementId: `${config.MEASUREMENTID}`
 };
 
 export default function Admin() {
@@ -37,7 +38,10 @@ export default function Admin() {
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
-    const countWallets = httpsCallable(functions, "countWallets");
+    const countWallets = httpsCallable(
+        functions,
+        "statisticsController-countWallets"
+    );
     /*** Function to add wallet adress to firebase ***/
     const getWallets = async () => {
         try {
@@ -47,6 +51,18 @@ export default function Admin() {
             console.error(e);
         }
     };
+
+    //Get the number of connexion this month
+    const countMonthConnexion = httpsCallable(functions, "getUsers");
+    const getMonthConnexion = async () => {
+        try {
+            const response = await countMonthConnexion();
+            setNumberWallets(response.data);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
     // Get informations about the smartcontract with the tzkt api
     const getContractInformations = async () => {
         const response = await axios.get(
