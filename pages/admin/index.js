@@ -4,10 +4,10 @@ import * as config from "../../config/config.js";
 import { initializeApp } from "firebase/app";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "../../components/AdminDashBoard/Layout";
-import TopCards from "components/AdminDashBoard/TopCards.js";
 import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
 import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
 import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
+import { getAnalytics, isSupported } from "firebase/analytics";
 
 const firebaseConfig = {
     apiKey: `${config.GCPAPIKEY}`,
