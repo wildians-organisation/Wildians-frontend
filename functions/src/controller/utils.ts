@@ -1,7 +1,4 @@
-import * as cors from "cors";
-
 const NUMBER_OF_MONTHS = 12;
-const corsHandler = cors({ origin: "*" });
 
 function initializeYearConnections(): number[] {
     let yearConnections = [];
@@ -19,4 +16,4 @@ function addDays(date: Date, days: number) {
     return result;
 }
 
-export { corsHandler, initializeYearConnections, addDays };
+export { initializeYearConnections, addDays };

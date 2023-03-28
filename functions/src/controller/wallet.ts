@@ -1,39 +1,34 @@
 import * as functions from "firebase-functions";
 import { database } from "firebase-admin";
 import DataSnapshot = database.DataSnapshot;
-import { corsHandler } from "./utils";
 import { getRefUsers } from "../data/data";
 
 // Add or update a user when sign in
 export const addWallet = functions
     .region("europe-west1")
-    .https.onRequest((request, response) => {
-        corsHandler(request, response, async () => {
-            const ref = getRefUsers();
+    .https.onCall(async (data, context) => {
+        const ref = getRefUsers();
 
-            const walletAddress = request.body.data.value;
-            const now = new Date();
-            let exist = false;
+        const walletAddress = data.value;
+        const now = new Date();
+        let exist = false;
 
-            await ref.once("value", (dataSnapshot: DataSnapshot) => {
-                dataSnapshot.forEach((snapshot) => {
-                    if (snapshot.val().walletAddress === walletAddress) {
-                        exist = true;
-                        snapshot.ref.update({
-                            lastConnection: now.getTime()
-                        });
-                    }
-                });
+        await ref.once("value", (dataSnapshot: DataSnapshot) => {
+            dataSnapshot.forEach((snapshot) => {
+                if (snapshot.val().walletAddress === walletAddress) {
+                    exist = true;
+                    snapshot.ref.update({
+                        lastConnection: now.getTime()
+                    });
+                }
             });
-
-            if (!exist) {
-                ref.push({
-                    walletAddress: walletAddress,
-                    firstConnection: now.getTime(),
-                    lastConnection: now.getTime()
-                });
-            }
-
-            response.sendStatus(200);
         });
+
+        if (!exist) {
+            ref.push({
+                walletAddress: walletAddress,
+                firstConnection: now.getTime(),
+                lastConnection: now.getTime()
+            });
+        }
     });
