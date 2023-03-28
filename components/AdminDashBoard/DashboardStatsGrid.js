@@ -20,9 +20,8 @@ export default function DashboardStatsGrid({ lastTransac, totalTransac,totalMont
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            23
+                            A changer
                         </strong>
-                        <span className="text-sm text-green-500 pl-2">+3</span>
                     </div>
                 </div>
             </BoxWrapper>
@@ -36,7 +35,7 @@ export default function DashboardStatsGrid({ lastTransac, totalTransac,totalMont
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            {totalTransac}
+                            A changer
                         </strong>
                     </div>
                 </div>
@@ -51,7 +50,7 @@ export default function DashboardStatsGrid({ lastTransac, totalTransac,totalMont
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            {lastTransac}
+                            A changer
                         </strong>
                     </div>
                 </div>
@@ -67,9 +66,8 @@ export default function DashboardStatsGrid({ lastTransac, totalTransac,totalMont
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            25
+                            {totalTransac}
                         </strong>
-                        <span className="text-sm text-green-500 pl-2">+3</span>
                     </div>
                 </div>
             </BoxWrapper>
@@ -84,9 +82,8 @@ export default function DashboardStatsGrid({ lastTransac, totalTransac,totalMont
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            03/14/2023
+                            {lastTransac}
                         </strong>
-                        <span className="text-xl text-gray-700 p-3">21:51</span>
                     </div>
                 </div>
             </BoxWrapper>
