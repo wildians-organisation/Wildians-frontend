@@ -36,7 +36,7 @@ export default function Admin() {
     );
     const [totalMonthTransac, setTotalMonthTransac] = React.useState(0);
     const [connectionStats, setConnectionStats] = React.useState("");
-    
+
     const app = initializeApp(firebaseConfig);
     const analytics = isSupported().then((yes) =>
         yes ? getAnalytics(app) : null
@@ -59,7 +59,7 @@ export default function Admin() {
             console.log(e);
         }
     };
-    
+
     /*** Function to add wallet adress to firebase ***/
     const getWallets = async () => {
         try {
