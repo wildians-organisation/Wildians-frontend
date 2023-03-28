@@ -13,7 +13,8 @@ const firebaseConfig = {
     projectId: `${config.GCPPROJECTID}`,
     storageBucket: `${config.GCPSTORAGEBUCKET}`,
     messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
-    appId: `${config.GCPAPPID}`
+    appId: `${config.GCPAPPID}`,
+    measurementId: `${config.MEASUREMENTID}`
 };
 
 export default function Admin() {
@@ -28,7 +29,10 @@ export default function Admin() {
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
-    const countWallets = httpsCallable(functions, "countWallets");
+    const countWallets = httpsCallable(
+        functions,
+        "statisticsController-countWallets"
+    );
     /*** Function to add wallet adress to firebase ***/
     const getWallets = async () => {
         try {

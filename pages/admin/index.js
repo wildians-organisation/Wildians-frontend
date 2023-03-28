@@ -5,7 +5,6 @@ import { initializeApp } from "firebase/app";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "../../components/AdminDashBoard/Layout";
 import TopCards from "components/AdminDashBoard/TopCards.js";
-import { getAnalytics, isSupported } from "firebase/analytics";
 import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
 import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
 import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
@@ -17,7 +16,8 @@ const firebaseConfig = {
     projectId: `${config.GCPPROJECTID}`,
     storageBucket: `${config.GCPSTORAGEBUCKET}`,
     messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
-    appId: `${config.GCPAPPID}`
+    appId: `${config.GCPAPPID}`,
+    measurementId: `${config.MEASUREMENTID}`
 };
 
 export default function Admin() {
@@ -34,13 +34,14 @@ export default function Admin() {
     const [lastTransacWallets, setlastTransacWallets] = React.useState(
         new Map()
     );
+    const [totalMonthTransac, setTotalMonthTransac] = React.useState(0);
     const app = initializeApp(firebaseConfig);
-    const analytics = isSupported().then((yes) =>
-        yes ? getAnalytics(app) : null
-    );
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
-    const countWallets = httpsCallable(functions, "countWallets");
+    const countWallets = httpsCallable(
+        functions,
+        "statisticsController-countWallets"
+    );
     /*** Function to add wallet adress to firebase ***/
     const getWallets = async () => {
         try {
@@ -50,6 +51,18 @@ export default function Admin() {
             console.error(e);
         }
     };
+
+    //Get the number of connexion this month
+    const countMonthConnexion = httpsCallable(functions, "getUsers");
+    const getMonthConnexion = async () => {
+        try {
+            const response = await countMonthConnexion();
+            setNumberWallets(response.data);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
     // Get informations about the smartcontract with the tzkt api
     const getContractInformations = async () => {
         const response = await axios.get(
@@ -57,17 +70,24 @@ export default function Admin() {
         );
         const nbrNftMinted = response.data.length;
         setNbrToken(nbrNftMinted - 1);
+        const currentDate = new Date();
+        const thirtyDaysAgo = currentDate.setDate(currentDate.getDate() - 30);
         let tmp = [];
         let tmpAmount = 0;
         let totalTransac = 0;
         let totalClient = 0;
         var wallets = new Map();
         var lastTransacWallet = new Map();
+        let tmpTotalMonthTransac = 0;
         response.data.forEach((element) => {
             if (element.operation.type == "transaction") {
                 totalTransac = totalTransac + 1;
             }
             if (element.operation.type != "origination") {
+                let transactionDate = new Date(element.timestamp);
+                if (transactionDate >= thirtyDaysAgo) {
+                    tmpTotalMonthTransac = tmpTotalMonthTransac + 1;
+                }
                 let data_value = element.operation.parameter.value;
 
                 tmpAmount += data_value.cost / config.TEZOS_CONVERTER;
@@ -93,6 +113,7 @@ export default function Admin() {
         setTransacAmount(totalTransac);
         setClientAmount(totalClient);
         setlastTransacWallets(lastTransacWallet);
+        setTotalMonthTransac(tmpTotalMonthTransac);
     };
 
     // Get the number of NFTs of the wallet connected
@@ -120,12 +141,12 @@ export default function Admin() {
             setUserAddress(
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
-            getContractInformations();
             getNFTMintByUser(
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
-            getWallets();
         }
+        getContractInformations();
+        getWallets();
     }, []);
 
     //create a list of the last transaction of each wallet
