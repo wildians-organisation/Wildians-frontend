@@ -196,6 +196,7 @@ export default function Admin() {
                     lastTransac={lastTransac}
                     totalTransac={transacAmount}
                     connectionStats={connectionStats}
+                    totalMonthTransaction={totalMonthTransac}
                 />
                 <TransactionChart />
                 <RecentOrders recentTransacData={data} />
