@@ -197,7 +197,6 @@ export default function Admin() {
                     totalTransac={transacAmount}
                     totalMonthTransaction={totalMonthTransac}
                     connectionStats={connectionStats}
-                    totalMonthTransaction={totalMonthTransac}
                     totalClient={clientAmount}
                 />
                 <TransactionChart />
