@@ -29,7 +29,7 @@ export default function Admin() {
         { name: "SOCIETY", value: 0 },
         { name: "ECONOMY", value: 0 }
     ]);
-    const [detailsDons, setdetailsDons] = React.useState(new Map());
+    const [detailsDons, setdetailsDons] = React.useState([]);
 
     const getContractInformations = async () => {
         const response = await axios.get(
@@ -42,11 +42,6 @@ export default function Admin() {
 
                 if (wallets.includes(data_value.address) == false) {
                     wallets.push(data_value.address);
-                    detailsDons.set(data_value.address, {
-                        WWF: 0,
-                        Greenpeace: 0,
-                        Unicef: 0
-                    });
                     fetchData(data_value.address);
                 }
             }
@@ -60,6 +55,7 @@ export default function Admin() {
                 `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
             );
             for (let i = 0; i < response["data"].length; i++) {
+                let dateT = response["data"][i]["firstTime"];
                 if (
                     response["data"][i]["token"]["metadata"] == null ||
                     response["data"][i]["token"]["metadata"] == undefined
@@ -76,7 +72,7 @@ export default function Admin() {
                             return newData;
                         });
 
-                        detailsDons.get(userAddressToFetch)["WWF"] += 1;
+                        detailsDons.push({address :userAddressToFetch, ONG:"WWF",date:new Date(dateT).toLocaleString()});
                     } else if (
                         response["data"][i]["token"]["metadata"]["name"] ==
                         "WOLF"
@@ -86,7 +82,7 @@ export default function Admin() {
                             newData[1].value = newData[1].value + 1;
                             return newData;
                         });
-                        detailsDons.get(userAddressToFetch)["Greenpeace"] += 1;
+                        detailsDons.push({address :userAddressToFetch, ONG:"Greenpeace",date:new Date(dateT).toLocaleString()});
                     } else if (
                         response["data"][i]["token"]["metadata"]["name"] ==
                         "BULL"
@@ -96,16 +92,9 @@ export default function Admin() {
                             newData[2].value = newData[2].value + 1;
                             return newData;
                         });
-                        detailsDons.get(userAddressToFetch)["Unicef"] += 1;
+                        detailsDons.push({address :userAddressToFetch, ONG:"Unicef",date:new Date(dateT).toLocaleString()});
                     }
                 }
-            }
-            if (
-                detailsDons.get(userAddressToFetch)["WWF"] == 0 &&
-                detailsDons.get(userAddressToFetch)["Greenpeace"] == 0 &&
-                detailsDons.get(userAddressToFetch)["Unicef"] == 0
-            ) {
-                detailsDons.delete(userAddressToFetch);
             }
         } catch (e) {
             console.error(e);
