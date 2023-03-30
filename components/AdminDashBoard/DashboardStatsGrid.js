@@ -40,7 +40,7 @@ export default function DashboardStatsGrid({
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                             {connectionStats["lastTwoWeeksConnections"]}
+                            {connectionStats["lastTwoWeeksConnections"]}
                         </strong>
                     </div>
                 </div>
@@ -55,7 +55,7 @@ export default function DashboardStatsGrid({
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            A changer
+                            {connectionStats["lastOneMonthConnections"]}
                         </strong>
                     </div>
                 </div>
