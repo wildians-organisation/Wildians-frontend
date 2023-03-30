@@ -41,7 +41,7 @@ export default function DashboardStatsGrid({
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            {totalTransac}
+                            {connectionStats["lastTwoWeeksConnections"]}
                         </strong>
                     </div>
                 </div>
@@ -56,7 +56,7 @@ export default function DashboardStatsGrid({
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            {lastTransac}
+                            {connectionStats["lastOneMonthConnections"]}
                         </strong>
                     </div>
                 </div>
@@ -72,7 +72,7 @@ export default function DashboardStatsGrid({
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            {connectionStats["lastTwoWeeksConnections"]}
+                            {totalTransac}
                         </strong>
                         <span className="text-sm text-green-500 pl-2">+3</span>
                     </div>
@@ -89,7 +89,7 @@ export default function DashboardStatsGrid({
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            03/14/2023
+                            {lastTransac}
                         </strong>
                         <span className="text-xl text-gray-700 p-3">21:51</span>
                     </div>
