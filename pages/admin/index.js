@@ -195,6 +195,7 @@ export default function Admin() {
                 <DashboardStatsGrid
                     lastTransac={lastTransac}
                     totalTransac={transacAmount}
+                    totalMonthTransaction={totalMonthTransac}
                     connectionStats={connectionStats}
                     totalMonthTransaction={totalMonthTransac}
                 />

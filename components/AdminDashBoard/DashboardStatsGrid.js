@@ -25,9 +25,8 @@ export default function DashboardStatsGrid({
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            23
+                            A changer
                         </strong>
-                        <span className="text-sm text-green-500 pl-2">+3</span>
                     </div>
                 </div>
             </BoxWrapper>
@@ -74,7 +73,6 @@ export default function DashboardStatsGrid({
                         <strong className="text-xl text-gray-700 font-semibold">
                             {totalTransac}
                         </strong>
-                        <span className="text-sm text-green-500 pl-2">+3</span>
                     </div>
                 </div>
             </BoxWrapper>
@@ -91,7 +89,6 @@ export default function DashboardStatsGrid({
                         <strong className="text-xl text-gray-700 font-semibold">
                             {lastTransac}
                         </strong>
-                        <span className="text-xl text-gray-700 p-3">21:51</span>
                     </div>
                 </div>
             </BoxWrapper>
