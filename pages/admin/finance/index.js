@@ -7,6 +7,8 @@ import Layout from "components/AdminDashBoard/Layout.js";
 import { Component } from "react/cjs/react.production.min.js";
 import FinanceStatsGrid from "components/AdminDashBoard/FinanceStatsGrid.js";
 import OrganisationRepartition from "components/AdminDashBoard/OrganisationRepartition.js";
+import DetailsDons from "components/AdminDashBoard/DetailsDons.js";
+import { IoConstructOutline } from "react-icons/io5";
 
 const firebaseConfig = {
     apiKey: `${config.GCPAPIKEY}`,
@@ -15,104 +17,102 @@ const firebaseConfig = {
     projectId: `${config.GCPPROJECTID}`,
     storageBucket: `${config.GCPSTORAGEBUCKET}`,
     messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
-    appId: `${config.GCPAPPID}`,
-    measurementId: `${config.MEASUREMENTID}`
+    appId: `${config.GCPAPPID}`
 };
 
 export default function Admin() {
     // Display items in a list with add button on each items
-    const [nbrToken, setNbrToken] = React.useState();
-    const [nbNFTConnectedAdress, setNbNFTConnectedAdress] = React.useState();
-    const [clientsAddress, setClientsAddress] = React.useState([]);
-    const [userAddress, setUserAddress] = React.useState("");
     const [userNFTs, setUserNFTs] = React.useState([]);
-    const [tezosAmount, setTezosAmount] = React.useState(0);
-    const [numberWallets, setNumberWallets] = React.useState(0);
-    const app = initializeApp(firebaseConfig);
-    const functions = getFunctions(app);
-    functions.region = config.BUCKET_REGION;
-    const countWallets = httpsCallable(
-        functions,
-        "statisticsController-countWallets"
+    const [test, setTest] = React.useState(0);
+    const [dataFinance, setDataFinance] = React.useState([
+        { name: "ENVIRONMENT", value: 0 },
+        { name: "SOCIETY", value: 0 },
+        { name: "ECONOMY", value: 0 }
+    ]);
+    const [detailsDons, setdetailsDons] = React.useState(
+        new Map()
     );
-    /*** Function to add wallet adress to firebase ***/
-    const getWallets = async () => {
-        try {
-            const response = await countWallets();
-            setNumberWallets(response.data);
-        } catch (e) {
-            console.error(e);
-        }
-    };
-    // Get informations about the smartcontract with the tzkt api
+
     const getContractInformations = async () => {
         const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
+            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history?limit=1000`
         );
-        const nbrNftMinted = response.data.length;
-        setNbrToken(nbrNftMinted - 1);
-        let tmp = [];
-        let tmpAmount = 0;
-        var wallets = new Map();
+        var wallets = [];
         response.data.forEach((element) => {
             if (element.operation.type != "origination") {
                 let data_value = element.operation.parameter.value;
 
-                tmpAmount += data_value.cost / config.TEZOS_CONVERTER;
-                tmp.push(data_value.address);
-                if (wallets.has(data_value.address)) {
-                    wallets.set(
-                        data_value.address,
-                        wallets.get(data_value.address) + 1
-                    );
-                } else {
-                    wallets.set(data_value.address, 1);
+                if (wallets.includes(data_value.address) == false) {
+                    wallets.push(data_value.address);
+                    detailsDons.set(data_value.address,{WWF:0,Greenpeace:0,Unicef:0});
+                    fetchData(data_value.address);
                 }
             }
         });
-        setClientsAddress(tmp);
         setUserNFTs(wallets);
-        setTezosAmount(tmpAmount);
     };
 
-    // Get the number of NFTs of the wallet connected
-    const getNFTMintByUser = async (userAdress) => {
-        const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
-        );
-        var nb = 0;
-        response.data.forEach((element) => {
-            if (
-                element.operation.type !== "origination" &&
-                element.operation.parameter.value.address === userAdress
-            ) {
-                nb = nb + 1;
+    const fetchData = async (userAddressToFetch) => {
+        try {
+            const response = await axios.get(
+                `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
+            );
+            for (let i = 0; i < response["data"].length; i++) {
+                if (response["data"][i]["token"]["metadata"] == null || response["data"][i]["token"]["metadata"] == undefined) continue;
+                else {
+                    if (
+                        response["data"][i]["token"]["metadata"]["name"] ==
+                        "BICHE"
+                    ) {
+                        setDataFinance((prevState) => {
+                            const newData = [...prevState];
+                            newData[0].value = newData[0].value + 1;
+                            return newData;
+                        });
+    
+                        detailsDons.get(userAddressToFetch)["WWF"]+=1;
+                    }
+                    else if (
+                        response["data"][i]["token"]["metadata"]["name"] ==
+                        "WOLF"
+                    ) {
+                        setDataFinance((prevState) => {
+                            const newData = [...prevState];
+                            newData[1].value = newData[1].value + 1;
+                            return newData;
+                        });
+                        detailsDons.get(userAddressToFetch)["Greenpeace"]+=1;
+                    }
+                    else if (
+                        response["data"][i]["token"]["metadata"]["name"] ==
+                        "BULL"
+                    ) {
+                        setDataFinance((prevState) => {
+                            const newData = [...prevState];
+                            newData[2].value = newData[2].value + 1;
+                            return newData;
+                        });
+                        detailsDons.get(userAddressToFetch)["Unicef"]+=1;
+                    }
+                }
             }
-        });
-        setNbNFTConnectedAdress(nb);
-    };
-
-    React.useEffect(async () => {
-        if (
-            typeof window !== "undefined" &&
-            window.localStorage.getItem("beacon:accounts")
-        ) {
-            setUserAddress(
-                JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
-            );
-            getContractInformations();
-            getNFTMintByUser(
-                JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
-            );
-            getWallets();
+            if (
+                detailsDons.get(userAddressToFetch)["WWF"] == 0 &&
+                detailsDons.get(userAddressToFetch)["Greenpeace"] == 0 &&
+                detailsDons.get(userAddressToFetch)["Unicef"] == 0
+            ) {
+                detailsDons.delete(userAddressToFetch);
+            }
+        } catch (e) {
+            console.error(e);
         }
-    }, []);
+    };
+    
 
-    const listItems2 = Array.from(userNFTs).map((addr, id) => (
-        <li key={id}>
-            {addr[0]} : {addr[1]}
-        </li>
-    ));
+    React.useEffect(() => {
+        getContractInformations();
+        
+    }, []);
 
     return (
         <>
@@ -121,7 +121,8 @@ export default function Admin() {
                     Finance
                 </p>
                 <FinanceStatsGrid />
-                <OrganisationRepartition />
+                <OrganisationRepartition data={dataFinance} />
+                <DetailsDons details={detailsDons}/>      
             </Layout>
         </>
     );

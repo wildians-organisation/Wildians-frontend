@@ -106,12 +106,6 @@ export default function Admin() {
         }
     }, []);
 
-    const listItems2 = Array.from(userNFTs).map((addr, id) => (
-        <li key={id}>
-            {addr[0]} : {addr[1]}
-        </li>
-    ));
-
     return (
         <>
             <div className="bg-gray-100">

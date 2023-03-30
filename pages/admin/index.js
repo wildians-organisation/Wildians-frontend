@@ -31,9 +31,7 @@ export default function Admin() {
     const [transacAmount, setTransacAmount] = React.useState(0);
     const [clientAmount, setClientAmount] = React.useState(0);
     const [numberWallets, setNumberWallets] = React.useState(0);
-    const [lastTransacWallets, setlastTransacWallets] = React.useState(
-        new Map()
-    );
+    const [lastTransacWallets, setlastTransacWallets] = React.useState(new Map());
     const [totalMonthTransac, setTotalMonthTransac] = React.useState(0);
     const [connectionStats, setConnectionStats] = React.useState("");
 
@@ -133,6 +131,8 @@ export default function Admin() {
         setlastTransacWallets(lastTransacWallet);
         setTotalMonthTransac(tmpTotalMonthTransac);
     };
+
+   
 
     // Get the number of NFTs of the wallet connected
     const getNFTMintByUser = async (userAdress) => {
