@@ -22,7 +22,7 @@ export default function DetailsDons({ details }) {
                                 <td className="border-t border-gray-200 py-2 text-center text-xs">
                                     {address}
                                 </td>
-                                <td className="border-t border-gray-200 py-2 text-center text-xs">
+                                <td className="border-t border-gray-200 py-2 text-left text-xs">
                                     {Object.entries(donations).map(
                                         ([charity, amount]) => (
                                             <div key={charity}>
