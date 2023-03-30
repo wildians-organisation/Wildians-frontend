@@ -37,7 +37,7 @@ function BottomPart() {
                         pillar="ECONOMY"
                         description="With the bull contribute directly to Unicef."
                         nft_adress={config.BULL_NFT}
-                        ong_wallet="tz1PzMwAJ4w4DnmzgNTDKPSBPN861ourF8Lp"
+                        ong_wallet={config.ONG_ADDRESS}
                     />
                 </div>
             </div>

@@ -8,6 +8,7 @@ module.exports = {
         wolf_nft: process.env.WOLF_NFT,
         deer_nft: process.env.DEER_NFT,
         bull_nft: process.env.BULL_NFT,
+        ong_address: process.env.ONG_ADDRESS,
         tezos_converter: process.env.TEZOS_CONVERTER,
         association_part: process.env.ASSOCIATION_PART,
         wildians_part: process.env.WILDIANS_PART,
