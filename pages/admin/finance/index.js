@@ -29,9 +29,7 @@ export default function Admin() {
         { name: "SOCIETY", value: 0 },
         { name: "ECONOMY", value: 0 }
     ]);
-    const [detailsDons, setdetailsDons] = React.useState(
-        new Map()
-    );
+    const [detailsDons, setdetailsDons] = React.useState(new Map());
 
     const getContractInformations = async () => {
         const response = await axios.get(
@@ -44,7 +42,11 @@ export default function Admin() {
 
                 if (wallets.includes(data_value.address) == false) {
                     wallets.push(data_value.address);
-                    detailsDons.set(data_value.address,{WWF:0,Greenpeace:0,Unicef:0});
+                    detailsDons.set(data_value.address, {
+                        WWF: 0,
+                        Greenpeace: 0,
+                        Unicef: 0
+                    });
                     fetchData(data_value.address);
                 }
             }
@@ -58,7 +60,11 @@ export default function Admin() {
                 `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
             );
             for (let i = 0; i < response["data"].length; i++) {
-                if (response["data"][i]["token"]["metadata"] == null || response["data"][i]["token"]["metadata"] == undefined) continue;
+                if (
+                    response["data"][i]["token"]["metadata"] == null ||
+                    response["data"][i]["token"]["metadata"] == undefined
+                )
+                    continue;
                 else {
                     if (
                         response["data"][i]["token"]["metadata"]["name"] ==
@@ -69,10 +75,9 @@ export default function Admin() {
                             newData[0].value = newData[0].value + 1;
                             return newData;
                         });
-    
-                        detailsDons.get(userAddressToFetch)["WWF"]+=1;
-                    }
-                    else if (
+
+                        detailsDons.get(userAddressToFetch)["WWF"] += 1;
+                    } else if (
                         response["data"][i]["token"]["metadata"]["name"] ==
                         "WOLF"
                     ) {
@@ -81,9 +86,8 @@ export default function Admin() {
                             newData[1].value = newData[1].value + 1;
                             return newData;
                         });
-                        detailsDons.get(userAddressToFetch)["Greenpeace"]+=1;
-                    }
-                    else if (
+                        detailsDons.get(userAddressToFetch)["Greenpeace"] += 1;
+                    } else if (
                         response["data"][i]["token"]["metadata"]["name"] ==
                         "BULL"
                     ) {
@@ -92,7 +96,7 @@ export default function Admin() {
                             newData[2].value = newData[2].value + 1;
                             return newData;
                         });
-                        detailsDons.get(userAddressToFetch)["Unicef"]+=1;
+                        detailsDons.get(userAddressToFetch)["Unicef"] += 1;
                     }
                 }
             }
@@ -107,11 +111,9 @@ export default function Admin() {
             console.error(e);
         }
     };
-    
 
     React.useEffect(() => {
         getContractInformations();
-        
     }, []);
 
     return (
@@ -122,7 +124,7 @@ export default function Admin() {
                 </p>
                 <FinanceStatsGrid />
                 <OrganisationRepartition data={dataFinance} />
-                <DetailsDons details={detailsDons}/>      
+                <DetailsDons details={detailsDons} />
             </Layout>
         </>
     );
