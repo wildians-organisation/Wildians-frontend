@@ -4,10 +4,10 @@ import * as config from "../../config/config.js";
 import { initializeApp } from "firebase/app";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "../../components/AdminDashBoard/Layout";
-import TopCards from "components/AdminDashBoard/TopCards.js";
 import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
 import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
 import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
+import { getAnalytics, isSupported } from "firebase/analytics";
 
 const firebaseConfig = {
     apiKey: `${config.GCPAPIKEY}`,
@@ -35,13 +35,31 @@ export default function Admin() {
         new Map()
     );
     const [totalMonthTransac, setTotalMonthTransac] = React.useState(0);
+    const [connectionStats, setConnectionStats] = React.useState("");
+
     const app = initializeApp(firebaseConfig);
+    const analytics = isSupported().then((yes) =>
+        yes ? getAnalytics(app) : null
+    );
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
     const countWallets = httpsCallable(
         functions,
         "statisticsController-countWallets"
     );
+    const connectionStatsCall = httpsCallable(
+        functions,
+        "statisticsController-getConnectionStats"
+    );
+    const getConnectionStats = async () => {
+        try {
+            const response = await connectionStatsCall();
+            setConnectionStats(response.data);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
     /*** Function to add wallet adress to firebase ***/
     const getWallets = async () => {
         try {
@@ -145,6 +163,7 @@ export default function Admin() {
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
         }
+        getConnectionStats();
         getContractInformations();
         getWallets();
     }, []);
@@ -177,6 +196,7 @@ export default function Admin() {
                     lastTransac={lastTransac}
                     totalTransac={transacAmount}
                     totalMonthTransaction={totalMonthTransac}
+                    connectionStats={connectionStats}
                 />
                 <TransactionChart />
                 <RecentOrders recentTransacData={data} />

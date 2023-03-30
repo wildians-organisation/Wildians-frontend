@@ -10,7 +10,8 @@ import {
 export default function DashboardStatsGrid({
     lastTransac,
     totalTransac,
-    totalMonthTransaction
+    totalMonthTransaction,
+    connectionStats
 }) {
     return (
         <div className="grid lg:grid-cols-3 gap-5 mb-16">
@@ -39,7 +40,7 @@ export default function DashboardStatsGrid({
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            A changer
+                             {connectionStats["lastTwoWeeksConnections"]}
                         </strong>
                     </div>
                 </div>
