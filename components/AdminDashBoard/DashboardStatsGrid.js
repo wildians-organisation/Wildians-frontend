@@ -11,8 +11,10 @@ export default function DashboardStatsGrid({
     lastTransac,
     totalTransac,
     totalMonthTransaction,
-    connectionStats
+    connectionStats,
+    totalClient 
 }) {
+
     return (
         <div className="grid lg:grid-cols-3 gap-5 mb-16">
             <BoxWrapper>
@@ -25,7 +27,7 @@ export default function DashboardStatsGrid({
                     </span>
                     <div className="flex items-center">
                         <strong className="text-xl text-gray-700 font-semibold">
-                            A changer
+                            {totalClient}
                         </strong>
                     </div>
                 </div>
