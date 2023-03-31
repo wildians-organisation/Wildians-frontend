@@ -9,6 +9,8 @@ import FinanceStatsGrid from "components/AdminDashBoard/FinanceStatsGrid.js";
 import OrganisationRepartition from "components/AdminDashBoard/OrganisationRepartition.js";
 import DetailsDons from "components/AdminDashBoard/DetailsDons.js";
 import { IoConstructOutline } from "react-icons/io5";
+import Wildians from "components/Wildian/Wildians.js";
+import { WildiansTypes } from "domain.js/wildians.ts";
 
 const firebaseConfig = {
     apiKey: `${config.GCPAPIKEY}`,
@@ -54,6 +56,7 @@ export default function Admin() {
             const response = await axios.get(
                 `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
             );
+            
             for (let i = 0; i < response["data"].length; i++) {
                 let dateT = response["data"][i]["firstTime"];
                 if (
@@ -63,8 +66,7 @@ export default function Admin() {
                     continue;
                 else {
                     if (
-                        response["data"][i]["token"]["metadata"]["name"] ==
-                        "BICHE"
+                        response["data"][i]["token"]["metadata"]["name"] == WildiansTypes.BICHE
                     ) {
                         setDataFinance((prevState) => {
                             const newData = [...prevState];
@@ -74,8 +76,7 @@ export default function Admin() {
 
                         detailsDons.push({address :userAddressToFetch, ONG:"WWF",date:new Date(dateT).toLocaleString()});
                     } else if (
-                        response["data"][i]["token"]["metadata"]["name"] ==
-                        "WOLF"
+                        response["data"][i]["token"]["metadata"]["name"] == WildiansTypes.WOLF
                     ) {
                         setDataFinance((prevState) => {
                             const newData = [...prevState];
@@ -84,9 +85,8 @@ export default function Admin() {
                         });
                         detailsDons.push({address :userAddressToFetch, ONG:"Greenpeace",date:new Date(dateT).toLocaleString()});
                     } else if (
-                        response["data"][i]["token"]["metadata"]["name"] ==
-                        "BULL"
-                    ) {
+                        response["data"][i]["token"]["metadata"]["name"] == WildiansTypes.BULL) 
+                        {
                         setDataFinance((prevState) => {
                             const newData = [...prevState];
                             newData[2].value = newData[2].value + 1;
@@ -100,6 +100,8 @@ export default function Admin() {
             console.error(e);
         }
     };
+
+
 
     React.useEffect(() => {
         getContractInformations();
