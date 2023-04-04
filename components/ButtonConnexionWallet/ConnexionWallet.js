@@ -1,27 +1,13 @@
 import React from "react";
 import ConnectedButton from "./ConnectedButton";
-import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
+import { TezosToolkit } from "@taquito/taquito";
 import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from "../../config/config.js";
 import Link from "next/link";
-import { initializeApp } from "firebase/app";
-import { getFunctions, httpsCallable } from "firebase/functions";
+import { httpsCallable } from "firebase/functions";
+import { functions } from "../../pages/firebaseConfig";
 
-const firebaseConfig = {
-    apiKey: `${config.GCPAPIKEY}`,
-    authDomain: `${config.GCPAUTHDOMAIN}`,
-    databaseURL: `${config.GCPDATABASEURL}`,
-    projectId: `${config.GCPPROJECTID}`,
-    storageBucket: `${config.GCPSTORAGEBUCKET}`,
-    messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
-    appId: `${config.GCPAPPID}`,
-    measurementId: `${config.MEASUREMENTID}`
-};
-
-const app = initializeApp(firebaseConfig);
-const functions = getFunctions(app);
-functions.region = "europe-west1";
 const addWallet = httpsCallable(functions, "walletControllers-addWallet");
 
 const network = { type: NetworkType.GHOSTNET };

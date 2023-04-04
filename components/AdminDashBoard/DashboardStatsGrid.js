@@ -12,9 +12,8 @@ export default function DashboardStatsGrid({
     totalTransac,
     totalMonthTransaction,
     connectionStats,
-    totalClient 
+    totalClient
 }) {
-
     return (
         <div className="grid lg:grid-cols-3 gap-5 mb-16">
             <BoxWrapper>
