@@ -6,7 +6,7 @@ import Layout from "../../components/AdminDashBoard/Layout";
 import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
 import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
 import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
-import { functions } from "../../pages/firebaseConfig";
+import { functions } from "../../firebaseConfig";
 
 export default function Admin() {
     // Display items in a list with add button on each items

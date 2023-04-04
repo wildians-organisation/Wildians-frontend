@@ -3,7 +3,7 @@ import axios from "axios";
 import * as config from "../../../config/config.js";
 import { httpsCallable } from "firebase/functions";
 import Layout from "components/AdminDashBoard/Layout.js";
-import { functions } from "../../firebaseConfig";
+import { functions } from "../../../firebaseConfig";
 
 export default function Admin() {
     // Display items in a list with add button on each items

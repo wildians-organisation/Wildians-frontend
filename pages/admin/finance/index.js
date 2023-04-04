@@ -4,7 +4,7 @@ import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "components/AdminDashBoard/Layout.js";
 import FinanceStatsGrid from "components/AdminDashBoard/FinanceStatsGrid.js";
 import OrganisationRepartition from "components/AdminDashBoard/OrganisationRepartition.js";
-import { functions } from "../../firebaseConfig";
+import { functions } from "../../../firebaseConfig";
 
 export default function Admin() {
     // Display items in a list with add button on each items

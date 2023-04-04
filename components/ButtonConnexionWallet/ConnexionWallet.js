@@ -6,7 +6,7 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from "../../config/config.js";
 import Link from "next/link";
 import { httpsCallable } from "firebase/functions";
-import { functions } from "../../pages/firebaseConfig";
+import { functions } from "../../firebaseConfig";
 
 const addWallet = httpsCallable(functions, "walletControllers-addWallet");
 

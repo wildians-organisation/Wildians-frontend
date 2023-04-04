@@ -1,4 +1,4 @@
-import * as config from "../config/config.js";
+import * as config from "./config/config.js";
 import { initializeApp } from "firebase/app";
 import { getFunctions } from "firebase/functions";
 
