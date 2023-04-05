@@ -7,6 +7,8 @@ import Layout from "components/AdminDashBoard/Layout.js";
 import { Component } from "react/cjs/react.production.min.js";
 import FinanceStatsGrid from "components/AdminDashBoard/FinanceStatsGrid.js";
 import OrganisationRepartition from "components/AdminDashBoard/OrganisationRepartition.js";
+import { totalTransac } from "../index.js";
+import { WildiansPrices } from "domain/price.ts";
 
 const firebaseConfig = {
     apiKey: `${config.GCPAPIKEY}`,
@@ -19,100 +21,29 @@ const firebaseConfig = {
     measurementId: `${config.MEASUREMENTID}`
 };
 
+
 export default function Admin() {
     // Display items in a list with add button on each items
-    const [nbrToken, setNbrToken] = React.useState();
-    const [nbNFTConnectedAdress, setNbNFTConnectedAdress] = React.useState();
-    const [clientsAddress, setClientsAddress] = React.useState([]);
-    const [userAddress, setUserAddress] = React.useState("");
-    const [userNFTs, setUserNFTs] = React.useState([]);
-    const [tezosAmount, setTezosAmount] = React.useState(0);
-    const [numberWallets, setNumberWallets] = React.useState(0);
+    
+    const [allTezos, setAllTezos] = React.useState(0);
+    const [wildiansTezos, setWildiansTezos] = React.useState(0);
+    const [ongTezos, setOngTezos] = React.useState(0);
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
-    const countWallets = httpsCallable(
-        functions,
-        "statisticsController-countWallets"
-    );
-    /*** Function to add wallet adress to firebase ***/
-    const getWallets = async () => {
-        try {
-            const response = await countWallets();
-            setNumberWallets(response.data);
-        } catch (e) {
-            console.error(e);
-        }
-    };
-    // Get informations about the smartcontract with the tzkt api
+    
+
     const getContractInformations = async () => {
-        const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
-        );
-        const nbrNftMinted = response.data.length;
-        setNbrToken(nbrNftMinted - 1);
-        let tmp = [];
-        let tmpAmount = 0;
-        var wallets = new Map();
-        response.data.forEach((element) => {
-            if (element.operation.type != "origination") {
-                let data_value = element.operation.parameter.value;
+        setAllTezos(totalTransac * WildiansPrices.NFT);
+        setWildiansTezos(totalTransac * config.WILDIANS_PART * WildiansPrices.NFT);
+        setOngTezos(totalTransac * config.ASSOCIATION_PART * WildiansPrices.NFT);
 
-                tmpAmount += data_value.cost / config.TEZOS_CONVERTER;
-                tmp.push(data_value.address);
-                if (wallets.has(data_value.address)) {
-                    wallets.set(
-                        data_value.address,
-                        wallets.get(data_value.address) + 1
-                    );
-                } else {
-                    wallets.set(data_value.address, 1);
-                }
-            }
-        });
-        setClientsAddress(tmp);
-        setUserNFTs(wallets);
-        setTezosAmount(tmpAmount);
-    };
+    }
 
-    // Get the number of NFTs of the wallet connected
-    const getNFTMintByUser = async (userAdress) => {
-        const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
-        );
-        var nb = 0;
-        response.data.forEach((element) => {
-            if (
-                element.operation.type !== "origination" &&
-                element.operation.parameter.value.address === userAdress
-            ) {
-                nb = nb + 1;
-            }
-        });
-        setNbNFTConnectedAdress(nb);
-    };
-
+   
     React.useEffect(async () => {
-        if (
-            typeof window !== "undefined" &&
-            window.localStorage.getItem("beacon:accounts")
-        ) {
-            setUserAddress(
-                JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
-            );
-            getContractInformations();
-            getNFTMintByUser(
-                JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
-            );
-            getWallets();
-        }
+        getContractInformations();
     }, []);
-
-    const listItems2 = Array.from(userNFTs).map((addr, id) => (
-        <li key={id}>
-            {addr[0]} : {addr[1]}
-        </li>
-    ));
 
     return (
         <>
@@ -120,7 +51,7 @@ export default function Admin() {
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
                     Finance
                 </p>
-                <FinanceStatsGrid />
+                <FinanceStatsGrid allTezos={allTezos} wildiansTezos={wildiansTezos} ongTezos={ongTezos}/>
                 <OrganisationRepartition />
             </Layout>
         </>
