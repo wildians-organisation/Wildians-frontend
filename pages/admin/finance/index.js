@@ -21,26 +21,26 @@ const firebaseConfig = {
     measurementId: `${config.MEASUREMENTID}`
 };
 
-
 export default function Admin() {
     // Display items in a list with add button on each items
-    
+
     const [allTezos, setAllTezos] = React.useState(0);
     const [wildiansTezos, setWildiansTezos] = React.useState(0);
     const [ongTezos, setOngTezos] = React.useState(0);
     const app = initializeApp(firebaseConfig);
     const functions = getFunctions(app);
     functions.region = config.BUCKET_REGION;
-    
 
     const getContractInformations = async () => {
         setAllTezos(totalTransac * WildiansPrices.NFT);
-        setWildiansTezos(totalTransac * config.WILDIANS_PART * WildiansPrices.NFT);
-        setOngTezos(totalTransac * config.ASSOCIATION_PART * WildiansPrices.NFT);
+        setWildiansTezos(
+            totalTransac * config.WILDIANS_PART * WildiansPrices.NFT
+        );
+        setOngTezos(
+            totalTransac * config.ASSOCIATION_PART * WildiansPrices.NFT
+        );
+    };
 
-    }
-
-   
     React.useEffect(async () => {
         getContractInformations();
     }, []);
@@ -51,7 +51,11 @@ export default function Admin() {
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
                     Finance
                 </p>
-                <FinanceStatsGrid allTezos={allTezos} wildiansTezos={wildiansTezos} ongTezos={ongTezos}/>
+                <FinanceStatsGrid
+                    allTezos={allTezos}
+                    wildiansTezos={wildiansTezos}
+                    ongTezos={ongTezos}
+                />
                 <OrganisationRepartition />
             </Layout>
         </>

@@ -4,7 +4,11 @@ import {
     IoRocketSharp
 } from "react-icons/io5";
 
-export default function FinanceStatsGrid({allTezos, wildiansTezos, ongTezos}) {
+export default function FinanceStatsGrid({
+    allTezos,
+    wildiansTezos,
+    ongTezos
+}) {
     return (
         <div className="grid lg:grid-cols-3 gap-5 mb-16">
             <BoxWrapper>
