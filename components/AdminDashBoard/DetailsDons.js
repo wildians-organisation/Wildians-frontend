@@ -14,9 +14,7 @@ export default function DetailsDons({ details }) {
                             <th className="py-2 text-left">
                                 Distribution of donations
                             </th>
-                            <th className="py-2 text-left">
-                                Date 
-                            </th>
+                            <th className="py-2 text-left">Date</th>
                         </tr>
                     </thead>
                     <tbody>
