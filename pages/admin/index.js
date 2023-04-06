@@ -36,6 +36,7 @@ export default function Admin() {
     );
     const [totalMonthTransac, setTotalMonthTransac] = React.useState(0);
     const [connectionStats, setConnectionStats] = React.useState("");
+    const [eachMonthTransaction, setEachMonthTransaction] = React.useState([]);
 
     const app = initializeApp(firebaseConfig);
     const analytics = isSupported().then((yes) =>
@@ -89,6 +90,7 @@ export default function Admin() {
         const nbrNftMinted = response.data.length;
         setNbrToken(nbrNftMinted - 1);
         const currentDate = new Date();
+        console.log(currentDate.getMonth());
         const thirtyDaysAgo = currentDate.setDate(currentDate.getDate() - 30);
         let tmp = [];
         let tmpAmount = 0;
@@ -97,9 +99,29 @@ export default function Admin() {
         var wallets = new Map();
         var lastTransacWallet = new Map();
         let tmpTotalMonthTransac = 0;
+        let eachMonthData = [
+            { name: "Jan ", Connexion: 0, Transaction: 0 },
+            { name: "Feb ", Connexion: 0, Transaction: 0 },
+            { name: "Mar ", Connexion: 0, Transaction: 0 },
+            { name: "Apr ", Connexion: 0, Transaction: 0 },
+            { name: "May ", Connexion: 0, Transaction: 0 },
+            { name: "Jun ", Connexion: 0, Transaction: 0 },
+            { name: "July ", Connexion: 0, Transaction: 0 },
+            { name: "Aug ", Connexion: 0, Transaction: 0 },
+            { name: "Sep ", Connexion: 0, Transaction: 0 },
+            { name: "Oct ", Connexion: 0, Transaction: 0 },
+            { name: "Nov ", Connexion: 0, Transaction: 0 },
+            { name: "Dec ", Connexion: 0, Transaction: 0 }
+        ];
+        let today = new Date();
         response.data.forEach((element) => {
             if (element.operation.type == "transaction") {
                 totalTransac = totalTransac + 1;
+                let transactionDate = new Date(element.timestamp);
+                if (+today <= +transactionDate + 1000 * 60 * 60 * 24 * 365)
+                    eachMonthData[transactionDate.getMonth()].Transaction =
+                        eachMonthData[transactionDate.getMonth()].Transaction +
+                        1;
             }
             if (element.operation.type != "origination") {
                 let transactionDate = new Date(element.timestamp);
@@ -125,6 +147,14 @@ export default function Admin() {
                 }
             }
         });
+
+        let first = eachMonthData.splice(0, today.getMonth() + 1);
+        for (let i = 0; i < first.length; i++)
+            first[i].name += today.getFullYear();
+        for (let i = 0; i < eachMonthData.length; i++)
+            eachMonthData[i].name += today.getFullYear() - 1;
+        eachMonthData = eachMonthData.concat(first);
+        setEachMonthTransaction(eachMonthData);
         setClientsAddress(tmp);
         setUserNFTs(wallets);
         setTezosAmount(tmpAmount);
@@ -197,10 +227,9 @@ export default function Admin() {
                     totalTransac={transacAmount}
                     totalMonthTransaction={totalMonthTransac}
                     connectionStats={connectionStats}
-                    totalMonthTransaction={totalMonthTransac}
                     totalClient={clientAmount}
                 />
-                <TransactionChart />
+                <TransactionChart eachMonthTransaction={eachMonthTransaction} />
                 <RecentOrders recentTransacData={data} />
             </Layout>
         </>

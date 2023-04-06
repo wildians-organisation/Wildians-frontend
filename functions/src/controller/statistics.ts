@@ -58,3 +58,25 @@ export const getConnectionStats = functions
             lastOneMonthConnections
         };
     });
+
+// Get number of connections of everymonth
+export const getEachMonthConnexion = functions
+    .region("europe-west1")
+    .https.onCall(async (data, context) => {
+        let eachMonthConnexion = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        const ref = getRefUsers();
+
+        // Get a snapshot of the path
+        await ref.once("value", (dataSnapshot: DataSnapshot) => {
+            dataSnapshot.forEach((snapshot: DataSnapshot) => {
+                const snapshotValue = snapshot.val();
+                const currentUserDate = new Date(snapshotValue.lastConnection);
+                eachMonthConnexion[currentUserDate.getMonth()] += 1;
+            });
+        });
+
+        return {
+            eachMonthConnexion
+        };
+    });
