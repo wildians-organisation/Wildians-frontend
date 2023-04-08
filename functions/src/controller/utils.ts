@@ -1,13 +1,13 @@
 const NUMBER_OF_MONTHS = 12;
 
-function initializeYearConnections(): number[] {
-    let yearConnections = [];
+function initializeMonthsConnections(): number[] {
+    const monthConnections = [];
 
     for (let i = 0; i < NUMBER_OF_MONTHS; ++i) {
-        yearConnections[i] = 0;
+        monthConnections[i] = 0;
     }
 
-    return yearConnections;
+    return monthConnections;
 }
 
 function addDays(date: Date, days: number) {
@@ -16,4 +16,4 @@ function addDays(date: Date, days: number) {
     return result;
 }
 
-export { initializeYearConnections, addDays };
+export { initializeMonthsConnections, addDays };

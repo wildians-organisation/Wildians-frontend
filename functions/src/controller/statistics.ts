@@ -1,16 +1,16 @@
 import * as functions from "firebase-functions";
 import { database } from "firebase-admin";
 import DataSnapshot = database.DataSnapshot;
-import { addDays, initializeYearConnections } from "./utils";
+import { addDays, initializeMonthsConnections } from "./utils";
 import { getRefUsers } from "../data/data";
 
 export const countWallets = functions
     .region("europe-west1")
-    .https.onCall(async (data, context) => {
+    .https.onCall(async () => {
         const ref = getRefUsers();
 
-        //count number of childs
-        await ref.once("value", (snapshot: { numChildren: () => any }) => {
+        // count number of childs
+        await ref.once("value", (snapshot: DataSnapshot) => {
             return { data: snapshot.numChildren().toString() };
         });
     });
@@ -18,8 +18,8 @@ export const countWallets = functions
 // Get number of connections of the current month
 export const getConnectionStats = functions
     .region("europe-west1")
-    .https.onCall(async (data, context) => {
-        let yearConnections: number[] = initializeYearConnections();
+    .https.onCall(async () => {
+        const yearConnections: number[] = initializeMonthsConnections();
         let lastTwoWeeksConnections = 0;
         let lastOneMonthConnections = 0;
 

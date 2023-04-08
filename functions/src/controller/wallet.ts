@@ -6,7 +6,7 @@ import { getRefUsers } from "../data/data";
 // Add or update a user when sign in
 export const addWallet = functions
     .region("europe-west1")
-    .https.onCall(async (data, context) => {
+    .https.onCall(async (data) => {
         const ref = getRefUsers();
 
         const walletAddress = data.value;
