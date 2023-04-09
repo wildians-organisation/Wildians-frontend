@@ -22,19 +22,23 @@ module.exports = {
     ],
     plugins: ["@typescript-eslint", "import"],
     rules: {
-        "quotes": ["error", "double"],
+        "quote-props": ["error", "as-needed"],
+        quotes: ["error", "double"],
         "import/no-unresolved": 0,
-        "indent": ["error", 4],
+        indent: ["error", 4],
         "comma-dangle": ["error", "never"],
         "object-curly-spacing": ["error", "always"],
-        "require-jsdoc": ["error", {
-            "require": {
-                "FunctionDeclaration": false,
-                "MethodDefinition": false,
-                "ClassDeclaration": false,
-                "ArrowFunctionExpression": false,
-                "FunctionExpression": false
+        "require-jsdoc": [
+            "error",
+            {
+                require: {
+                    FunctionDeclaration: false,
+                    MethodDefinition: false,
+                    ClassDeclaration: false,
+                    ArrowFunctionExpression: false,
+                    FunctionExpression: false
+                }
             }
-        }]
+        ]
     }
 };
