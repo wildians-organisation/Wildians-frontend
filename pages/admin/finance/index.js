@@ -12,7 +12,6 @@ import { functions } from "../../../firebaseConfig";
 
 export default function Admin() {
     // Display items in a list with add button on each items
-    let [userNFTs, setUserNFTs] = React.useState([]);
     let [detailsDons, setDetailsDons] = React.useState([]);
     let [dataFinance, setDataFinance] = React.useState([
         { name: "ENVIRONMENT", value: 0 },
@@ -25,8 +24,6 @@ export default function Admin() {
             `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history?limit=1000`
         );
         var wallets = [];
-        console.log("hello");
-        console.log(dataFinance);
         let environment = 0;
         let society = 0;
         let economy = 0;
@@ -56,9 +53,6 @@ export default function Admin() {
             newData[2].value = economy;
             return newData;
         });
-        console.log(dataFinance);
-
-        setUserNFTs(wallets);
     };
 
     // Define a function to process data
@@ -145,7 +139,6 @@ export default function Admin() {
 
     React.useEffect(() => {
         getContractInformations();
-        console.log(dataFinance);
     }, []);
 
     return (
