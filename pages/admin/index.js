@@ -1,24 +1,12 @@
 import React from "react";
 import axios from "axios";
 import * as config from "../../config/config.js";
-import { initializeApp } from "firebase/app";
-import { getFunctions, httpsCallable } from "firebase/functions";
+import { httpsCallable } from "firebase/functions";
 import Layout from "../../components/AdminDashBoard/Layout";
 import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
 import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
 import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
-import { getAnalytics, isSupported } from "firebase/analytics";
-
-const firebaseConfig = {
-    apiKey: `${config.GCPAPIKEY}`,
-    authDomain: `${config.GCPAUTHDOMAIN}`,
-    databaseURL: `${config.GCPDATABASEURL}`,
-    projectId: `${config.GCPPROJECTID}`,
-    storageBucket: `${config.GCPSTORAGEBUCKET}`,
-    messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
-    appId: `${config.GCPAPPID}`,
-    measurementId: `${config.MEASUREMENTID}`
-};
+import { functions } from "../../firebaseConfig";
 export let totalTransac = 0;
 
 export default function Admin() {
@@ -37,12 +25,6 @@ export default function Admin() {
     const [totalMonthTransac, setTotalMonthTransac] = React.useState(0);
     const [connectionStats, setConnectionStats] = React.useState("");
 
-    const app = initializeApp(firebaseConfig);
-    const analytics = isSupported().then((yes) =>
-        yes ? getAnalytics(app) : null
-    );
-    const functions = getFunctions(app);
-    functions.region = config.BUCKET_REGION;
     const countWallets = httpsCallable(
         functions,
         "statisticsController-countWallets"
