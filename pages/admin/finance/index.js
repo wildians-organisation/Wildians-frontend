@@ -62,12 +62,17 @@ export default function Admin() {
                 //console.log(response["data"][i]["token"]["contract"]["address"] == config.CONTRACT_ADDRESS);
                 if (
                     response["data"][i]["token"]["metadata"] == null ||
-                    response["data"][i]["token"]["metadata"] == undefined || response["data"][i]["token"]["contract"]["address"] != config.CONTRACT_ADDRESS
+                    response["data"][i]["token"]["metadata"] == undefined ||
+                    response["data"][i]["token"]["contract"]["address"] !=
+                        config.CONTRACT_ADDRESS
                 )
                     continue;
                 else {
-                    console.log("data th -->  "+i);
-                    console.log(response["data"][i]["token"]["contract"]["address"] == config.CONTRACT_ADDRESS);
+                    console.log("data th -->  " + i);
+                    console.log(
+                        response["data"][i]["token"]["contract"]["address"] ==
+                            config.CONTRACT_ADDRESS
+                    );
                     if (
                         response["data"][i]["token"]["metadata"]["name"] ==
                         WildiansTypes.BICHE
