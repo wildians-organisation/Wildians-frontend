@@ -24,14 +24,12 @@ const firebaseConfig = {
 
 export default function Admin() {
     // Display items in a list with add button on each items
-    const [userNFTs, setUserNFTs] = React.useState([]);
-    const [test, setTest] = React.useState(0);
+    const [detailsDons, setdetailsDons] = React.useState([]);
     const [dataFinance, setDataFinance] = React.useState([
         { name: "ENVIRONMENT", value: 0 },
         { name: "SOCIETY", value: 0 },
         { name: "ECONOMY", value: 0 }
     ]);
-    const [detailsDons, setdetailsDons] = React.useState([]);
 
     const getContractInformations = async () => {
         const response = await axios.get(
@@ -56,15 +54,20 @@ export default function Admin() {
             const response = await axios.get(
                 `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
             );
+            console.log("debut");
 
             for (let i = 0; i < response["data"].length; i++) {
                 let dateT = response["data"][i]["firstTime"];
+                //console.log(response["data"][i]["token"]["contract"]["address"]);
+                //console.log(response["data"][i]["token"]["contract"]["address"] == config.CONTRACT_ADDRESS);
                 if (
                     response["data"][i]["token"]["metadata"] == null ||
-                    response["data"][i]["token"]["metadata"] == undefined
+                    response["data"][i]["token"]["metadata"] == undefined || response["data"][i]["token"]["contract"]["address"] != config.CONTRACT_ADDRESS
                 )
                     continue;
                 else {
+                    console.log("data th -->  "+i);
+                    console.log(response["data"][i]["token"]["contract"]["address"] == config.CONTRACT_ADDRESS);
                     if (
                         response["data"][i]["token"]["metadata"]["name"] ==
                         WildiansTypes.BICHE
@@ -111,6 +114,9 @@ export default function Admin() {
                     }
                 }
             }
+            console.log(detailsDons);
+            console.log("hello");
+            console.log(dataFinance);
         } catch (e) {
             console.error(e);
         }
