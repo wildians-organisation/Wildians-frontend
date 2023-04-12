@@ -1,11 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "components/AdminDashBoard/Layout.js";
 import FinanceStatsGrid from "components/AdminDashBoard/FinanceStatsGrid.js";
 import OrganisationRepartition from "components/AdminDashBoard/OrganisationRepartition.js";
-import { functions } from "../../../firebaseConfig";
-import { totalTransac } from "../index.js";
+import * as config from "../../../config/config.js";
 import { WildiansPrices } from "domain/price.ts";
 
 export default function Admin() {
@@ -15,7 +13,23 @@ export default function Admin() {
     const [wildiansTezos, setWildiansTezos] = React.useState(0);
     const [ongTezos, setOngTezos] = React.useState(0);
     // Display items in a list with add button on each items
+   
     const getContractInformations = async () => {
+        const response = await axios.get(
+            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history?limit=1000`
+        );
+        var wallets = [];
+        let environment = 0;
+        let society = 0;
+        let economy = 0;
+        let totalTransac = 0;
+        const fetchDataPromises = response.data.map(async (element) => {
+            if (element.operation.type != "origination") {
+                totalTransac += 1;
+            }
+            
+        });
+        
         setAllTezos(totalTransac * WildiansPrices.NFT);
         setWildiansTezos(
             totalTransac * config.WILDIANS_PART * WildiansPrices.NFT
