@@ -13,7 +13,7 @@ export default function Admin() {
     const [wildiansTezos, setWildiansTezos] = React.useState(0);
     const [ongTezos, setOngTezos] = React.useState(0);
     // Display items in a list with add button on each items
-   
+
     const getContractInformations = async () => {
         const response = await axios.get(
             `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history?limit=1000`
@@ -27,9 +27,8 @@ export default function Admin() {
             if (element.operation.type != "origination") {
                 totalTransac += 1;
             }
-            
         });
-        
+
         setAllTezos(totalTransac * WildiansPrices.NFT);
         setWildiansTezos(
             totalTransac * config.WILDIANS_PART * WildiansPrices.NFT
