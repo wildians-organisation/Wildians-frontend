@@ -6,9 +6,7 @@ import OrganisationRepartition from "components/AdminDashBoard/OrganisationRepar
 import * as config from "../../../config/config.js";
 import { WildiansPrices } from "domain/price.ts";
 import DetailsDons from "components/AdminDashBoard/DetailsDons.js";
-import Wildians from "components/Wildian/Wildians.js";
 import { WildiansTypes } from "domain.js/wildians.ts";
-import { functions } from "../../../firebaseConfig";
 
 export default function Admin() {
     // Display items in a list with add button on each items
@@ -46,7 +44,6 @@ export default function Admin() {
                 }
             }
         });
-        
         setAllTezos(totalTransac * WildiansPrices.NFT);
         setWildiansTezos(
             totalTransac * config.WILDIANS_PART * WildiansPrices.NFT

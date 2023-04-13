@@ -1,6 +1,6 @@
 import * as config from "./config/config.js";
 import { initializeApp } from "firebase/app";
-import { getFunctions } from "firebase/functions";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: `${config.GCPAPIKEY}`,
@@ -14,7 +14,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const functions = getFunctions(app);
-functions.region = config.BUCKET_REGION;
+const firestore = getFirestore();
 
-module.exports = { functions };
+module.exports = { firestore };
