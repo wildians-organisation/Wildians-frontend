@@ -37,6 +37,7 @@ export default function Admin() {
     const [totalMonthTransac, setTotalMonthTransac] = React.useState(0);
     const [connectionStats, setConnectionStats] = React.useState("");
     const [eachMonthTransaction, setEachMonthTransaction] = React.useState([]);
+    const [eachMonthConnection, setEachMonthConnection] = React.useState([]);
 
     const app = initializeApp(firebaseConfig);
     const analytics = isSupported().then((yes) =>
@@ -52,10 +53,22 @@ export default function Admin() {
         functions,
         "statisticsController-getConnectionStats"
     );
+    const EachMonthConnectionStats = httpsCallable(
+        functions,
+        "statisticsController-getEachMonthConnexion"
+    );
     const getConnectionStats = async () => {
         try {
             const response = await connectionStatsCall();
             setConnectionStats(response.data);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+    const getEachMonthConnectionStats = async () => {
+        try {
+            const response = await EachMonthConnectionStats();
+            setEachMonthConnection(response.data);
         } catch (e) {
             console.log(e);
         }
@@ -147,7 +160,9 @@ export default function Admin() {
                 }
             }
         });
-
+        getEachMonthConnectionStats();
+        for (let i = 0; i < eachMonthConnection.length; i++)
+            eachMonthData[i].Connexion = eachMonthConnection[i];
         let first = eachMonthData.splice(0, today.getMonth() + 1);
         for (let i = 0; i < first.length; i++)
             first[i].name += today.getFullYear();
@@ -196,6 +211,7 @@ export default function Admin() {
         getConnectionStats();
         getContractInformations();
         getWallets();
+        getEachMonthConnectionStats();
     }, []);
 
     //create a list of the last transaction of each wallet
