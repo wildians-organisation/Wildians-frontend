@@ -44,7 +44,6 @@ export default function Admin() {
                 }
             }
         });
-
         setAllTezos(totalTransac * WildiansPrices.NFT);
         setWildiansTezos(
             totalTransac * config.WILDIANS_PART * WildiansPrices.NFT
