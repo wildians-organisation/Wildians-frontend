@@ -9,6 +9,7 @@ import { firestore } from "../../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
 const NUMBER_OF_MONTHS = 12;
+export let totalTransac = 0;
 
 function initializeMonthsConnections() {
     const monthConnections = [];
@@ -68,7 +69,6 @@ export default function Admin() {
     const [userAddress, setUserAddress] = React.useState("");
     const [userNFTs, setUserNFTs] = React.useState([]);
     const [tezosAmount, setTezosAmount] = React.useState(0);
-    const [transacAmount, setTransacAmount] = React.useState(0);
     const [clientAmount, setClientAmount] = React.useState(0);
     const [lastTransacWallets, setlastTransacWallets] = React.useState(
         new Map()
@@ -87,14 +87,14 @@ export default function Admin() {
         const thirtyDaysAgo = currentDate.setDate(currentDate.getDate() - 30);
         let tmp = [];
         let tmpAmount = 0;
-        let totalTransac = 0;
+        let totalTransacCompute = 0;
         let totalClient = 0;
         var wallets = new Map();
         var lastTransacWallet = new Map();
         let tmpTotalMonthTransac = 0;
         response.data.forEach((element) => {
             if (element.operation.type == "transaction") {
-                totalTransac = totalTransac + 1;
+                totalTransacCompute = totalTransacCompute + 1;
             }
             if (element.operation.type != "origination") {
                 let transactionDate = new Date(element.timestamp);
@@ -123,7 +123,7 @@ export default function Admin() {
         setClientsAddress(tmp);
         setUserNFTs(wallets);
         setTezosAmount(tmpAmount);
-        setTransacAmount(totalTransac);
+        totalTransac = totalTransacCompute;
         setClientAmount(totalClient);
         setlastTransacWallets(lastTransacWallet);
         setTotalMonthTransac(tmpTotalMonthTransac);
@@ -188,7 +188,7 @@ export default function Admin() {
                 </p>
                 <DashboardStatsGrid
                     lastTransac={lastTransac}
-                    totalTransac={transacAmount}
+                    totalTransac={totalTransac}
                     totalMonthTransaction={totalMonthTransac}
                     connectionStats={connectionStats}
                     totalClient={clientAmount}
