@@ -5,10 +5,43 @@ import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from "../../config/config.js";
 import Link from "next/link";
-import { httpsCallable } from "firebase/functions";
-import { functions } from "../../firebaseConfig";
+import { firestore } from "../../firebaseConfig";
+import {
+    collection,
+    addDoc,
+    query,
+    limit,
+    where,
+    getDocs,
+    updateDoc,
+    doc
+} from "firebase/firestore";
 
-const addWallet = httpsCallable(functions, "walletControllers-addWallet");
+async function addWallet(walletAddress) {
+    const userCollection = collection(firestore, "user");
+    const now = new Date();
+
+    const userQuery = query(
+        collection(firestore, "user"),
+        where("walletAddress", "==", walletAddress),
+        limit(1)
+    );
+    const snapshot = await getDocs(userQuery);
+
+    if (snapshot.empty) {
+        addDoc(userCollection, {
+            walletAddress: walletAddress,
+            firstConnection: now.getTime(),
+            lastConnection: now.getTime()
+        });
+    } else {
+        snapshot.forEach((snap) => {
+            updateDoc(doc(firestore, "user/" + snap.id), {
+                lastConnection: new Date().getTime()
+            });
+        });
+    }
+}
 
 const network = { type: NetworkType.GHOSTNET };
 
@@ -34,8 +67,7 @@ export default function ConnexionWallet() {
     /*** Function to add wallet adress to firebase ***/
     const addWalletToFirebase = async (walletAddress) => {
         try {
-            const response = await addWallet({ value: walletAddress });
-            console.log(response);
+            const response = await addWallet(walletAddress);
         } catch (e) {
             console.error(e);
         }

@@ -1,12 +1,64 @@
 import React from "react";
 import axios from "axios";
 import * as config from "../../config/config.js";
-import { httpsCallable } from "firebase/functions";
 import Layout from "../../components/AdminDashBoard/Layout";
 import DashboardStatsGrid from "components/AdminDashBoard/DashboardStatsGrid.js";
 import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
 import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
-import { functions } from "../../firebaseConfig";
+import { firestore } from "../../firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
+
+const NUMBER_OF_MONTHS = 12;
+
+function initializeMonthsConnections() {
+    const monthConnections = [];
+
+    for (let i = 0; i < NUMBER_OF_MONTHS; ++i) {
+        monthConnections[i] = 0;
+    }
+
+    return monthConnections;
+}
+
+function addDays(date, days) {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
+
+// Get number of connections of the current month
+async function getConnectionStats() {
+    const yearConnections = initializeMonthsConnections();
+    let lastTwoWeeksConnections = 0;
+    let lastOneMonthConnections = 0;
+
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const nowMinusTwoWeeks = addDays(now, -14);
+    const nowMinusOneMonth = addDays(now, -30);
+
+    // Get a snapshot of the path
+    const doc = await getDocs(collection(firestore, "user"));
+    doc.forEach((snap) => {
+        const snapshotValue = snap.data();
+        const currentUserDate = new Date(snapshotValue.lastConnection);
+        if (currentUserDate.getFullYear() === currentYear) {
+            ++yearConnections[currentUserDate.getMonth()];
+            if (currentUserDate.getTime() >= nowMinusTwoWeeks.getTime()) {
+                ++lastTwoWeeksConnections;
+            }
+            if (currentUserDate.getTime() >= nowMinusOneMonth.getTime()) {
+                ++lastOneMonthConnections;
+            }
+        }
+    });
+
+    return {
+        yearConnections,
+        lastTwoWeeksConnections,
+        lastOneMonthConnections
+    };
+}
 
 export default function Admin() {
     // Display items in a list with add button on each items
@@ -18,50 +70,11 @@ export default function Admin() {
     const [tezosAmount, setTezosAmount] = React.useState(0);
     const [transacAmount, setTransacAmount] = React.useState(0);
     const [clientAmount, setClientAmount] = React.useState(0);
-    const [numberWallets, setNumberWallets] = React.useState(0);
     const [lastTransacWallets, setlastTransacWallets] = React.useState(
         new Map()
     );
     const [totalMonthTransac, setTotalMonthTransac] = React.useState(0);
     const [connectionStats, setConnectionStats] = React.useState("");
-
-    const countWallets = httpsCallable(
-        functions,
-        "statisticsController-countWallets"
-    );
-    const connectionStatsCall = httpsCallable(
-        functions,
-        "statisticsController-getConnectionStats"
-    );
-    const getConnectionStats = async () => {
-        try {
-            const response = await connectionStatsCall();
-            setConnectionStats(response.data);
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
-    /*** Function to add wallet adress to firebase ***/
-    const getWallets = async () => {
-        try {
-            const response = await countWallets();
-            setNumberWallets(response.data);
-        } catch (e) {
-            console.error(e);
-        }
-    };
-
-    //Get the number of connexion this month
-    const countMonthConnexion = httpsCallable(functions, "getUsers");
-    const getMonthConnexion = async () => {
-        try {
-            const response = await countMonthConnexion();
-            setNumberWallets(response.data);
-        } catch (e) {
-            console.error(e);
-        }
-    };
 
     // Get informations about the smartcontract with the tzkt api
     const getContractInformations = async () => {
@@ -145,9 +158,8 @@ export default function Admin() {
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
         }
-        getConnectionStats();
         getContractInformations();
-        getWallets();
+        setConnectionStats(await getConnectionStats());
     }, []);
 
     //create a list of the last transaction of each wallet

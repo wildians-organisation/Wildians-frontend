@@ -1,10 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { getFunctions, httpsCallable } from "firebase/functions";
+import * as config from "../../../config/config";
 import Layout from "components/AdminDashBoard/Layout.js";
 import FinanceStatsGrid from "components/AdminDashBoard/FinanceStatsGrid.js";
 import OrganisationRepartition from "components/AdminDashBoard/OrganisationRepartition.js";
-import { functions } from "../../../firebaseConfig";
 
 export default function Admin() {
     // Display items in a list with add button on each items
@@ -14,20 +13,7 @@ export default function Admin() {
     const [userAddress, setUserAddress] = React.useState("");
     const [userNFTs, setUserNFTs] = React.useState([]);
     const [tezosAmount, setTezosAmount] = React.useState(0);
-    const [numberWallets, setNumberWallets] = React.useState(0);
-    const countWallets = httpsCallable(
-        functions,
-        "statisticsController-countWallets"
-    );
-    /*** Function to add wallet adress to firebase ***/
-    const getWallets = async () => {
-        try {
-            const response = await countWallets();
-            setNumberWallets(response.data);
-        } catch (e) {
-            console.error(e);
-        }
-    };
+
     // Get informations about the smartcontract with the tzkt api
     const getContractInformations = async () => {
         const response = await axios.get(
@@ -88,7 +74,6 @@ export default function Admin() {
             getNFTMintByUser(
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
-            getWallets();
         }
     }, []);
 
