@@ -34,3 +34,8 @@ cypress/videos
 cypress/screenshots
 
 .lighthouseci
+# Local Netlify folder
+.netlify
+
+# Ide
+.idea

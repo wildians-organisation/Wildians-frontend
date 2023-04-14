@@ -23,6 +23,7 @@ module.exports = {
         wolf_wallet: process.env.WOLF_WALLET,
         deer_wallet: process.env.DEER_WALLET,
         bull_wallet: process.env.BULL_WALLET
+        measurement_id: process.env.MEASUREMENTID
     },
     trailingSlash: true,
     images: {

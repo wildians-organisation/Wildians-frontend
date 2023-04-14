@@ -1,27 +1,47 @@
 import React from "react";
 import ConnectedButton from "./ConnectedButton";
-import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
+import { TezosToolkit } from "@taquito/taquito";
 import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from "../../config/config.js";
 import Link from "next/link";
-import { initializeApp } from "firebase/app";
-import { getFunctions, httpsCallable } from "firebase/functions";
+import { firestore } from "../../firebaseConfig";
+import {
+    collection,
+    addDoc,
+    query,
+    limit,
+    where,
+    getDocs,
+    updateDoc,
+    doc
+} from "firebase/firestore";
 
-const firebaseConfig = {
-    apiKey: `${config.GCPAPIKEY}`,
-    authDomain: `${config.GCPAUTHDOMAIN}`,
-    databaseURL: `${config.GCPDATABASEURL}`,
-    projectId: `${config.GCPPROJECTID}`,
-    storageBucket: `${config.GCPSTORAGEBUCKET}`,
-    messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
-    appId: `${config.GCPAPPID}`
-};
+async function addWallet(walletAddress) {
+    const userCollection = collection(firestore, "user");
+    const now = new Date();
 
-const app = initializeApp(firebaseConfig);
-const functions = getFunctions(app);
-functions.region = "europe-west1";
-const addWallet = httpsCallable(functions, "addWallet");
+    const userQuery = query(
+        collection(firestore, "user"),
+        where("walletAddress", "==", walletAddress),
+        limit(1)
+    );
+    const snapshot = await getDocs(userQuery);
+
+    if (snapshot.empty) {
+        addDoc(userCollection, {
+            walletAddress: walletAddress,
+            firstConnection: now.getTime(),
+            lastConnection: now.getTime()
+        });
+    } else {
+        snapshot.forEach((snap) => {
+            updateDoc(doc(firestore, "user/" + snap.id), {
+                lastConnection: new Date().getTime()
+            });
+        });
+    }
+}
 
 const network = { type: NetworkType.GHOSTNET };
 
@@ -33,7 +53,11 @@ export default function ConnexionWallet() {
 
     React.useEffect(() => {
         (async () => {
-            setUserAddress(localStorage.getItem("userAdress"));
+            const initialUserAdress = localStorage.getItem("userAdress");
+            setUserAddress(initialUserAdress);
+            if (initialUserAdress !== null) {
+                addWalletToFirebase(initialUserAdress);
+            }
             const _wallet = new BeaconWallet({ name: "Demo" });
             setWallet(_wallet);
             Tezos.setWalletProvider(_wallet);
@@ -43,8 +67,7 @@ export default function ConnexionWallet() {
     /*** Function to add wallet adress to firebase ***/
     const addWalletToFirebase = async (walletAddress) => {
         try {
-            const response = await addWallet({ value: walletAddress });
-            console.log(response);
+            const response = await addWallet(walletAddress);
         } catch (e) {
             console.error(e);
         }

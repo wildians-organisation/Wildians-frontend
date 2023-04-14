@@ -6,7 +6,7 @@ export default function RecentOrders({ recentTransacData }) {
             <strong className="text-gray-700 font-medium">
                 Wallet history
             </strong>
-            <div className="bg-white h-96 shadow-sm overflow-x-auto">
+            <div className="bg-white h-auto shadow-sm overflow-x-auto">
                 <table className="text-gray-700 w-full">
                     <thead>
                         <tr>

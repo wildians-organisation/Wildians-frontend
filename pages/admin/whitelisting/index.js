@@ -1,20 +1,8 @@
 import React from "react";
 import axios from "axios";
 import * as config from "../../../config/config.js";
-import { initializeApp } from "firebase/app";
-import { getFunctions, httpsCallable } from "firebase/functions";
 import Layout from "components/AdminDashBoard/Layout.js";
-import { Component } from "react/cjs/react.production.min.js";
-
-const firebaseConfig = {
-    apiKey: `${config.GCPAPIKEY}`,
-    authDomain: `${config.GCPAUTHDOMAIN}`,
-    databaseURL: `${config.GCPDATABASEURL}`,
-    projectId: `${config.GCPPROJECTID}`,
-    storageBucket: `${config.GCPSTORAGEBUCKET}`,
-    messagingSenderId: `${config.GCPMESSAGINGSENDERID}`,
-    appId: `${config.GCPAPPID}`
-};
+import { functions } from "../../../firebaseConfig";
 
 export default function Admin() {
     // Display items in a list with add button on each items
@@ -24,20 +12,7 @@ export default function Admin() {
     const [userAddress, setUserAddress] = React.useState("");
     const [userNFTs, setUserNFTs] = React.useState([]);
     const [tezosAmount, setTezosAmount] = React.useState(0);
-    const [numberWallets, setNumberWallets] = React.useState(0);
-    const app = initializeApp(firebaseConfig);
-    const functions = getFunctions(app);
-    functions.region = config.BUCKET_REGION;
-    const countWallets = httpsCallable(functions, "countWallets");
-    /*** Function to add wallet adress to firebase ***/
-    const getWallets = async () => {
-        try {
-            const response = await countWallets();
-            setNumberWallets(response.data);
-        } catch (e) {
-            console.error(e);
-        }
-    };
+
     // Get informations about the smartcontract with the tzkt api
     const getContractInformations = async () => {
         const response = await axios.get(
@@ -98,15 +73,8 @@ export default function Admin() {
             getNFTMintByUser(
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
-            getWallets();
         }
     }, []);
-
-    const listItems2 = Array.from(userNFTs).map((addr, id) => (
-        <li key={id}>
-            {addr[0]} : {addr[1]}
-        </li>
-    ));
 
     return (
         <>

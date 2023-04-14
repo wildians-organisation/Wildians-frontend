@@ -20,3 +20,4 @@ export const ONG_ADDRESS = process.env.ong_address;
 export const WOLF_WALLET = process.env.wolf_wallet;
 export const DEER_WALLET = process.env.deer_wallet;
 export const BULL_WALLET = process.env.bull_wallet;
+export const MEASUREMENTID = process.env.measurement_id;
