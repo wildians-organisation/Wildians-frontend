@@ -21,7 +21,7 @@ function BottomPart() {
                         pillar="ENVIRONNEMENT"
                         description="With the deer contribute directly to the WWF."
                         nft_adress={config.DEER_NFT}
-                        ong_wallet="tz1PzMwAJ4w4DnmzgNTDKPSBPN861ourF8Lp"
+                        ong_wallet={config.DEER_WALLET}
                     />
                     <Wildians
                         image={"/img/v2/visuels/Wolf.png"}
@@ -29,7 +29,7 @@ function BottomPart() {
                         pillar="SOCIETY"
                         description="With the wolf contribute directly to Greenpeace."
                         nft_adress={config.WOLF_NFT}
-                        ong_wallet="tz1M9Ku6NrEnvDCWcRx7GCZspPsbGEdBVoyT"
+                        ong_wallet={config.WOLF_WALLET}
                     />
                     <Wildians
                         image={"/img/v2/visuels/Bull.png"}
@@ -37,7 +37,7 @@ function BottomPart() {
                         pillar="ECONOMY"
                         description="With the bull contribute directly to Unicef."
                         nft_adress={config.BULL_NFT}
-                        ong_wallet={config.ONG_ADDRESS}
+                        ong_wallet={config.BULL_WALLET}
                     />
                 </div>
             </div>

@@ -17,3 +17,6 @@ export const GCPSTORAGEBUCKET = process.env.gcp_storage_bucket;
 export const GCPMESSAGINGSENDERID = process.env.gcp_messaging_sender_id;
 export const GCPAPPID = process.env.gcp_app_id;
 export const ONG_ADDRESS = process.env.ong_address;
+export const WOLF_WALLET = process.env.wolf_wallet;
+export const DEER_WALLET = process.env.deer_wallet;
+export const BULL_WALLET = process.env.bull_wallet;
