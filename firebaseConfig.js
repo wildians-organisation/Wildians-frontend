@@ -21,4 +21,4 @@ const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 const firestore = getFirestore();
 
-module.exports = { firestore, analytics };
+module.exports = { firestore };
