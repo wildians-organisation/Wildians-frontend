@@ -1,6 +1,8 @@
 import * as config from "./config/config.js";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
+
 
 const firebaseConfig = {
     apiKey: `${config.GCPAPIKEY}`,
