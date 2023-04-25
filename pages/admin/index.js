@@ -7,6 +7,7 @@ import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
 import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
 import { firestore } from "../../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
+import { wait } from "next/dist/build/output/log";
 
 const NUMBER_OF_MONTHS = 12;
 export let totalTransac = 0;
@@ -63,8 +64,6 @@ async function getConnectionStats() {
     };
 }
 
-
-
 export default function Admin() {
     // Display items in a list with add button on each items
     const [nbrToken, setNbrToken] = React.useState();
@@ -118,7 +117,9 @@ export default function Admin() {
                 let transactionDate = new Date(element.timestamp);
                 let oneYear = 1000 * 60 * 60 * 24 * 365;
                 if (+today <= +transactionDate + oneYear)
-                    tmpEachMonthData[transactionDate.getMonth()].Transaction = tmpEachMonthData[transactionDate.getMonth()].Transaction + 1;
+                    tmpEachMonthData[transactionDate.getMonth()].Transaction =
+                        tmpEachMonthData[transactionDate.getMonth()]
+                            .Transaction + 1;
             }
             if (element.operation.type != "origination") {
                 let transactionDate = new Date(element.timestamp);
@@ -144,7 +145,7 @@ export default function Admin() {
                 }
             }
         });
-        for (let i  = 0; i < 12;i++)
+        for (let i = 0; i < 12; i++)
             //tmpEachMonthData[i].Connexion = connectionStats["yearConnections"];
             console.log(connectionStats["yearConnections"]);
         let first = tmpEachMonthData.splice(0, today.getMonth() + 1);
@@ -192,8 +193,10 @@ export default function Admin() {
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
         }
-        setConnectionStats(await getConnectionStats());
-        getContractInformations();
+        const fetchConnectionStats = await getConnectionStats();
+        console.log(fetchConnectionStats);
+        setConnectionStats(fetchConnectionStats);
+        getContractInformations(); // getContractInformation(fetchConnectionStats);
     }, []);
 
     //create a list of the last transaction of each wallet

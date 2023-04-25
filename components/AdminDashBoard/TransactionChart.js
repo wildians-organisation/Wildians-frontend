@@ -10,8 +10,7 @@ import {
     ResponsiveContainer
 } from "recharts";
 
-
-export default function TransactionChart({ eachMonthData}) {
+export default function TransactionChart({ eachMonthData }) {
     return (
         <div>
             <strong className="text-gray-700 font-medium">
