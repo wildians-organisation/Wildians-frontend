@@ -145,9 +145,9 @@ export default function Admin() {
                 }
             }
         });
-        for (let i = 0; i < 12; i++)
-            //tmpEachMonthData[i].Connexion = connectionStats["yearConnections"];
-            console.log(connectionStats["yearConnections"]);
+        const fetchConnectionStats = await getConnectionStats();
+        for (let i = 0; i < fetchConnectionStats.yearConnections.length; i++)
+            tmpEachMonthData[i].Connexion = fetchConnectionStats.yearConnections[i];
         let first = tmpEachMonthData.splice(0, today.getMonth() + 1);
         for (let i = 0; i < first.length; i++)
             first[i].name += today.getFullYear();
@@ -196,7 +196,8 @@ export default function Admin() {
         const fetchConnectionStats = await getConnectionStats();
         console.log(fetchConnectionStats);
         setConnectionStats(fetchConnectionStats);
-        getContractInformations(); // getContractInformation(fetchConnectionStats);
+        getContractInformations(fetchConnectionStats); // getContractInformation(fetchConnectionStats);
+
     }, []);
 
     //create a list of the last transaction of each wallet
