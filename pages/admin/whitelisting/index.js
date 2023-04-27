@@ -1,94 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import * as config from "../../../config/config.js";
 import Layout from "components/AdminDashBoard/Layout.js";
-import { functions } from "../../../firebaseConfig";
+import { firestore } from "../../../firebaseConfig";
+import { addDoc, collection } from "firebase/firestore";
 
-export default function Admin() {
-    // Display items in a list with add button on each items
-    const [nbrToken, setNbrToken] = React.useState();
-    const [nbNFTConnectedAdress, setNbNFTConnectedAdress] = React.useState();
-    const [clientsAddress, setClientsAddress] = React.useState([]);
-    const [userAddress, setUserAddress] = React.useState("");
-    const [userNFTs, setUserNFTs] = React.useState([]);
-    const [tezosAmount, setTezosAmount] = React.useState(0);
+export default function Whitelist() {
+    const [formInfo, setFormInfo] = useState({
+        adresseWallet: "",
+        plateformeContact: "",
+        loginMail: "",
+        commentaire: ""
+      });
+    
+    
+    const whitelistCollection = collection(firestore,'whitelist');
 
-    // Get informations about the smartcontract with the tzkt api
-    const getContractInformations = async () => {
-        const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
-        );
-        const nbrNftMinted = response.data.length;
-        setNbrToken(nbrNftMinted - 1);
-        let tmp = [];
-        let tmpAmount = 0;
-        var wallets = new Map();
-        response.data.forEach((element) => {
-            if (element.operation.type != "origination") {
-                let data_value = element.operation.parameter.value;
-
-                tmpAmount += data_value.cost / config.TEZOS_CONVERTER;
-                tmp.push(data_value.address);
-                if (wallets.has(data_value.address)) {
-                    wallets.set(
-                        data_value.address,
-                        wallets.get(data_value.address) + 1
-                    );
-                } else {
-                    wallets.set(data_value.address, 1);
-                }
-            }
+    async function addToWhitelist(formData) {
+        const newDoc = await addDoc(whitelistCollection, {formData
         });
-        setClientsAddress(tmp);
-        setUserNFTs(wallets);
-        setTezosAmount(tmpAmount);
-    };
+    }
 
-    // Get the number of NFTs of the wallet connected
-    const getNFTMintByUser = async (userAdress) => {
-        const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history`
-        );
-        var nb = 0;
-        response.data.forEach((element) => {
-            if (
-                element.operation.type !== "origination" &&
-                element.operation.parameter.value.address === userAdress
-            ) {
-                nb = nb + 1;
-            }
-        });
-        setNbNFTConnectedAdress(nb);
-    };
+    const handleButtonClick = () => {
+        addToWhitelist(formInfo);
+      };
+    
+      const handleFieldChange = (event) => {
+        const fieldName = event.target.name;
+        const fieldValue = event.target.value;
+    
+        setFormInfo((prevFields) => ({
+          ...prevFields,
+          [fieldName]: fieldValue
+        }));
+      };
 
-    React.useEffect(async () => {
-        if (
-            typeof window !== "undefined" &&
-            window.localStorage.getItem("beacon:accounts")
-        ) {
-            setUserAddress(
-                JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
-            );
-            getContractInformations();
-            getNFTMintByUser(
-                JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
-            );
-        }
-    }, []);
-
+    
     return (
         <>
             <Layout>
                 <p className="text-gray-700 text-3xl mb-16 font-bold">
                     Whitelisting
                 </p>
+                <div>
+          <label htmlFor="adresseWallet">Adresse Wallet:</label>
+          <input type="text" id="adresseWallet" name="adresseWallet" placeholder="Wallet Address" onChange={handleFieldChange} />
+        </div>
 
-                <div className="grid lg:grid-cols-3 gap-5 mb-16">
-                    <div className="rounded bg-white h-40 shadow-sm"></div>
-                    <div className="rounded bg-white h-40 shadow-sm"></div>
-                    <div className="rounded bg-white h-40 shadow-sm"></div>
-                </div>
-                <div className="grid col-1 bg-white h-96 shadow-sm"></div>
+        <div>
+          <label htmlFor="plateformeContact">Plateforme du contact:</label>
+          <input type="text" id="plateformeContact" name="plateformeContact" placeholder="Contact Platform" onChange={handleFieldChange} />
+        </div>
+
+        <div>
+          <label htmlFor="loginMail">Login/Mail du whitelisté:</label>
+          <input type="text" id="loginMail" name="loginMail" placeholder="Login/Mail" onChange={handleFieldChange} />
+        </div>
+
+        <div>
+          <label htmlFor="commentaire">Commentaire:</label>
+          <input type="text" id="commentaire" name="commentaire" placeholder="Comment" onChange={handleFieldChange} />
+        </div>
+
+                <button onClick={handleButtonClick}>Add Whitelist</button>
             </Layout>
         </>
     );
