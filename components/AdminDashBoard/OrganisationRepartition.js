@@ -31,12 +31,11 @@ const renderCustomizedLabel = ({
 
 export default function OrganisationRepartition({ data }) {
     return (
-        <div>
-            <strong className="text-gray-700 font-medium">
-                ONG Repartition
-            </strong>
-            <div className="bg-white h-96 shadow-sm">
-                <ResponsiveContainer width="100%" height="100%">
+        
+        <div className="bg-white h-auto shadow-sm" style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+            <strong className="text-gray-700 font-medium">ONG Repartition</strong>
+            <div style={{ flex: "1" }}>
+                <ResponsiveContainer width="100%" height={300}>
                     <PieChart>
                         <Pie
                             data={data}
@@ -58,6 +57,35 @@ export default function OrganisationRepartition({ data }) {
                         <Legend />
                     </PieChart>
                 </ResponsiveContainer>
+            </div>
+            <div style={{ flex: "1", marginRight: "20px" }}>
+                <div>
+                    <h1 className="font-weight-bold mb-4 mt-20">Select dates</h1>
+                    <input type="date" className="mb-10 mr-2" />
+                    <input type="date" className="mb-10 mr-2" />
+                    <div className="bg-white h-auto shadow-sm overflow-x-auto">
+                        <table className="text-gray-700 w-full">
+                            <thead></thead>
+                            <tbody>
+                                <tr className="border-t border-gray-200 py-2 text-justify text-xs">
+                                    <td>GREENPEACE</td>
+                                    <td>40 Tezos</td>
+                                    <td>(15 dons)</td>
+                                </tr>
+                                <tr className="border-t border-gray-200 py-2 text-justify text-xs">
+                                    <td>WWF</td>
+                                    <td>40 Tezos</td>
+                                    <td>(15 dons)</td>
+                                </tr>
+                                <tr className="border-t border-gray-200 py-2 text-justify text-xs">
+                                    <td>UNICEF</td>
+                                    <td>40 Tezos</td>
+                                    <td>(15 dons)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     );
