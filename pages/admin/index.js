@@ -7,6 +7,7 @@ import TransactionChart from "components/AdminDashBoard/TransactionChart.js";
 import RecentOrders from "components/AdminDashBoard/RecentOrders.js";
 import { firestore } from "../../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
+import { wait } from "next/dist/build/output/log";
 
 const NUMBER_OF_MONTHS = 12;
 export let totalTransac = 0;
@@ -34,6 +35,7 @@ async function getConnectionStats() {
     let lastOneMonthConnections = 0;
 
     const now = new Date();
+    const oneYear = 1000 * 60 * 60 * 24 * 365;
     const currentYear = now.getFullYear();
     const nowMinusTwoWeeks = addDays(now, -14);
     const nowMinusOneMonth = addDays(now, -30);
@@ -43,8 +45,9 @@ async function getConnectionStats() {
     doc.forEach((snap) => {
         const snapshotValue = snap.data();
         const currentUserDate = new Date(snapshotValue.lastConnection);
-        if (currentUserDate.getFullYear() === currentYear) {
+        if (+now <= +currentUserDate + oneYear)
             ++yearConnections[currentUserDate.getMonth()];
+        if (currentUserDate.getFullYear() === currentYear) {
             if (currentUserDate.getTime() >= nowMinusTwoWeeks.getTime()) {
                 ++lastTwoWeeksConnections;
             }
@@ -75,6 +78,7 @@ export default function Admin() {
     );
     const [totalMonthTransac, setTotalMonthTransac] = React.useState(0);
     const [connectionStats, setConnectionStats] = React.useState("");
+    const [eachMonthData, setEachMonthData] = React.useState([]);
 
     // Get informations about the smartcontract with the tzkt api
     const getContractInformations = async () => {
@@ -92,9 +96,30 @@ export default function Admin() {
         var wallets = new Map();
         var lastTransacWallet = new Map();
         let tmpTotalMonthTransac = 0;
+        let tmpEachMonthData = [
+            { name: "Jan ", Connexion: 0, Transaction: 0 },
+            { name: "Feb ", Connexion: 0, Transaction: 0 },
+            { name: "Mar ", Connexion: 0, Transaction: 0 },
+            { name: "Apr ", Connexion: 0, Transaction: 0 },
+            { name: "May ", Connexion: 0, Transaction: 0 },
+            { name: "Jun ", Connexion: 0, Transaction: 0 },
+            { name: "July ", Connexion: 0, Transaction: 0 },
+            { name: "Aug ", Connexion: 0, Transaction: 0 },
+            { name: "Sep ", Connexion: 0, Transaction: 0 },
+            { name: "Oct ", Connexion: 0, Transaction: 0 },
+            { name: "Nov ", Connexion: 0, Transaction: 0 },
+            { name: "Dec ", Connexion: 0, Transaction: 0 }
+        ];
+        let today = new Date();
         response.data.forEach((element) => {
             if (element.operation.type == "transaction") {
                 totalTransacCompute = totalTransacCompute + 1;
+                let transactionDate = new Date(element.timestamp);
+                let oneYear = 1000 * 60 * 60 * 24 * 365;
+                if (+today <= +transactionDate + oneYear)
+                    tmpEachMonthData[transactionDate.getMonth()].Transaction =
+                        tmpEachMonthData[transactionDate.getMonth()]
+                            .Transaction + 1;
             }
             if (element.operation.type != "origination") {
                 let transactionDate = new Date(element.timestamp);
@@ -120,6 +145,16 @@ export default function Admin() {
                 }
             }
         });
+        const fetchConnectionStats = await getConnectionStats();
+        for (let i = 0; i < fetchConnectionStats.yearConnections.length; i++)
+            tmpEachMonthData[i].Connexion = fetchConnectionStats.yearConnections[i];
+        let first = tmpEachMonthData.splice(0, today.getMonth() + 1);
+        for (let i = 0; i < first.length; i++)
+            first[i].name += today.getFullYear();
+        for (let i = 0; i < tmpEachMonthData.length; i++)
+            tmpEachMonthData[i].name += today.getFullYear() - 1;
+        tmpEachMonthData = tmpEachMonthData.concat(first);
+        setEachMonthData(tmpEachMonthData);
         setClientsAddress(tmp);
         setUserNFTs(wallets);
         setTezosAmount(tmpAmount);
@@ -158,8 +193,11 @@ export default function Admin() {
                 JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
             );
         }
-        getContractInformations();
-        setConnectionStats(await getConnectionStats());
+        const fetchConnectionStats = await getConnectionStats();
+        console.log(fetchConnectionStats);
+        setConnectionStats(fetchConnectionStats);
+        getContractInformations(fetchConnectionStats); // getContractInformation(fetchConnectionStats);
+
     }, []);
 
     //create a list of the last transaction of each wallet
@@ -193,7 +231,7 @@ export default function Admin() {
                     connectionStats={connectionStats}
                     totalClient={clientAmount}
                 />
-                <TransactionChart />
+                <TransactionChart eachMonthData={eachMonthData} />
                 <RecentOrders recentTransacData={data} />
             </Layout>
         </>
