@@ -3,7 +3,6 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
-
 const firebaseConfig = {
     apiKey: `${config.GCPAPIKEY}`,
     authDomain: `${config.GCPAUTHDOMAIN}`,
@@ -15,7 +14,6 @@ const firebaseConfig = {
     measurementId: `${config.MEASUREMENTID}`
 };
 
-
 const app = initializeApp(firebaseConfig);
 
 const firestore = getFirestore();
@@ -25,7 +23,7 @@ if (firebaseConfig?.projectId) {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
 
-    if (app.name && typeof window !== 'undefined') {
+    if (app.name && typeof window !== "undefined") {
         analytics = getAnalytics(app);
     }
 }

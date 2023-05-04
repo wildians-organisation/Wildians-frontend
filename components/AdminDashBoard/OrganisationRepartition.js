@@ -31,9 +31,17 @@ const renderCustomizedLabel = ({
 
 export default function OrganisationRepartition({ data }) {
     return (
-        
-        <div className="bg-white h-auto shadow-sm" style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-            <strong className="text-gray-700 font-medium">ONG Repartition</strong>
+        <div
+            className="bg-white h-auto shadow-sm"
+            style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between"
+            }}
+        >
+            <strong className="text-gray-700 font-medium">
+                ONG Repartition
+            </strong>
             <div style={{ flex: "1" }}>
                 <ResponsiveContainer width="100%" height={300}>
                     <PieChart>
@@ -60,7 +68,9 @@ export default function OrganisationRepartition({ data }) {
             </div>
             <div style={{ flex: "1", marginRight: "20px" }}>
                 <div>
-                    <h1 className="font-weight-bold mb-4 mt-20">Select dates</h1>
+                    <h1 className="font-weight-bold mb-4 mt-20">
+                        Select dates
+                    </h1>
                     <input type="date" className="mb-10 mr-2" />
                     <input type="date" className="mb-10 mr-2" />
                     <div className="bg-white h-auto shadow-sm overflow-x-auto">
