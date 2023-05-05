@@ -1,8 +1,6 @@
 import React from "react";
-import Image from "next/image";
 import * as config from "../../config/config.js";
 import Wildians from "components/Wildian/Wildians";
-import * as wildians from "../../domain/ONGList.ts"
 
 function BottomPart() {
     const deerONG = ["WWF", "Oceana", "GreenPeace"]
