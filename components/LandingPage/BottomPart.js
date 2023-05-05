@@ -4,6 +4,9 @@ import * as config from "../../config/config.js";
 import Wildians from "components/Wildian/Wildians";
 
 function BottomPart() {
+    const deerONG = ["WWF", "Oceana", "GreenPeace"]
+    const wolfONG = ["Action Against Hunger", "Save the Children", "Wikimedia Foundation (Wikipedia)", "Charity: Water"]
+    const bullONG = ["AIDS", "UNICEF", "MADRE", "Relief International Inc.", "Amnesty International"]
     return (
         <div className="h-screen bg-cover bg-emerald-800  bg-wood-bg font-goghbold">
             <div className="relative top-48 h-96">
@@ -21,6 +24,7 @@ function BottomPart() {
                         pillar="ENVIRONNEMENT"
                         description="With the deer contribute directly to the WWF."
                         nft_adress={config.DEER_NFT}
+                        ong_list={deerONG}
                     />
                     <Wildians
                         image={"/img/v2/visuels/Wolf.png"}
@@ -28,6 +32,7 @@ function BottomPart() {
                         pillar="SOCIETY"
                         description="With the wolf contribute directly to Greenpeace."
                         nft_adress={config.WOLF_NFT}
+                        ong_list={wolfONG}
                     />
                     <Wildians
                         image={"/img/v2/visuels/Bull.png"}
@@ -35,6 +40,7 @@ function BottomPart() {
                         pillar="ECONOMY"
                         description="With the bull contribute directly to Unicef."
                         nft_adress={config.BULL_NFT}
+                        ong_list={bullONG}
                     />
                 </div>
             </div>
