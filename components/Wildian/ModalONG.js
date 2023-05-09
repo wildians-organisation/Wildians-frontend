@@ -1,7 +1,7 @@
 import React from "react";
 import ReactModal from "react-modal";
 
-function Modal({ Wildians, onMint, onClose, isOpen}) {
+function ModalONG({ Wildians, onMint, onClose, isOpen}) {
   // Define the options state variables here
   const [selectedONG, setSelectedONG] = React.useState("");
 
@@ -59,4 +59,4 @@ function Modal({ Wildians, onMint, onClose, isOpen}) {
     </div>
   );
 }
-export default Modal;
+export default ModalONG;
