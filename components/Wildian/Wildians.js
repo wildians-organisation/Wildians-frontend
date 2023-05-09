@@ -6,6 +6,7 @@ import { char2Bytes } from "@taquito/tzip16";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import axios from "axios";
+import ModalONG from "./ModalONG.js";
 
 const nftToMint = 1;
 
@@ -14,11 +15,11 @@ const network = { type: NetworkType.GHOSTNET };
 function Wildians(Wildians) {
     const [wallet, setWallet] = React.useState({});
 
+    const [showModal, setShowModal] = React.useState(false);
     const [token_id, setToken_id] = React.useState(-1);
 
     const [userAddress, setUserAddress] = React.useState("");
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
-
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -29,6 +30,15 @@ function Wildians(Wildians) {
         } catch (e) {
             console.error(e);
         }
+    };
+
+    // Function to open the modal
+    const openModal = () => {
+        setShowModal(true);
+    };
+    // Function to close the modal
+    const closeModal = () => {
+        setShowModal(false);
     };
 
     React.useEffect(() => {
@@ -113,13 +123,13 @@ function Wildians(Wildians) {
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
                 {Wildians.description}
             </div>
+            
             <button
-                onClick={() => mintNFT(Wildians.nft_adress)}
+                onClick={openModal}
                 className="mintNFT text-gray-900 group flex rounded-full items-center px-2 py-2 md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap "
-                type="button"
-            >
-                Mint
+                type="button">Select an ONG
             </button>
+            <ModalONG isOpen={showModal} onClose={closeModal} onMint={mintNFT} Wildians={Wildians}> </ModalONG>
         </div>
     );
 }
