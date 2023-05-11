@@ -3,9 +3,20 @@ import * as config from "../../config/config.js";
 import Wildians from "components/Wildian/Wildians";
 
 function BottomPart() {
-    const deerONG = ["WWF", "Oceana", "GreenPeace"]
-    const wolfONG = ["Action Against Hunger", "Save the Children", "Wikimedia Foundation (Wikipedia)", "Charity: Water"]
-    const bullONG = ["AIDS", "UNICEF", "MADRE", "Relief International Inc.", "Amnesty International"]
+    const deerONG = ["WWF", "Oceana", "GreenPeace"];
+    const wolfONG = [
+        "Action Against Hunger",
+        "Save the Children",
+        "Wikimedia Foundation (Wikipedia)",
+        "Charity: Water"
+    ];
+    const bullONG = [
+        "AIDS",
+        "UNICEF",
+        "MADRE",
+        "Relief International Inc.",
+        "Amnesty International"
+    ];
     return (
         <div className="h-screen bg-cover bg-emerald-800  bg-wood-bg font-goghbold">
             <div className="relative top-48 h-96">

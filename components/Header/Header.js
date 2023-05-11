@@ -60,13 +60,6 @@ function Header() {
                     </a>
                 </div>
                 <ConnexionWallet></ConnexionWallet>
-                <div className="md:flex items-center md:w-min">
-                    <Link className="" href="admin">
-                        <div className="group flex rounded-md cursor-pointer items-center w-full px-2 py-2 md:whitespace-nowrap md:h-min md:text-sm  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3 md:hover:bg-greenkaki md:hover:text-greeny md:text-greenkaki md:bg-greeny md:rounded-full  md:ease-linear md:transition-all md:duration-150">
-                            Admin
-                        </div>
-                    </Link>
-                </div>
             </div>
         </div>
     );
