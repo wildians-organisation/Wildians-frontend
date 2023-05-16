@@ -16,7 +16,10 @@ export default function UserNFTs(props) {
                 `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
             );
             for (let i = 0; i < response["data"].length; i++) {
-                if (response["data"][i]["token"]["metadata"] == null) continue;
+                const nftInfo = response["data"][i]["token"]["metadata"];
+                if (!nftInfo) continue;
+                const { name, creators, displayUri, description } = nftInfo;
+                if (!name || !creators || !displayUri || !description) continue;
                 let tmp_obj = {
                     name: response["data"][i]["token"]["metadata"]["name"],
                     creators:
