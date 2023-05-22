@@ -3,9 +3,20 @@ import * as config from "../../config/config.js";
 import Wildians from "components/Wildian/Wildians";
 
 function BottomPart() {
-    const deerONG = ["WWF", "Oceana", "GreenPeace"]
-    const wolfONG = ["Action Against Hunger", "Save the Children", "Wikimedia Foundation (Wikipedia)", "Charity: Water"]
-    const bullONG = ["AIDS", "UNICEF", "MADRE", "Relief International Inc.", "Amnesty International"]
+    const deerONG = ["WWF", "Oceana", "GreenPeace"];
+    const wolfONG = [
+        "Action Against Hunger",
+        "Save the Children",
+        "Wikimedia Foundation (Wikipedia)",
+        "Charity: Water"
+    ];
+    const bullONG = [
+        "AIDS",
+        "UNICEF",
+        "MADRE",
+        "Relief International Inc.",
+        "Amnesty International"
+    ];
     return (
         <div className="h-screen bg-cover bg-emerald-800  bg-wood-bg font-goghbold">
             <div className="relative top-48 h-96">
@@ -16,7 +27,7 @@ function BottomPart() {
                     Each pillar allows you to contribute to a different
                     association. Which one will you choose?
                 </div>
-                <div className="explanationPart flex justify-evenly items-center text-beige mt-12">
+                <div className="explanationPart flex justify-evenly items-stretch text-beige mt-12">
                     <Wildians
                         image={"/img/v2/visuels/Deer.png"}
                         title="Deer_3D"

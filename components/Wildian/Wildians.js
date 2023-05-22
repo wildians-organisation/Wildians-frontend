@@ -111,7 +111,7 @@ function Wildians(Wildians) {
         };
 
     return (
-        <div className="flex flex-col justify-center items-center w-4/12">
+        <div className="flex flex-col justify-end items-center w-4/12">
             <Image
                 src={Wildians.image}
                 alt={Wildians.title}
@@ -124,13 +124,22 @@ function Wildians(Wildians) {
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
                 {Wildians.description}
             </div>
-            
+
             <button
                 onClick={openModal}
                 className="mintNFT text-gray-900 group flex rounded-full items-center px-2 py-2 md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap "
-                type="button">Select an ONG
+                type="button"
+            >
+                Select an ONG
             </button>
-            <ModalONG isOpen={showModal} onClose={closeModal} onMint={mintNFT} Wildians={Wildians}> </ModalONG>
+            <ModalONG
+                isOpen={showModal}
+                onClose={closeModal}
+                onMint={mintNFT}
+                Wildians={Wildians}
+            >
+                {" "}
+            </ModalONG>
         </div>
     );
 }
