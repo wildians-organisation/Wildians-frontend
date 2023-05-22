@@ -21,9 +21,5 @@ module.exports = {
         gcp_app_id: process.env.GCPAPPID,
         measurement_id: process.env.MEASUREMENTID
     },
-    trailingSlash: true,
-    images: {
-        loader: "akamai",
-        path: "/"
-    }
+    trailingSlash: true
 };

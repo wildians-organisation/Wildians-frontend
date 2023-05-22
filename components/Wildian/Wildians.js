@@ -110,7 +110,7 @@ function Wildians(Wildians) {
         };
 
     return (
-        <div className="flex flex-col justify-center items-center w-4/12">
+        <div className="flex flex-col justify-end items-center w-4/12">
             <Image
                 src={Wildians.image}
                 alt={Wildians.title}

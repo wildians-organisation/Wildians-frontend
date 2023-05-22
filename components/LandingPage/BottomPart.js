@@ -27,7 +27,7 @@ function BottomPart() {
                     Each pillar allows you to contribute to a different
                     association. Which one will you choose?
                 </div>
-                <div className="explanationPart flex justify-evenly items-center text-beige mt-12">
+                <div className="explanationPart flex justify-evenly items-stretch text-beige mt-12">
                     <Wildians
                         image={"/img/v2/visuels/Deer.png"}
                         title="Deer_3D"
