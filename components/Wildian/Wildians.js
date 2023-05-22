@@ -89,7 +89,7 @@ function Wildians(Wildians) {
             return contract;
         },
         /*** Function to mint the nft ***/
-        mintNFT = async (url) => {
+        mintNFT = async (url, selectedONG) => {
             await disconnect();
             await connectToWallet();
             const contract = await getSmartContract();
@@ -103,6 +103,7 @@ function Wildians(Wildians) {
                     nftToMint,
                     1000 * config.TEZOS_CONVERTER,
                     MichelsonMap.fromLiteral({ "": url }),
+                    selectedONG,
                     token_id
                 )
                 .send({ amount: 1000 });

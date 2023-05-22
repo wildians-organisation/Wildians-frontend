@@ -12,7 +12,7 @@ function ModalONG({ Wildians, onMint, onClose, isOpen}) {
   const handleMint = () => {
     if (selectedONG) {
       onClose();
-      onMint(Wildians.nft_adress)
+      onMint(Wildians.nft_adress, selectedONG)
     }
   };
 
