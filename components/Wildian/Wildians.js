@@ -7,6 +7,8 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import axios from "axios";
 import ModalONG from "./ModalONG.js";
+import { firestore } from "firebaseConfig.js";
+import {collection,onSnapshot} from "firebase/firestore";
 
 const nftToMint = 1;
 
@@ -20,6 +22,9 @@ function Wildians(Wildians) {
 
     const [userAddress, setUserAddress] = React.useState("");
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
+    const statusSaleCollection = collection(firestore, "sales");
+    const [statusSaleList, setStatusSaleList] = React.useState([]);
+    const [isStatusOpen, setIsStatusOpen] = React.useState(false);
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -30,6 +35,24 @@ function Wildians(Wildians) {
         } catch (e) {
             console.error(e);
         }
+    };
+
+    const getStatusSales = async () => {
+        onSnapshot(statusSaleCollection, (snapshot) => {
+            const statusSales = [];
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                const { whitelistStatus, status } = data;
+                statusSales.push({ id: doc.id, whitelistStatus, status });
+            });
+    
+            setStatusSaleList(statusSales);
+    
+            if (statusSales.length > 0) {
+                const firstStatusSale = statusSales[0];
+                setIsStatusOpen(firstStatusSale.status === "open");
+            }
+        });
     };
 
     // Function to open the modal
@@ -59,6 +82,19 @@ function Wildians(Wildians) {
             connectToWallet();
             setToken_id(getTokenID());
         }
+
+        getStatusSales()
+        .then((statusSales) => {
+            // Find the appropriate status sale based on your logic
+            if (statusSales.length > 0) {
+              const firstStatusSale = statusSales[0];
+              setIsStatusOpen(firstStatusSale.status == "open");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching status sales:", error);
+          });
+
     }, []);
 
     /*** Function to connect to the wallet ***/
@@ -129,8 +165,9 @@ function Wildians(Wildians) {
                 onClick={openModal}
                 className="mintNFT text-gray-900 group flex rounded-full items-center px-2 py-2 md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap "
                 type="button"
+                disabled={!isStatusOpen}
             >
-                Select an ONG
+                {isStatusOpen ? ("Select an ONG") : ("Not available")}
             </button>
             <ModalONG
                 isOpen={showModal}
