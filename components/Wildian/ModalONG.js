@@ -1,12 +1,13 @@
 import React from "react";
 import ReactModal from "react-modal";
 
-function ModalONG({ Wildians, onMint, onClose, isOpen }) {
-    // Define the options state variables here
-    const [selectedONG, setSelectedONG] = React.useState("");
+function ModalONG({ Wildians, onMint, onClose, isOpen, setONG}) {
+    const [selectedONG, setSelectedONG] = React.useState(Wildians.ong_list[0]);
+    setONG(selectedONG);
 
     const handleOptionChange = (event) => {
         setSelectedONG(event.target.value);
+        setONG(selectedONG);
     };
 
     const handleMint = () => {
