@@ -23,7 +23,6 @@ function Wildians(Wildians) {
     const [userAddress, setUserAddress] = React.useState("");
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
     const [selectedONG, setSelectedONG] = React.useState("");
-    const whitelistCollection = collection(firestore, "whitelist");
     const salesCollection = collection(firestore, "sales");
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
