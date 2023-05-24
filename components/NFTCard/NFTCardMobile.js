@@ -29,7 +29,7 @@ function NFTCardMobile({ metadata }) {
                     <div className="flex justify-between">
                         <div>By adopting me, you supported WWF</div>
                         <div className="m-auto rounded-full border-white border-solid">
-                            <div className="text-xs">Learn of ></div>
+                            <div className="text-xs">Learn of &gt;</div>
                         </div>
                     </div>
                     <div className="bg-attributegreen w-1/2 pl-1 rounded-lg mr-3 mb-3 mt-3 attribute">

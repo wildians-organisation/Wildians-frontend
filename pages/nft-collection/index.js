@@ -17,7 +17,8 @@ export default function UserNFTs(props) {
             );
             for (let i = 0; i < response["data"].length; i++) {
                 if (!response["data"][i]["token"]["metadata"]) continue;
-                const { name, creators, displayUri, description } = response["data"][i]["token"]["metadata"];
+                const { name, creators, displayUri, description } =
+                    response["data"][i]["token"]["metadata"];
                 if (!name || !creators || !displayUri || !description) continue;
                 let tmp_obj = {
                     name: response["data"][i]["token"]["metadata"]["name"],

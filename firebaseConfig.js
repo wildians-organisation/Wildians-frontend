@@ -16,16 +16,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const firestore = getFirestore();
+export const firestore = getFirestore();
 
-let analytics;
-if (firebaseConfig?.projectId) {
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-
-    if (app.name && typeof window !== "undefined") {
-        analytics = getAnalytics(app);
-    }
+if (typeof window !== "undefined") {
+    const analytics = getAnalytics(app);
 }
-
-module.exports = { firestore, analytics };
