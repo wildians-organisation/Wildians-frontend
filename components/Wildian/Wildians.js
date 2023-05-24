@@ -7,6 +7,17 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import axios from "axios";
 import ModalONG from "./ModalONG.js";
+import { firestore } from "../../firebaseConfig";
+import {
+    collection,
+    addDoc,
+    query,
+    limit,
+    where,
+    getDocs,
+    updateDoc,
+    doc
+} from "firebase/firestore";
 
 const nftToMint = 1;
 
@@ -20,6 +31,10 @@ function Wildians(Wildians) {
 
     const [userAddress, setUserAddress] = React.useState("");
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
+
+    const whitelistCollection = collection(firestore, "whitelist");
+    const salesCollection = collection(firestore, "sales");
+
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -83,6 +98,27 @@ function Wildians(Wildians) {
         setUserAddress(null);
     };
 
+    /*** Function to fetch whitelisted users ***/
+    async function fetchWhitelistData() {
+        const querySnapshot = await getDocs(whitelistCollection);
+        const documents = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+        setWhitelistedUsers(documents);
+    }
+
+    /*** Function to fetch sales status ***/
+    async function fetchSalesStatus() {
+        const querySnapshot = await getDocs(salesCollection);
+        const documents = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            status: doc.status,
+            whitelistStatus: doc.whitelistStatus
+        }));
+        setSalesStatus(documents);
+    }
+
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
             const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
@@ -95,14 +131,37 @@ function Wildians(Wildians) {
             const contract = await getSmartContract();
             url = char2Bytes(url);
             const activeAccount = await wallet.client.getActiveAccount();
-            console.log(activeAccount.address);
+            setUserAddress(activeAccount.address);
+
+            const querySnapshotWL = await getDocs(whitelistCollection);
+            const whitelistedUsers = querySnapshotWL.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+
+            const querySnapshotSales = await getDocs(salesCollection);
+            const salesStatus = querySnapshotSales.docs[0].data();
+
+            let is_whitelisted = false;
+            whitelistedUsers.map((user) => {
+                if (user.formData.adresseWallet == activeAccount.address) {
+                    is_whitelisted = true;
+                    return;
+                }
+            });
+
+            let normal_sales_open = salesStatus.status == "open";
+            let WL_sales_open = salesStatus.whitelistStatus == "open";
             //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
             const op = await contract.methods
                 .big_boi_mint(
+                    WL_sales_open,
                     activeAccount.address,
                     nftToMint,
                     1000 * config.TEZOS_CONVERTER,
+                    is_whitelisted,
                     MichelsonMap.fromLiteral({ "": url }),
+                    normal_sales_open,
                     selectedONG,
                     token_id
                 )
