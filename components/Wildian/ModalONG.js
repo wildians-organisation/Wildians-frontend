@@ -9,12 +9,12 @@ function ModalONG({ Wildians, onMint, onClose, isOpen, setONG}) {
         setSelectedONG(event.target.value);
         setONG(selectedONG);
     };
-
+  
     const handleMint = () => {
-        if (selectedONG) {
-            onClose();
-            onMint(Wildians.nft_adress);
-        }
+      if (selectedONG) {
+        onClose();
+        onMint(Wildians.nft_adress, selectedONG)
+      }
     };
 
     const modalStyles = {
