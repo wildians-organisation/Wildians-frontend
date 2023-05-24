@@ -19,9 +19,11 @@ function Wildians(Wildians) {
 
     const [showModal, setShowModal] = React.useState(false);
     const [token_id, setToken_id] = React.useState(-1);
-
+    const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
     const [userAddress, setUserAddress] = React.useState("");
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
+    const [selectedONG, setSelectedONG] = React.useState("");
+    const whitelistCollection = collection(firestore, "whitelist");
     const salesCollection = collection(firestore, "sales");
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
@@ -149,6 +151,8 @@ function Wildians(Wildians) {
         mintNFT = async (url, selectedONG) => {
             await disconnect();
             await connectToWallet();
+            let tmpNbTokenMinted = nbTokenMinted + 1;
+            setNbTokenMinted(tmpNbTokenMinted);
             const contract = await getSmartContract();
             url = char2Bytes(url);
             const activeAccount = await wallet.client.getActiveAccount();
@@ -202,7 +206,7 @@ function Wildians(Wildians) {
                 {Wildians.pillar}
             </div>
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
-                {Wildians.description}
+                {Wildians.description} {selectedONG}.
             </div>
 
             <button
@@ -218,10 +222,15 @@ function Wildians(Wildians) {
                 onClose={closeModal}
                 onMint={mintNFT}
                 Wildians={Wildians}
+                setONG={setSelectedONG} 
             >
                 {" "}
             </ModalONG>
+            <div className="text-center mt-4 w-5/12 text-xs md:text-base">
+                {Wildians.nft_sold}  already sold !
+            </div>
         </div>
+        
     );
 }
 export default Wildians;
