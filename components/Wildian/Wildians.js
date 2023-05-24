@@ -7,8 +7,8 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import axios from "axios";
 import ModalONG from "./ModalONG.js";
-import { firestore } from "firebaseConfig.js";
-import {collection,onSnapshot} from "firebase/firestore";
+import { firestore } from "../../firebaseConfig";
+import { collection, onSnapshot, getDocs } from "firebase/firestore";
 
 const nftToMint = 1;
 
@@ -22,9 +22,10 @@ function Wildians(Wildians) {
 
     const [userAddress, setUserAddress] = React.useState("");
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
-    const statusSaleCollection = collection(firestore, "sales");
+    const salesCollection = collection(firestore, "sales");
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
+    const whitelistCollection = collection(firestore, "whitelist");
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -38,16 +39,16 @@ function Wildians(Wildians) {
     };
 
     const getStatusSales = async () => {
-        onSnapshot(statusSaleCollection, (snapshot) => {
+        onSnapshot(salesCollection, (snapshot) => {
             const statusSales = [];
             snapshot.forEach((doc) => {
                 const data = doc.data();
                 const { whitelistStatus, status } = data;
                 statusSales.push({ id: doc.id, whitelistStatus, status });
             });
-    
+
             setStatusSaleList(statusSales);
-    
+
             if (statusSales.length > 0) {
                 const firstStatusSale = statusSales[0];
                 setIsStatusOpen(firstStatusSale.status === "open");
@@ -84,17 +85,16 @@ function Wildians(Wildians) {
         }
 
         getStatusSales()
-        .then((statusSales) => {
-            // Find the appropriate status sale based on your logic
-            if (statusSales.length > 0) {
-              const firstStatusSale = statusSales[0];
-              setIsStatusOpen(firstStatusSale.status == "open");
-            }
-          })
-          .catch((error) => {
-            console.error("Error fetching status sales:", error);
-          });
-
+            .then((statusSales) => {
+                // Find the appropriate status sale based on your logic
+                if (statusSales.length > 0) {
+                    const firstStatusSale = statusSales[0];
+                    setIsStatusOpen(firstStatusSale.status == "open");
+                }
+            })
+            .catch((error) => {
+                console.error("Error fetching status sales:", error);
+            });
     }, []);
 
     /*** Function to connect to the wallet ***/
@@ -119,6 +119,27 @@ function Wildians(Wildians) {
         setUserAddress(null);
     };
 
+    /*** Function to fetch whitelisted users ***/
+    async function fetchWhitelistData() {
+        const querySnapshot = await getDocs(whitelistCollection);
+        const documents = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+        setWhitelistedUsers(documents);
+    }
+
+    /*** Function to fetch sales status ***/
+    async function fetchSalesStatus() {
+        const querySnapshot = await getDocs(salesCollection);
+        const documents = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            status: doc.status,
+            whitelistStatus: doc.whitelistStatus
+        }));
+        setSalesStatus(documents);
+    }
+
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
             const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
@@ -131,14 +152,37 @@ function Wildians(Wildians) {
             const contract = await getSmartContract();
             url = char2Bytes(url);
             const activeAccount = await wallet.client.getActiveAccount();
-            console.log(activeAccount.address);
+            setUserAddress(activeAccount.address);
+
+            const querySnapshotWL = await getDocs(whitelistCollection);
+            const whitelistedUsers = querySnapshotWL.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+
+            const querySnapshotSales = await getDocs(salesCollection);
+            const salesStatus = querySnapshotSales.docs[0].data();
+
+            let is_whitelisted = false;
+            whitelistedUsers.map((user) => {
+                if (user.formData.adresseWallet == activeAccount.address) {
+                    is_whitelisted = true;
+                    return;
+                }
+            });
+
+            let normal_sales_open = salesStatus.status == "open";
+            let WL_sales_open = salesStatus.whitelistStatus == "open";
             //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
             const op = await contract.methods
                 .big_boi_mint(
+                    WL_sales_open,
                     activeAccount.address,
                     nftToMint,
                     1000 * config.TEZOS_CONVERTER,
+                    is_whitelisted,
                     MichelsonMap.fromLiteral({ "": url }),
+                    normal_sales_open,
                     selectedONG,
                     token_id
                 )
@@ -167,7 +211,7 @@ function Wildians(Wildians) {
                 type="button"
                 disabled={!isStatusOpen}
             >
-                {isStatusOpen ? ("Select an ONG") : ("Not available")}
+                {isStatusOpen ? "Select an ONG" : "Not available"}
             </button>
             <ModalONG
                 isOpen={showModal}
