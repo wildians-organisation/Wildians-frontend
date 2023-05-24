@@ -114,7 +114,7 @@ function Wildians(Wildians) {
         const documents = querySnapshot.docs.map((doc) => ({
             id: doc.id,
             status: doc.status,
-            whitelistStatus: doc.whitelistStatus,
+            whitelistStatus: doc.whitelistStatus
         }));
         setSalesStatus(documents);
     }
@@ -131,8 +131,7 @@ function Wildians(Wildians) {
             const contract = await getSmartContract();
             url = char2Bytes(url);
             const activeAccount = await wallet.client.getActiveAccount();
-            console.log(activeAccount.address);
-            setUserAddress(activeAccount.address)
+            setUserAddress(activeAccount.address);
 
             const querySnapshotWL = await getDocs(whitelistCollection);
             const whitelistedUsers = querySnapshotWL.docs.map((doc) => ({
@@ -141,15 +140,15 @@ function Wildians(Wildians) {
             }));
 
             const querySnapshotSales = await getDocs(salesCollection);
-            const salesStatus = querySnapshotSales.docs[0].data()
+            const salesStatus = querySnapshotSales.docs[0].data();
 
-            let is_whitelisted = false
+            let is_whitelisted = false;
             whitelistedUsers.map((user) => {
                 if (user.formData.adresseWallet == activeAccount.address) {
-                  is_whitelisted = true;
-                  return;
+                    is_whitelisted = true;
+                    return;
                 }
-              });
+            });
 
             let normal_sales_open = salesStatus.status == "open";
             let WL_sales_open = salesStatus.whitelistStatus == "open";
