@@ -29,7 +29,7 @@ function NFTCard({ metadata }) {
                     <div className="flex justify-between">
                         <div>By adopting me, you supported WWF</div>
                         <div className="m-auto rounded-full border-white border-solid">
-                            <div className="text-xs">Learn of ></div>
+                            <div className="text-xs">Learn of &gt;</div>
                         </div>
                     </div>
                     <Attribute title="Created" description="14 mars 2000" />
