@@ -221,15 +221,14 @@ function Wildians(Wildians) {
                 onClose={closeModal}
                 onMint={mintNFT}
                 Wildians={Wildians}
-                setONG={setSelectedONG} 
+                setONG={setSelectedONG}
             >
                 {" "}
             </ModalONG>
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
-                {Wildians.nft_sold}  already sold !
+                {Wildians.nft_sold} already sold !
             </div>
         </div>
-        
     );
 }
 export default Wildians;
