@@ -27,6 +27,7 @@ function Wildians(Wildians) {
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
     const whitelistCollection = collection(firestore, "whitelist");
+    const [whitelistedUsers, setWhitelistedUsers] = React.useState([]);
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -39,6 +40,19 @@ function Wildians(Wildians) {
         }
     };
 
+    const getWhitelist = async () => {
+        const querySnapshot = await getDocs(whitelistCollection);
+        const documents = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+        setWhitelistedUsers(documents);
+    };
+
+    const isIdWhitelisted = (walletId) => {
+        return whitelistedUsers.some((user) => user.formData.adresseWallet === walletId);
+      };    
+
     const getStatusSales = async () => {
         onSnapshot(salesCollection, (snapshot) => {
             const statusSales = [];
@@ -48,11 +62,15 @@ function Wildians(Wildians) {
                 statusSales.push({ id: doc.id, whitelistStatus, status });
             });
 
-            setStatusSaleList(statusSales);
 
+            setStatusSaleList(statusSales);
+    
             if (statusSales.length > 0) {
                 const firstStatusSale = statusSales[0];
-                setIsStatusOpen(firstStatusSale.status === "open");
+                if((userAddress != null || userAddress != "") && isIdWhitelisted(userAddress))
+                    setIsStatusOpen(firstStatusSale.whitelistStatus == "open");
+                else
+                    setIsStatusOpen(firstStatusSale.status == "open");
             }
         });
     };
@@ -85,17 +103,8 @@ function Wildians(Wildians) {
             setToken_id(getTokenID());
         }
 
-        getStatusSales()
-            .then((statusSales) => {
-                // Find the appropriate status sale based on your logic
-                if (statusSales.length > 0) {
-                    const firstStatusSale = statusSales[0];
-                    setIsStatusOpen(firstStatusSale.status == "open");
-                }
-            })
-            .catch((error) => {
-                console.error("Error fetching status sales:", error);
-            });
+        getWhitelist();
+        getStatusSales();
     }, []);
 
     /*** Function to connect to the wallet ***/
