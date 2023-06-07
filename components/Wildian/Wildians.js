@@ -26,6 +26,8 @@ function Wildians(Wildians) {
     const salesCollection = collection(firestore, "sales");
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
+    const [time, setTime] = React.useState(new Date().toLocaleTimeString().slice(0,5));
+    const [day, setDay] = React.useState(new Date().toISOString().slice(0, 10));
     const whitelistCollection = collection(firestore, "whitelist");
     const getTokenID = async () => {
         try {
@@ -44,15 +46,18 @@ function Wildians(Wildians) {
             const statusSales = [];
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                const { whitelistStatus, status } = data;
-                statusSales.push({ id: doc.id, whitelistStatus, status });
+                const { whitelistStatus, whitelistOpenDay, whitelistOpenTime,status, openDay, openTime } = data;
+                statusSales.push({ id: doc.id, whitelistStatus,  whitelistOpenDay, whitelistOpenTime,status, openDay, openTime});
             });
 
             setStatusSaleList(statusSales);
-
             if (statusSales.length > 0) {
                 const firstStatusSale = statusSales[0];
-                setIsStatusOpen(firstStatusSale.status === "open");
+                // Only Handle normal visitor
+                if (day > firstStatusSale['openDay'] || (day == firstStatusSale['openDay'] && time >= firstStatusSale['openTime']))
+                    setIsStatusOpen(true);
+                else
+                    setIsStatusOpen(false)
             }
         });
     };
@@ -84,19 +89,15 @@ function Wildians(Wildians) {
             connectToWallet();
             setToken_id(getTokenID());
         }
+        const timer = setInterval(() => {
+            setTime(new Date().toLocaleTimeString().slice(0,5));
+            setDay(new Date().toISOString().slice(0, 10))     
+            getStatusSales()
+          }, 1000);
 
-        getStatusSales()
-            .then((statusSales) => {
-                // Find the appropriate status sale based on your logic
-                if (statusSales.length > 0) {
-                    const firstStatusSale = statusSales[0];
-                    setIsStatusOpen(firstStatusSale.status == "open");
-                }
-            })
-            .catch((error) => {
-                console.error("Error fetching status sales:", error);
-            });
-    }, []);
+        // Nettoyer la mise à jour lors du démontage du composant
+        return () => clearInterval(timer);
+    }, [time, day]);
 
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
@@ -119,27 +120,6 @@ function Wildians(Wildians) {
         await wallet.disconnect();
         setUserAddress(null);
     };
-
-    /*** Function to fetch whitelisted users ***/
-    async function fetchWhitelistData() {
-        const querySnapshot = await getDocs(whitelistCollection);
-        const documents = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data()
-        }));
-        setWhitelistedUsers(documents);
-    }
-
-    /*** Function to fetch sales status ***/
-    async function fetchSalesStatus() {
-        const querySnapshot = await getDocs(salesCollection);
-        const documents = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            status: doc.status,
-            whitelistStatus: doc.whitelistStatus
-        }));
-        setSalesStatus(documents);
-    }
 
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
