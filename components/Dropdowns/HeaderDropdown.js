@@ -3,6 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { FaBars } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
+import { goToIndicatedPage } from "components/ButtonConnexionWallet/ConnectedButton";
 
 function HeaderDropdown() {
     return (

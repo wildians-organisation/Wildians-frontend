@@ -36,11 +36,9 @@ function BottomPart() {
                 let ong_name = element.operation.parameter.value.ong_name;
                 if (deerONG.includes(ong_name)) {
                     environment += 1;
-                }
-                else if (bullONG.includes(ong_name)) {
+                } else if (bullONG.includes(ong_name)) {
                     economy += 1;
-                }
-                else if (wolfONG.includes(ong_name)) {
+                } else if (wolfONG.includes(ong_name)) {
                     society += 1;
                 }
             }

@@ -73,13 +73,15 @@ function Wildians(Wildians) {
                 console.log("IsNull: " + (userAddress === null));
                 console.log("IsEmpty: " + (userAddress === ""));
                 console.log("isIdWhitelisted: " + isIdWhitelisted(userAddress));
-                console.log("whitelistStatus: " + firstStatusSale.whitelistStatus);
+                console.log(
+                    "whitelistStatus: " + firstStatusSale.whitelistStatus
+                );
 
                 if (userAddress !== "" && isIdWhitelisted(userAddress)) {
                     setIsStatusOpen(firstStatusSale.whitelistStatus === "open");
-                  } else {
+                } else {
                     setIsStatusOpen(firstStatusSale.status === "open");
-                  }
+                }
             }
         });
     };
@@ -125,7 +127,7 @@ function Wildians(Wildians) {
             await wallet.requestPermissions({ network: network });
             const walletAddress = await wallet.getPKH();
             setUserAddress(walletAddress);
-  }
+        }
     };
 
     /*** Function to disconnect to the wallet ***/
@@ -134,29 +136,7 @@ function Wildians(Wildians) {
         await wallet.clearActiveAccount();
         await wallet.disconnect();
         setUserAddress(null);
-      };
-      
-
-    /*** Function to fetch whitelisted users ***/
-    async function fetchWhitelistData() {
-        const querySnapshot = await getDocs(whitelistCollection);
-        const documents = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data()
-        }));
-        setWhitelistedUsers(documents);
-    }
-
-    /*** Function to fetch sales status ***/
-    async function fetchSalesStatus() {
-        const querySnapshot = await getDocs(salesCollection);
-        const documents = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            status: doc.status,
-            whitelistStatus: doc.whitelistStatus
-        }));
-        setSalesStatus(documents);
-    }
+    };
 
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
