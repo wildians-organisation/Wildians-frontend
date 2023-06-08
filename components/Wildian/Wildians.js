@@ -50,8 +50,10 @@ function Wildians(Wildians) {
     };
 
     const isIdWhitelisted = (walletId) => {
-        return whitelistedUsers.some((user) => user.formData.adresseWallet === walletId);
-      };    
+        return whitelistedUsers.some(
+            (user) => user.formData.adresseWallet === walletId
+        );
+    };
 
     const getStatusSales = async () => {
         onSnapshot(salesCollection, (snapshot) => {
@@ -62,15 +64,22 @@ function Wildians(Wildians) {
                 statusSales.push({ id: doc.id, whitelistStatus, status });
             });
 
-
             setStatusSaleList(statusSales);
-    
+
             if (statusSales.length > 0) {
                 const firstStatusSale = statusSales[0];
-                if((userAddress != null || userAddress != "") && isIdWhitelisted(userAddress))
-                    setIsStatusOpen(firstStatusSale.whitelistStatus == "open");
-                else
-                    setIsStatusOpen(firstStatusSale.status == "open");
+
+                console.log("userAddress: " + userAddress);
+                console.log("IsNull: " + (userAddress === null));
+                console.log("IsEmpty: " + (userAddress === ""));
+                console.log("isIdWhitelisted: " + isIdWhitelisted(userAddress));
+                console.log("whitelistStatus: " + firstStatusSale.whitelistStatus);
+
+                if (userAddress !== "" && isIdWhitelisted(userAddress)) {
+                    setIsStatusOpen(firstStatusSale.whitelistStatus === "open");
+                  } else {
+                    setIsStatusOpen(firstStatusSale.status === "open");
+                  }
             }
         });
     };
@@ -105,7 +114,7 @@ function Wildians(Wildians) {
 
         getWhitelist();
         getStatusSales();
-    }, []);
+    }, [userAddress]);
 
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
@@ -113,21 +122,20 @@ function Wildians(Wildians) {
         if (activeAccount) {
             setUserAddress(activeAccount.address);
         } else {
-            await wallet.requestPermissions({
-                network: network
-            });
-            let tmp = await wallet.getPKH();
-            setUserAddress(tmp);
-        }
+            await wallet.requestPermissions({ network: network });
+            const walletAddress = await wallet.getPKH();
+            setUserAddress(walletAddress);
+  }
     };
 
     /*** Function to disconnect to the wallet ***/
+
     const disconnect = async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
         await wallet.clearActiveAccount();
         await wallet.disconnect();
         setUserAddress(null);
-    };
+      };
+      
 
     /*** Function to fetch whitelisted users ***/
     async function fetchWhitelistData() {
@@ -230,15 +238,14 @@ function Wildians(Wildians) {
                 onClose={closeModal}
                 onMint={mintNFT}
                 Wildians={Wildians}
-                setONG={setSelectedONG} 
+                setONG={setSelectedONG}
             >
                 {" "}
             </ModalONG>
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
-                {Wildians.nft_sold}  already sold !
+                {Wildians.nft_sold} already sold !
             </div>
         </div>
-        
     );
 }
 export default Wildians;
