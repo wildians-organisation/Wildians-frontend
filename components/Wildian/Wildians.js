@@ -28,6 +28,7 @@ function Wildians(Wildians) {
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
     const [time, setTime] = React.useState(new Date().toLocaleTimeString().slice(0,5));
     const [day, setDay] = React.useState(new Date().toISOString().slice(0, 10));
+    const [whitelistedUsers,setWhitelistedUsers] = React.useState([]);
     const whitelistCollection = collection(firestore, "whitelist");
     const getTokenID = async () => {
         try {
@@ -40,7 +41,21 @@ function Wildians(Wildians) {
             console.error(e);
         }
     };
-
+    /*** Function to fetch whitelisted users ***/
+    const fetchWhitelistData = async () => {
+        const querySnapshot = await getDocs(whitelistCollection);
+        const documents = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+        let tmpWhitelist = []
+        documents.forEach((doc)=> {
+            const whitelistAddress = doc.formData["adresseWallet"]
+            tmpWhitelist.push(whitelistAddress)
+        })
+        setWhitelistedUsers(tmpWhitelist);
+        return tmpWhitelist
+    };
     const getStatusSales = async () => {
         onSnapshot(salesCollection, (snapshot) => {
             const statusSales = [];
@@ -50,18 +65,47 @@ function Wildians(Wildians) {
                 statusSales.push({ id: doc.id, whitelistStatus,  whitelistOpenDay, whitelistOpenTime,status, openDay, openTime});
             });
 
-            setStatusSaleList(statusSales);
-            if (statusSales.length > 0) {
-                const firstStatusSale = statusSales[0];
-                // Only Handle normal visitor
-                if (day > firstStatusSale['openDay'] || (day == firstStatusSale['openDay'] && time >= firstStatusSale['openTime']))
-                    setIsStatusOpen(true);
-                else
-                    setIsStatusOpen(false)
+            if (!userAddress){
+                setIsStatusOpen(false)
+            }
+            else
+            {
+                fetchWhitelistData().then((address) => {
+                    if (statusSales.length > 0) {
+                        const firstStatusSale = statusSales[0];
+                        if (firstStatusSale['openDay'] !== "") {
+                            if (day > firstStatusSale['openDay'] || (day === firstStatusSale['openDay'] && time >= firstStatusSale['openTime'])) {
+                                setIsStatusOpen(true)
+                            }
+                            else {
+                                setIsStatusOpen(false)
+                            }
+                        }
+                        else
+                            setIsStatusOpen(firstStatusSale["status"] === "open")
+                    }
+                    if (address.includes(userAddress)) {
+                        if (statusSales.length > 0) {
+                            const firstStatusSale = statusSales[0];
+                            if (firstStatusSale['whitelistOpenDay'] !== "") {
+                                if (day > firstStatusSale['whitelistOpenDay'] || (day === firstStatusSale['whitelistOpenDay'] && time >= firstStatusSale['whitelistOpenTime']))
+                                    setIsStatusOpen(true)
+                                else if (firstStatusSale["status"] !== "open")
+                                    setIsStatusOpen(false)
+                            }
+                            else
+                                setIsStatusOpen(firstStatusSale["whitelistStatus"] === "open" || firstStatusSale["status"] === "open")
+                        }
+                    }
+ 
+                })
             }
         });
+
     };
 
+
+    
     // Function to open the modal
     const openModal = () => {
         setShowModal(true);
@@ -70,8 +114,9 @@ function Wildians(Wildians) {
     const closeModal = () => {
         setShowModal(false);
     };
-
+    
     React.useEffect(() => {
+        
         (async () => {
             const _wallet = new BeaconWallet({ name: "Demo" });
             setWallet(_wallet);
@@ -91,7 +136,7 @@ function Wildians(Wildians) {
         }
         const timer = setInterval(() => {
             setTime(new Date().toLocaleTimeString().slice(0,5));
-            setDay(new Date().toISOString().slice(0, 10))     
+            setDay(new Date().toISOString().slice(0, 10))
             getStatusSales()
           }, 1000);
 
@@ -120,6 +165,7 @@ function Wildians(Wildians) {
         await wallet.disconnect();
         setUserAddress(null);
     };
+
 
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
