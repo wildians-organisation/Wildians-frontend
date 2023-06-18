@@ -30,6 +30,7 @@ function Wildians(Wildians) {
     const [day, setDay] = React.useState(new Date().toISOString().slice(0, 10));
     const [whitelistedUsers,setWhitelistedUsers] = React.useState([]);
     const whitelistCollection = collection(firestore, "whitelist");
+
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -41,6 +42,32 @@ function Wildians(Wildians) {
             console.error(e);
         }
     };
+    function isOpenDay(openDay, openTime) {
+        if (day > openDay || (day === openTime && time >= openTime)) {
+            return true
+        }
+        return false
+    }
+
+    function handleScheduledOpening(sales) {
+        fetchWhitelistData().then((address) => {
+            if (sales['openDay'] !== "") 
+                setIsStatusOpen(isOpenDay(sales['openDay'], sales['openTime']))
+            else
+                setIsStatusOpen(sales["status"])
+            if (address.includes(userAddress)) {
+                if (sales['whitelistOpenDay'] !== "") {
+                    if (isOpenDay(sales['whitelistOpenDay'], sales['whitelistOpenTime']))
+                        setIsStatusOpen(true)
+                    else if (!sales["status"])
+                        setIsStatusOpen(false)
+                }
+                else
+                    setIsStatusOpen(sales["whitelistStatus"] || sales["status"])
+            }
+        })
+    }
+    
     /*** Function to fetch whitelisted users ***/
     const fetchWhitelistData = async () => {
         const querySnapshot = await getDocs(whitelistCollection);
@@ -56,6 +83,7 @@ function Wildians(Wildians) {
         setWhitelistedUsers(tmpWhitelist);
         return tmpWhitelist
     };
+
     const getStatusSales = async () => {
         onSnapshot(salesCollection, (snapshot) => {
             const statusSales = [];
@@ -65,47 +93,16 @@ function Wildians(Wildians) {
                 statusSales.push({ id: doc.id, whitelistStatus,  whitelistOpenDay, whitelistOpenTime,status, openDay, openTime});
             });
 
-            if (!userAddress){
+            if (!userAddress)
                 setIsStatusOpen(false)
-            }
-            else
-            {
-                fetchWhitelistData().then((address) => {
-                    if (statusSales.length > 0) {
-                        const firstStatusSale = statusSales[0];
-                        if (firstStatusSale['openDay'] !== "") {
-                            if (day > firstStatusSale['openDay'] || (day === firstStatusSale['openDay'] && time >= firstStatusSale['openTime'])) {
-                                setIsStatusOpen(true)
-                            }
-                            else {
-                                setIsStatusOpen(false)
-                            }
-                        }
-                        else
-                            setIsStatusOpen(firstStatusSale["status"] === "open")
-                    }
-                    if (address.includes(userAddress)) {
-                        if (statusSales.length > 0) {
-                            const firstStatusSale = statusSales[0];
-                            if (firstStatusSale['whitelistOpenDay'] !== "") {
-                                if (day > firstStatusSale['whitelistOpenDay'] || (day === firstStatusSale['whitelistOpenDay'] && time >= firstStatusSale['whitelistOpenTime']))
-                                    setIsStatusOpen(true)
-                                else if (firstStatusSale["status"] !== "open")
-                                    setIsStatusOpen(false)
-                            }
-                            else
-                                setIsStatusOpen(firstStatusSale["whitelistStatus"] === "open" || firstStatusSale["status"] === "open")
-                        }
-                    }
- 
-                })
-            }
+        
+            else if (statusSales.length > 0)
+                handleScheduledOpening(statusSales[0])
+            
         });
 
     };
 
-
-    
     // Function to open the modal
     const openModal = () => {
         setShowModal(true);
@@ -166,7 +163,6 @@ function Wildians(Wildians) {
         setUserAddress(null);
     };
 
-
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
             const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
@@ -200,8 +196,8 @@ function Wildians(Wildians) {
                 }
             });
 
-            let normal_sales_open = salesStatus.status == "open";
-            let WL_sales_open = salesStatus.whitelistStatus == "open";
+            let normal_sales_open = salesStatus.status;
+            let WL_sales_open = salesStatus.whitelistStatus;
             //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
             const op = await contract.methods
                 .big_boi_mint(
