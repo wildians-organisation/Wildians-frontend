@@ -3,7 +3,7 @@ import Header from "components/Header/Header";
 function TopPart() {
     return (
         <>
-            <div className="headerBackground bg-cover  bg-forest-bg font-goghbold p-4 h-500-px">
+            <div className=".headerBackground bg-cover  bg-forest-bg font-goghbold p-4 h-500-px">
                 <Header />
                 <div className="flex flex-col justify-center h-screen md:ml-32">
                     <div className="text-beige text-4xl  font-mulish w-1/2">
