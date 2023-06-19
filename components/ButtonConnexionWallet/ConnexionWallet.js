@@ -1,4 +1,5 @@
 import React from "react";
+import Alert from '@mui/material/Alert';
 import ConnectedButton from "./ConnectedButton";
 import { TezosToolkit } from "@taquito/taquito";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -16,6 +17,7 @@ import {
     updateDoc,
     doc
 } from "firebase/firestore";
+import {Snackbar, Stack} from "@mui/material";
 
 async function addWallet(walletAddress) {
     const userCollection = collection(firestore, "user");
@@ -50,6 +52,11 @@ export default function ConnexionWallet() {
     const [wallet, setWallet] = React.useState({});
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
     const [userAddress, setUserAddress] = React.useState(null);
+    const [open, setOpen] = React.useState(false);
+    const [isConnected, setIsConnected] = React.useState(false);
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     React.useEffect(() => {
         (async () => {
@@ -63,6 +70,8 @@ export default function ConnexionWallet() {
             Tezos.setWalletProvider(_wallet);
         })();
     }, []);
+
+
 
     /*** Function to add wallet adress to firebase ***/
     const addWalletToFirebase = async (walletAddress) => {
@@ -87,7 +96,10 @@ export default function ConnexionWallet() {
             setUserAddress(tmp);
             localStorage.setItem("userAdress", tmp);
             addWalletToFirebase(tmp);
+            setOpen(true);
+            setIsConnected(true);
         }
+
     };
 
     /*** Function to disconnect to the wallet ***/
@@ -97,6 +109,8 @@ export default function ConnexionWallet() {
         await wallet.disconnect();
         localStorage.removeItem("userAdress");
         setUserAddress(null);
+        setOpen(true);
+        setIsConnected(false);
     };
 
     /*** Render ***/
@@ -123,6 +137,12 @@ export default function ConnexionWallet() {
                     </div>
                 </Link>
             )}
+            <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    {isConnected ? 'Successful wallet connection!' : 'Successful wallet logout!'}
+                </Alert>
+            </Snackbar>
         </div>
+
     );
 }

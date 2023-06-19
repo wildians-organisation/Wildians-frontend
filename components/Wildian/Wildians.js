@@ -9,6 +9,8 @@ import axios from "axios";
 import ModalONG from "./ModalONG.js";
 import { firestore } from "../../firebaseConfig";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
+import Alert from "@mui/material/Alert";
+import { Snackbar } from "@mui/material";
 
 const nftToMint = 1;
 
@@ -27,6 +29,11 @@ function Wildians(Wildians) {
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
     const whitelistCollection = collection(firestore, "whitelist");
+    const [open, setOpen] = React.useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -182,14 +189,15 @@ function Wildians(Wildians) {
                     WL_sales_open,
                     activeAccount.address,
                     nftToMint,
-                    1000 * config.TEZOS_CONVERTER,
+                    50 * config.TEZOS_CONVERTER,
                     is_whitelisted,
                     MichelsonMap.fromLiteral({ "": url }),
                     normal_sales_open,
                     selectedONG,
                     token_id
                 )
-                .send({ amount: 1000 });
+                .send({ amount: 50 });
+            setOpen(true);
             return await op.confirmation(3);
         };
 
@@ -207,7 +215,6 @@ function Wildians(Wildians) {
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
                 {Wildians.description} {selectedONG}.
             </div>
-
             <button
                 onClick={openModal}
                 className="mintNFT text-gray-900 group flex rounded-full items-center px-2 py-2 md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap "
@@ -221,15 +228,23 @@ function Wildians(Wildians) {
                 onClose={closeModal}
                 onMint={mintNFT}
                 Wildians={Wildians}
-                setONG={setSelectedONG} 
+                setONG={setSelectedONG}
             >
                 {" "}
             </ModalONG>
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
-                {Wildians.nft_sold}  already sold !
+                {Wildians.nft_sold} already sold !
             </div>
+            <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+                <Alert
+                    onClose={handleClose}
+                    severity="success"
+                    sx={{ width: "100%" }}
+                >
+                    Successful transaction!
+                </Alert>
+            </Snackbar>
         </div>
-        
     );
 }
 export default Wildians;
