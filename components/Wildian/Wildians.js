@@ -149,8 +149,15 @@ function Wildians(Wildians) {
             connectToWallet();
             setToken_id(getTokenID());
         }
+        const timer = setInterval(() => {
+            setTime(new Date().toLocaleTimeString().slice(0, 5));
+            setDay(new Date().toISOString().slice(0, 10));
+            getStatusSales();
+        }, 1000);
 
-    }, []);
+        // Nettoyer la mise à jour lors du démontage du composant
+        return () => clearInterval(timer);
+    }, [time, day, userAddress]);
 
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
