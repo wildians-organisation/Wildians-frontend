@@ -1,5 +1,5 @@
 import React from "react";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 import ConnectedButton from "./ConnectedButton";
 import { TezosToolkit } from "@taquito/taquito";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -17,7 +17,7 @@ import {
     updateDoc,
     doc
 } from "firebase/firestore";
-import {Snackbar, Stack} from "@mui/material";
+import { Snackbar, Stack } from "@mui/material";
 
 async function addWallet(walletAddress) {
     const userCollection = collection(firestore, "user");
@@ -71,8 +71,6 @@ export default function ConnexionWallet() {
         })();
     }, []);
 
-
-
     /*** Function to add wallet adress to firebase ***/
     const addWalletToFirebase = async (walletAddress) => {
         try {
@@ -99,7 +97,6 @@ export default function ConnexionWallet() {
             setOpen(true);
             setIsConnected(true);
         }
-
     };
 
     /*** Function to disconnect to the wallet ***/
@@ -138,11 +135,16 @@ export default function ConnexionWallet() {
                 </Link>
             )}
             <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                    {isConnected ? 'Successful wallet connection!' : 'Successful wallet logout!'}
+                <Alert
+                    onClose={handleClose}
+                    severity="success"
+                    sx={{ width: "100%" }}
+                >
+                    {isConnected
+                        ? "Successful wallet connection!"
+                        : "Successful wallet logout!"}
                 </Alert>
             </Snackbar>
         </div>
-
     );
 }
