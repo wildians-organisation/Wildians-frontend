@@ -95,7 +95,6 @@ function Wildians(Wildians) {
 
             if (!userAddress)
                 setIsStatusOpen(false)
-        
             else if (statusSales.length > 0)
                 handleScheduledOpening(statusSales[0])
             
