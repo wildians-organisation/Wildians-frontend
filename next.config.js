@@ -20,5 +20,5 @@ module.exports = {
         gcp_messaging_sender_id: process.env.GCPMESSAGINGSENDERID,
         gcp_app_id: process.env.GCPAPPID,
         measurement_id: process.env.MEASUREMENTID
-    },
+    }
 };
