@@ -114,8 +114,7 @@ function Wildians(Wildians) {
 
             if (!userAddress) {
                 setIsStatusOpen(false);
-            }
-            else if (statusSales.length > 0)
+            } else if (statusSales.length > 0)
                 handleScheduledOpening(statusSales[0]);
         });
     };
@@ -150,15 +149,8 @@ function Wildians(Wildians) {
             connectToWallet();
             setToken_id(getTokenID());
         }
-        const timer = setInterval(() => {
-            setTime(new Date().toLocaleTimeString().slice(0, 5));
-            setDay(new Date().toISOString().slice(0, 10));
-            getStatusSales();
-        }, 1000);
 
-        // Nettoyer la mise à jour lors du démontage du composant
-        return () => clearInterval(timer);
-    }, [time, day, userAddress]);
+    }, []);
 
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
@@ -257,15 +249,19 @@ function Wildians(Wildians) {
             >
                 {isStatusOpen ? "Select an ONG" : "Not available"}
             </button>
-            { showModal ? <ModalONG
-                isOpen={showModal}
-                onClose={closeModal}
-                onMint={mintNFT}
-                Wildians={Wildians}
-                setONG={setSelectedONG}
-            >
-                {" "}
-            </ModalONG> : ""}
+            {showModal ? (
+                <ModalONG
+                    isOpen={showModal}
+                    onClose={closeModal}
+                    onMint={mintNFT}
+                    Wildians={Wildians}
+                    setONG={setSelectedONG}
+                >
+                    {" "}
+                </ModalONG>
+            ) : (
+                ""
+            )}
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
                 {Wildians.nft_sold} already sold !
             </div>
