@@ -50,25 +50,26 @@ function Wildians(Wildians) {
         return false;
     }
 
+    function handleWhitelistScheduledOpening(sales) {
+        if (sales["whitelistOpenDay"] !== "") {
+            if (isOpenDay(sales["whitelistOpenDay"],sales["whitelistOpenTime"]))
+                setIsStatusOpen(true);
+            else if (!sales["status"]) 
+                setIsStatusOpen(false);
+        } 
+        else
+            setIsStatusOpen(sales["whitelistStatus"] || sales["status"]);
+    }
+
     function handleScheduledOpening(sales) {
         fetchWhitelistData().then((address) => {
             if (sales["openDay"] !== "")
                 setIsStatusOpen(isOpenDay(sales["openDay"], sales["openTime"]));
-            else setIsStatusOpen(sales["status"]);
+            else
+                setIsStatusOpen(sales["status"]);
+
             if (address.includes(userAddress)) {
-                if (sales["whitelistOpenDay"] !== "") {
-                    if (
-                        isOpenDay(
-                            sales["whitelistOpenDay"],
-                            sales["whitelistOpenTime"]
-                        )
-                    )
-                        setIsStatusOpen(true);
-                    else if (!sales["status"]) setIsStatusOpen(false);
-                } else
-                    setIsStatusOpen(
-                        sales["whitelistStatus"] || sales["status"]
-                    );
+                handleWhitelistScheduledOpening(sales)
             }
         });
     }
@@ -127,6 +128,11 @@ function Wildians(Wildians) {
     const closeModal = () => {
         setShowModal(false);
     };
+
+    async function handleWalletConnection() {
+   
+    }
+    const t = handleWalletConnection()
 
     React.useEffect(() => {
         (async () => {
