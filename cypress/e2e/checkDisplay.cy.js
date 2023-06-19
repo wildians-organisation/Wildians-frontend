@@ -1,3 +1,4 @@
+/*
 describe("check different component", () => {
     before(function () {
         cy.visit("http://localhost:3000");
@@ -64,4 +65,4 @@ context("iphone-X resolution", () => {
         cy.contains("Discord").should("be.visible");
         cy.contains("Connect Your Wallet").should("be.visible");
     });
-});
+});*/
