@@ -44,13 +44,14 @@ function Wildians(Wildians) {
         }
     };
     function isOpenDay(openDay, openTime) {
-        if (day > openDay || (day === openTime && time >= openTime)) {
+        if (day > openDay || (day === openDay && time >= openTime)) {
             return true;
         }
         return false;
     }
 
     function handleWhitelistScheduledOpening(sales) {
+        
         if (sales["whitelistOpenDay"] !== "") {
             if (
                 isOpenDay(sales["whitelistOpenDay"], sales["whitelistOpenTime"])
@@ -62,8 +63,9 @@ function Wildians(Wildians) {
 
     function handleScheduledOpening(sales) {
         fetchWhitelistData().then((address) => {
-            if (sales["openDay"] !== "")
+            if (sales["openDay"] !== "") {
                 setIsStatusOpen(isOpenDay(sales["openDay"], sales["openTime"]));
+            }
             else setIsStatusOpen(sales["status"]);
 
             if (address.includes(userAddress)) {
@@ -111,10 +113,11 @@ function Wildians(Wildians) {
                     openTime
                 });
             });
-
-            if (!userAddress) {
-                setIsStatusOpen(false);
-            } else if (statusSales.length > 0)
+            if (!userAddress)
+            {
+                setIsStatusOpen(false)
+            }
+            else if (statusSales.length > 0)
                 handleScheduledOpening(statusSales[0]);
         });
     };
@@ -128,15 +131,10 @@ function Wildians(Wildians) {
         setShowModal(false);
     };
 
-    async function handleWalletConnection() {}
-    const t = handleWalletConnection();
-
-    React.useEffect(() => {
-        (async () => {
-            const _wallet = new BeaconWallet({ name: "Demo" });
-            setWallet(_wallet);
-            Tezos.setWalletProvider(_wallet);
-        })();
+    async function initializeWallet() {
+        const _wallet = new BeaconWallet({ name: "Demo" });
+        setWallet(_wallet);
+        Tezos.setWalletProvider(_wallet);
         if (typeof window !== "undefined") {
             if (window.localStorage.getItem("beacon:accounts")) {
                 setUserAddress(
@@ -148,17 +146,23 @@ function Wildians(Wildians) {
         } else {
             connectToWallet();
             setToken_id(getTokenID());
-        }
+      }
+    }
+
+    React.useEffect(() => {
+        initializeWallet()
+    }, []);
+
+    React.useEffect(() => {
         const timer = setInterval(() => {
-            setTime(new Date().toLocaleTimeString().slice(0, 5));
-            setDay(new Date().toISOString().slice(0, 10));
-            getStatusSales();
+        setTime(new Date().toLocaleTimeString().slice(0, 5));
+        setDay(new Date().toISOString().slice(0, 10));
+        getStatusSales();
         }, 1000);
-
-        // Nettoyer la mise à jour lors du démontage du composant
+    
         return () => clearInterval(timer);
-    }, [time, day, userAddress]);
-
+    }, [time, day,userAddress]);
+    
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
         const activeAccount = await wallet.client.getActiveAccount();
