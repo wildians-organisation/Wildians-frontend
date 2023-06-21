@@ -22,6 +22,11 @@ function Header() {
                 <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
                     ASSOCIATION
                 </div>
+                <Link className="text-white" href="personnalisation">
+                <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
+                        NFT CUSTOMIZATION
+                    </div>
+                </Link>
             </div>
             <div className="md:hidden" id="dropdown">
                 <HeaderDropdown id="header_dropdown " />
