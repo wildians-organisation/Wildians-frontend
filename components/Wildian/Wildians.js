@@ -120,27 +120,6 @@ function Wildians(Wildians) {
         setUserAddress(null);
     };
 
-    /*** Function to fetch whitelisted users ***/
-    async function fetchWhitelistData() {
-        const querySnapshot = await getDocs(whitelistCollection);
-        const documents = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data()
-        }));
-        setWhitelistedUsers(documents);
-    }
-
-    /*** Function to fetch sales status ***/
-    async function fetchSalesStatus() {
-        const querySnapshot = await getDocs(salesCollection);
-        const documents = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            status: doc.status,
-            whitelistStatus: doc.whitelistStatus
-        }));
-        setSalesStatus(documents);
-    }
-
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
             const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
@@ -221,15 +200,14 @@ function Wildians(Wildians) {
                 onClose={closeModal}
                 onMint={mintNFT}
                 Wildians={Wildians}
-                setONG={setSelectedONG} 
+                setONG={setSelectedONG}
             >
                 {" "}
             </ModalONG>
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
-                {Wildians.nft_sold}  already sold !
+                {Wildians.nft_sold} already sold !
             </div>
         </div>
-        
     );
 }
 export default Wildians;
