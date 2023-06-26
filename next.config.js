@@ -21,5 +21,8 @@ module.exports = {
         gcp_app_id: process.env.GCPAPPID,
         measurement_id: process.env.MEASUREMENTID
     },
-    trailingSlash: true
+    trailingSlash: true,
+    images: {
+        unoptimized: true,
+    }
 };

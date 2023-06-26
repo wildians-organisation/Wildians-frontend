@@ -16,7 +16,6 @@ const network = { type: NetworkType.GHOSTNET };
 
 function Wildians(Wildians) {
     const [wallet, setWallet] = React.useState({});
-
     const [showModal, setShowModal] = React.useState(false);
     const [token_id, setToken_id] = React.useState(-1);
     const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
@@ -26,7 +25,13 @@ function Wildians(Wildians) {
     const salesCollection = collection(firestore, "sales");
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
+    const [time, setTime] = React.useState(
+        new Date().toLocaleTimeString().slice(0, 5)
+    );
+    const [day, setDay] = React.useState(new Date().toISOString().slice(0, 10));
+    const [whitelistedUsers, setWhitelistedUsers] = React.useState([]);
     const whitelistCollection = collection(firestore, "whitelist");
+
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -38,22 +43,82 @@ function Wildians(Wildians) {
             console.error(e);
         }
     };
+    function isOpenDay(openDay, openTime) {
+        if (day > openDay || (day === openDay && time >= openTime)) {
+            return true;
+        }
+        return false;
+    }
+
+    function handleWhitelistScheduledOpening(sales) {
+        
+        if (sales["whitelistOpenDay"] !== "") {
+            if (
+                isOpenDay(sales["whitelistOpenDay"], sales["whitelistOpenTime"])
+            )
+                setIsStatusOpen(true);
+            else if (!sales["status"]) setIsStatusOpen(false);
+        } else setIsStatusOpen(sales["whitelistStatus"] || sales["status"]);
+    }
+
+    function handleScheduledOpening(sales) {
+        fetchWhitelistData().then((address) => {
+            if (sales["openDay"] !== "") {
+                setIsStatusOpen(isOpenDay(sales["openDay"], sales["openTime"]));
+            }
+            else setIsStatusOpen(sales["status"]);
+
+            if (address.includes(userAddress)) {
+                handleWhitelistScheduledOpening(sales);
+            }
+        });
+    }
+
+    /*** Function to fetch whitelisted users ***/
+    const fetchWhitelistData = async () => {
+        const querySnapshot = await getDocs(whitelistCollection);
+        const documents = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+        let tmpWhitelist = [];
+        documents.forEach((doc) => {
+            const whitelistAddress = doc.formData["adresseWallet"];
+            tmpWhitelist.push(whitelistAddress);
+        });
+        setWhitelistedUsers(tmpWhitelist);
+        return tmpWhitelist;
+    };
 
     const getStatusSales = async () => {
         onSnapshot(salesCollection, (snapshot) => {
             const statusSales = [];
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                const { whitelistStatus, status } = data;
-                statusSales.push({ id: doc.id, whitelistStatus, status });
+                const {
+                    whitelistStatus,
+                    whitelistOpenDay,
+                    whitelistOpenTime,
+                    status,
+                    openDay,
+                    openTime
+                } = data;
+                statusSales.push({
+                    id: doc.id,
+                    whitelistStatus,
+                    whitelistOpenDay,
+                    whitelistOpenTime,
+                    status,
+                    openDay,
+                    openTime
+                });
             });
-
-            setStatusSaleList(statusSales);
-
-            if (statusSales.length > 0) {
-                const firstStatusSale = statusSales[0];
-                setIsStatusOpen(firstStatusSale.status === "open");
+            if (!userAddress)
+            {
+                setIsStatusOpen(false)
             }
+            else if (statusSales.length > 0)
+                handleScheduledOpening(statusSales[0]);
         });
     };
 
@@ -66,12 +131,10 @@ function Wildians(Wildians) {
         setShowModal(false);
     };
 
-    React.useEffect(() => {
-        (async () => {
-            const _wallet = new BeaconWallet({ name: "Demo" });
-            setWallet(_wallet);
-            Tezos.setWalletProvider(_wallet);
-        })();
+    async function initializeWallet() {
+        const _wallet = new BeaconWallet({ name: "Demo" });
+        setWallet(_wallet);
+        Tezos.setWalletProvider(_wallet);
         if (typeof window !== "undefined") {
             if (window.localStorage.getItem("beacon:accounts")) {
                 setUserAddress(
@@ -83,21 +146,23 @@ function Wildians(Wildians) {
         } else {
             connectToWallet();
             setToken_id(getTokenID());
-        }
+      }
+    }
 
-        getStatusSales()
-            .then((statusSales) => {
-                // Find the appropriate status sale based on your logic
-                if (statusSales.length > 0) {
-                    const firstStatusSale = statusSales[0];
-                    setIsStatusOpen(firstStatusSale.status == "open");
-                }
-            })
-            .catch((error) => {
-                console.error("Error fetching status sales:", error);
-            });
+    React.useEffect(() => {
+        initializeWallet()
     }, []);
 
+    React.useEffect(() => {
+        const timer = setInterval(() => {
+        setTime(new Date().toLocaleTimeString().slice(0, 5));
+        setDay(new Date().toISOString().slice(0, 10));
+        getStatusSales();
+        }, 1000);
+    
+        return () => clearInterval(timer);
+    }, [time, day,userAddress]);
+    
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
         const activeAccount = await wallet.client.getActiveAccount();
@@ -119,27 +184,6 @@ function Wildians(Wildians) {
         await wallet.disconnect();
         setUserAddress(null);
     };
-
-    /*** Function to fetch whitelisted users ***/
-    async function fetchWhitelistData() {
-        const querySnapshot = await getDocs(whitelistCollection);
-        const documents = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data()
-        }));
-        setWhitelistedUsers(documents);
-    }
-
-    /*** Function to fetch sales status ***/
-    async function fetchSalesStatus() {
-        const querySnapshot = await getDocs(salesCollection);
-        const documents = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            status: doc.status,
-            whitelistStatus: doc.whitelistStatus
-        }));
-        setSalesStatus(documents);
-    }
 
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
@@ -174,8 +218,8 @@ function Wildians(Wildians) {
                 }
             });
 
-            let normal_sales_open = salesStatus.status == "open";
-            let WL_sales_open = salesStatus.whitelistStatus == "open";
+            let normal_sales_open = salesStatus.status;
+            let WL_sales_open = salesStatus.whitelistStatus;
             //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
             const op = await contract.methods
                 .big_boi_mint(
@@ -216,20 +260,23 @@ function Wildians(Wildians) {
             >
                 {isStatusOpen ? "Select an ONG" : "Not available"}
             </button>
-            <ModalONG
-                isOpen={showModal}
-                onClose={closeModal}
-                onMint={mintNFT}
-                Wildians={Wildians}
-                setONG={setSelectedONG} 
-            >
-                {" "}
-            </ModalONG>
+            {showModal ? (
+                <ModalONG
+                    isOpen={showModal}
+                    onClose={closeModal}
+                    onMint={mintNFT}
+                    Wildians={Wildians}
+                    setONG={setSelectedONG}
+                >
+                    {" "}
+                </ModalONG>
+            ) : (
+                ""
+            )}
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
-                {Wildians.nft_sold}  already sold !
+                {Wildians.nft_sold} already sold !
             </div>
         </div>
-        
     );
 }
 export default Wildians;
