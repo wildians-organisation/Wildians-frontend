@@ -66,3 +66,4 @@ context("iphone-X resolution", () => {
         cy.contains("Connect Your Wallet").should("be.visible");
     });
 });*/
+
