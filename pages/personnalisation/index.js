@@ -9,6 +9,7 @@ export default function CustomizeNFT() {
         Bull: 'bull',
     }
     const [selectedOption, setSelectedOption] = useState("");
+    const [name, setName] = useState("");
     const [options, setOptions] = useState({
         wood: "",
         paws: "",
@@ -50,6 +51,14 @@ export default function CustomizeNFT() {
             hoof: "",
         })
     };
+
+    function handleSubmit() {
+        var nameInput = document.getElementById("NFTname");
+        var value = nameInput.value;
+        console.log(value)
+        setName(value)
+ 
+    }
 
     const handleOptionSelect = (event, optionName) => {
         const { value } = event.target;
@@ -114,8 +123,8 @@ export default function CustomizeNFT() {
                         <button
                             className={`${
                                 selectedOption === pilar.Deer
-                                    ? "bg-green-500"
-                                    : "bg-gray-500"
+                                    ? "text-gray-900 rounded-full bg-green-500"
+                                    : "text-gray-900 rounded-full bg-gray-500"
                             } p-4 w-full mb-4`}
                             onClick={() => handleOptionChange(pilar.Deer)}
                         >
@@ -126,8 +135,8 @@ export default function CustomizeNFT() {
                         <button
                             className={`${
                                 selectedOption === pilar.Bull
-                                    ? "bg-green-500"
-                                    : "bg-gray-500"
+                                    ? "text-gray-900 rounded-full bg-green-500"
+                                    : "text-gray-900 rounded-full bg-gray-500"
                             } p-4 w-full `}
                             onClick={() => handleOptionChange(pilar.Bull)}>
                             Bull
@@ -149,7 +158,27 @@ export default function CustomizeNFT() {
                     else
                         return null
                     })}
-        </div>
+                    {name !== "" && <div>name : {name}</div>}
+
+                
+                <div>
+                    Your Wildians name: 
+                    <input
+                            type="text"
+                            id="NFTname"
+                            name="NFTname"
+                            placeholder="Wildians Name"
+                            maxLength={8}
+                        />
+                        <br/>
+                        <button 
+                        className="mintNFT text-gray-900 rounded-full md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap " 
+                        id="submit"
+                        onClick={handleSubmit}>
+                        Submit Name
+                        </button>
+                    </div>
+                </div>
                 </div>
                 <div className="w-1/4">
                     <div>{renderOptions()}</div>
