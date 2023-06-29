@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
 import * as config from "../../config/config.js";
@@ -9,9 +9,7 @@ import axios from "axios";
 import ModalONG from "./ModalONG.js";
 import { firestore } from "../../firebaseConfig";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
-import Alert from "@mui/material/Alert";
-import { Snackbar } from "@mui/material";
-
+import SnackbarService from "../SnackbarService/SnackbarService";
 const nftToMint = 1;
 
 const network = { type: NetworkType.GHOSTNET };
@@ -29,11 +27,10 @@ function Wildians(Wildians) {
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
     const whitelistCollection = collection(firestore, "whitelist");
-    const [open, setOpen] = React.useState(false);
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+
+    const SnackbarContext = useContext(SnackbarService);
+
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -184,21 +181,28 @@ function Wildians(Wildians) {
             let normal_sales_open = salesStatus.status == "open";
             let WL_sales_open = salesStatus.whitelistStatus == "open";
             //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
-            const op = await contract.methods
-                .big_boi_mint(
-                    WL_sales_open,
-                    activeAccount.address,
-                    nftToMint,
-                    50 * config.TEZOS_CONVERTER,
-                    is_whitelisted,
-                    MichelsonMap.fromLiteral({ "": url }),
-                    normal_sales_open,
-                    selectedONG,
-                    token_id
-                )
-                .send({ amount: 50 });
-            setOpen(true);
-            return await op.confirmation(3);
+            try {
+                const op = await contract.methods
+                    .big_boi_mint(
+                        WL_sales_open,
+                        activeAccount.address,
+                        nftToMint,
+                        50 * config.TEZOS_CONVERTER,
+                        is_whitelisted,
+                        MichelsonMap.fromLiteral({ "": url }),
+                        normal_sales_open,
+                        selectedONG,
+                        token_id
+                    )
+                    .send({ amount: 50 });
+
+                await op.confirmation(3);
+                SnackbarContext.showSnackbar("Successful transaction!", "success");
+                return op;
+            }
+            catch (error) {
+                SnackbarContext.showSnackbar("Transaction failed", "error");
+            }
         };
 
     return (
@@ -235,15 +239,6 @@ function Wildians(Wildians) {
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
                 {Wildians.nft_sold} already sold !
             </div>
-            <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
-                <Alert
-                    onClose={handleClose}
-                    severity="success"
-                    sx={{ width: "100%" }}
-                >
-                    Successful transaction!
-                </Alert>
-            </Snackbar>
         </div>
     );
 }

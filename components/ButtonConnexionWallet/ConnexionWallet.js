@@ -1,5 +1,5 @@
-import React from "react";
-import Alert from "@mui/material/Alert";
+import React, { useContext } from "react";
+import SnackbarService from "../SnackbarService/SnackbarService";
 import ConnectedButton from "./ConnectedButton";
 import { TezosToolkit } from "@taquito/taquito";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -17,7 +17,6 @@ import {
     updateDoc,
     doc
 } from "firebase/firestore";
-import { Snackbar, Stack } from "@mui/material";
 
 async function addWallet(walletAddress) {
     const userCollection = collection(firestore, "user");
@@ -52,11 +51,8 @@ export default function ConnexionWallet() {
     const [wallet, setWallet] = React.useState({});
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
     const [userAddress, setUserAddress] = React.useState(null);
-    const [open, setOpen] = React.useState(false);
-    const [isConnected, setIsConnected] = React.useState(false);
-    const handleClose = () => {
-        setOpen(false);
-    };
+
+    const SnackbarContext = useContext(SnackbarService);
 
     React.useEffect(() => {
         (async () => {
@@ -76,6 +72,7 @@ export default function ConnexionWallet() {
         try {
             const response = await addWallet(walletAddress);
         } catch (e) {
+            SnackbarContext.showSnackbar(" Wallet connection failure", "error");
             console.error(e);
         }
     };
@@ -94,8 +91,7 @@ export default function ConnexionWallet() {
             setUserAddress(tmp);
             localStorage.setItem("userAdress", tmp);
             addWalletToFirebase(tmp);
-            setOpen(true);
-            setIsConnected(true);
+            SnackbarContext.showSnackbar("Successful wallet connection!", "success");
         }
     };
 
@@ -106,8 +102,7 @@ export default function ConnexionWallet() {
         await wallet.disconnect();
         localStorage.removeItem("userAdress");
         setUserAddress(null);
-        setOpen(true);
-        setIsConnected(false);
+        SnackbarContext.showSnackbar("Successful wallet logout!", "success");
     };
 
     /*** Render ***/
@@ -134,17 +129,6 @@ export default function ConnexionWallet() {
                     </div>
                 </Link>
             )}
-            <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
-                <Alert
-                    onClose={handleClose}
-                    severity="success"
-                    sx={{ width: "100%" }}
-                >
-                    {isConnected
-                        ? "Successful wallet connection!"
-                        : "Successful wallet logout!"}
-                </Alert>
-            </Snackbar>
         </div>
     );
 }

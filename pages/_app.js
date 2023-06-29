@@ -1,6 +1,7 @@
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
+import { SnackbarProvider } from "../components/SnackbarService/SnackbarService";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
@@ -64,9 +65,11 @@ export default class MyApp extends App {
                         }}
                     />
                 </Head>
+                <SnackbarProvider>
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>
+                </SnackbarProvider>
             </React.Fragment>
         );
     }
