@@ -52,12 +52,8 @@ export default function CustomizeNFT() {
         })
     };
 
-    function handleSubmit() {
-        var nameInput = document.getElementById("NFTname");
-        var value = nameInput.value;
-        console.log(value)
-        setName(value)
- 
+    const handleName = (event) => {
+        setName(event.target.value)
     }
 
     const handleOptionSelect = (event, optionName) => {
@@ -167,16 +163,11 @@ export default function CustomizeNFT() {
                             type="text"
                             id="NFTname"
                             name="NFTname"
-                            placeholder="Wildians Name"
+                            placeholder="Your Wildian name "
                             maxLength={8}
+                            onChange={event => handleName(event)}
                         />
                         <br/>
-                        <button 
-                        className="mintNFT text-gray-900 rounded-full md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap " 
-                        id="submit"
-                        onClick={handleSubmit}>
-                        Submit Name
-                        </button>
                     </div>
                 </div>
                 </div>
