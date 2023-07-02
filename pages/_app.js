@@ -66,9 +66,9 @@ export default class MyApp extends App {
                     />
                 </Head>
                 <SnackbarProvider>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
                 </SnackbarProvider>
             </React.Fragment>
         );
