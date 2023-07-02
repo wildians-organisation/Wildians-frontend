@@ -91,7 +91,10 @@ export default function ConnexionWallet() {
             setUserAddress(tmp);
             localStorage.setItem("userAdress", tmp);
             addWalletToFirebase(tmp);
-            SnackbarContext.showSnackbar("Successful wallet connection!", "success");
+            SnackbarContext.showSnackbar(
+                "Successful wallet connection!",
+                "success"
+            );
         }
     };
 

@@ -28,7 +28,6 @@ function Wildians(Wildians) {
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
     const whitelistCollection = collection(firestore, "whitelist");
 
-
     const SnackbarContext = useContext(SnackbarService);
 
     const getTokenID = async () => {
@@ -187,20 +186,22 @@ function Wildians(Wildians) {
                         WL_sales_open,
                         activeAccount.address,
                         nftToMint,
-                        50 * config.TEZOS_CONVERTER,
+                        1000 * config.TEZOS_CONVERTER,
                         is_whitelisted,
                         MichelsonMap.fromLiteral({ "": url }),
                         normal_sales_open,
                         selectedONG,
                         token_id
                     )
-                    .send({ amount: 50 });
+                    .send({ amount: 1000 });
 
                 await op.confirmation(3);
-                SnackbarContext.showSnackbar("Successful transaction!", "success");
+                SnackbarContext.showSnackbar(
+                    "Successful transaction!",
+                    "success"
+                );
                 return op;
-            }
-            catch (error) {
+            } catch (error) {
                 SnackbarContext.showSnackbar("Transaction failed", "error");
             }
         };

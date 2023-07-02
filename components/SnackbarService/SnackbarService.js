@@ -21,7 +21,7 @@ export const SnackbarProvider = ({ children }) => {
     return (
         <SnackbarContext.Provider value={{ showSnackbar }}>
             {children}
-            <Snackbar open={isSnackbarOpen} >
+            <Snackbar open={isSnackbarOpen}>
                 <Alert severity={snackbarContent.type} sx={{ width: "100%" }}>
                     {snackbarContent.message}
                 </Alert>
