@@ -27,9 +27,8 @@ function Wildians(Wildians) {
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
     const whitelistCollection = collection(firestore, "whitelist");
-
     const SnackbarContext = useContext(SnackbarService);
-
+    
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -228,6 +227,7 @@ function Wildians(Wildians) {
             >
                 {isStatusOpen ? "Select an ONG" : "Not available"}
             </button>
+            {showModal ? (
             <ModalONG
                 isOpen={showModal}
                 onClose={closeModal}
@@ -237,6 +237,9 @@ function Wildians(Wildians) {
             >
                 {" "}
             </ModalONG>
+            ) : (
+                ""
+            )}
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
                 {Wildians.nft_sold} already sold !
             </div>
