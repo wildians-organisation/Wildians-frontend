@@ -22,13 +22,18 @@ function Header() {
                 <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
                     ASSOCIATION
                 </div>
+                <Link className="text-white" href="personnalisation">
+                    <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
+                        NFT CUSTOMIZATION
+                    </div>
+                </Link>
             </div>
             <div className="md:hidden" id="dropdown">
                 <HeaderDropdown id="header_dropdown " />
             </div>
             <div className="md:flex hidden md:items-center">
                 <div className="flex gap-2">
-                    <a href="https://discord.gg/grjatzrcKp" target="_blank">
+                    <a href="https://discord.gg/grjatzrcKp" target="_blank" rel="noreferrer">
                         <Image
                             className="headerDiscord  mr-4"
                             src={"/img/discord_f8ffe9.png"}
@@ -39,7 +44,7 @@ function Header() {
                     </a>
                     <a
                         href="https://www.instagram.com/wildians/"
-                        target="_blank"
+                        target="_blank " rel="noreferrer"
                     >
                         <Image
                             className="headerInsta mr-4"
@@ -49,7 +54,7 @@ function Header() {
                             height={30}
                         />
                     </a>
-                    <a href="https://twitter.com/Wildians_off" target="_blank">
+                    <a href="https://twitter.com/Wildians_off" target="_blank" rel="noreferrer">
                         <Image
                             className="headerTwitter mr-4"
                             src={"/img/twitter_f8ffe9.png"}
