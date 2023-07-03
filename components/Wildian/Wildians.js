@@ -122,14 +122,21 @@ function Wildians(Wildians) {
         });
     };
 
-    // Function to open the modal
     const openModal = () => {
-        setShowModal(true);
-    };
-    // Function to close the modal
-    const closeModal = () => {
-        setShowModal(false);
-    };
+        if (!showModal) {
+          setShowModal(true);
+        }
+        else
+            
+          setShowModal(false);
+      };
+      
+      // Function to close the modal
+      const closeModal = () => {
+        if (showModal) {
+          setShowModal(false);
+        }
+    }
 
     async function initializeWallet() {
         const _wallet = new BeaconWallet({ name: "Demo" });
@@ -144,14 +151,12 @@ function Wildians(Wildians) {
             }
             setToken_id(getTokenID());
         } else {
-            connectToWallet();
+            await connectToWallet();
             setToken_id(getTokenID());
       }
     }
 
-    React.useEffect(() => {
-        initializeWallet()
-    }, []);
+
 
     React.useEffect(() => {
         const timer = setInterval(() => {
@@ -161,7 +166,7 @@ function Wildians(Wildians) {
         }, 1000);
     
         return () => clearInterval(timer);
-    }, [time, day,userAddress]);
+    }, [time, day]);
     
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
@@ -182,8 +187,30 @@ function Wildians(Wildians) {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         await wallet.clearActiveAccount();
         await wallet.disconnect();
-        setUserAddress(null);
+        setUserAddress(prevState => null);
     };
+    React.useEffect(() => {
+        initializeWallet()
+    }, [userAddress]);
+
+
+    const renderModal = () => {
+        if (showModal) {
+          return (
+            <ModalONG
+              isOpen={showModal}
+              onClose={closeModal}
+              onMint={mintNFT}
+              Wildians={Wildians}
+              setONG={setSelectedONG}
+              isStatusOpen={isStatusOpen}
+              userAddress={userAddress}
+            />
+          );
+        } else {
+          return null;
+        }
+      };
 
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
@@ -256,24 +283,12 @@ function Wildians(Wildians) {
                 onClick={openModal}
                 className="mintNFT text-gray-900 group flex rounded-full items-center px-2 py-2 md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap "
                 type="button"
-                disabled={!isStatusOpen}
             >
-                {isStatusOpen ? "Select an ONG" : "Not available"}
+                Select an ONG
             </button>
 
-            {showModal ? (
-                <ModalONG
-                    isOpen={showModal}
-                    onClose={closeModal}
-                    onMint={mintNFT}
-                    Wildians={Wildians}
-                    setONG={setSelectedONG}
-                >
-                    {" "}
-                </ModalONG>
-            ) : (
-                ""
-            )}
+            {renderModal()}
+
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
                 {Wildians.nft_sold} already sold !
             </div>

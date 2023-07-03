@@ -1,15 +1,14 @@
 import React from "react";
 import ReactModal from "react-modal";
 
-function ModalONG({ Wildians, onMint, onClose, isOpen, setONG}) {
+function ModalONG({ Wildians, onMint, onClose, isOpen, setONG,isStatusOpen, userAddress}) {
     const [selectedONG, setSelectedONG] = React.useState(Wildians.ong_list[0]);
     setONG(selectedONG);
-
     const handleOptionChange = (event) => {
-        setSelectedONG(event.target.value);
-        setONG(selectedONG);
-    };
-
+        const selectedValue = event.target.value;
+        setSelectedONG(selectedValue);
+        setONG(selectedValue);
+      };
     const handleMint = () => {
         if (selectedONG) {
             onClose();
@@ -19,20 +18,20 @@ function ModalONG({ Wildians, onMint, onClose, isOpen, setONG}) {
 
     const modalStyles = {
         content: {
-            top: "50%",
-            left: "50%",
-            right: "auto",
-            bottom: "auto",
-            marginRight: "-50%",
-            transform: "translate(-50%, -50%)",
-            width: "30%",
-            maxHeight: "70%",
-            overflow: "auto"
+          top: "50%",
+          left: "50%",
+          right: "auto",
+          bottom: "auto",
+          marginRight: "-50%",
+          transform: "translate(-50%, -50%)",
+          width: "30%",
+          maxHeight: "70%",
+          overflow: "auto"
         },
         overlay: {
-            backgroundColor: "rgba(0, 0, 0, 0.4)"
+          backgroundColor: "rgba(0, 0, 0, 0.4)"
         }
-    };
+      };
     return (
         <div className="options-window">
             <ReactModal
@@ -40,7 +39,6 @@ function ModalONG({ Wildians, onMint, onClose, isOpen, setONG}) {
                 onRequestClose={onClose}
                 contentLabel="Options ONG"
                 style={modalStyles}
-                ariaHideApp={false}
             >
                 <h2>Select an ONG:</h2> <br></br>
                 <div className="option">
@@ -62,8 +60,10 @@ function ModalONG({ Wildians, onMint, onClose, isOpen, setONG}) {
                         onClick={handleMint}
                         className="mintNFT text-gray-900 group flex rounded-full items-center px-2 py-2 md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap "
                         type="button"
+                        disabled={!isStatusOpen || !userAddress}
                     >
-                        Mint
+                        
+                    {!userAddress ? "Connect your Wallet" : (!isStatusOpen ? "Sells are currently closed" : "Mint") }
                     </button>
                 </div>
             </ReactModal>
