@@ -16,7 +16,7 @@ const network = { type: NetworkType.GHOSTNET };
 
 function Wildians(Wildians) {
     const [wallet, setWallet] = React.useState({});
-
+    const SnackbarContext = useContext(SnackbarService);
     const [showModal, setShowModal] = React.useState(false);
     const [token_id, setToken_id] = React.useState(-1);
     const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
@@ -27,8 +27,7 @@ function Wildians(Wildians) {
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
     const whitelistCollection = collection(firestore, "whitelist");
-    const SnackbarContext = useContext(SnackbarService);
-    
+
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -227,16 +226,17 @@ function Wildians(Wildians) {
             >
                 {isStatusOpen ? "Select an ONG" : "Not available"}
             </button>
+
             {showModal ? (
-            <ModalONG
-                isOpen={showModal}
-                onClose={closeModal}
-                onMint={mintNFT}
-                Wildians={Wildians}
-                setONG={setSelectedONG}
-            >
-                {" "}
-            </ModalONG>
+                <ModalONG
+                    isOpen={showModal}
+                    onClose={closeModal}
+                    onMint={mintNFT}
+                    Wildians={Wildians}
+                    setONG={setSelectedONG}
+                >
+                    {" "}
+                </ModalONG>
             ) : (
                 ""
             )}
