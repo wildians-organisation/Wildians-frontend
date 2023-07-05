@@ -21,7 +21,7 @@ function Wildians(Wildians) {
     const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
     const [userAddress, setUserAddress] = React.useState("");
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
-    const [selectedONG, setSelectedONG] = React.useState("");
+    const [selectedONG, setSelectedONG] = React.useState(Wildians.ong_list[0]);
     const salesCollection = collection(firestore, "sales");
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
@@ -113,11 +113,8 @@ function Wildians(Wildians) {
                     openTime
                 });
             });
-            if (!userAddress)
-            {
-                setIsStatusOpen(false)
-            }
-            else if (statusSales.length > 0)
+
+            if (statusSales.length > 0)
                 handleScheduledOpening(statusSales[0]);
         });
     };
@@ -127,7 +124,6 @@ function Wildians(Wildians) {
           setShowModal(true);
         }
         else
-            
           setShowModal(false);
       };
       
@@ -156,17 +152,14 @@ function Wildians(Wildians) {
       }
     }
 
-
-
     React.useEffect(() => {
         const timer = setInterval(() => {
         setTime(new Date().toLocaleTimeString().slice(0, 5));
         setDay(new Date().toISOString().slice(0, 10));
         getStatusSales();
         }, 1000);
-    
         return () => clearInterval(timer);
-    }, [time, day]);
+    }, [time, day, userAddress]);
     
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
@@ -187,24 +180,27 @@ function Wildians(Wildians) {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         await wallet.clearActiveAccount();
         await wallet.disconnect();
-        setUserAddress(prevState => null);
+        setUserAddress(null);
     };
+
+
     React.useEffect(() => {
         initializeWallet()
-    }, [userAddress]);
+    }, []);
 
 
     const renderModal = () => {
         if (showModal) {
           return (
+
             <ModalONG
-              isOpen={showModal}
-              onClose={closeModal}
-              onMint={mintNFT}
-              Wildians={Wildians}
-              setONG={setSelectedONG}
-              isStatusOpen={isStatusOpen}
-              userAddress={userAddress}
+            Wildians={Wildians}
+            isOpen={showModal}
+            onClose={closeModal}
+            onMint={mintNFT}
+            setONG={setSelectedONG}
+            ONG={selectedONG}
+            isStatusOpen={isStatusOpen}
             />
           );
         } else {
@@ -286,7 +282,6 @@ function Wildians(Wildians) {
             >
                 Select an ONG
             </button>
-
             {renderModal()}
 
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
