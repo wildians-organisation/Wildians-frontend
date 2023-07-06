@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
 import * as config from "../../config/config.js";
@@ -9,13 +9,14 @@ import axios from "axios";
 import ModalONG from "./ModalONG.js";
 import { firestore } from "../../firebaseConfig";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
-
+import SnackbarService from "../SnackbarService/SnackbarService";
 const nftToMint = 1;
 
 const network = { type: NetworkType.GHOSTNET };
 
 function Wildians(Wildians) {
     const [wallet, setWallet] = React.useState({});
+    const SnackbarContext = useContext(SnackbarService);
     const [showModal, setShowModal] = React.useState(false);
     const [token_id, setToken_id] = React.useState(-1);
     const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
@@ -51,7 +52,6 @@ function Wildians(Wildians) {
     }
 
     function handleWhitelistScheduledOpening(sales) {
-        
         if (sales["whitelistOpenDay"] !== "") {
             if (
                 isOpenDay(sales["whitelistOpenDay"], sales["whitelistOpenTime"])
@@ -65,8 +65,7 @@ function Wildians(Wildians) {
         fetchWhitelistData().then((address) => {
             if (sales["openDay"] !== "") {
                 setIsStatusOpen(isOpenDay(sales["openDay"], sales["openTime"]));
-            }
-            else setIsStatusOpen(sales["status"]);
+            } else setIsStatusOpen(sales["status"]);
 
             if (address.includes(userAddress)) {
                 handleWhitelistScheduledOpening(sales);
@@ -114,13 +113,12 @@ function Wildians(Wildians) {
                 });
             });
 
-            if (statusSales.length > 0)
-                handleScheduledOpening(statusSales[0]);
+            if (statusSales.length > 0) handleScheduledOpening(statusSales[0]);
         });
     };
 
     const handleModal = () => {
-        setShowModal(!showModal)
+        setShowModal(!showModal);
     };
 
     async function initializeWallet() {
@@ -138,18 +136,18 @@ function Wildians(Wildians) {
         } else {
             await connectToWallet();
             setToken_id(getTokenID());
-      }
+        }
     }
 
     React.useEffect(() => {
         const timer = setInterval(() => {
-        setTime(new Date().toLocaleTimeString().slice(0, 5));
-        setDay(new Date().toISOString().slice(0, 10));
-        getStatusSales();
+            setTime(new Date().toLocaleTimeString().slice(0, 5));
+            setDay(new Date().toISOString().slice(0, 10));
+            getStatusSales();
         }, 1000);
         return () => clearInterval(timer);
     }, [time, day, userAddress]);
-    
+
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
         const activeAccount = await wallet.client.getActiveAccount();
@@ -172,30 +170,27 @@ function Wildians(Wildians) {
         setUserAddress(null);
     };
 
-
     React.useEffect(() => {
-        initializeWallet()
+        initializeWallet();
     }, []);
-
 
     const renderModal = () => {
         if (showModal) {
-          return (
-
-            <ModalONG
-            Wildians={Wildians}
-            isOpen={showModal}
-            onClose={handleModal}
-            onMint={mintNFT}
-            setONG={setSelectedONG}
-            ONG={selectedONG}
-            isStatusOpen={isStatusOpen}
-            />
-          );
+            return (
+                <ModalONG
+                    Wildians={Wildians}
+                    isOpen={showModal}
+                    onClose={handleModal}
+                    onMint={mintNFT}
+                    setONG={setSelectedONG}
+                    ONG={selectedONG}
+                    isStatusOpen={isStatusOpen}
+                />
+            );
         } else {
-          return null;
+            return null;
         }
-      };
+    };
 
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
@@ -233,20 +228,30 @@ function Wildians(Wildians) {
             let normal_sales_open = salesStatus.status;
             let WL_sales_open = salesStatus.whitelistStatus;
             //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
-            const op = await contract.methods
-                .big_boi_mint(
-                    WL_sales_open,
-                    activeAccount.address,
-                    nftToMint,
-                    1000 * config.TEZOS_CONVERTER,
-                    is_whitelisted,
-                    MichelsonMap.fromLiteral({ "": url }),
-                    normal_sales_open,
-                    selectedONG,
-                    token_id
-                )
-                .send({ amount: 1000 });
-            return await op.confirmation(3);
+            try {
+                const op = await contract.methods
+                    .big_boi_mint(
+                        WL_sales_open,
+                        activeAccount.address,
+                        nftToMint,
+                        1000 * config.TEZOS_CONVERTER,
+                        is_whitelisted,
+                        MichelsonMap.fromLiteral({ "": url }),
+                        normal_sales_open,
+                        selectedONG,
+                        token_id
+                    )
+                    .send({ amount: 1000 });
+
+                await op.confirmation(3);
+                SnackbarContext.showSnackbar(
+                    "Successful transaction!",
+                    "success"
+                );
+                return op;
+            } catch (error) {
+                SnackbarContext.showSnackbar("Transaction failed", "error");
+            }
         };
 
     return (
@@ -263,7 +268,6 @@ function Wildians(Wildians) {
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
                 {Wildians.description} {selectedONG}.
             </div>
-
             <button
                 onClick={handleModal}
                 className="mintNFT text-gray-900 group flex rounded-full items-center px-2 py-2 md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap "
