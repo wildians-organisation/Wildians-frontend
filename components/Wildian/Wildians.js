@@ -22,7 +22,7 @@ function Wildians(Wildians) {
     const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
     const [userAddress, setUserAddress] = React.useState("");
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
-    const [selectedONG, setSelectedONG] = React.useState("");
+    const [selectedONG, setSelectedONG] = React.useState(Wildians.ong_list[0]);
     const salesCollection = collection(firestore, "sales");
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
@@ -114,22 +114,14 @@ function Wildians(Wildians) {
                     openTime
                 });
             });
-            if (!userAddress)
-            {
-                setIsStatusOpen(false)
-            }
-            else if (statusSales.length > 0)
+
+            if (statusSales.length > 0)
                 handleScheduledOpening(statusSales[0]);
         });
     };
 
-    // Function to open the modal
-    const openModal = () => {
-        setShowModal(true);
-    };
-    // Function to close the modal
-    const closeModal = () => {
-        setShowModal(false);
+    const handleModal = () => {
+        setShowModal(!showModal)
     };
 
     async function initializeWallet() {
@@ -145,14 +137,10 @@ function Wildians(Wildians) {
             }
             setToken_id(getTokenID());
         } else {
-            connectToWallet();
+            await connectToWallet();
             setToken_id(getTokenID());
       }
     }
-
-    React.useEffect(() => {
-        initializeWallet()
-    }, []);
 
     React.useEffect(() => {
         const timer = setInterval(() => {
@@ -160,9 +148,8 @@ function Wildians(Wildians) {
         setDay(new Date().toISOString().slice(0, 10));
         getStatusSales();
         }, 1000);
-    
         return () => clearInterval(timer);
-    }, [time, day,userAddress]);
+    }, [time, day, userAddress]);
     
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
@@ -185,6 +172,31 @@ function Wildians(Wildians) {
         await wallet.disconnect();
         setUserAddress(null);
     };
+
+
+    React.useEffect(() => {
+        initializeWallet()
+    }, []);
+
+
+    const renderModal = () => {
+        if (showModal) {
+          return (
+
+            <ModalONG
+            Wildians={Wildians}
+            isOpen={showModal}
+            onClose={handleModal}
+            onMint={mintNFT}
+            setONG={setSelectedONG}
+            ONG={selectedONG}
+            isStatusOpen={isStatusOpen}
+            />
+          );
+        } else {
+          return null;
+        }
+      };
 
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
@@ -263,27 +275,14 @@ function Wildians(Wildians) {
                 {Wildians.description} {selectedONG}.
             </div>
             <button
-                onClick={openModal}
+                onClick={handleModal}
                 className="mintNFT text-gray-900 group flex rounded-full items-center px-2 py-2 md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap "
                 type="button"
-                disabled={!isStatusOpen}
             >
-                {isStatusOpen ? "Select an ONG" : "Not available"}
+                Select an ONG
             </button>
+            {renderModal()}
 
-            {showModal ? (
-                <ModalONG
-                    isOpen={showModal}
-                    onClose={closeModal}
-                    onMint={mintNFT}
-                    Wildians={Wildians}
-                    setONG={setSelectedONG}
-                >
-                    {" "}
-                </ModalONG>
-            ) : (
-                ""
-            )}
             <div className="text-center mt-4 w-5/12 text-xs md:text-base">
                 {Wildians.nft_sold} already sold !
             </div>
