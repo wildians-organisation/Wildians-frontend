@@ -52,7 +52,6 @@ function Wildians(Wildians) {
     }
 
     function handleWhitelistScheduledOpening(sales) {
-        
         if (sales["whitelistOpenDay"] !== "") {
             if (
                 isOpenDay(sales["whitelistOpenDay"], sales["whitelistOpenTime"])
@@ -66,8 +65,7 @@ function Wildians(Wildians) {
         fetchWhitelistData().then((address) => {
             if (sales["openDay"] !== "") {
                 setIsStatusOpen(isOpenDay(sales["openDay"], sales["openTime"]));
-            }
-            else setIsStatusOpen(sales["status"]);
+            } else setIsStatusOpen(sales["status"]);
 
             if (address.includes(userAddress)) {
                 handleWhitelistScheduledOpening(sales);
@@ -115,13 +113,12 @@ function Wildians(Wildians) {
                 });
             });
 
-            if (statusSales.length > 0)
-                handleScheduledOpening(statusSales[0]);
+            if (statusSales.length > 0) handleScheduledOpening(statusSales[0]);
         });
     };
 
     const handleModal = () => {
-        setShowModal(!showModal)
+        setShowModal(!showModal);
     };
 
     async function initializeWallet() {
@@ -139,18 +136,18 @@ function Wildians(Wildians) {
         } else {
             await connectToWallet();
             setToken_id(getTokenID());
-      }
+        }
     }
 
     React.useEffect(() => {
         const timer = setInterval(() => {
-        setTime(new Date().toLocaleTimeString().slice(0, 5));
-        setDay(new Date().toISOString().slice(0, 10));
-        getStatusSales();
+            setTime(new Date().toLocaleTimeString().slice(0, 5));
+            setDay(new Date().toISOString().slice(0, 10));
+            getStatusSales();
         }, 1000);
         return () => clearInterval(timer);
     }, [time, day, userAddress]);
-    
+
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
         const activeAccount = await wallet.client.getActiveAccount();
@@ -173,30 +170,27 @@ function Wildians(Wildians) {
         setUserAddress(null);
     };
 
-
     React.useEffect(() => {
-        initializeWallet()
+        initializeWallet();
     }, []);
-
 
     const renderModal = () => {
         if (showModal) {
-          return (
-
-            <ModalONG
-            Wildians={Wildians}
-            isOpen={showModal}
-            onClose={handleModal}
-            onMint={mintNFT}
-            setONG={setSelectedONG}
-            ONG={selectedONG}
-            isStatusOpen={isStatusOpen}
-            />
-          );
+            return (
+                <ModalONG
+                    Wildians={Wildians}
+                    isOpen={showModal}
+                    onClose={handleModal}
+                    onMint={mintNFT}
+                    setONG={setSelectedONG}
+                    ONG={selectedONG}
+                    isStatusOpen={isStatusOpen}
+                />
+            );
         } else {
-          return null;
+            return null;
         }
-      };
+    };
 
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {

@@ -33,7 +33,11 @@ function Header() {
             </div>
             <div className="md:flex hidden md:items-center">
                 <div className="flex gap-2">
-                    <a href="https://discord.gg/grjatzrcKp" target="_blank" rel="noreferrer">
+                    <a
+                        href="https://discord.gg/grjatzrcKp"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         <Image
                             className="headerDiscord  mr-4"
                             src={"/img/discord_f8ffe9.png"}
@@ -44,7 +48,8 @@ function Header() {
                     </a>
                     <a
                         href="https://www.instagram.com/wildians/"
-                        target="_blank " rel="noreferrer"
+                        target="_blank "
+                        rel="noreferrer"
                     >
                         <Image
                             className="headerInsta mr-4"
@@ -54,7 +59,11 @@ function Header() {
                             height={30}
                         />
                     </a>
-                    <a href="https://twitter.com/Wildians_off" target="_blank" rel="noreferrer">
+                    <a
+                        href="https://twitter.com/Wildians_off"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         <Image
                             className="headerTwitter mr-4"
                             src={"/img/twitter_f8ffe9.png"}
