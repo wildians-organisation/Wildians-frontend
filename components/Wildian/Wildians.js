@@ -51,7 +51,6 @@ function Wildians(Wildians) {
     }
 
     function handleWhitelistScheduledOpening(sales) {
-        
         if (sales["whitelistOpenDay"] !== "") {
             if (
                 isOpenDay(sales["whitelistOpenDay"], sales["whitelistOpenTime"])
@@ -65,8 +64,7 @@ function Wildians(Wildians) {
         fetchWhitelistData().then((address) => {
             if (sales["openDay"] !== "") {
                 setIsStatusOpen(isOpenDay(sales["openDay"], sales["openTime"]));
-            }
-            else setIsStatusOpen(sales["status"]);
+            } else setIsStatusOpen(sales["status"]);
 
             if (address.includes(userAddress)) {
                 handleWhitelistScheduledOpening(sales);
@@ -113,11 +111,9 @@ function Wildians(Wildians) {
                     openTime
                 });
             });
-            if (!userAddress)
-            {
-                setIsStatusOpen(false)
-            }
-            else if (statusSales.length > 0)
+            if (!userAddress) {
+                setIsStatusOpen(false);
+            } else if (statusSales.length > 0)
                 handleScheduledOpening(statusSales[0]);
         });
     };
@@ -146,23 +142,23 @@ function Wildians(Wildians) {
         } else {
             connectToWallet();
             setToken_id(getTokenID());
-      }
+        }
     }
 
     React.useEffect(() => {
-        initializeWallet()
+        initializeWallet();
     }, []);
 
     React.useEffect(() => {
         const timer = setInterval(() => {
-        setTime(new Date().toLocaleTimeString().slice(0, 5));
-        setDay(new Date().toISOString().slice(0, 10));
-        getStatusSales();
+            setTime(new Date().toLocaleTimeString().slice(0, 5));
+            setDay(new Date().toISOString().slice(0, 10));
+            getStatusSales();
         }, 1000);
-    
+
         return () => clearInterval(timer);
-    }, [time, day,userAddress]);
-    
+    }, [time, day, userAddress]);
+
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
         const activeAccount = await wallet.client.getActiveAccount();

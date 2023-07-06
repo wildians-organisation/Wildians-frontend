@@ -1,7 +1,7 @@
 import React from "react";
 import ReactModal from "react-modal";
 
-function ModalONG({ Wildians, onMint, onClose, isOpen, setONG}) {
+function ModalONG({ Wildians, onMint, onClose, isOpen, setONG }) {
     const [selectedONG, setSelectedONG] = React.useState(Wildians.ong_list[0]);
     setONG(selectedONG);
 
