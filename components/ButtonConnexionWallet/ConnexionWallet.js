@@ -72,7 +72,7 @@ export default function ConnexionWallet() {
         try {
             const response = await addWallet(walletAddress);
         } catch (e) {
-            SnackbarContext.showSnackbar(" Wallet connection failure", "error");
+            SnackbarContext.showSnackbar("Wallet connection failure", "error");
             console.error(e);
         }
     };
