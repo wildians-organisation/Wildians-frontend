@@ -282,7 +282,6 @@ function Wildians(Wildians) {
                 Select an ONG
             </button>
             {renderModal()}
-            
         </div>
     );
 }
