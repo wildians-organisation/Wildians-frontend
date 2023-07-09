@@ -16124,3 +16124,12 @@ select {
     width: 600px;
     height: 65px;
 }
+
+.test-layout {
+    display: flex;
+    width: 205px;
+    padding: 8px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

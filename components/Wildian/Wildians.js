@@ -262,14 +262,14 @@ function Wildians(Wildians) {
                 width={200}
                 height={250}
             />
-            <div className="text-center mt-4 w-5/12 text-xs md:text-base">
+            <div className="text-center body-highlight-typo py-4">
                 {Wildians.pillar}
             </div>
-            <div className="text-center mt-4 w-5/12 text-xs md:text-base">
+            <div className="text-center body-typo">
                 {Wildians.description} {selectedONG}.
             </div>
 
-            <div className="text-center mt-4 w-5/12 text-xs md:text-base md:uppercase text-greeny pb-4">
+            <div className="text-center body-highlight-typo md:uppercase text-greeny py-4">
                 {Wildians.nft_sold} adopted !
             </div>
 
@@ -282,6 +282,7 @@ function Wildians(Wildians) {
                 Select an ONG
             </button>
             {renderModal()}
+            
         </div>
     );
 }
