@@ -16,14 +16,20 @@ function Header() {
                         height={78}
                     />
                 </a>
-                <div className="text-white project-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/>
+                <div
+                    className="text-white project-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
+                >
                     THE PROJECT
                 </div>
-                <div className="text-white asso-layout body-highlight-typo  md:hover:text-greeny" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/>
+                <div
+                    className="text-white asso-layout body-highlight-typo  md:hover:text-greeny" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
+                >
                     ASSOCIATION
                 </div>
                 <Link className="text-white" href="personnalisation">
-                    <div className="text-white pers-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/>
+                    <div
+                        className="text-white pers-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
+                    >
                         NFT CUSTOMIZATION
                     </div>
                 </Link>

@@ -15969,7 +15969,16 @@ select {
 }
 
 .header-style {
-    background: var(--radial-nav, radial-gradient(50% 50.00% at 50% 50.00%, rgba(64, 56, 49, 0.70) 0.01%, rgba(48, 38, 28, 0.60) 0.02%, rgba(0, 0, 0, 0.00) 100%, rgba(64, 56, 49, 0.40) 100%));
+    background: var(
+        --radial-nav,
+        radial-gradient(
+            50% 50% at 50% 50%,
+            rgba(64, 56, 49, 0.7) 0.01%,
+            rgba(48, 38, 28, 0.6) 0.02%,
+            rgba(0, 0, 0, 0) 100%,
+            rgba(64, 56, 49, 0.4) 100%
+        )
+    );
 }
 
 .asso-layout {
@@ -15991,15 +16000,15 @@ select {
 
 /** COLORS **/
 .darkgreen {
-    fill: var(--vert-fonc, #36544F);
+    fill: var(--vert-fonc, #36544f);
 }
 
 .saillance {
-    fill: var(--saillance, #951F2A);
+    fill: var(--saillance, #951f2a);
 }
 
 .hover\:turquoise:hover {
-    fill: var(--turquoise, #90E0D3);
+    fill: var(--turquoise, #90e0d3);
 }
 
 .brown {
@@ -16007,11 +16016,10 @@ select {
 }
 
 .white {
-    fill: var(--blanc, #FFF);
+    fill: var(--blanc, #fff);
     stroke-width: 0.5px;
-    stroke: #4E4949;
+    stroke: #4e4949;
 }
-
 
 /** TYPO **/
 .header-typo {
@@ -16024,7 +16032,6 @@ select {
 }
 
 .header-typo2 {
-
     /* Header */
     font-family: Gogh;
     font-size: 50px;
@@ -16088,21 +16095,21 @@ select {
 
 .btn-style {
     border-radius: var(--desktop-border-radius, 20px);
-    background: var(--saillance, #951F2A);
+    background: var(--saillance, #951f2a);
 }
 
 .hover\:get-hover:hover {
     border-radius: var(--desktop-border-radius, 20px);
-    background: var(--economy, #E35958);
+    background: var(--economy, #e35958);
 }
 
 .default-connexion {
     border-radius: var(--desktop-border-radius, 20px);
-    border: 2px solid var(--turquoise, #90E0D3);
+    border: 2px solid var(--turquoise, #90e0d3);
 }
 .hover\:connexion:hover {
     border-radius: var(--desktop-border-radius, 20px);
-    background: var(--turquoise, #90E0D3);
+    background: var(--turquoise, #90e0d3);
 }
 
 .first-parag-layout {

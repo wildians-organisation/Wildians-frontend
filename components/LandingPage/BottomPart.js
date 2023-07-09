@@ -57,7 +57,9 @@ function BottomPart() {
     return (
         <div className="h-screen bg-cover bg-emerald-800  bg-wood-bg font-goghbold">
             <div className="relative top-48 h-96">
-                <div className="text-center text-white get-typo"/**className="text-center text-4xl md:text-5xl lg:text-6xl text-greeny"**/>
+                <div
+                    className="text-center text-white get-typo" /**className="text-center text-4xl md:text-5xl lg:text-6xl text-greeny"**/
+                >
                     GET YOUR WILDIAN
                 </div>
                 <div className="text-center body-typo text-white flex-col">
