@@ -9,21 +9,21 @@ function Header() {
             <div className="flex items-center">
                 <a href="/">
                     <Image
-                        className="headerLogo"
+                        className="headerLogo hover:turquoise"
                         src={"/img/logo_header.png"}
                         alt="Wildians logo"
-                        width={56}
-                        height={40}
+                        width={89}
+                        height={78}
                     />
                 </a>
-                <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
+                <div className="text-white project-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/>
                     THE PROJECT
                 </div>
-                <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
+                <div className="text-white asso-layout body-highlight-typo  md:hover:text-greeny" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/>
                     ASSOCIATION
                 </div>
                 <Link className="text-white" href="personnalisation">
-                    <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
+                    <div className="text-white pers-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/>
                         NFT CUSTOMIZATION
                     </div>
                 </Link>

@@ -57,14 +57,14 @@ function BottomPart() {
     return (
         <div className="h-screen bg-cover bg-emerald-800  bg-wood-bg font-goghbold">
             <div className="relative top-48 h-96">
-                <div className="text-center text-4xl md:text-5xl lg:text-6xl text-greeny">
-                    GET YOUR WILDIANS
+                <div className="text-center text-white get-typo"/**className="text-center text-4xl md:text-5xl lg:text-6xl text-greeny"**/>
+                    GET YOUR WILDIAN
                 </div>
-                <div className="m-auto h-77px w-576px text-center font-normal leading-5 text-beige">
+                <div className="text-center body-typo text-white flex-col">
                     Each pillar allows you to contribute to a different
                     association. Which one will you choose?
                 </div>
-                <div className="explanationPart flex justify-evenly items-stretch text-beige mt-12">
+                <div className="explanationPart flex justify-evenly items-stretch text-white mt-12">
                     <Wildians
                         image={"/img/v2/visuels/Deer.png"}
                         title="Deer_3D"
