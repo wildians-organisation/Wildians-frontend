@@ -15,6 +15,8 @@
     "@taquito/beacon-wallet": "^16.1.2",
     "@taquito/taquito": "^16.1.2",
     "@taquito/tzip16": "^16.1.2",
+    "axios": "^1.4.0",
+    "currency.js": "^2.0.4",
     "firebase": "^9.22.0",
     "headlessui": "^0.0.0",
     "next": "^13.4.2",
