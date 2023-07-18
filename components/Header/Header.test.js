@@ -3,9 +3,7 @@ import Header from "./Header";
 
 describe("Header", () => {
     it("Check simple data", () => {
-        render(
-            <Header/>
-        );
+        render(<Header />);
 
         expect(screen.getByTestId("the-project").textContent).toBe(
             "THE PROJECT"

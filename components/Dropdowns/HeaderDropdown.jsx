@@ -62,7 +62,8 @@ function HeaderDropdown() {
                                                 ? "bg-violet-500 text-white"
                                                 : "text-gray-900"
                                         } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                    data-testid="twitter">
+                                        data-testid="twitter"
+                                    >
                                         Twitter
                                     </button>
                                 )}
@@ -77,7 +78,8 @@ function HeaderDropdown() {
                                                 ? "bg-violet-500 text-white"
                                                 : "text-gray-900"
                                         } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                        data-testid="discord">
+                                        data-testid="discord"
+                                    >
                                         Discord
                                     </button>
                                 )}

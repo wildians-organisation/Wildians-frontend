@@ -3,7 +3,7 @@ import CustomOption from "./CustomizationOption";
 
 describe("CustomOption", () => {
     it("Check simple data", () => {
-        const label = "wood"
+        const label = "wood";
         const options = {
             color: "",
             ears: "",
@@ -12,11 +12,11 @@ describe("CustomOption", () => {
             horn: "",
             nose: "",
             paws: "",
-            wood: "",
-        }
-        const optionName = "wood"
+            wood: ""
+        };
+        const optionName = "wood";
         const handleOptionSelect = () => {};
-        const optionList = ["blue"]
+        const optionList = ["blue"];
         render(
             <CustomOption
                 label={label}
@@ -30,8 +30,6 @@ describe("CustomOption", () => {
         expect(screen.getByTestId("label").textContent).toBe(
             label.toString("wood") + ":"
         );
-        expect(screen.getByTestId("optionValue").textContent).toBe(
-            "blue"
-        );
+        expect(screen.getByTestId("optionValue").textContent).toBe("blue");
     });
 });

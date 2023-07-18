@@ -9,7 +9,9 @@ const CustomOption = ({
 }) => {
     return (
         <div>
-            <label htmlFor={optionName} data-testid="label">{label}:</label>
+            <label htmlFor={optionName} data-testid="label">
+                {label}:
+            </label>
             <select
                 id={optionName}
                 name={optionName}
@@ -18,7 +20,11 @@ const CustomOption = ({
             >
                 <option value="">Select {label.toLowerCase()} type</option>
                 {optionList.map((optionValue) => (
-                    <option value={optionValue} key={optionValue} data-testid="optionValue">
+                    <option
+                        value={optionValue}
+                        key={optionValue}
+                        data-testid="optionValue"
+                    >
                         {optionValue}
                     </option>
                 ))}
