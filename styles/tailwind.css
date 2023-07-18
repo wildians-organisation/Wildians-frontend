@@ -3044,7 +3044,7 @@ select {
 }
 
 .bg-wood-bg {
-    background-image: url("../public/img/v2/visuels/wood_texture.png");
+    background-image: url("../public/img/v2/visuels/wood_texture.svg");
 }
 
 .from-black {
@@ -7161,6 +7161,10 @@ select {
     margin-left: 0.5rem;
 }
 
+.mt-3_5 {
+    margin-top: 0.6rem;
+}
+
 .mt-3 {
     margin-top: 0.75rem;
 }
@@ -7399,6 +7403,14 @@ select {
 
 .ml-28 {
     margin-left: 7rem;
+}
+
+.ml-30 {
+    margin-left: 7.5rem;
+}
+
+.mr-30 {
+    margin-right: 7.5rem;
 }
 
 .mt-32 {
@@ -15958,9 +15970,19 @@ select {
 }
 
 /** HEADER **/
+
+.header-layout {
+    display: flex;
+    width: 1200px;
+    height: 78px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
 .project-layout {
     display: inline-flex;
-    width: 108px;
+    width: 123px;
     height: 20px;
     justify-content: center;
     padding-right: 0px;
@@ -15994,7 +16016,8 @@ select {
     display: inline-flex;
     width: 123px;
     height: 20px;
-    padding-left: 45px;
+    padding-right: 0px;
+    padding-left: 40px;
     align-items: center;
 }
 
@@ -16132,4 +16155,41 @@ select {
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+.nft-card-layout {
+    width: 1000px;
+    height: 600px;
+    flex-shrink: 0;
+}
+
+.nft-card-style {
+    border-radius: 20px;
+    background: var(--vert-fonc, #36544F);
+}
+
+.wild-layout {
+    width: 400px;
+    height: 600px;
+    flex-shrink: 0;
+}
+
+.bg-wood-layout {
+    width: 1440px;
+    height: 2139px;
+    flex-shrink: 0; 
+}
+
+.bg-forest-layout {
+    width: 1440px;
+    height: 928px;
+    flex-shrink: 0;
+}
+
+.bg-newforest-bg {
+    background-image: url("../public/img/v2/visuels/Hero_homepage.svg");
+}
+
+.hover\:connexion:hover {
+    color: var(--turquoise, #90e0d3);
 }

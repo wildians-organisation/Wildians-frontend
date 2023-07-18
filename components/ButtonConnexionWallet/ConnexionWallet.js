@@ -128,7 +128,7 @@ export default function ConnexionWallet() {
             </div>
             {userAddress && (
                 <Link className="text-white" href="nft-collection">
-                    <div className="text-gray-900 group flex rounded-md cursor-pointer items-center px-2 py-2 md:whitespace-nowrap md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny md:rounded-full md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150">
+                    <div className="flex items-center md:uppercase btn-layout default-connexion hover:connexion body-highlight-typo text-greeny md:whitespace-nowrap md:hover:text-greenkaki" /**className="text-gray-900 group flex rounded-md cursor-pointer items-center px-2 py-2 md:whitespace-nowrap md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny md:rounded-full md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150"**/>
                         My collection
                     </div>
                 </Link>

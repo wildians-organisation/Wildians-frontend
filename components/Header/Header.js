@@ -5,30 +5,30 @@ import Link from "next/link";
 import Image from "next/image";
 function Header() {
     return (
-        <div className="flex justify-around items-center">
-            <div className="flex items-center">
+        <div className="header-layout">
+            <div className="flex items-center mt-3_5 ml-30">
                 <a href="/">
                     <Image
-                        className="headerLogo hover:turquoise"
-                        src={"/img/logo_header.png"}
+                        className="headerLogo "
+                        src={"/img/v2/visuels/Logo\ hover.svg"}
                         alt="Wildians logo"
                         width={89}
                         height={78}
                     />
                 </a>
                 <div
-                    className="text-white project-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
+                    className="text-white project-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap mt-3_5" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
                 >
                     THE PROJECT
                 </div>
                 <div
-                    className="text-white asso-layout body-highlight-typo  md:hover:text-greeny" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
+                    className="text-white asso-layout body-highlight-typo  md:hover:text-greeny mt-3_5" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
                 >
                     ASSOCIATION
                 </div>
                 <Link className="text-white" href="personnalisation">
                     <div
-                        className="text-white pers-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
+                        className="text-white pers-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap mt-3_5" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
                     >
                         NFT CUSTOMIZATION
                     </div>
@@ -45,7 +45,7 @@ function Header() {
                         rel="noreferrer"
                     >
                         <Image
-                            className="headerDiscord  mr-4"
+                            className="headerDiscord  mr-5"
                             src={"/img/discord_f8ffe9.png"}
                             alt="discord_logo"
                             width={30}
@@ -58,7 +58,7 @@ function Header() {
                         rel="noreferrer"
                     >
                         <Image
-                            className="headerInsta mr-4"
+                            className="headerInsta mr-5"
                             src={"/img/v2/visuels/insta_f8ffe9.png"}
                             alt="insta_logo"
                             width={30}
@@ -71,7 +71,7 @@ function Header() {
                         rel="noreferrer"
                     >
                         <Image
-                            className="headerTwitter mr-4"
+                            className="headerTwitter mr-5"
                             src={"/img/twitter_f8ffe9.png"}
                             alt="twitter_logo"
                             width={30}

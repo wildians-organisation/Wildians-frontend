@@ -4,7 +4,7 @@ function TopPart() {
     return (
         <>
             <div
-                className="bg-cover bg-forest-bg bg-forest-layout" /**className="headerBackground bg-cover  bg-forest-bg font-goghbold p-4 h-500-px"**/
+                className="bg-cover bg-newforest-bg bg-forest-layout" /**className="headerBackground bg-cover  bg-forest-bg font-goghbold p-4 h-500-px"**/
             >
                 <Header />
                 <div className="flex flex-col justify-center h-screen md:ml-32">
