@@ -16,14 +16,14 @@ function Header() {
                         height={40}
                     />
                 </a>
-                <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
+                <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer" data-testid="the-project">
                     THE PROJECT
                 </div>
-                <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
+                <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer" data-testid="association">
                     ASSOCIATION
                 </div>
                 <Link className="text-white" href="personnalisation">
-                    <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer">
+                    <div className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer" data-testid="nft-customization">
                         NFT CUSTOMIZATION
                     </div>
                 </Link>
