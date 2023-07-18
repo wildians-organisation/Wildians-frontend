@@ -3044,7 +3044,10 @@ select {
 }
 
 .bg-wood-bg {
-    background-image: url("../public/img/v2/visuels/wood_texture.svg");
+    background-image: url("../public/img/v2/visuels/wood_texture.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
 }
 
 .from-black {
@@ -15973,8 +15976,6 @@ select {
 
 .header-layout {
     display: flex;
-    width: 1200px;
-    height: 78px;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
@@ -15982,11 +15983,9 @@ select {
 
 .project-layout {
     display: inline-flex;
-    width: 123px;
-    height: 20px;
     justify-content: center;
-    padding-right: 0px;
-    padding-left: 40px;
+    margin-right: 0px;
+    margin-left: 40px;
     align-items: center;
 }
 
@@ -16005,19 +16004,22 @@ select {
 
 .asso-layout {
     display: inline-flex;
-    width: 123px;
-    height: 20px;
-    padding-right: 0px;
-    padding-left: 40px;
+    margin-right: 0px;
+    margin-left: 40px;
     align-items: center;
 }
 
 .pers-layout {
     display: inline-flex;
-    width: 123px;
-    height: 20px;
-    padding-right: 0px;
-    padding-left: 40px;
+    margin-right: 0px;
+    margin-left: 40px;
+    align-items: center;
+}
+
+.collection-layout {
+    display: inline-flex;
+    margin-right: 20px;
+    margin-left: 0px;
     align-items: center;
 }
 
@@ -16183,13 +16185,13 @@ select {
 .bg-forest-layout {
     width: 1440px;
     height: 928px;
+    
     flex-shrink: 0;
 }
 
 .bg-newforest-bg {
     background-image: url("../public/img/v2/visuels/Hero_homepage.svg");
-}
-
-.hover\:connexion:hover {
-    color: var(--turquoise, #90e0d3);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
 }

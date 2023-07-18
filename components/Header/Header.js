@@ -6,39 +6,44 @@ import Image from "next/image";
 function Header() {
     return (
         <div className="header-layout">
-            <div className="flex items-center mt-3_5 ml-30">
+            <div className="flex items-center mt-3_5 mr-30">
                 <a href="/">
                     <Image
-                        className="headerLogo "
-                        src={"/img/v2/visuels/Logo\ hover.svg"}
+                        className="headerLogo"
+                        src={"/img/v2/visuels/logo.svg"}
                         alt="Wildians logo"
                         width={89}
                         height={78}
                     />
                 </a>
                 <div
-                    className="text-white project-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap mt-3_5" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
+                    className="text-white project-layout md:cursor-pointer body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap mt-3_5" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
                 >
                     THE PROJECT
                 </div>
                 <div
-                    className="text-white asso-layout body-highlight-typo  md:hover:text-greeny mt-3_5" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
+                    className="text-white asso-layout md:cursor-pointer body-highlight-typo  md:hover:text-greeny mt-3_5" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
                 >
                     ASSOCIATION
                 </div>
-                <Link className="text-white" href="personnalisation">
-                    <div
-                        className="text-white pers-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap mt-3_5" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/
-                    >
+                <Link href="personnalisation" className="text-white pers-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap mt-3_5" /**className="text-beige p-2 md:hover:text-greenkaki md:cursor-pointer"**/>
                         NFT CUSTOMIZATION
-                    </div>
                 </Link>
             </div>
+            
             <div className="md:hidden" id="dropdown">
                 <HeaderDropdown id="header_dropdown " />
             </div>
-            <div className="md:flex hidden md:items-center">
+
+            <div className="md:flex hidden md:items-center mt-3_5 ml-30 ">
+
+                
                 <div className="flex gap-2">
+                    <Link className="text-white" href="nft-collection">
+                        <div className="text-white collection-layout body-highlight-typo  md:hover:text-greeny md:whitespace-nowrap mt-3_5" /**className="text-gray-900 group flex rounded-md cursor-pointer items-center px-2 py-2 md:whitespace-nowrap md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny md:rounded-full md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150"**/>
+                            MY COLLECTION
+                        </div>
+                    </Link>
                     <a
                         href="https://discord.gg/grjatzrcKp"
                         target="_blank"
