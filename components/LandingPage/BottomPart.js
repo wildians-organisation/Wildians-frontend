@@ -57,9 +57,7 @@ function BottomPart() {
     return (
         <div className="bg-wood-bg bg-no-repeat bg-cover p-4 h-500-px">
             <div className="relative top-48 h-96">
-                <div
-                    className="text-center text-white get-typo"
-                >
+                <div className="text-center text-white get-typo">
                     GET YOUR WILDIAN
                 </div>
                 <div className="text-center body-typo text-white flex-col">
@@ -95,9 +93,7 @@ function BottomPart() {
                         nft_sold={dataFinance[2].value}
                     />
                 </div>
-                <div
-                    className="text-center text-white body-italic-typo pt-14 pb-2"
-                >
+                <div className="text-center text-white body-italic-typo pt-14 pb-2">
                     Need some help to choose ?
                 </div>
                 <button

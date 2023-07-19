@@ -8,9 +8,7 @@ function TopPart() {
             >
                 <Header />
                 <div className="flex flex-col justify-center h-screen md:ml-32">
-                    <div
-                        className="text-white header-typo2 first-parag-layout"
-                    >
+                    <div className="text-white header-typo2 first-parag-layout">
                         Contribute to a better world
                         <br />
                         by joining our community
