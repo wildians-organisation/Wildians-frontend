@@ -16,14 +16,10 @@ function Header() {
                         height={78}
                     />
                 </a>
-                <div
-                    className="text-white project-layout md:cursor-pointer body-highlight-typo md:hover:text-greeny md:whitespace-nowrap mt-3_5" 
-                >
+                <div className="text-white project-layout md:cursor-pointer body-highlight-typo md:hover:text-greeny md:whitespace-nowrap mt-3_5">
                     THE PROJECT
                 </div>
-                <div
-                    className="text-white asso-layout md:cursor-pointer body-highlight-typo md:hover:text-greeny mt-3_5" 
-                >
+                <div className="text-white asso-layout md:cursor-pointer body-highlight-typo md:hover:text-greeny mt-3_5">
                     ASSOCIATION
                 </div>
                 <Link
