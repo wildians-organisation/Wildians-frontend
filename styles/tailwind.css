@@ -16195,3 +16195,9 @@ select {
     background-position: center top;
     background-size: contain;
 }
+
+.default-logo-fill {
+    fill: white;
+    width: 30px;
+    height: 30px;
+}
