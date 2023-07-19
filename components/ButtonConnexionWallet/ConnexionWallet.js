@@ -120,12 +120,9 @@ export default function ConnexionWallet() {
                 {!userAddress ? (
                     <div>Connect Your Wallet</div>
                 ) : (
-                    <ConnectedButton
-                        disconnect={disconnect}
-                    />
-                    
+                    <ConnectedButton disconnect={disconnect} />
                 )}
             </div>
-        </div> 
+        </div>
     );
 }

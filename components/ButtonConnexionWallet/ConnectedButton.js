@@ -12,11 +12,6 @@ const goToIndicatedPage = (pageName) => {
 };
 
 function ConnectedButton({ disconnect }) {
-    return (
-
-        <div onClick={disconnect}>
-            Logout
-        </div>
-    );
+    return <div onClick={disconnect}>Logout</div>;
 }
 export default ConnectedButton;

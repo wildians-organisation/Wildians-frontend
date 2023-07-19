@@ -16167,7 +16167,7 @@ select {
 
 .nft-card-style {
     border-radius: 20px;
-    background: var(--vert-fonc, #36544F);
+    background: var(--vert-fonc, #36544f);
 }
 
 .wild-layout {
@@ -16179,13 +16179,13 @@ select {
 .bg-wood-layout {
     width: 1440px;
     height: 2139px;
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 .bg-forest-layout {
     width: 1440px;
     height: 928px;
-    
+
     flex-shrink: 0;
 }
 
