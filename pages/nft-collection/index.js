@@ -46,25 +46,25 @@ export default function UserNFTs(props) {
     }, [userAddress]);
 
     return (
-        <div className="bg-attributegreen">
-            <div className="p-4">
-                <Header />
-            </div>
-            <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-                <div className="text-black text-6vw  font-goghbold text-white">
-                    My Collection
+            <div className="bg-hero-collection bg-collection-green">
+                <div className="p-4">
+                    <Header />
                 </div>
-                {userNFTs.map((nft, key) => (
-                    <div key={key} className="m-8">
-                        <div className="md:hidden aspect-w-1 aspect-h-1 w-11/12 m-auto overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                            <NFTCardMobile metadata={nft} />
-                        </div>
-                        <div className="md:flex hidden md:aspect-w-1 md:aspect-h-1 md:w-11/12 md:m-auto md:overflow-hidden md:rounded-lg md:bg-gray-200 md:xl:aspect-w-7 md:xl:aspect-h-8">
-                            <NFTCard metadata={nft} />
-                        </div>
+                <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                    <div className="text-black text-6vw  font-goghbold text-white">
+                        COLLECTION
                     </div>
-                ))}
+                    {userNFTs.map((nft, key) => (
+                        <div key={key} className="m-8">
+                            <div className="md:hidden aspect-w-1 aspect-h-1 w-11/12 m-auto overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                                <NFTCardMobile metadata={nft} />
+                            </div>
+                            <div className="md:flex hidden md:aspect-w-1 md:aspect-h-1 md:w-11/12 md:m-auto md:overflow-hidden md:rounded-lg md:bg-gray-200 md:xl:aspect-w-7 md:xl:aspect-h-8">
+                                <NFTCard metadata={nft} />
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
     );
 }

@@ -2973,6 +2973,11 @@ select {
     background-color: rgba(61, 89, 83, var(--tw-bg-opacity));
 }
 
+.bg-collection-green {
+    --tw-bg-opacity: 1;
+    background-color: rgba(54, 84, 79, var(--tw-bg-opacity));
+}
+
 .hover\:bg-red-700:hover {
     --tw-bg-opacity: 1;
     background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
@@ -16200,4 +16205,17 @@ select {
     fill: white;
     width: 30px;
     height: 30px;
+}
+
+.bg-hero-collection {
+    background-image: url("../public/img/v2/visuels/Hero_Collection.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    position: relative;
+}
+
+.fg-collection {
+    position: absolute;
+    z-index: 1;
 }

@@ -58,7 +58,7 @@ function BottomPart() {
         <div className="bg-wood-bg bg-no-repeat bg-cover p-4 h-500-px">
             <div className="relative top-48 h-96">
                 <div
-                    className="text-center text-white get-typo" /**className="text-center text-4xl md:text-5xl lg:text-6xl text-greeny"**/
+                    className="text-center text-white get-typo"
                 >
                     GET YOUR WILDIAN
                 </div>
@@ -96,13 +96,12 @@ function BottomPart() {
                     />
                 </div>
                 <div
-                    className="text-center text-white body-italic-typo pt-14 pb-2" /**className="text-center text-4xl md:text-5xl lg:text-6xl text-greeny"**/
+                    className="text-center text-white body-italic-typo pt-14 pb-2"
                 >
                     Need some help to choose ?
                 </div>
                 <button
                     className="md:uppercase test-layout items-center flex-col justify-end m-auto default-connexion hover:connexion body-highlight-typo text-greeny md:whitespace-nowrap md:hover:text-greenkaki"
-                    /**className="mintNFT text-gray-900 group flex rounded-full items-center px-2 py-2 md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap "**/
                     type="button"
                 >
                     Take the test
