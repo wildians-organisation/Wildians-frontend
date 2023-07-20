@@ -16122,6 +16122,17 @@ select {
     align-items: center;
     gap: 10px;
 }
+.white-btn-style {
+    border-radius: 20px;
+    border: 2px solid var(--blanc, #FFF);
+}
+
+.hover\:learn-hover:hover {
+    border-radius: var(--desktop-border-radius, 20px);
+    background: var(--white, #ffffff);
+    --tw-text-opacity: 1;
+    color: rgba(54, 84, 79, var(--tw-text-opacity));
+}
 
 .btn-style {
     border-radius: var(--desktop-border-radius, 20px);
@@ -16218,4 +16229,14 @@ select {
 .fg-collection {
     position: absolute;
     z-index: 1;
+}
+
+.nft-pic-size {
+    width: 17.5rem;
+    height: 17.5rem;
+}
+
+.header-logo {
+    width: 89px;
+    height: 78px;
 }

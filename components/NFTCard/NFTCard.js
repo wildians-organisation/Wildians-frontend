@@ -28,24 +28,24 @@ function NFTCard({ metadata }) {
                     <div className="font-bold text-2xl">Bio</div>
                     <div className="flex justify-between">
                         <div>By adopting me, you supported WWF</div>
-                        <div className="m-auto rounded-full border-white border-solid">
-                            <div className="text-xs">Learn of &gt;</div>
+                        <div className="text-white md:cursor-pointer btn-layout white-btn-style body-highlight-typo hover:learn-hover"/**className="m-auto rounded-full border-white border-solid"**/>
+                            <div className="text-xs">Learn more &gt;</div>
                         </div>
                     </div>
-                    <Attribute title="Created" description="14 mars 2000" />
+                    <Attribute title="Birthday" description="14 mars 2000" />
                 </div>
                 <div>
                     <div className="font-bold text-2xl">Attributes</div>
                     <div className="flex flex-col">
                         <div className="flex flex-row">
-                            <Attribute title="Color" description="Red" />
-                            <Attribute title="Color" description="Red" />
-                            <Attribute title="Color" description="Red" />
+                            <Attribute title="Horn" description="Red" />
+                            <Attribute title="Fur" description="Red" />
+                            <Attribute title="Hoof" description="Red" />
                         </div>
                         <div className="flex flex-row">
-                            <Attribute title="Color" description="Red" />
-                            <Attribute title="Color" description="Red" />
-                            <Attribute title="Color" description="Red" />
+                            <Attribute title="Ear" description="Red" />
+                            <Attribute title="Tail" description="Red" />
+                            <Attribute title="Decoration" description="Red" />
                         </div>
                     </div>
                 </div>

@@ -259,8 +259,8 @@ function Wildians(Wildians) {
             <Image
                 src={Wildians.image}
                 alt={Wildians.title}
-                width={200}
-                height={250}
+                width={280}
+                height={280}
             />
             <div className="text-center body-highlight-typo py-4">
                 {Wildians.pillar}
