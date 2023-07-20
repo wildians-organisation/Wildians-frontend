@@ -16124,7 +16124,7 @@ select {
 }
 .white-btn-style {
     border-radius: 20px;
-    border: 2px solid var(--blanc, #FFF);
+    border: 2px solid var(--blanc, #fff);
 }
 
 .hover\:learn-hover:hover {

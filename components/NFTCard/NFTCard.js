@@ -28,7 +28,9 @@ function NFTCard({ metadata }) {
                     <div className="font-bold text-2xl">Bio</div>
                     <div className="flex justify-between">
                         <div>By adopting me, you supported WWF</div>
-                        <div className="text-white md:cursor-pointer btn-layout white-btn-style body-highlight-typo hover:learn-hover"/**className="m-auto rounded-full border-white border-solid"**/>
+                        <div
+                            className="text-white md:cursor-pointer btn-layout white-btn-style body-highlight-typo hover:learn-hover" /**className="m-auto rounded-full border-white border-solid"**/
+                        >
                             <div className="text-xs">Learn more &gt;</div>
                         </div>
                     </div>
