@@ -16184,10 +16184,10 @@ select {
 .nft-card-style {
     border-radius: 20px;
     background: var(--vert-fonc, #36544f);
-    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.30);
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
-.nft-name-layout{
+.nft-name-layout {
     display: flex;
     width: 520px;
     height: 48px;
@@ -16196,7 +16196,7 @@ select {
 }
 
 .nft-id-font {
-    color: var(--blanc, #FFF);
+    color: var(--blanc, #fff);
 
     /* Body highlight */
     font-family: Mulish;
@@ -16299,7 +16299,7 @@ select {
 
 .attribute-box-style {
     border-radius: var(--desktop-border-radius, 20px);
-    background: var(--card-background, #3D5953);
+    background: var(--card-background, #3d5953);
     box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.05);
 }
 
@@ -16318,5 +16318,5 @@ select {
 }
 
 .pic-border {
-    border-radius: 20px 0px 0px 20px; 
+    border-radius: 20px 0px 0px 20px;
 }
