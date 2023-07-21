@@ -51,19 +51,22 @@ export default function UserNFTs(props) {
                 <Header />
             </div>
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-                <div className="text-black text-6vw  font-goghbold text-white">
-                    COLLECTION
+                <div className="header-typo text-white ml-24">COLLECTION</div>
+                <div className="w-1000 justify-center align-items-center">
+                    {userNFTs.map((nft, key) => (
+                        <div
+                            key={key}
+                            className="mb-20 mt-24 ml-24 nft-card-layout justify-center"
+                        >
+                            <div className="md:hidden aspect-w-1 aspect-h-1 w-11/12 m-auto overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                                <NFTCardMobile metadata={nft} />
+                            </div>
+                            <div>
+                                <NFTCard metadata={nft} />
+                            </div>
+                        </div>
+                    ))}
                 </div>
-                {userNFTs.map((nft, key) => (
-                    <div key={key} className="m-8">
-                        <div className="md:hidden aspect-w-1 aspect-h-1 w-11/12 m-auto overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                            <NFTCardMobile metadata={nft} />
-                        </div>
-                        <div className="md:flex hidden md:aspect-w-1 md:aspect-h-1 md:w-11/12 md:m-auto md:overflow-hidden md:rounded-lg md:bg-gray-200 md:xl:aspect-w-7 md:xl:aspect-h-8">
-                            <NFTCard metadata={nft} />
-                        </div>
-                    </div>
-                ))}
             </div>
         </div>
     );
