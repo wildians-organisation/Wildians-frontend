@@ -355,7 +355,6 @@ function BottomPart() {
                     </button>
                     <button
                         onClick={() => {
-                            handleClose();
                             handleMint();
                         }}
                         className="mint-button text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover "
