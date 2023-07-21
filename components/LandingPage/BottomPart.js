@@ -20,9 +20,13 @@ function BottomPart() {
         { name: "SOCIETY", value: 0 },
         { name: "ECONOMY", value: 0 }
     ]);
-    const [currentSelectedOng, setCurrentSelectedOng] = React.useState("")
-    const [currentNFTAddress, setCurrentNFTAddress] = React.useState("")
-    const [display_ong_selection, setDisplay_ong_selection] = React.useState(["", "", ""])
+    const [currentSelectedOng, setCurrentSelectedOng] = React.useState("");
+    const [currentNFTAddress, setCurrentNFTAddress] = React.useState("");
+    const [display_ong_selection, setDisplay_ong_selection] = React.useState([
+        "",
+        "",
+        ""
+    ]);
     const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
     const [whitelistedUsers, setWhitelistedUsers] = React.useState([]);
@@ -63,15 +67,15 @@ function BottomPart() {
     async function updateSelectedOngNFTAddress() {
         for (const element in display_ong_selection) {
             if (display_ong_selection[element] != "") {
-                setCurrentSelectedOng(display_ong_selection[element])
+                setCurrentSelectedOng(display_ong_selection[element]);
                 if (deerONG.includes(display_ong_selection[element])) {
-                    setCurrentNFTAddress(config.DEER_NFT)
+                    setCurrentNFTAddress(config.DEER_NFT);
                 }
                 if (bullONG.includes(display_ong_selection[element])) {
-                    setCurrentNFTAddress(config.BULL_NFT)
+                    setCurrentNFTAddress(config.BULL_NFT);
                 }
                 if (wolfONG.includes(display_ong_selection[element])) {
-                    setCurrentNFTAddress(config.WOLF_NFT)
+                    setCurrentNFTAddress(config.WOLF_NFT);
                 }
             }
         }
@@ -227,67 +231,67 @@ function BottomPart() {
         mintNFT(currentNFTAddress, currentSelectedOng);
     };
     const getSmartContract = async () => {
-        const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
-        return contract;
-    },
-    /*** Function to mint the nft ***/
-    mintNFT = async (url, currentSelectedONG) => {
-        await disconnect();
-        await connectToWallet();
-        let tmpNbTokenMinted = nbTokenMinted + 1;
-        setNbTokenMinted(tmpNbTokenMinted);
-        const contract = await getSmartContract();
-        url = char2Bytes(url);
-        const activeAccount = await wallet.client.getActiveAccount();
-        setUserAddress(activeAccount.address);
+            const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
+            return contract;
+        },
+        /*** Function to mint the nft ***/
+        mintNFT = async (url, currentSelectedONG) => {
+            await disconnect();
+            await connectToWallet();
+            let tmpNbTokenMinted = nbTokenMinted + 1;
+            setNbTokenMinted(tmpNbTokenMinted);
+            const contract = await getSmartContract();
+            url = char2Bytes(url);
+            const activeAccount = await wallet.client.getActiveAccount();
+            setUserAddress(activeAccount.address);
 
-        const querySnapshotWL = await getDocs(whitelistCollection);
-        const whitelistedUsers = querySnapshotWL.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data()
-        }));
+            const querySnapshotWL = await getDocs(whitelistCollection);
+            const whitelistedUsers = querySnapshotWL.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }));
 
-        const querySnapshotSales = await getDocs(salesCollection);
-        const salesStatus = querySnapshotSales.docs[0].data();
+            const querySnapshotSales = await getDocs(salesCollection);
+            const salesStatus = querySnapshotSales.docs[0].data();
 
-        let is_whitelisted = false;
-        whitelistedUsers.map((user) => {
-            if (user.formData.adresseWallet == activeAccount.address) {
-                is_whitelisted = true;
-                return;
+            let is_whitelisted = false;
+            whitelistedUsers.map((user) => {
+                if (user.formData.adresseWallet == activeAccount.address) {
+                    is_whitelisted = true;
+                    return;
+                }
+            });
+
+            let normal_sales_open = salesStatus.status;
+            let WL_sales_open = salesStatus.whitelistStatus;
+            //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
+            try {
+                const op = await contract.methods
+                    .big_boi_mint(
+                        WL_sales_open,
+                        activeAccount.address,
+                        nftToMint,
+                        1000 * config.TEZOS_CONVERTER,
+                        is_whitelisted,
+                        MichelsonMap.fromLiteral({ "": url }),
+                        normal_sales_open,
+                        currentSelectedONG,
+                        token_id
+                    )
+                    .send({ amount: 1000 });
+
+                await op.confirmation(3);
+                getTransactionsInformations();
+                SnackbarContext.showSnackbar(
+                    "Successful transaction!",
+                    "success"
+                );
+                return op;
+            } catch (error) {
+                SnackbarContext.showSnackbar("Transaction failed", "error");
             }
-        });
+        };
 
-        let normal_sales_open = salesStatus.status;
-        let WL_sales_open = salesStatus.whitelistStatus;
-        //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
-        try {
-            const op = await contract.methods
-                .big_boi_mint(
-                    WL_sales_open,
-                    activeAccount.address,
-                    nftToMint,
-                    1000 * config.TEZOS_CONVERTER,
-                    is_whitelisted,
-                    MichelsonMap.fromLiteral({ "": url }),
-                    normal_sales_open,
-                    currentSelectedONG,
-                    token_id
-                )
-                .send({ amount: 1000 });
-            
-            await op.confirmation(3);
-            getTransactionsInformations();
-            SnackbarContext.showSnackbar(
-                "Successful transaction!",
-                "success"
-            );
-            return op;
-        } catch (error) {
-            SnackbarContext.showSnackbar("Transaction failed", "error");
-        }
-    };
-    
     React.useEffect(() => {
         const timer = setInterval(() => {
             setTime(new Date().toLocaleTimeString().slice(0, 5));
@@ -341,7 +345,7 @@ function BottomPart() {
                         display_ong_selection={display_ong_selection}
                     />
                 </div>
-                
+
                 <div className="bottom-buttons">
                     <button
                         className="take-the-test-button md:uppercase default-connexion hover:connexion body-highlight-typo text-greeny md:whitespace-nowrap md:hover:text-greenkaki"

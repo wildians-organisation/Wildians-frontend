@@ -16247,34 +16247,37 @@ select {
     align-items: center;
     gap: var(--desktop-spacing-medium, 40px);
     border-radius: var(--desktop-border-radius, 20px);
-    background: var(--vert-fonc, #36544F);
+    background: var(--vert-fonc, #36544f);
 }
 
 .nft-frame-image-deer {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
-    background: url("../public/img/v2/visuels/Deer.png"), lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    background: url("../public/img/v2/visuels/Deer.png"),
+        lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
-    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.30);
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
 .nft-frame-image-wolf {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
-    background: url("../public/img/v2/visuels/Wolf.png"), lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    background: url("../public/img/v2/visuels/Wolf.png"),
+        lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
-    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.30);
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
 .nft-frame-image-bull {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
-    background: url("../public/img/v2/visuels/Bull.png"), lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    background: url("../public/img/v2/visuels/Bull.png"),
+        lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
-    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.30);
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
 .nft-global-frame {
@@ -16284,10 +16287,9 @@ select {
 }
 
 .nft-frame-description {
-
     width: 273px;
     height: 63px;
-    color: var(--blanc, #FFF);
+    color: var(--blanc, #fff);
     text-align: center;
     /* Body */
     font-family: Mulish;
@@ -16306,7 +16308,7 @@ select {
 }
 
 .nft-frame-adopted {
-    color: var(--turquoise, #90E0D3);
+    color: var(--turquoise, #90e0d3);
     text-align: center;
     /* Body highlight */
     font-family: Mulish;
@@ -16325,7 +16327,7 @@ select {
 
 .nft-frame-ONG-name {
     text-align: center;
-    color: var(--blanc, #FFF);
+    color: var(--blanc, #fff);
     /* Body italic */
     font-family: Mulish;
     font-size: 16px;
@@ -16362,5 +16364,5 @@ select {
     align-items: center;
     gap: 10px;
     border-radius: var(--desktop-border-radius, 20px);
-    border: 2px solid var(--turquoise, #90E0D3);
+    border: 2px solid var(--turquoise, #90e0d3);
 }
