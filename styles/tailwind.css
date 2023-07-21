@@ -3046,6 +3046,9 @@ select {
 
 .bg-forest-bg {
     background-image: url("../public/img/v2/visuels/ELWINFOREST.jpg");
+    filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.15));
+    background-size: cover;
+    background-position: center-top;
 }
 
 .bg-wood-bg {
@@ -6088,6 +6091,10 @@ select {
 
 .h-500-px {
     height: 55rem;
+}
+
+.h-1000-px {
+    height: 70rem;
 }
 
 .text-xs {
@@ -16166,15 +16173,6 @@ select {
     height: 65px;
 }
 
-.test-layout {
-    display: flex;
-    width: 205px;
-    padding: 8px 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
 .nft-card-layout {
     width: 1000px;
     height: 600px;
@@ -16222,7 +16220,7 @@ select {
     background-image: url("../public/img/v2/visuels/Hero_Collection.png");
     background-repeat: no-repeat;
     background-position: center top;
-    background-size: contain;
+    background-size: cover;
     position: relative;
 }
 
@@ -16239,4 +16237,130 @@ select {
 .header-logo {
     width: 89px;
     height: 78px;
+}
+
+.nft-frame {
+    display: flex;
+    padding: var(--desktop-spacing-medium, 40px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--desktop-spacing-medium, 40px);
+    border-radius: var(--desktop-border-radius, 20px);
+    background: var(--vert-fonc, #36544F);
+}
+
+.nft-frame-image-deer {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--desktop-border-radius, 20px);
+    background: url("../public/img/v2/visuels/Deer.png"), lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    /* Shading miniatures */
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.30);
+}
+
+.nft-frame-image-wolf {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--desktop-border-radius, 20px);
+    background: url("../public/img/v2/visuels/Wolf.png"), lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    /* Shading miniatures */
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.30);
+}
+
+.nft-frame-image-bull {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--desktop-border-radius, 20px);
+    background: url("../public/img/v2/visuels/Bull.png"), lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    /* Shading miniatures */
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.30);
+}
+
+.nft-global-frame {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--desktop-spacing-medium, 40px);
+}
+
+.nft-frame-description {
+
+    width: 273px;
+    height: 63px;
+    color: var(--blanc, #FFF);
+    text-align: center;
+    /* Body */
+    font-family: Mulish;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.nft-frame-below-nft {
+    display: flex;
+    width: 280px;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--desktop-spacing-small, 16px);
+}
+
+.nft-frame-adopted {
+    color: var(--turquoise, #90E0D3);
+    text-align: center;
+    /* Body highlight */
+    font-family: Mulish;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.display-pillars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--desktop-spacing-small, 16px);
+}
+
+.nft-frame-ONG-name {
+    text-align: center;
+    color: var(--blanc, #FFF);
+    /* Body italic */
+    font-family: Mulish;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.bottom-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 36px;
+    gap: var(--desktop-spacing-medium, 40px);
+}
+
+.mint-button {
+    display: flex;
+    padding: 8px 20px;
+    width: 205px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.take-the-test-button {
+    display: flex;
+    width: 205px;
+    height: 36px;
+    padding: 8px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: var(--desktop-border-radius, 20px);
+    border: 2px solid var(--turquoise, #90E0D3);
 }

@@ -7,6 +7,7 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import axios from "axios";
 import ModalONG from "./ModalONG.js";
+import BottomPart from "../LandingPage/BottomPart.js";
 import { firestore } from "../../firebaseConfig";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
 import SnackbarService from "../SnackbarService/SnackbarService";
@@ -22,7 +23,7 @@ function Wildians(Wildians) {
     const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
     const [userAddress, setUserAddress] = React.useState("");
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
-    const [selectedONG, setSelectedONG] = React.useState(Wildians.ong_list[0]);
+    const [selectedONG, setSelectedONG] = React.useState("");
     const salesCollection = collection(firestore, "sales");
     const [statusSaleList, setStatusSaleList] = React.useState([]);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
@@ -32,7 +33,17 @@ function Wildians(Wildians) {
     const [day, setDay] = React.useState(new Date().toISOString().slice(0, 10));
     const [whitelistedUsers, setWhitelistedUsers] = React.useState([]);
     const whitelistCollection = collection(firestore, "whitelist");
-
+    const deerONG = ["/img/v2/visuels/WWF.png", "/img/v2/visuels/Oceana.png", "/img/v2/visuels/Greenpeace.png"];
+    const wolfONG = [
+        "/img/v2/visuels/Action against hunger.png",
+        "/img/v2/visuels/Save the children.png",
+        "/img/v2/visuels/Charity_ Water.png"
+    ];
+    const bullONG = [
+        "/img/v2/visuels/Amnesty International.png",
+        "/img/v2/visuels/AIDS.png",
+        "/img/v2/visuels/Wikimedia Found.png",
+    ];
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -191,7 +202,61 @@ function Wildians(Wildians) {
             return null;
         }
     };
-
+    const renderBottompart = () => {
+        if (showModal) {
+            return (
+                <BottomPart
+                    Wildians={Wildians}
+                    onMint={mintNFT}
+                    ONG={selectedONG}
+                    isStatusOpen={isStatusOpen}
+                />
+                
+            );
+        } else {
+            return null;
+        }
+    };
+    const handleONGButtonClick = (item) => {
+        var ONG_name = ""
+        if (item == "/img/v2/visuels/WWF.png") {
+            ONG_name = "WWF"
+            Wildians.set_display_ong_selection([ONG_name, "", ""])
+        }
+        if (item == "/img/v2/visuels/Oceana.png") {
+            ONG_name = "Oceana"
+            Wildians.set_display_ong_selection([ONG_name, "", ""])
+        }
+        if (item == "/img/v2/visuels/Greenpeace.png") {
+            ONG_name = "GreenPeace"
+            Wildians.set_display_ong_selection([ONG_name, "", ""])
+        }
+        if (item == "/img/v2/visuels/Action against hunger.png") {
+            ONG_name = "Action Against Hunger"
+            Wildians.set_display_ong_selection(["", ONG_name, ""])
+        }
+        if (item == "/img/v2/visuels/Save the children.png") {
+            ONG_name = "Save The Children"
+            Wildians.set_display_ong_selection(["", ONG_name, ""])
+        }
+        if (item == "/img/v2/visuels/Charity_ Water.png") {
+            ONG_name = "Charity: Water"
+            Wildians.set_display_ong_selection(["", ONG_name, ""])
+        }
+        if (item == "/img/v2/visuels/Amnesty International.png") {
+            ONG_name = "Amnesty International"
+            Wildians.set_display_ong_selection(["", "", ONG_name])
+        }
+        if (item == "/img/v2/visuels/AIDS.png") {
+            ONG_name = "AIDS"
+            Wildians.set_display_ong_selection(["", "", ONG_name])
+        }
+        if (item == "/img/v2/visuels/Wikimedia Found.png") {
+            ONG_name = "Wikimedia Foundation (Wikipedia)"
+            Wildians.set_display_ong_selection(["", "", ONG_name])
+        }
+        setSelectedONG(ONG_name)
+    };
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
             const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
@@ -255,33 +320,62 @@ function Wildians(Wildians) {
         };
 
     return (
-        <div className="flex flex-col justify-end items-center w-4/12">
-            <Image
-                src={Wildians.image}
-                alt={Wildians.title}
-                width={280}
-                height={280}
-            />
+        <div className="nft-frame">
+        {Wildians.image === "/img/v2/visuels/Bull.png" ? (
+            <div className="nft-frame-image-bull"></div>
+        ) : Wildians.image === "/img/v2/visuels/Deer.png" ? (
+            <div className="nft-frame-image-deer"></div>
+        ) : Wildians.image === "/img/v2/visuels/Wolf.png" ? (
+            <div className="nft-frame-image-wolf"></div>
+        ) : null}
+        <div className="nft-frame-below-img">
             <div className="text-center body-highlight-typo py-4">
                 {Wildians.pillar}
             </div>
-            <div className="text-center body-typo">
-                {Wildians.description} {selectedONG}.
+            <div className="nft-frame-description">
+                {Wildians.description}
             </div>
 
-            <div className="text-center body-highlight-typo md:uppercase text-greeny py-4">
+            <div className="nft-frame-adopted">
                 {Wildians.nft_sold} adopted !
             </div>
-
-            <button
-                onClick={handleModal}
-                className="mintNFT md:uppercase btn-layout default-connexion hover:connexion body-highlight-typo text-greeny md:whitespace-nowrap md:hover:text-greenkaki"
-                /**className="mintNFT text-gray-900 group flex rounded-full items-center px-2 py-2 md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap "**/
-                type="button"
-            >
-                Select an ONG
-            </button>
-            {renderModal()}
+            <div className="display-pillars">
+                {Wildians.image === "/img/v2/visuels/Bull.png" ? (
+                    bullONG.map((item, idx) => (
+                        <button
+                            onClick={() => handleONGButtonClick(item)}
+                        >
+                            <img src={item} width={40} height={40} />
+                        </button>
+                    ))
+                ) : Wildians.image === "/img/v2/visuels/Deer.png" ? (
+                    deerONG.map((item, idx) => (
+                        <button
+                        onClick={() => handleONGButtonClick(item)}
+                        >
+                            <img src={item} width={40} height={40} />
+                        </button>                   
+                    ))
+                ) : Wildians.image === "/img/v2/visuels/Wolf.png" ? (
+                    wolfONG.map((item, idx) => (
+                        <button
+                        onClick={() => handleONGButtonClick(item)}
+                        >
+                            <img src={item} width={40} height={40} />
+                        </button>
+                    ))
+                ) : null}
+            </div>
+            <div className="nft-frame-ONG-name">
+            {Wildians.image === "/img/v2/visuels/Bull.png" ? (
+                Wildians.display_ong_selection[2]
+            ) : Wildians.image === "/img/v2/visuels/Deer.png" ? (
+                Wildians.display_ong_selection[0]
+            ) : Wildians.image === "/img/v2/visuels/Wolf.png" ? (
+                Wildians.display_ong_selection[1]
+            ) : null}
+            </div>
+        </div>
         </div>
     );
 }
