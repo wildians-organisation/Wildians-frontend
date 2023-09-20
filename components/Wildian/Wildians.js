@@ -41,7 +41,7 @@ function Wildians(Wildians) {
     const wolfONG = [
         "/img/v2/visuels/Action against hunger.png",
         "/img/v2/visuels/Save the children.png",
-        "/img/v2/visuels/Charity_ Water.png"
+        "/img/v2/visuels/Charity_ water.png"
     ];
     const bullONG = [
         "/img/v2/visuels/Amnesty International.png",

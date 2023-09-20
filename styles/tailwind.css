@@ -16245,7 +16245,7 @@ select {
     background-image: url("../public/img/v2/visuels/Hero_Collection.png");
     background-repeat: no-repeat;
     background-position: center top;
-    background-size: cover;
+    background-size: contain;
     position: relative;
 }
 
