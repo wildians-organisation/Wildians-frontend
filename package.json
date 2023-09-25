@@ -7,11 +7,16 @@
   "license": "MIT",
   "dependencies": {
     "@airgap/beacon-sdk": "^4.0.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@headlessui/react": "^1.7.14",
+    "@mui/material": "^5.13.6",
     "@taquito/beacon-wallet": "^16.1.2",
     "@taquito/taquito": "^16.1.2",
     "@taquito/tzip16": "^16.1.2",
+    "axios": "^1.4.0",
+    "currency.js": "^2.0.4",
     "firebase": "^9.22.0",
     "headlessui": "^0.0.0",
     "next": "^13.4.2",
@@ -34,6 +39,11 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   },
   "browserslist": {
     "production": [

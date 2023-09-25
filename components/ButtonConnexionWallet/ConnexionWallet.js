@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import SnackbarService from "../SnackbarService/SnackbarService";
 import ConnectedButton from "./ConnectedButton";
 import { TezosToolkit } from "@taquito/taquito";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -51,6 +52,8 @@ export default function ConnexionWallet() {
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
     const [userAddress, setUserAddress] = React.useState(null);
 
+    const SnackbarContext = useContext(SnackbarService);
+
     React.useEffect(() => {
         (async () => {
             const initialUserAdress = localStorage.getItem("userAdress");
@@ -69,6 +72,7 @@ export default function ConnexionWallet() {
         try {
             const response = await addWallet(walletAddress);
         } catch (e) {
+            SnackbarContext.showSnackbar("Wallet connection failure", "error");
             console.error(e);
         }
     };
@@ -87,6 +91,10 @@ export default function ConnexionWallet() {
             setUserAddress(tmp);
             localStorage.setItem("userAdress", tmp);
             addWalletToFirebase(tmp);
+            SnackbarContext.showSnackbar(
+                "Successful wallet connection!",
+                "success"
+            );
         }
     };
 
@@ -97,6 +105,7 @@ export default function ConnexionWallet() {
         await wallet.disconnect();
         localStorage.removeItem("userAdress");
         setUserAddress(null);
+        SnackbarContext.showSnackbar("Successful wallet logout!", "success");
     };
 
     /*** Render ***/

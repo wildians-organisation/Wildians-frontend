@@ -1,20 +1,31 @@
 import React from "react";
 import ReactModal from "react-modal";
 
-function ModalONG({ Wildians, onMint, onClose, isOpen, setONG }) {
-    const [selectedONG, setSelectedONG] = React.useState(Wildians.ong_list[0]);
-    setONG(selectedONG);
+function ModalONG({
+    Wildians,
+    onMint,
+    onClose,
+    isOpen,
+    setONG,
+    ONG,
+    isStatusOpen,
+}) {
+    const [selectedONG, setSelectedONG] = React.useState(ONG);
+    const [isModalOpen, setIsModalOpen] = React.useState(isOpen);
 
     const handleOptionChange = (event) => {
-        setSelectedONG(event.target.value);
-        setONG(selectedONG);
+        const selectedValue = event.target.value;
+        setSelectedONG(selectedValue);
+        setONG(selectedValue);
     };
 
     const handleMint = () => {
-        if (selectedONG) {
-            onClose();
-            onMint(Wildians.nft_adress, selectedONG);
-        }
+        onMint(Wildians.nft_adress, selectedONG);
+    };
+
+    const handleClose = () => {
+        setIsModalOpen(false);
+        onClose();
     };
 
     const modalStyles = {
@@ -36,8 +47,8 @@ function ModalONG({ Wildians, onMint, onClose, isOpen, setONG }) {
     return (
         <div className="options-window">
             <ReactModal
-                isOpen={isOpen}
-                onRequestClose={onClose}
+                isOpen={isModalOpen}
+                onRequestClose={handleClose}
                 contentLabel="Options ONG"
                 style={modalStyles}
                 ariaHideApp={false}
@@ -50,7 +61,7 @@ function ModalONG({ Wildians, onMint, onClose, isOpen, setONG }) {
                                 type="radio"
                                 value={item}
                                 onChange={handleOptionChange}
-                                checked={selectedONG == item}
+                                checked={selectedONG === item}
                             />
                             <label> {item}</label>
                         </div>
@@ -59,15 +70,20 @@ function ModalONG({ Wildians, onMint, onClose, isOpen, setONG }) {
                 <br></br>
                 <div className="mint-button">
                     <button
-                        onClick={handleMint}
+                        onClick={() => {
+                            handleClose();
+                            handleMint();
+                        }}
                         className="mintNFT text-gray-900 group flex rounded-full items-center px-2 py-2 md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny  md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap "
                         type="button"
+                        disabled={!isStatusOpen}
                     >
-                        Mint
+                        {!isStatusOpen ? "Sells are currently closed" : "Mint"}
                     </button>
                 </div>
             </ReactModal>
         </div>
     );
 }
+
 export default ModalONG;
