@@ -1,5 +1,7 @@
 import React from "react";
 import Header from "components/Header/Header";
+import TezosToEuroConverter from "../ConversionService/ConversionService";
+
 function TopPart() {
     return (
         <>
@@ -18,6 +20,20 @@ function TopPart() {
                         style={{ width: "fit-content" }}
                     >
                         GET YOUR WILDIAN
+                    </div>
+                    <div
+                        className="absolute bottom-5 right-6 bg-emerald-800 rounded-xl p-15 flex justify-center items-center"
+                        style={{ boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)", width: "250px", height: "100px" }}
+                    >
+                        <div>
+                            <div>
+                                <span className="flex justify-center text-sm text-greeny"><label>WE PROUDLY DONATED</label></span>
+                            </div>
+                            <span className="flex justify-center text-2xl text-white"><TezosToEuroConverter/></span>
+                            <div>
+                                <span className="flex justify-center text-sm text-greeny"><label>TO SUSTAINABLE ASSOCIATIONS</label></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
