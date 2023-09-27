@@ -1,6 +1,6 @@
 import React from "react";
-import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
-import HeaderDropdown from "components/Dropdowns/HeaderDropdown";
+import ConnexionWallet from "./../../components/ButtonConnexionWallet/ConnexionWallet";
+import HeaderDropdown from "./../../components/Dropdowns/HeaderDropdown";
 import Link from "next/link";
 import Image from "next/image";
 function Header() {
@@ -28,8 +28,8 @@ function Header() {
                     </div>
                 </Link>
             </div>
-            <div className="md:hidden" id="dropdown">
-                <HeaderDropdown id="header_dropdown " />
+            <div className="md:hidden">
+                <HeaderDropdown />
             </div>
             <div className="md:flex hidden md:items-center">
                 <div className="flex gap-2">

@@ -193,13 +193,13 @@ notus-nextjs
 ├── layouts
 │   ├── Admin.js
 │   └── Auth.js
-├── next.config.js
+├── next.config.tsx
 ├── package.json
 ├── pages
-│   ├── 404.js
-│   ├── _app.js
-│   ├── _document.js
-│   ├── _error.js
+│   ├── 404.tsx
+│   ├── _app.tsx
+│   ├── _document.tsx
+│   ├── _error.tsx
 │   ├── admin
 │   │   ├── dashboard.js
 │   │   ├── maps.js
@@ -208,10 +208,10 @@ notus-nextjs
 │   ├── auth
 │   │   ├── login.js
 │   │   └── register.js
-│   ├── index.js
+│   ├── index.tsx
 │   ├── landing.js
 │   └── profile.js
-└── tailwind.config.js
+└── tailwind.config.tsx
 ```
 
 ## Browser Support

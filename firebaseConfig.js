@@ -1,4 +1,4 @@
-import * as config from "./config/config.js";
+import * as config from "./config/config.tsx";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";

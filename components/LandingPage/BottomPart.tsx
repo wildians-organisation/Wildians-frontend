@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import * as config from "../../config/config.js";
-import Wildians from "components/Wildian/Wildians";
+import * as config from "./../../config/config";
+import Wildians from "../Wildian/Wildians";
 
 function BottomPart() {
     let [dataFinance, setDataFinance] = React.useState([

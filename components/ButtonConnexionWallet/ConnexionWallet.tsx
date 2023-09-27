@@ -4,7 +4,7 @@ import ConnectedButton from "./ConnectedButton";
 import { TezosToolkit } from "@taquito/taquito";
 import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import * as config from "../../config/config.js";
+import * as config from "../../config/config";
 import Link from "next/link";
 import { firestore } from "../../firebaseConfig";
 import {
@@ -48,9 +48,9 @@ const network = { type: NetworkType.GHOSTNET };
 
 /*** Function to connect to wallet, with useState to avoid creating multiple instances ***/
 export default function ConnexionWallet() {
-    const [wallet, setWallet] = React.useState({});
+    const [wallet, setWallet] = React.useState<BeaconWallet>();
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
-    const [userAddress, setUserAddress] = React.useState(null);
+    const [userAddress, setUserAddress] = React.useState<string | null>(null);
 
     const SnackbarContext = useContext(SnackbarService);
 
@@ -72,26 +72,26 @@ export default function ConnexionWallet() {
         try {
             const response = await addWallet(walletAddress);
         } catch (e) {
-            SnackbarContext.showSnackbar("Wallet connection failure", "error");
+            SnackbarContext!.showSnackbar("Wallet connection failure", "error");
             console.error(e);
         }
     };
 
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
-        const activeAccount = await wallet.client.getActiveAccount();
+        const activeAccount = await wallet!.client.getActiveAccount();
         if (activeAccount) {
             setUserAddress(activeAccount.address);
             localStorage.setItem("userAdress", activeAccount.address);
         } else {
-            await wallet.requestPermissions({
+            await wallet!.requestPermissions({
                 network: network
             });
-            let tmp = await wallet.getPKH();
+            let tmp = await wallet!.getPKH();
             setUserAddress(tmp);
             localStorage.setItem("userAdress", tmp);
             addWalletToFirebase(tmp);
-            SnackbarContext.showSnackbar(
+            SnackbarContext!.showSnackbar(
                 "Successful wallet connection!",
                 "success"
             );
@@ -101,11 +101,11 @@ export default function ConnexionWallet() {
     /*** Function to disconnect to the wallet ***/
     const disconnect = async () => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        await wallet.clearActiveAccount();
-        await wallet.disconnect();
+        await wallet!.clearActiveAccount();
+        await wallet!.disconnect();
         localStorage.removeItem("userAdress");
         setUserAddress(null);
-        SnackbarContext.showSnackbar("Successful wallet logout!", "success");
+        SnackbarContext!.showSnackbar("Successful wallet logout!", "success");
     };
 
     /*** Render ***/
@@ -113,8 +113,7 @@ export default function ConnexionWallet() {
         <div className="md:flex items-center md:w-min">
             <div
                 onClick={() => connectToWallet()}
-                className="connexionWallet group flex items-center px-2 py-2 md:h-min md:text-sm  md:text-greenkaki md:bg-greeny md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:hover:bg-greenkaki md:hover:text-greeny md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap"
-                type="button"
+                className="bg-red-200 connexionWallet group flex items-center px-2 py-2 md:h-min md:text-sm  md:text-greenkaki md:bg-greeny md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:hover:bg-greenkaki md:hover:text-greeny md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap"
             >
                 {!userAddress ? (
                     <div>Connect Your Wallet</div>

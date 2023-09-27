@@ -8,9 +8,7 @@ function ModalONG({
     isOpen,
     setONG,
     ONG,
-    isStatusOpen,
-    userAddress,
-    connectToWallet
+    isStatusOpen
 }) {
     const [selectedONG, setSelectedONG] = React.useState(ONG);
     const [isModalOpen, setIsModalOpen] = React.useState(isOpen);
