@@ -259,7 +259,7 @@ function Wildians(Wildians) {
             ONG_name = "Save The Children";
             Wildians.set_display_ong_selection(["", ONG_name, ""]);
         }
-        if (item == "/img/v2/visuels/Charity_ Water.png") {
+        if (item == "/img/v2/visuels/Charity_ water.png") {
             ONG_name = "Charity: Water";
             Wildians.set_display_ong_selection(["", ONG_name, ""]);
         }
