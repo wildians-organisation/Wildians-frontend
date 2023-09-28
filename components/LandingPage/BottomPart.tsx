@@ -11,7 +11,9 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
 import { NetworkType } from "@airgap/beacon-sdk";
 import { char2Bytes } from "@taquito/tzip16";
-import SnackbarService, { SnackbarType } from "../SnackbarService/SnackbarService";
+import SnackbarService, {
+    SnackbarType
+} from "../SnackbarService/SnackbarService";
 
 const network = { type: NetworkType.GHOSTNET };
 
@@ -293,7 +295,10 @@ function BottomPart() {
                 );
                 return op;
             } catch (error) {
-                SnackbarContext!.showSnackbar("Transaction failed", SnackbarType.Error);
+                SnackbarContext!.showSnackbar(
+                    "Transaction failed",
+                    SnackbarType.Error
+                );
             }
         };
 
