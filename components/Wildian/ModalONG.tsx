@@ -8,7 +8,7 @@ function ModalONG({
     isOpen,
     setONG,
     ONG,
-    isStatusOpen,
+    isStatusOpen
 }) {
     const [selectedONG, setSelectedONG] = React.useState(ONG);
     const [isModalOpen, setIsModalOpen] = React.useState(isOpen);

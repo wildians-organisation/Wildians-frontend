@@ -1,27 +1,49 @@
 import React, { useContext } from "react";
 import Image from "next/image";
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
-import * as config from "../../config/config.js";
+import * as config from "../../config/config";
 import { char2Bytes } from "@taquito/tzip16";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import axios from "axios";
-import ModalONG from "./ModalONG.js";
-import BottomPart from "../LandingPage/BottomPart.js";
+import ModalONG from "./ModalONG";
+import BottomPart from "../LandingPage/BottomPart";
 import { firestore } from "../../firebaseConfig";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
-import SnackbarService from "../SnackbarService/SnackbarService";
+import SnackbarService, {
+    SnackbarType
+} from "../SnackbarService/SnackbarService";
 const nftToMint = 1;
 
 const network = { type: NetworkType.GHOSTNET };
 
+export interface WhitelistDocument {
+    id: string;
+    formData?: {
+        commentaire: string;
+        plateformeContact: string;
+        loginMail: string;
+        adresseWallet: string;
+    };
+}
+
+export interface StatusSale {
+    id: string;
+    whitelistStatus: boolean;
+    whitelistOpenDay: Date;
+    whitelistOpenTime: Date;
+    status: boolean;
+    openDay: string;
+    openTime: string;
+}
+
 function Wildians(Wildians) {
-    const [wallet, setWallet] = React.useState({});
+    const [wallet, setWallet] = React.useState<BeaconWallet>();
     const SnackbarContext = useContext(SnackbarService);
     const [showModal, setShowModal] = React.useState(false);
     const [token_id, setToken_id] = React.useState(-1);
     const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
-    const [userAddress, setUserAddress] = React.useState("");
+    const [userAddress, setUserAddress] = React.useState<string | null>("");
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
     const [selectedONG, setSelectedONG] = React.useState("");
     const salesCollection = collection(firestore, "sales");
@@ -31,7 +53,9 @@ function Wildians(Wildians) {
         new Date().toLocaleTimeString().slice(0, 5)
     );
     const [day, setDay] = React.useState(new Date().toISOString().slice(0, 10));
-    const [whitelistedUsers, setWhitelistedUsers] = React.useState([]);
+    const [whitelistedUsers, setWhitelistedUsers] = React.useState<string[]>(
+        []
+    );
     const whitelistCollection = collection(firestore, "whitelist");
     const deerONG = [
         "/img/v2/visuels/WWF.png",
@@ -77,12 +101,12 @@ function Wildians(Wildians) {
     }
 
     function handleScheduledOpening(sales) {
-        fetchWhitelistData().then((address) => {
+        fetchWhitelistData().then((address: string[]) => {
             if (sales["openDay"] !== "") {
                 setIsStatusOpen(isOpenDay(sales["openDay"], sales["openTime"]));
             } else setIsStatusOpen(sales["status"]);
 
-            if (address.includes(userAddress)) {
+            if (address.includes(userAddress!)) {
                 handleWhitelistScheduledOpening(sales);
             }
         });
@@ -95,9 +119,9 @@ function Wildians(Wildians) {
             id: doc.id,
             ...doc.data()
         }));
-        let tmpWhitelist = [];
-        documents.forEach((doc) => {
-            const whitelistAddress = doc.formData["adresseWallet"];
+        let tmpWhitelist: string[] = [];
+        documents.forEach((doc: WhitelistDocument) => {
+            const whitelistAddress = doc.formData!["adresseWallet"];
             tmpWhitelist.push(whitelistAddress);
         });
         setWhitelistedUsers(tmpWhitelist);
@@ -106,7 +130,7 @@ function Wildians(Wildians) {
 
     const getStatusSales = async () => {
         onSnapshot(salesCollection, (snapshot) => {
-            const statusSales = [];
+            const statusSales: StatusSale[] = [];
             snapshot.forEach((doc) => {
                 const data = doc.data();
                 const {
@@ -143,14 +167,14 @@ function Wildians(Wildians) {
         if (typeof window !== "undefined") {
             if (window.localStorage.getItem("beacon:accounts")) {
                 setUserAddress(
-                    JSON.parse(localStorage.getItem("beacon:accounts"))[0]
+                    JSON.parse(localStorage.getItem("beacon:accounts") || "")[0]
                         .address
                 );
             }
-            setToken_id(getTokenID());
+            getTokenID();
         } else {
             await connectToWallet();
-            setToken_id(getTokenID());
+            getTokenID();
         }
     }
 
@@ -165,14 +189,14 @@ function Wildians(Wildians) {
 
     /*** Function to connect to the wallet ***/
     const connectToWallet = async () => {
-        const activeAccount = await wallet.client.getActiveAccount();
+        const activeAccount = await wallet!.client.getActiveAccount();
         if (activeAccount) {
             setUserAddress(activeAccount.address);
         } else {
-            await wallet.requestPermissions({
+            await wallet!.requestPermissions({
                 network: network
             });
-            let tmp = await wallet.getPKH();
+            let tmp = await wallet!.getPKH();
             setUserAddress(tmp);
         }
     };
@@ -180,8 +204,8 @@ function Wildians(Wildians) {
     /*** Function to disconnect to the wallet ***/
     const disconnect = async () => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        await wallet.clearActiveAccount();
-        await wallet.disconnect();
+        await wallet!.clearActiveAccount();
+        await wallet!.disconnect();
         setUserAddress(null);
     };
 
@@ -208,14 +232,7 @@ function Wildians(Wildians) {
     };
     const renderBottompart = () => {
         if (showModal) {
-            return (
-                <BottomPart
-                    Wildians={Wildians}
-                    onMint={mintNFT}
-                    ONG={selectedONG}
-                    isStatusOpen={isStatusOpen}
-                />
-            );
+            return <BottomPart />;
         } else {
             return null;
         }
@@ -273,8 +290,8 @@ function Wildians(Wildians) {
             setNbTokenMinted(tmpNbTokenMinted);
             const contract = await getSmartContract();
             url = char2Bytes(url);
-            const activeAccount = await wallet.client.getActiveAccount();
-            setUserAddress(activeAccount.address);
+            const activeAccount = await wallet!.client.getActiveAccount();
+            setUserAddress(activeAccount!.address);
 
             const querySnapshotWL = await getDocs(whitelistCollection);
             const whitelistedUsers = querySnapshotWL.docs.map((doc) => ({
@@ -286,8 +303,8 @@ function Wildians(Wildians) {
             const salesStatus = querySnapshotSales.docs[0].data();
 
             let is_whitelisted = false;
-            whitelistedUsers.map((user) => {
-                if (user.formData.adresseWallet == activeAccount.address) {
+            whitelistedUsers.map((user: WhitelistDocument) => {
+                if (user.formData!.adresseWallet == activeAccount!.address) {
                     is_whitelisted = true;
                     return;
                 }
@@ -300,7 +317,7 @@ function Wildians(Wildians) {
                 const op = await contract.methods
                     .big_boi_mint(
                         WL_sales_open,
-                        activeAccount.address,
+                        activeAccount!.address,
                         nftToMint,
                         1000 * config.TEZOS_CONVERTER,
                         is_whitelisted,
@@ -312,13 +329,16 @@ function Wildians(Wildians) {
                     .send({ amount: 1000 });
 
                 await op.confirmation(3);
-                SnackbarContext.showSnackbar(
+                SnackbarContext!.showSnackbar(
                     "Successful transaction!",
-                    "success"
+                    SnackbarType.Success
                 );
                 return op;
             } catch (error) {
-                SnackbarContext.showSnackbar("Transaction failed", "error");
+                SnackbarContext!.showSnackbar(
+                    "Transaction failed",
+                    SnackbarType.Error
+                );
             }
         };
 

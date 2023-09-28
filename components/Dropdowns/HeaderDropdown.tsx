@@ -2,7 +2,7 @@ import React from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { FaBars } from "react-icons/fa";
 import { IconContext } from "react-icons";
-import ConnexionWallet from "components/ButtonConnexionWallet/ConnexionWallet";
+import ConnexionWallet from "./../../components/ButtonConnexionWallet/ConnexionWallet";
 
 function HeaderDropdown() {
     return (
@@ -10,7 +10,6 @@ function HeaderDropdown() {
             <Menu
                 as="div"
                 className="relative inline-block text-left "
-                alt="Dropdown Menu"
                 id="menu-id"
             >
                 <div id="div_menu">
@@ -20,10 +19,8 @@ function HeaderDropdown() {
                         value="Button Name"
                         aria-label=""
                         className="text-xs font-bold uppercase px-1  rounded outline-none focus:outline-none lg:mr-1 lg:mb-0 ease-linear transition-all duration-150 "
-                        alt="Dropdown Button"
                     >
                         <IconContext.Provider
-                            id="icon_context"
                             value={{
                                 color: "white",
                                 className: "global-class-name",
@@ -53,7 +50,7 @@ function HeaderDropdown() {
                         className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     >
                         <div className="px-1 py-1 ">
-                            <Menu.Item id="item_transaction">
+                            <Menu.Item>
                                 {({ active }) => (
                                     <button
                                         id="btn_transaction_to"
@@ -68,7 +65,7 @@ function HeaderDropdown() {
                                 )}
                             </Menu.Item>
 
-                            <Menu.Item id="item_settings">
+                            <Menu.Item>
                                 {({ active }) => (
                                     <button
                                         id="btn_settings_to"
@@ -82,8 +79,7 @@ function HeaderDropdown() {
                                     </button>
                                 )}
                             </Menu.Item>
-
-                            <Menu.Item id="item_settings">
+                            <Menu.Item>
                                 {({ active }) => (
                                     <button
                                         id="btn_settings_to"
@@ -98,7 +94,7 @@ function HeaderDropdown() {
                                 )}
                             </Menu.Item>
 
-                            <Menu.Item id="item_settings">
+                            <Menu.Item>
                                 {({ active }) => (
                                     <button
                                         id="btn_settings_to"
@@ -112,7 +108,7 @@ function HeaderDropdown() {
                                     </button>
                                 )}
                             </Menu.Item>
-                            <Menu.Item id="connexion_item">
+                            <Menu.Item>
                                 {({ active }) => <ConnexionWallet />}
                             </Menu.Item>
                         </div>

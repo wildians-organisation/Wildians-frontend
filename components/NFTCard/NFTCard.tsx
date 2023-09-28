@@ -15,7 +15,6 @@ function NFTCard({ metadata }) {
                         )
                     }
                     alt="Wolf_3D"
-                    layout="fill"
                 />
             </div>
             <div className="w-3/5 p-4 flex-1 items-center justify-items-center">

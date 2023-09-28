@@ -4,13 +4,26 @@ import NFTCardMobile from "../../components/NFTCard/NFTCardMobile";
 import NFTCard from "../../components/NFTCard/NFTCard";
 
 import Header from "../../components/Header/Header";
-export default function UserNFTs(props) {
-    const [userNFTs, setUserNFTs] = React.useState([]);
 
-    const [userAddress, setUserAddress] = React.useState("");
+interface UserAccount {
+    name: string;
+    creators: string;
+    displayUri: string;
+    description: string;
+}
+
+export default function UserNFTs(props) {
+    const [userNFTs, setUserNFTs] = React.useState<UserAccount[]>([]);
+
+    const [userAddress, setUserAddress] = React.useState<UserAccount>({
+        name: "",
+        creators: "",
+        displayUri: "",
+        description: ""
+    });
 
     const fetchData = async (userAddressToFetch) => {
-        let tmp_nft = [];
+        let tmp_nft: UserAccount[] = [];
         try {
             const response = await axios.get(
                 `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
@@ -38,10 +51,12 @@ export default function UserNFTs(props) {
     };
 
     useEffect(() => {
-        if (typeof window !== "undefined")
-            setUserAddress(
-                JSON.parse(localStorage.getItem("beacon:accounts"))[0].address
-            );
+        if (typeof window !== "undefined") {
+            let beaconAccount = localStorage.getItem("beacon:accounts");
+            if (beaconAccount) {
+                setUserAddress(JSON.parse(beaconAccount)[0].address);
+            }
+        }
         fetchData(userAddress);
     }, [userAddress]);
 

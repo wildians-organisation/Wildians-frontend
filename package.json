@@ -15,6 +15,9 @@
     "@taquito/beacon-wallet": "^16.1.2",
     "@taquito/taquito": "^16.1.2",
     "@taquito/tzip16": "^16.1.2",
+    "@types/node": "18.16.0",
+    "@types/react": "18.0.38",
+    "@types/react-dom": "18.0.11",
     "axios": "^1.4.0",
     "currency.js": "^2.0.4",
     "firebase": "^9.22.0",
@@ -25,7 +28,8 @@
     "react-icons": "^4.8.0",
     "react-modal": "^3.16.1",
     "react-scripts": "^5.0.1",
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.2",
+    "typescript": "5.0.4"
   },
   "scripts": {
     "start": "next start -p $PORT",
@@ -58,7 +62,7 @@
     ]
   },
   "optionalDependencies": {
-    "typescript": "4.2.3"
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

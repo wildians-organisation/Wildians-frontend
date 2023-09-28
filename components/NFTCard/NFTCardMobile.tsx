@@ -15,7 +15,6 @@ function NFTCardMobile({ metadata }) {
                         )
                     }
                     alt="Wolf_3D"
-                    layout="fill"
                 />
             </div>
             <div className="w-full text-white p-4 overflow-auto">
