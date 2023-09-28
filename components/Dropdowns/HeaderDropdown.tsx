@@ -79,7 +79,41 @@ function HeaderDropdown() {
                                     </button>
                                 )}
                             </Menu.Item>
+<<<<<<< HEAD:components/Dropdowns/HeaderDropdown.tsx
                             <Menu.Item>
+=======
+
+                            <Menu.Item id="item_settings">
+                                {({ active }) => (
+                                    <button
+                                        id="btn_settings_to"
+                                        className={`${
+                                            active
+                                                ? "bg-violet-500 text-white"
+                                                : "text-gray-900"
+                                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                                    >
+                                        Instagram
+                                    </button>
+                                )}
+                            </Menu.Item>
+
+                            <Menu.Item id="item_settings">
+                                {({ active }) => (
+                                    <button
+                                        id="btn_settings_to"
+                                        className={`${
+                                            active
+                                                ? "bg-violet-500 text-white"
+                                                : "text-gray-900"
+                                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                                    >
+                                        Ma Collection
+                                    </button>
+                                )}
+                            </Menu.Item>
+                            <Menu.Item id="connexion_item">
+>>>>>>> dev:components/Dropdowns/HeaderDropdown.js
                                 {({ active }) => <ConnexionWallet />}
                             </Menu.Item>
                         </div>
