@@ -8,11 +8,7 @@ function ModalONG({
     isOpen,
     setONG,
     ONG,
-<<<<<<< HEAD:components/Wildian/ModalONG.tsx
     isStatusOpen
-=======
-    isStatusOpen,
->>>>>>> dev:components/Wildian/ModalONG.js
 }) {
     const [selectedONG, setSelectedONG] = React.useState(ONG);
     const [isModalOpen, setIsModalOpen] = React.useState(isOpen);

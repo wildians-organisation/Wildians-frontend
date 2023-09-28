@@ -79,11 +79,7 @@ function HeaderDropdown() {
                                     </button>
                                 )}
                             </Menu.Item>
-<<<<<<< HEAD:components/Dropdowns/HeaderDropdown.tsx
                             <Menu.Item>
-=======
-
-                            <Menu.Item id="item_settings">
                                 {({ active }) => (
                                     <button
                                         id="btn_settings_to"
@@ -98,7 +94,7 @@ function HeaderDropdown() {
                                 )}
                             </Menu.Item>
 
-                            <Menu.Item id="item_settings">
+                            <Menu.Item>
                                 {({ active }) => (
                                     <button
                                         id="btn_settings_to"
@@ -112,8 +108,7 @@ function HeaderDropdown() {
                                     </button>
                                 )}
                             </Menu.Item>
-                            <Menu.Item id="connexion_item">
->>>>>>> dev:components/Dropdowns/HeaderDropdown.js
+                            <Menu.Item>
                                 {({ active }) => <ConnexionWallet />}
                             </Menu.Item>
                         </div>

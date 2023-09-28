@@ -6,12 +6,8 @@ import { char2Bytes } from "@taquito/tzip16";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import axios from "axios";
-<<<<<<< HEAD:components/Wildian/Wildians.tsx
 import ModalONG from "./ModalONG";
-=======
-import ModalONG from "./ModalONG.js";
-import BottomPart from "../LandingPage/BottomPart.js";
->>>>>>> dev:components/Wildian/Wildians.js
+import BottomPart from "../LandingPage/BottomPart";
 import { firestore } from "../../firebaseConfig";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
 import SnackbarService, {
@@ -21,7 +17,7 @@ const nftToMint = 1;
 
 const network = { type: NetworkType.GHOSTNET };
 
-interface Document {
+export interface WhitelistDocument {
     id: string;
     formData?: {
         commentaire: string;
@@ -31,7 +27,7 @@ interface Document {
     };
 }
 
-interface StatusSale {
+export interface StatusSale {
     id: string;
     whitelistStatus: boolean;
     whitelistOpenDay: Date;
@@ -124,7 +120,7 @@ function Wildians(Wildians) {
             ...doc.data()
         }));
         let tmpWhitelist: string[] = [];
-        documents.forEach((doc: Document) => {
+        documents.forEach((doc: WhitelistDocument) => {
             const whitelistAddress = doc.formData!["adresseWallet"];
             tmpWhitelist.push(whitelistAddress);
         });
@@ -237,14 +233,7 @@ function Wildians(Wildians) {
     };
     const renderBottompart = () => {
         if (showModal) {
-            return (
-                <BottomPart
-                    Wildians={Wildians}
-                    onMint={mintNFT}
-                    ONG={selectedONG}
-                    isStatusOpen={isStatusOpen}
-                />
-            );
+            return <BottomPart />;
         } else {
             return null;
         }
@@ -315,7 +304,7 @@ function Wildians(Wildians) {
             const salesStatus = querySnapshotSales.docs[0].data();
 
             let is_whitelisted = false;
-            whitelistedUsers.map((user: Document) => {
+            whitelistedUsers.map((user: WhitelistDocument) => {
                 if (user.formData!.adresseWallet == activeAccount!.address) {
                     is_whitelisted = true;
                     return;

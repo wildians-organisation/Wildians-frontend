@@ -29,14 +29,8 @@ function Header() {
                     NFT CUSTOMIZATION
                 </Link>
             </div>
-<<<<<<< HEAD:components/Header/Header.tsx
-            <div className="md:hidden">
-                <HeaderDropdown />
-=======
-
             <div className="md:hidden" id="dropdown">
-                <HeaderDropdown id="header_dropdown " />
->>>>>>> dev:components/Header/Header.js
+                <HeaderDropdown />
             </div>
 
             <div className="md:flex hidden md:items-center mt-3_5 ml-30 ">

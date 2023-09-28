@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import axios from "axios";
-<<<<<<< HEAD:components/LandingPage/BottomPart.tsx
-import * as config from "./../../config/config";
-import Wildians from "../Wildian/Wildians";
-=======
-import * as config from "../../config/config.js";
-import Wildians from "components/Wildian/Wildians";
+import * as config from "../../config/config";
+import Wildians, {
+    StatusSale,
+    WhitelistDocument
+} from "./../../components/Wildian/Wildians";
 import { firestore } from "../../firebaseConfig";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
 import { BeaconWallet } from "@taquito/beacon-wallet";
@@ -17,7 +16,6 @@ import SnackbarService from "../SnackbarService/SnackbarService";
 const network = { type: NetworkType.GHOSTNET };
 
 const nftToMint = 1;
->>>>>>> dev:components/LandingPage/BottomPart.js
 
 function BottomPart() {
     const [dataFinance, setDataFinance] = React.useState([
@@ -34,9 +32,11 @@ function BottomPart() {
     ]);
     const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
-    const [whitelistedUsers, setWhitelistedUsers] = React.useState([]);
-    const [userAddress, setUserAddress] = React.useState("");
-    const [wallet, setWallet] = React.useState({});
+    const [whitelistedUsers, setWhitelistedUsers] = React.useState<string[]>(
+        []
+    );
+    const [userAddress, setUserAddress] = React.useState<string | null>("");
+    const [wallet, setWallet] = React.useState<BeaconWallet>();
     const [token_id, setToken_id] = React.useState(-1);
     const [Tezos, setTezos] = React.useState(new TezosToolkit(config.RPC_URL));
     const [time, setTime] = React.useState(
@@ -120,9 +120,9 @@ function BottomPart() {
             id: doc.id,
             ...doc.data()
         }));
-        let tmpWhitelist = [];
-        documents.forEach((doc) => {
-            const whitelistAddress = doc.formData["adresseWallet"];
+        let tmpWhitelist: string[] = [];
+        documents.forEach((doc: WhitelistDocument) => {
+            const whitelistAddress = doc.formData!["adresseWallet"];
             tmpWhitelist.push(whitelistAddress);
         });
         setWhitelistedUsers(tmpWhitelist);
@@ -145,14 +145,14 @@ function BottomPart() {
                 setIsStatusOpen(isOpenDay(sales["openDay"], sales["openTime"]));
             } else setIsStatusOpen(sales["status"]);
 
-            if (address.includes(userAddress)) {
+            if (address.includes(userAddress!)) {
                 handleWhitelistScheduledOpening(sales);
             }
         });
     }
     const getStatusSales = async () => {
         onSnapshot(salesCollection, (snapshot) => {
-            const statusSales = [];
+            const statusSales: StatusSale[] = [];
             snapshot.forEach((doc) => {
                 const data = doc.data();
                 const {
@@ -185,14 +185,14 @@ function BottomPart() {
         if (typeof window !== "undefined") {
             if (window.localStorage.getItem("beacon:accounts")) {
                 setUserAddress(
-                    JSON.parse(localStorage.getItem("beacon:accounts"))[0]
+                    JSON.parse(localStorage.getItem("beacon:accounts") || "")[0]
                         .address
                 );
             }
-            setToken_id(getTokenID());
+            getTokenID();
         } else {
             await connectToWallet();
-            setToken_id(getTokenID());
+            getTokenID();
         }
     }
     React.useEffect(() => {
@@ -201,22 +201,22 @@ function BottomPart() {
         initializeWallet();
     }, [display_ong_selection, dataFinance]);
     const connectToWallet = async () => {
-        const activeAccount = await wallet.client.getActiveAccount();
+        const activeAccount = await wallet!.client.getActiveAccount();
         if (activeAccount) {
             setUserAddress(activeAccount.address);
         } else {
-            await wallet.requestPermissions({
+            await wallet!.requestPermissions({
                 network: network
             });
-            let tmp = await wallet.getPKH();
+            let tmp = await wallet!.getPKH();
             setUserAddress(tmp);
         }
     };
 
     const disconnect = async () => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        await wallet.clearActiveAccount();
-        await wallet.disconnect();
+        await wallet!.clearActiveAccount();
+        await wallet!.disconnect();
         setUserAddress(null);
     };
 
@@ -247,8 +247,8 @@ function BottomPart() {
             setNbTokenMinted(tmpNbTokenMinted);
             const contract = await getSmartContract();
             url = char2Bytes(url);
-            const activeAccount = await wallet.client.getActiveAccount();
-            setUserAddress(activeAccount.address);
+            const activeAccount = await wallet!.client.getActiveAccount();
+            setUserAddress(activeAccount!.address);
 
             const querySnapshotWL = await getDocs(whitelistCollection);
             const whitelistedUsers = querySnapshotWL.docs.map((doc) => ({
@@ -260,8 +260,8 @@ function BottomPart() {
             const salesStatus = querySnapshotSales.docs[0].data();
 
             let is_whitelisted = false;
-            whitelistedUsers.map((user) => {
-                if (user.formData.adresseWallet == activeAccount.address) {
+            whitelistedUsers.map((user: WhitelistDocument) => {
+                if (user.formData!.adresseWallet == activeAccount!.address) {
                     is_whitelisted = true;
                     return;
                 }
@@ -274,7 +274,7 @@ function BottomPart() {
                 const op = await contract.methods
                     .big_boi_mint(
                         WL_sales_open,
-                        activeAccount.address,
+                        activeAccount!.address,
                         nftToMint,
                         1000 * config.TEZOS_CONVERTER,
                         is_whitelisted,
@@ -287,13 +287,13 @@ function BottomPart() {
 
                 await op.confirmation(3);
                 getTransactionsInformations();
-                SnackbarContext.showSnackbar(
+                SnackbarContext!.showSnackbar(
                     "Successful transaction!",
                     "success"
                 );
                 return op;
             } catch (error) {
-                SnackbarContext.showSnackbar("Transaction failed", "error");
+                SnackbarContext!.showSnackbar("Transaction failed", "error");
             }
         };
 

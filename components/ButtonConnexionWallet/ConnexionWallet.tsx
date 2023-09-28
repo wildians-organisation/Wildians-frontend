@@ -7,7 +7,6 @@ import { TezosToolkit } from "@taquito/taquito";
 import { NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import * as config from "../../config/config";
-import Link from "next/link";
 import { firestore } from "../../firebaseConfig";
 import {
     collection,
@@ -122,13 +121,8 @@ export default function ConnexionWallet() {
         <div className="md:flex items-center md:w-min">
             <div
                 onClick={() => connectToWallet()}
-<<<<<<< HEAD:components/ButtonConnexionWallet/ConnexionWallet.tsx
-                className="bg-red-200 connexionWallet group flex items-center px-2 py-2 md:h-min md:text-sm  md:text-greenkaki md:bg-greeny md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:hover:bg-greenkaki md:hover:text-greeny md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap"
-=======
                 className="flex items-center md:uppercase btn-layout default-connexion hover:connexion body-highlight-typo text-greeny md:whitespace-nowrap md:hover:text-greenkaki md:cursor-pointer"
                 /** className="connexionWallet group flex items-center px-2 py-2 md:h-min md:text-sm  md:text-greenkaki md:bg-greeny md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:hover:bg-greenkaki md:hover:text-greeny md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap"**/
-                type="button"
->>>>>>> dev:components/ButtonConnexionWallet/ConnexionWallet.js
             >
                 {!userAddress ? (
                     <div>Connect Your Wallet</div>
