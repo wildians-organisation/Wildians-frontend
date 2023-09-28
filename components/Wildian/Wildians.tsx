@@ -9,7 +9,9 @@ import axios from "axios";
 import ModalONG from "./ModalONG";
 import { firestore } from "../../firebaseConfig";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
-import SnackbarService from "../SnackbarService/SnackbarService";
+import SnackbarService, {
+    SnackbarType
+} from "../SnackbarService/SnackbarService";
 const nftToMint = 1;
 
 const network = { type: NetworkType.GHOSTNET };
@@ -269,11 +271,14 @@ function Wildians(Wildians) {
                 await op.confirmation(3);
                 SnackbarContext!.showSnackbar(
                     "Successful transaction!",
-                    "success"
+                    SnackbarType.Success
                 );
                 return op;
             } catch (error) {
-                SnackbarContext!.showSnackbar("Transaction failed", "error");
+                SnackbarContext!.showSnackbar(
+                    "Transaction failed",
+                    SnackbarType.Error
+                );
             }
         };
 

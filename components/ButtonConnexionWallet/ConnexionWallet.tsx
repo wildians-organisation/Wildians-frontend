@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
-import SnackbarService from "../SnackbarService/SnackbarService";
+import SnackbarService, {
+    SnackbarType
+} from "../SnackbarService/SnackbarService";
 import ConnectedButton from "./ConnectedButton";
 import { TezosToolkit } from "@taquito/taquito";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -17,6 +19,7 @@ import {
     updateDoc,
     doc
 } from "firebase/firestore";
+import { Snackbar } from "@mui/material";
 
 async function addWallet(walletAddress) {
     const userCollection = collection(firestore, "user");
@@ -72,7 +75,10 @@ export default function ConnexionWallet() {
         try {
             const response = await addWallet(walletAddress);
         } catch (e) {
-            SnackbarContext!.showSnackbar("Wallet connection failure", "error");
+            SnackbarContext!.showSnackbar(
+                "Wallet connection failure",
+                SnackbarType.Error
+            );
             console.error(e);
         }
     };
@@ -93,7 +99,7 @@ export default function ConnexionWallet() {
             addWalletToFirebase(tmp);
             SnackbarContext!.showSnackbar(
                 "Successful wallet connection!",
-                "success"
+                SnackbarType.Success
             );
         }
     };
@@ -105,7 +111,10 @@ export default function ConnexionWallet() {
         await wallet!.disconnect();
         localStorage.removeItem("userAdress");
         setUserAddress(null);
-        SnackbarContext!.showSnackbar("Successful wallet logout!", "success");
+        SnackbarContext!.showSnackbar(
+            "Successful wallet logout!",
+            SnackbarType.Success
+        );
     };
 
     /*** Render ***/
