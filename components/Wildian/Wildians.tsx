@@ -141,7 +141,6 @@ function Wildians(Wildians) {
                     openDay,
                     openTime
                 } = data;
-                console.log(statusSales);
                 statusSales.push({
                     id: doc.id,
                     whitelistStatus,
