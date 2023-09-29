@@ -92,7 +92,9 @@ jobs:
                   lhci autorun
 
     deploy-app:
-        if: github.event_name == 'push' && github.ref == 'refs/heads/prod-vitrine'
+        if:
+            github.event_name == 'push' && github.ref ==
+            'refs/heads/prod-vitrine'
         environment: prod
         runs-on: ubuntu-latest
         needs:
