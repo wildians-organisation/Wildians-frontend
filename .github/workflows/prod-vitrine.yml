@@ -69,6 +69,7 @@ jobs:
                   envkey_TEZOS_CONVERTER: ${{ secrets.TEZOS_CONVERTER }}
                   envkey_WILDIANS_PART: ${{ secrets.WILDIANS_PART }}
                   envkey_ASSOCIATION_PART: ${{ secrets.ASSOCIATION_PART }}
+                  envkey_BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
                   envkey_CONTRACT_ADDRESS: ${{ secrets.CONTRACT_ADDRESS }}
                   envkey_GCPAPIKEY: ${{ secrets.GCPAPIKEY }}
                   envkey_GCPAPPID: ${{ secrets.GCPAPPID }}
@@ -116,7 +117,6 @@ jobs:
                   envkey_TEZOS_CONVERTER: ${{ secrets.TEZOS_CONVERTER }}
                   envkey_WILDIANS_PART: ${{ secrets.WILDIANS_PART }}
                   envkey_ASSOCIATION_PART: ${{ secrets.ASSOCIATION_PART }}
-                  envkey_BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
                   envkey_CONTRACT_ADDRESS: ${{ secrets.CONTRACT_ADDRESS }}
                   envkey_GCPAPIKEY: ${{ secrets.GCPAPIKEY }}
                   envkey_GCPAPPID: ${{ secrets.GCPAPPID }}
