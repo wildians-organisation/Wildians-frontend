@@ -300,3 +300,5 @@ Instagram:
 -   Issues:
     <a href="https://github.com/creativetimofficial/notus-nextjs/issues" target="_blank">Github
     Issues Page</a>
+
+    
