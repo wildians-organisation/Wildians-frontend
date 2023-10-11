@@ -284,9 +284,8 @@ function Wildians(Wildians) {
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
             const querySnapshotSC = await getDocs(smartcontractCollection);
-            const smartcontract_addr =
-                querySnapshotSC.docs[0].data().address;
-            console.log(smartcontract_addr)
+            const smartcontract_addr = querySnapshotSC.docs[0].data().address;
+            console.log(smartcontract_addr);
             const contract = await Tezos.wallet.at(smartcontract_addr);
             return contract;
         },
