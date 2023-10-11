@@ -239,8 +239,9 @@ function BottomPart() {
         mintNFT(currentNFTAddress, currentSelectedOng);
     };
     const getSmartContract = async () => {
-            const querySnapshotSales = await getDocs(smartcontractCollection);
-            const smartcontract_addr = querySnapshotSales.docs[0].data().address;
+            const querySnapshotSC = await getDocs(smartcontractCollection);
+            const smartcontract_addr =
+                querySnapshotSC.docs[0].data().address;
             const contract = await Tezos.wallet.at(smartcontract_addr);
             return contract;
         },
