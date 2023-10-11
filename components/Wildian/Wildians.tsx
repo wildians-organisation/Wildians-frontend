@@ -13,6 +13,7 @@ import { collection, onSnapshot, getDocs } from "firebase/firestore";
 import SnackbarService, {
     SnackbarType
 } from "../SnackbarService/SnackbarService";
+
 const nftToMint = 1;
 
 const network = { type: NetworkType.GHOSTNET };
@@ -72,6 +73,9 @@ function Wildians(Wildians) {
         "/img/v2/visuels/AIDS.png",
         "/img/v2/visuels/Wikimedia Found.png"
     ];
+
+    const smartcontractCollection = collection(firestore, "smartcontract");
+
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -279,7 +283,9 @@ function Wildians(Wildians) {
     };
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
-            const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
+            const querySnapshotSales = await getDocs(smartcontractCollection);
+            const smartcontract_addr = querySnapshotSales.docs[0].data().address;
+            const contract = await Tezos.wallet.at(smartcontract_addr);
             return contract;
         },
         /*** Function to mint the nft ***/

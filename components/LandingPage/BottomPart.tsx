@@ -18,6 +18,7 @@ import SnackbarService, {
 const network = { type: NetworkType.GHOSTNET };
 
 const nftToMint = 1;
+const smartcontractCollection = collection(firestore, "smartcontract");
 
 function BottomPart() {
     const [dataFinance, setDataFinance] = React.useState([
@@ -238,7 +239,9 @@ function BottomPart() {
         mintNFT(currentNFTAddress, currentSelectedOng);
     };
     const getSmartContract = async () => {
-            const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
+            const querySnapshotSales = await getDocs(smartcontractCollection);
+            const smartcontract_addr = querySnapshotSales.docs[0].data().address;
+            const contract = await Tezos.wallet.at(smartcontract_addr);
             return contract;
         },
         /*** Function to mint the nft ***/
