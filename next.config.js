@@ -19,7 +19,8 @@ module.exports = {
         gcp_storage_bucket: process.env.GCPSTORAGEBUCKET,
         gcp_messaging_sender_id: process.env.GCPMESSAGINGSENDERID,
         gcp_app_id: process.env.GCPAPPID,
-        measurement_id: process.env.MEASUREMENTID
+        measurement_id: process.env.MEASUREMENTID,
+        clarity_appid: process.env.CLARITY_APPID
     },
     trailingSlash: true,
     images: {

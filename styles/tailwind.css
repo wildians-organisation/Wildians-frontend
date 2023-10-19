@@ -3045,7 +3045,7 @@ select {
 }
 
 .bg-forest-bg {
-    background-image: url("../public/img/v2/visuels/ELWINFOREST.jpg");
+    background-image: url("../public/img/v2/visuels/nature_background.png");
     filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.15));
     background-size: cover;
     background-position: center-top;
@@ -6095,6 +6095,10 @@ select {
 
 .h-1000-px {
     height: 70rem;
+}
+
+.h-1500-px {
+    height: 85rem;
 }
 
 .text-xs {
