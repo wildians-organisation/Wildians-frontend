@@ -13,3 +13,11 @@
     font-family: "MULISH";
     src: url("../public/fonts/Mulish/Mulish-VariableFont_wght.ttf");
 }
+
+@font-face {
+    font-family: "PERMANANTMARKER";
+    src: url("../public/fonts/PermanentMarker-Regular.ttf");
+}
+
+
+

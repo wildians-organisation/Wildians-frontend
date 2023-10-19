@@ -11,39 +11,24 @@ function TopPart() {
                 <Header />
                 <div className="flex flex-col justify-center h-screen md:ml-32">
                     <div className="text-white header-typo2 first-parag-layout">
-                        Contribute to a better world
-                        <br />
-                        by joining our community
+                        <p style={{
+                            color: "#FFF",
+                            fontFamily: "Gogh",
+                            fontSize: "40px",
+                            fontStyle: "normal",
+                            fontWeight: "800",
+                            lineHeight: "normal"
+                        }}>
+                            L’aventure Wildians :
+                            <br />
+                            Ton parcours vers un mode de vie responsable !
+                        </p>
                     </div>
                     <div
                         className="text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
                         style={{ width: "fit-content" }}
                     >
-                        GET YOUR WILDIAN
-                    </div>
-                    <div
-                        className="absolute bottom-5 right-6 bg-emerald-800 rounded-xl p-15 flex justify-center items-center"
-                        style={{
-                            boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)",
-                            width: "300px",
-                            height: "100px"
-                        }}
-                    >
-                        <div>
-                            <div>
-                                <span className="flex justify-center text-sm body-highlight-typo text-greeny">
-                                    <label>WE PROUDLY DONATED</label>
-                                </span>
-                            </div>
-                            <span className="flex justify-center text-2x1 body-highlight-typo text-white">
-                                <TezosToEuroConverter />
-                            </span>
-                            <div>
-                                <span className="flex justify-center text-sm body-highlight-typo text-greeny">
-                                    <label>TO SUSTAINABLE ASSOCIATIONS</label>
-                                </span>
-                            </div>
-                        </div>
+                        DECOUVRIR LE CONCEPT
                     </div>
                 </div>
             </div>

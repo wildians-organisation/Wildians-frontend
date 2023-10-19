@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+/*import React, { useContext } from "react";
 import Image from "next/image";
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
 import * as config from "../../config/config";
@@ -110,10 +110,10 @@ function Wildians(Wildians) {
                 handleWhitelistScheduledOpening(sales);
             }
         });
-    }
+    }*/
 
     /*** Function to fetch whitelisted users ***/
-    const fetchWhitelistData = async () => {
+    /*const fetchWhitelistData = async () => {
         const querySnapshot = await getDocs(whitelistCollection);
         const documents = querySnapshot.docs.map((doc) => ({
             id: doc.id,
@@ -188,7 +188,7 @@ function Wildians(Wildians) {
     }, [time, day, userAddress]);
 
     /*** Function to connect to the wallet ***/
-    const connectToWallet = async () => {
+    /*const connectToWallet = async () => {
         const activeAccount = await wallet!.client.getActiveAccount();
         if (activeAccount) {
             setUserAddress(activeAccount.address);
@@ -202,7 +202,7 @@ function Wildians(Wildians) {
     };
 
     /*** Function to disconnect to the wallet ***/
-    const disconnect = async () => {
+    /*const disconnect = async () => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         await wallet!.clearActiveAccount();
         await wallet!.disconnect();
@@ -278,12 +278,12 @@ function Wildians(Wildians) {
         setSelectedONG(ONG_name);
     };
     /*** Function to get the smart contract ***/
-    const getSmartContract = async () => {
+    /*const getSmartContract = async () => {
             const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
             return contract;
         },
         /*** Function to mint the nft ***/
-        mintNFT = async (url, selectedONG) => {
+        /*mintNFT = async (url, selectedONG) => {
             await disconnect();
             await connectToWallet();
             let tmpNbTokenMinted = nbTokenMinted + 1;
@@ -311,9 +311,9 @@ function Wildians(Wildians) {
             });
 
             let normal_sales_open = salesStatus.status;
-            let WL_sales_open = salesStatus.whitelistStatus;
+            let WL_sales_open = salesStatus.whitelistStatus;*/
             //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
-            try {
+            /*try {
                 const op = await contract.methods
                     .big_boi_mint(
                         WL_sales_open,
@@ -402,4 +402,4 @@ function Wildians(Wildians) {
         </div>
     );
 }
-export default Wildians;
+export default Wildians;*/
