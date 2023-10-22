@@ -11,14 +11,16 @@ function TopPart() {
                 <Header />
                 <div className="flex flex-col justify-center h-screen md:ml-32">
                     <div className="text-white header-typo2 first-parag-layout">
-                        <p style={{
-                            color: "#FFF",
-                            fontFamily: "Gogh",
-                            fontSize: "40px",
-                            fontStyle: "normal",
-                            fontWeight: "800",
-                            lineHeight: "normal"
-                        }}>
+                        <p
+                            style={{
+                                color: "#FFF",
+                                fontFamily: "Arial",
+                                fontSize: "40px",
+                                fontStyle: "normal",
+                                fontWeight: "800",
+                                lineHeight: "normal"
+                            }}
+                        >
                             L’aventure Wildians :
                             <br />
                             Ton parcours vers un mode de vie responsable !
@@ -28,7 +30,7 @@ function TopPart() {
                         className="text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
                         style={{ width: "fit-content" }}
                     >
-                        DECOUVRIR LE CONCEPT
+                        Découvrir le concept
                     </div>
                 </div>
             </div>
