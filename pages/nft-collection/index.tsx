@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import NFTCardMobile from "../../components/NFTCard/NFTCardMobile";
 import NFTCard from "../../components/NFTCard/NFTCard";
-
-import HeaderVitrine from "../../components/Header/HeaderVitrine";
+import Header from "../../components/Header/Header";
 
 interface UserAccount {
     name: string;
@@ -63,7 +62,7 @@ export default function UserNFTs(props) {
     return (
         <div className="bg-hero-collection bg-collection-green">
             <div className="p-4">
-                <HeaderVitrine />
+                <Header />
             </div>
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="header-typo text-white ml-24">COLLECTION</div>

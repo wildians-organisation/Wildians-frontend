@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import HeaderVitrine from "../../components/Header/HeaderVitrine";
 import CustomOption from "../../components/Customization/CustomizationOption";
+import Header from "../../components/Header/Header";
 
 export default function CustomizeNFT() {
     const pilar = {
@@ -105,7 +105,7 @@ export default function CustomizeNFT() {
     return (
         <div>
             <div className="p-4 bg-attributegreen">
-                <HeaderVitrine />
+                <Header />
                 <div className="mx-auto max-w-2xl py-16 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                     <div className="text-black text-6vw font-goghbold text-white">
                         Custom my NFT
