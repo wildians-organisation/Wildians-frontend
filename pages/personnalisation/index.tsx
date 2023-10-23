@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import Header from "../../components/Header/Header";
 import CustomOption from "../../components/Customization/CustomizationOption";
+import Header from "../../components/Header/Header";
 
 export default function CustomizeNFT() {
     const pilar = {

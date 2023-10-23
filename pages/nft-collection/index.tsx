@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import NFTCardMobile from "../../components/NFTCard/NFTCardMobile";
 import NFTCard from "../../components/NFTCard/NFTCard";
-
 import Header from "../../components/Header/Header";
 
 interface UserAccount {

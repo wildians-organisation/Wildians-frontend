@@ -7,12 +7,12 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import axios from "axios";
 import ModalONG from "./ModalONG";
-import BottomPart from "../LandingPage/BottomPart";
 import { firestore } from "../../firebaseConfig";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
 import SnackbarService, {
     SnackbarType
 } from "../SnackbarService/SnackbarService";
+import BottomPart from "../LandingPage/BottomPart";
 const nftToMint = 1;
 
 const network = { type: NetworkType.GHOSTNET };

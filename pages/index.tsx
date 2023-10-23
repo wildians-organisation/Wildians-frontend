@@ -1,6 +1,13 @@
+import TopPartVitrine from "../components/LandingPage/TopPartVitrine";
+import { Usage } from "../components/LandingPage/Usage";
+import Concept from "../components/LandingPage/Concept";
+import React from "react";
+import BottomPartVitrine from "../components/LandingPage/BottomPartVitrine";
+import Support from "../components/LandingPage/Support";
 import TopPart from "./../components/LandingPage/TopPart";
 import BottomPart from "./../components/LandingPage/BottomPart";
 import * as config from "../config/config";
+
 export function scrollToSection(sectionId) {
     if (sectionId == "concept") {
         const elt = document.getElementById("idconcept");
@@ -20,7 +27,15 @@ export function scrollToSection(sectionId) {
 
 export default function Landing() {
     if (config.PROD_VITRINE === "1") {
-        return <div>Hello World</div>;
+        return (
+            <div className="">
+                <TopPartVitrine />
+                <Concept />
+                <Usage />
+                <Support />
+                <BottomPartVitrine />
+            </div>
+        );
     } else {
         return (
             <div className="">

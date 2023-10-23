@@ -16086,6 +16086,14 @@ select {
     line-height: normal;
 }
 
+.subtitle-typo {
+    font-family: Mulish;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
 .get-typo {
     /* Titre 1 */
     font-family: Manrope;
