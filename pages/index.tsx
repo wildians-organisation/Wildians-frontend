@@ -4,6 +4,9 @@ import Concept from "../components/LandingPage/Concept";
 import React from "react";
 import BottomPartVitrine from "../components/LandingPage/BottomPartVitrine";
 import Support from "../components/LandingPage/Support";
+import TopPart from "./../components/LandingPage/TopPart";
+import BottomPart from "./../components/LandingPage/BottomPart";
+import * as config from "../config/config";
 
 export function scrollToSection(sectionId) {
     if (sectionId == "concept") {
@@ -23,13 +26,22 @@ export function scrollToSection(sectionId) {
 }
 
 export default function Landing() {
-    return (
-        <div className="">
-            <TopPartVitrine />
-            <Concept />
-            <Usage />
-            <Support />
-            <BottomPartVitrine />
-        </div>
-    );
+    if (config.PROD_VITRINE === "1") {
+        return (
+            <div className="">
+                <TopPartVitrine />
+                <Concept />
+                <Usage />
+                <Support />
+                <BottomPartVitrine />
+            </div>
+        );
+    } else {
+        return (
+            <div className="">
+                <TopPart />
+                <BottomPart />
+            </div>
+        );
+    }
 }
