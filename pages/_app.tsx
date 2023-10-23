@@ -53,7 +53,7 @@ export default class MyApp extends App {
                         content="width=device-width, initial-scale=1, shrink-to-fit=no"
                     />
                     <title>Wildians</title>
-                    <script type="text/javascript" src="clarity.js"/>
+                    <script type="text/javascript" src="clarity.js" />
                 </Head>
                 <SnackbarProvider>
                     <Layout>

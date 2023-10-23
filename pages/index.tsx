@@ -1,5 +1,7 @@
 import TopPart from "./../components/LandingPage/TopPart";
-import BottomPart from "./../components/LandingPage/BottomPart";
+import { BottomPart } from "../components/LandingPage/BottomPart";
+import { Usage } from "../components/LandingPage/Usage";
+import Concept from "../components/LandingPage/Concept";
 
 export function scrollToSection(sectionId) {
     if (sectionId == "concept") {
@@ -22,6 +24,7 @@ export default function Landing() {
     return (
         <div className="">
             <TopPart />
+            <Usage />
             <BottomPart />
         </div>
     );
