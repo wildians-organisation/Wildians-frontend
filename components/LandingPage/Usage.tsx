@@ -1,4 +1,4 @@
-import { UsageItem } from "./UsageItem";
+import UsageItem from "./UsageItem";
 
 export function Usage() {
     return (
