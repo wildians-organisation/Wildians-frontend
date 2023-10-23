@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-export function BottomPart() {
+export default function BottomPart() {
     return (
         <div
             className="bg-brown bg-no-repeat bg-cover p-4 h-1000-px"

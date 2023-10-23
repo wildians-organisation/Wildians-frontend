@@ -1,10 +1,7 @@
 import React from "react";
-import Image from "next/image";
-
 import rectangle from "../../public/fonts/rectangle-33.png";
-import { BottomPart } from "./BottomPart";
 
-function Concept() {
+export function Concept() {
     return (
         <div>
             <div

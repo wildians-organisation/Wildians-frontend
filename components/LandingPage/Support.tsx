@@ -1,8 +1,7 @@
 import { Disclosure } from "@headlessui/react";
 import React from "react";
-import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
-export function Support() {
+export default function Support() {
     return (
         <div className="py-40" style={{ backgroundColor: "#223734" }}>
             <h1 className="text-center text-4xl text-white font-bold mb-16">
