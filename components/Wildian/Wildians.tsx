@@ -7,7 +7,7 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import axios from "axios";
 import ModalONG from "./ModalONG";
-import BottomPart from "../LandingPage/BottomPart";
+import BottomPartVitrine from "../LandingPage/BottomPartVitrine";
 import { firestore } from "../../firebaseConfig";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
 import SnackbarService, {
@@ -232,7 +232,7 @@ function Wildians(Wildians) {
     };
     const renderBottompart = () => {
         if (showModal) {
-            return <BottomPart />;
+            return <BottomPartVitrine />;
         } else {
             return null;
         }

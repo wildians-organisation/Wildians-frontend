@@ -1,8 +1,8 @@
-import TopPart from "./../components/LandingPage/TopPart";
+import TopPartVitrine from "../components/LandingPage/TopPartVitrine";
 import { Usage } from "../components/LandingPage/Usage";
 import Concept from "../components/LandingPage/Concept";
 import React from "react";
-import BottomPart from "../components/LandingPage/BottomPart";
+import BottomPartVitrine from "../components/LandingPage/BottomPartVitrine";
 import Support from "../components/LandingPage/Support";
 
 export function scrollToSection(sectionId) {
@@ -25,11 +25,11 @@ export function scrollToSection(sectionId) {
 export default function Landing() {
     return (
         <div className="">
-            <TopPart />
+            <TopPartVitrine />
             <Concept />
             <Usage />
             <Support />
-            <BottomPart />
+            <BottomPartVitrine />
         </div>
     );
 }

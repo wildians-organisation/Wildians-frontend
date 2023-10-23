@@ -1,54 +1,86 @@
-import React from "react";
-import ConnexionWallet from "./../../components/ButtonConnexionWallet/ConnexionWallet";
-import HeaderDropdown from "./../../components/Dropdowns/HeaderDropdown";
-import Link from "next/link";
 import Image from "next/image";
-function Header() {
-    return (
-        <div className="header-layout">
-            <div className="flex items-center mt-3_5 mr-30">
-                <a href="/">
-                    <Image
-                        className="headerLogo"
-                        src={"/img/v2/visuels/logo.svg"}
-                        alt="Wildians logo"
-                        width={89}
-                        height={78}
-                    />
-                </a>
-                <div className="text-white project-layout md:cursor-pointer body-highlight-typo md:hover:text-greeny md:whitespace-nowrap mt-3_5">
-                    THE PROJECT
-                </div>
-                <div className="text-white asso-layout md:cursor-pointer body-highlight-typo md:hover:text-greeny mt-3_5">
-                    ASSOCIATION
-                </div>
-                <Link
-                    href="personnalisation"
-                    className="text-white pers-layout body-highlight-typo md:hover:text-greeny md:whitespace-nowrap mt-3_5"
-                >
-                    NFT CUSTOMIZATION
-                </Link>
-            </div>
-            <div className="md:hidden" id="dropdown">
-                <HeaderDropdown />
-            </div>
+import React from "react";
 
-            <div className="md:flex hidden md:items-center mt-3_5 ml-30 ">
-                <div className="flex gap-2">
-                    <Link className="text-white" href="nft-collection">
-                        <div
-                            className="text-white collection-layout body-highlight-typo md:hover:text-greeny md:whitespace-nowrap mt-3_5" /**className="text-gray-900 group flex rounded-md cursor-pointer items-center px-2 py-2 md:whitespace-nowrap md:h-min md:text-sm md:text-greenkaki md:bg-greeny md:hover:bg-greenkaki md:hover:text-greeny md:rounded-full md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded md:shadow md:hover:shadow-lg md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150"**/
+export default function BottomPartVitrine() {
+    return (
+        <div
+            className="bg-brown bg-no-repeat bg-cover p-4 h-1000-px"
+            style={{
+                height: "315px",
+                backgroundColor: "#403831",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "0 150px 0 150px"
+            }}
+        >
+            <div className="relative flex justify-between">
+                <div className="text-white pl-6 flex justify-between">
+                    <a href="/">
+                        <Image
+                            className="headerLogo"
+                            src={"/img/v2/visuels/logo.svg"}
+                            alt="Wildians logo"
+                            width={200}
+                            height={181}
+                        />
+                    </a>
+
+                    <div className="text-white pl-6" style={{ width: "598px" }}>
+                        <p
+                            style={{
+                                color: "#FFF",
+                                fontFamily: "GOGH",
+                                fontSize: "40px",
+                                fontStyle: "normal",
+                                fontWeight: 400,
+                                lineHeight: "2.5"
+                            }}
                         >
-                            MY COLLECTION
-                        </div>
-                    </Link>
+                            WE ARE
+                        </p>
+                        <p
+                            style={{
+                                color: "#FFF",
+                                fontFamily: "GOGH-BOLD",
+                                fontSize: "40px",
+                                fontStyle: "normal",
+                                fontWeight: 800,
+                                lineHeight: "0"
+                            }}
+                        >
+                            Wildians
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div className="text-white pl-6" style={{ width: "625px" }}>
+                <p
+                    style={{
+                        color: "#FFF",
+                        fontFamily: "Arial",
+                        fontSize: "40px",
+                        fontStyle: "normal",
+                        fontWeight: 800,
+                        lineHeight: "2.3"
+                    }}
+                >
+                    Envie de discuter avec nous ?
+                    <b />
+                </p>
+                <p>
+                    Parce que Wildians c’est avant tout une communauté,
+                    participe à la construction de celle-ci en nous partageant
+                    tes retours ici :{" "}
+                </p>
+                <div className="flex gap-2 ml-auto mt-3">
                     <a
                         href="https://discord.gg/grjatzrcKp"
                         target="_blank"
                         rel="noreferrer"
                     >
                         <svg
-                            className="headerDiscord mr-5 default-logo-fill hover:turquoise"
+                            className="headerDiscord mr-4 default-logo-fill hover:turquoise"
                             xmlns="http://www.w3.org/2000/svg"
                             height="1em"
                             viewBox="0 0 640 512"
@@ -59,11 +91,11 @@ function Header() {
                     </a>
                     <a
                         href="https://www.instagram.com/wildians/"
-                        target="_blank "
+                        target="_blank"
                         rel="noreferrer"
                     >
                         <svg
-                            className="headerInsta mr-5 default-logo-fill hover:turquoise"
+                            className="headerInsta mr-4 default-logo-fill hover:turquoise"
                             xmlns="http://www.w3.org/2000/svg"
                             height="1em"
                             viewBox="0 0 448 512"
@@ -78,20 +110,17 @@ function Header() {
                         rel="noreferrer"
                     >
                         <svg
-                            className="headerTwitter mr-5 default-logo-fill hover:turquoise"
+                            className="headerTwitter mr-4 default-logo-fill hover:turquoise"
                             xmlns="http://www.w3.org/2000/svg"
-                            height="1em"
-                            viewBox="0 0 512 512"
+                            style={{ height: "1.9em", width: "1.5em" }}
+                            viewBox="0 0 21 22"
                         >
                             <style></style>
-                            <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+                            <path d="M12.6832 9.3875L20.331 0.5H18.5187L11.8781 8.21689L6.57433 0.5H0.457031L8.47741 12.1693L0.457031 21.4892H2.26941L9.28201 13.3399L14.8832 21.4892H21.0005L12.6827 9.3875H12.6832ZM10.2009 12.2721L9.38826 11.1101L2.92244 1.86396H5.70615L10.9241 9.3259L11.7368 10.4879L18.5195 20.1873H15.7358L10.2009 12.2726V12.2721Z" />
                         </svg>
                     </a>
                 </div>
-                <ConnexionWallet></ConnexionWallet>
             </div>
         </div>
     );
 }
-
-export default Header;
