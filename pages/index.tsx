@@ -1,6 +1,6 @@
 import TopPart from "./../components/LandingPage/TopPart";
 import BottomPart from "./../components/LandingPage/BottomPart";
-
+import * as config from "../config/config";
 export function scrollToSection(sectionId) {
     if (sectionId == "concept") {
         const elt = document.getElementById("idconcept");
@@ -19,10 +19,14 @@ export function scrollToSection(sectionId) {
 }
 
 export default function Landing() {
-    return (
-        <div className="">
-            <TopPart />
-            <BottomPart />
-        </div>
-    );
+    if (config.PROD_VITRINE === "1") {
+        return <div>Hello World</div>;
+    } else {
+        return (
+            <div className="">
+                <TopPart />
+                <BottomPart />
+            </div>
+        );
+    }
 }
