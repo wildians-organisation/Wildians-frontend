@@ -11,9 +11,7 @@ function Introduction() {
                         Wildians, qui sommes-nous ?
                     </div>
                     <div className="component-container-intro">
-                        <div
-                            className="image-container-intro"
-                        >
+                        <div className="image-container-intro">
                             <img
                                 src={"/img/v2/visuels/bull_shadow.png"}
                                 width={300}
@@ -26,9 +24,7 @@ function Introduction() {
                                 Economy
                             </p>
                         </div>
-                        <div
-                            className="image-container-intro"
-                        >
+                        <div className="image-container-intro">
                             <img
                                 src={"/img/v2/visuels/deer_shadow.png"}
                                 width={300}
@@ -41,9 +37,7 @@ function Introduction() {
                                 Environment
                             </p>
                         </div>
-                        <div
-                            className="image-container-intro"
-                        >
+                        <div className="image-container-intro">
                             <img
                                 src={"/img/v2/visuels/wolf_shadow.png"}
                                 width={300}
