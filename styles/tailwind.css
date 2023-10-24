@@ -16086,6 +16086,14 @@ select {
     line-height: normal;
 }
 
+.title-wild-frame-typo {
+    font-family: Gogh;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
 .subtitle-typo {
     font-family: Mulish;
     font-size: 20px;
@@ -16109,6 +16117,15 @@ select {
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
+    line-height: normal;
+}
+
+.body-typo strong {
+    /* Body highlight */
+    font-family: Mulish;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
     line-height: normal;
 }
 
@@ -16179,6 +16196,13 @@ select {
     display: flex;
     width: 600px;
     height: 65px;
+}
+
+.desc-layout2 {
+    width: 600px;
+    height: 100px;
+    margin-top: 12px;
+    margin-bottom: 7rem;
 }
 
 .nft-card-layout {
@@ -16453,4 +16477,21 @@ select {
 
 .pic-border {
     border-radius: 20px 0px 0px 20px;
+}
+
+.component-container-intro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.image-container-intro {
+    text-align: center;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.description-intro {
+    margin-top: 10px;
+    text-align: center;
 }

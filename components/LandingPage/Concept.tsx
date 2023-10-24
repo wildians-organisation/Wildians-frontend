@@ -3,10 +3,10 @@ import rectangle from "../../public/fonts/rectangle-33.png";
 
 export function Concept() {
     return (
-        <div>
+        <div id="Concept">
             <div
                 className="bg-no-repeat bg-cover p-4 h-1000-px"
-                style={{ backgroundColor: "#223734", height: "800px" }}
+                style={{ height: "800px" }}
             >
                 <div className="relative top-56 h-96">
                     <div className="text-center text-white get-typo mb-4">

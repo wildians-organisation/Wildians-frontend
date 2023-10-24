@@ -1,8 +1,14 @@
 import React from "react";
 import HeaderVitrine from "../Header/HeaderVitrine";
-import TezosToEuroConverter from "../ConversionService/ConversionService";
+import { useRouter } from "next/router";
 
 function TopPartVitrine() {
+    const router = useRouter();
+
+    const handleRedirect = () => {
+        router.push("/#Concept");
+    };
+
     return (
         <>
             <div
@@ -26,12 +32,13 @@ function TopPartVitrine() {
                             Ton parcours vers un mode de vie responsable !
                         </p>
                     </div>
-                    <div
+                    <button
+                        onClick={handleRedirect}
                         className="text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
                         style={{ width: "fit-content" }}
                     >
                         Découvrir le concept
-                    </div>
+                    </button>
                 </div>
             </div>
         </>
