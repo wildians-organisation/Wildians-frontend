@@ -6,6 +6,7 @@ import BottomPartVitrine from "../components/LandingPage/BottomPartVitrine";
 import Support from "../components/LandingPage/Support";
 import TopPart from "./../components/LandingPage/TopPart";
 import BottomPart from "./../components/LandingPage/BottomPart";
+import Introduction from "./../components/LandingPage/Introduction";
 import * as config from "../config/config";
 
 export function scrollToSection(sectionId) {
@@ -31,6 +32,7 @@ export default function Landing() {
             <div className="">
                 <TopPartVitrine />
                 <Concept />
+                <Introduction />
                 <Usage />
                 <Support />
                 <BottomPartVitrine />
