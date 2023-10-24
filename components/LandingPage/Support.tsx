@@ -1,5 +1,6 @@
 import { Disclosure } from "@headlessui/react";
 import React from "react";
+import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 export default function Support() {
     return (
@@ -27,8 +28,9 @@ export default function Support() {
                     </p>
                     <div className="border-b-2">
                         <Disclosure>
-                            <Disclosure.Button className="py-2">
+                            <Disclosure.Button className="py-2 flex justify-between w-full">
                                 Comment fonctionne notre crowdfunding ?
+                                <ChevronRightIcon className="w-8 h-8 rotate-90 transform" />
                             </Disclosure.Button>
                             <Disclosure.Panel className="text-gray-500">
                                 TODO
@@ -37,8 +39,9 @@ export default function Support() {
                     </div>
                     <div className="border-b-2">
                         <Disclosure>
-                            <Disclosure.Button className="py-2">
+                            <Disclosure.Button className="py-2 flex justify-between w-full">
                                 Pourquoi avons-nous besoin de ton soutien ?
+                                <ChevronRightIcon className="w-8 h-8 rotate-90 transform" />
                             </Disclosure.Button>
                             <Disclosure.Panel className="text-gray-500">
                                 TODO
