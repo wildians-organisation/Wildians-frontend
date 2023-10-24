@@ -12,7 +12,7 @@ function Introduction() {
                     </div>
                     <div className="component-container-intro">
                         <div
-                            className="image-container-intro" /*"explanationPart nft-global-frame flex justify-evenly items-stretch text-white mt-12 mb-10"*/
+                            className="image-container-intro"
                         >
                             <img
                                 src={"/img/v2/visuels/bull_shadow.png"}
@@ -27,7 +27,7 @@ function Introduction() {
                             </p>
                         </div>
                         <div
-                            className="image-container-intro" /*"explanationPart nft-global-frame flex justify-evenly items-stretch text-white mt-12 mb-10"*/
+                            className="image-container-intro"
                         >
                             <img
                                 src={"/img/v2/visuels/deer_shadow.png"}
@@ -42,7 +42,7 @@ function Introduction() {
                             </p>
                         </div>
                         <div
-                            className="image-container-intro" /*"explanationPart nft-global-frame flex justify-evenly items-stretch text-white mt-12 mb-10"*/
+                            className="image-container-intro"
                         >
                             <img
                                 src={"/img/v2/visuels/wolf_shadow.png"}
