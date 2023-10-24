@@ -29,7 +29,7 @@ export function scrollToSection(sectionId) {
 export default function Landing() {
     if (config.PROD_VITRINE === "1") {
         return (
-            <div className="">
+            <div style={{ backgroundColor: "#223734" }}>
                 <TopPartVitrine />
                 <Concept />
                 <Introduction />

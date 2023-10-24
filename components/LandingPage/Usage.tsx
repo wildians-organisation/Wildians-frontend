@@ -2,7 +2,7 @@ import UsageItem from "./UsageItem";
 
 export function Usage() {
     return (
-        <div className="py-40" style={{ backgroundColor: "#223734" }}>
+        <div className="py-20 mt-40">
             <h1 className="text-center text-4xl text-white font-bold mb-16">
                 Wildians, bien plus qu'une simple application !
             </h1>

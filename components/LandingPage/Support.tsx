@@ -4,7 +4,7 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 export default function Support() {
     return (
-        <div className="py-40" style={{ backgroundColor: "#223734" }}>
+        <div className="py-20" style={{ backgroundColor: "#223734" }}>
             <h1 className="text-center text-4xl text-white font-bold mb-16">
                 Soutiens notre Projet de Changement : Ensemble vers un Avenir
                 Durable
