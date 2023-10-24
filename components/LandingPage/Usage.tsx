@@ -4,10 +4,12 @@ export function Usage() {
     return (
         <div className="py-40" style={{ backgroundColor: "#223734" }}>
             <h1 className="text-center text-4xl text-white font-bold mb-16">
-                Wildians, bien plus qu'une simple application
+                Wildians, bien plus qu'une simple application !
             </h1>
-            <div className="flex justify-center items-center gap-x-32">
-                <img src="/img/wildians_phone.svg" alt="" />
+            <div className="flex justify-center items-center">
+                <div className="flex justify-center" style={{ width: "600px" }}>
+                    <img src="/img/wildians_phone.svg" alt="" />
+                </div>
                 <div
                     className="flex flex-col gap-y-4"
                     style={{ width: "600px" }}

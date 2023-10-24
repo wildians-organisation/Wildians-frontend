@@ -6,7 +6,7 @@ import Image from "next/image";
 
 function HeaderVitrine() {
     return (
-        <div className="header-layout flex justify-between items-center h-20">
+        <div className="header-layout flex justify-between items-center h-20 px-32">
             <div className="flex items-center">
                 <a href="/">
                     <Image

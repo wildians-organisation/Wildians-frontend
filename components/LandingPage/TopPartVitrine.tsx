@@ -1,6 +1,5 @@
 import React from "react";
 import HeaderVitrine from "../Header/HeaderVitrine";
-import TezosToEuroConverter from "../ConversionService/ConversionService";
 
 function TopPartVitrine() {
     return (

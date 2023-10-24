@@ -48,7 +48,7 @@ export default function Support() {
                 </div>
                 <div>
                     <div
-                        className="text-white text-base mb-16"
+                        className="text-white text-base mb-16 border-l-4 pl-4"
                         style={{ width: "600px" }}
                     >
                         <p className="mb-4">
