@@ -1,7 +1,5 @@
 import React from "react";
 
-import rectangle from "../../public/fonts/rectangle-33.png";
-
 function Introduction() {
     return (
         <div>
