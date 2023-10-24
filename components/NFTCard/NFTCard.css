@@ -1,7 +1,12 @@
-.card{
-    background: linear-gradient(80.61deg, #273A37 1.81%, #3D5953 99.21%), linear-gradient(0deg, rgba(144, 224, 211, 0.5), rgba(144, 224, 211, 0.5));
+.card {
+    background: linear-gradient(80.61deg, #273a37 1.81%, #3d5953 99.21%),
+        linear-gradient(
+            0deg,
+            rgba(144, 224, 211, 0.5),
+            rgba(144, 224, 211, 0.5)
+        );
     box-shadow: 5px 5px 4px 0px #00000026;
 }
-.attribute{
-    box-shadow: 5px 5px 4px 0px #0000000D;
+.attribute {
+    box-shadow: 5px 5px 4px 0px #0000000d;
 }

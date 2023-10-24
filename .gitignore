@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+package-lock.json
 
 # testing
 /coverage
@@ -33,3 +34,8 @@ cypress/videos
 cypress/screenshots
 
 .lighthouseci
+# Local Netlify folder
+.netlify
+
+# Ide
+.idea
