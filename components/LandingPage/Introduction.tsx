@@ -49,17 +49,17 @@ function Introduction() {
                             </p>
                         </div>
                     </div>
-                    <div className="text-white text-base mb-16 mt-14 flex justify-center w-600 items-center">
+                    <div className="text-white text-base mb-16 mt-14 flex justify-center items-center">
                         <div className="text-white body-typo desc-layout2 border-l-4 pl-4">
                             Ensemble, Ellie, Noa et Fabio forment un trio
                             harmonieux, représentant les trois piliers
                             essentiels du développement durable : la
-                            <strong>protection de l'environnement</strong> , la{" "}
-                            <strong>promotion de la société équitable</strong>
+                            <strong> protection de l'environnement</strong> , la{" "}
+                            <strong>promotion de la société équitable </strong>
                             et la{" "}
-                            <strong>gestion économique responsable</strong>.
+                            <strong> gestion économique responsable</strong>.
                             Chacun à leur manière, ils t'aideront à trouver l'
-                            <strong>équilibre</strong>
+                            <strong>équilibre </strong>
                             nécessaire pour construire un{" "}
                             <strong>
                                 <span className="text-greeny">

@@ -38,9 +38,9 @@ function TopPartVitrine() {
                     <button
                         onClick={handleRedirect}
                         className="text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
-                            style={{ width: "fit-content" }}
-                        >
-                            Découvrir le concept
+                        style={{ width: "fit-content" }}
+                    >
+                        Découvrir le concept
                     </button>
                 </div>
             </div>
