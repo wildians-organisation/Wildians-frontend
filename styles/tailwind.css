@@ -13707,6 +13707,10 @@ select {
     width: 24rem;
 }
 
+.w-600 {
+    width: 600px;
+}
+
 .w-auto {
     width: auto;
 }

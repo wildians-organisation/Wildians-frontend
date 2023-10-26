@@ -26,26 +26,124 @@ export default function Support() {
                         durable. Mais pour en faire une réalité, nous avons
                         besoin de soutien, et c'est là que tu entres en jeu.
                     </p>
-                    <div className="border-b-2">
+                    <div className="border-b-2 mb-4">
                         <Disclosure>
-                            <Disclosure.Button className="py-2 flex justify-between w-full">
-                                Comment fonctionne notre crowdfunding ?
-                                <ChevronRightIcon className="w-8 h-8 rotate-90 transform" />
-                            </Disclosure.Button>
-                            <Disclosure.Panel className="text-gray-500">
-                                TODO
-                            </Disclosure.Panel>
+                            {({ open }) => (
+                                /* Use the `open` state to conditionally change the direction of an icon. */
+                                <>
+                                    <Disclosure.Button className="flex justify-between w-full">
+                                        <strong>
+                                            Comment fonctionne notre
+                                            crowdfunding ?
+                                        </strong>
+                                        <ChevronRightIcon
+                                            className={
+                                                open
+                                                    ? "rotate-90 transform w-8 h-8"
+                                                    : "transform -rotate-90 w-8 h-8"
+                                            }
+                                        />
+                                    </Disclosure.Button>
+                                    <Disclosure.Panel>
+                                        <p>
+                                            Nous avons choisi de représenter les
+                                            trois piliers du développement
+                                            durable à travers trois personnages
+                                            inspirants : Ellie le cerf, Noa le
+                                            loup et Fabio le taureau. Chacun
+                                            d'entre eux incarne une{" "}
+                                            <strong>dimension cruciale </strong>
+                                            de notre{" "}
+                                            <strong>
+                                                avenir commun
+                                            </strong> :{" "}
+                                            <span className="text-greeny">
+                                                l'environnement, la société et
+                                                l'économie.
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Lorsque tu choisis d'adopter l'un de
+                                            ces personnages, une partie du prix
+                                            de vente est automatiquement
+                                            <strong>
+                                                {" "}
+                                                reversée à une association
+                                            </strong>{" "}
+                                            en lien avec le pilier
+                                            correspondant. Ainsi, en soutenant
+                                            l'un de nos Wildians, tu contribues
+                                            directement à des
+                                            <strong>
+                                                {" "}
+                                                actions concrètes
+                                            </strong>{" "}
+                                            en faveur de l'environnement, de la
+                                            société ou de l'économie.
+                                        </p>
+                                    </Disclosure.Panel>
+                                </>
+                            )}
                         </Disclosure>
                     </div>
-                    <div className="border-b-2">
+                    <div className="border-b-2 flex flex-col">
                         <Disclosure>
-                            <Disclosure.Button className="py-2 flex justify-between w-full">
-                                Pourquoi avons-nous besoin de ton soutien ?
-                                <ChevronRightIcon className="w-8 h-8 rotate-90 transform" />
-                            </Disclosure.Button>
-                            <Disclosure.Panel className="text-gray-500">
-                                TODO
-                            </Disclosure.Panel>
+                            {({ open }) => (
+                                /* Use the `open` state to conditionally change the direction of an icon. */
+                                <>
+                                    <Disclosure.Button className="flex justify-between w-full">
+                                        <strong>
+                                            Pourquoi avons-nous besoin de ton
+                                            soutien ?
+                                        </strong>
+                                        <ChevronRightIcon
+                                            className={
+                                                open
+                                                    ? "rotate-90 transform w-8 h-8"
+                                                    : "w-8 h-8 transform -rotate-90"
+                                            }
+                                        />
+                                    </Disclosure.Button>
+                                    <Disclosure.Panel>
+                                        <p>
+                                            Le reste des fonds collectés grâce à
+                                            ce crowdfunding seront entièrement
+                                            dédiés à la création d'une{" "}
+                                            <strong>
+                                                application mobile inédite
+                                            </strong>{" "}
+                                            et, pour autant,{" "}
+                                            <strong>indispensable</strong>.
+                                            Cette app sera conçue pour t'
+                                            <strong>accompagner</strong>, pas à
+                                            pas, dans ta transition vers un mode
+                                            de vie plus durable.
+                                        </p>
+                                        <p>
+                                            Elle t'aidera à comprendre les
+                                            enjeux environnementaux, sociétaux
+                                            et économiques qui nous entourent.
+                                            Tu y trouveras des conseils
+                                            pratiques pour changer tes
+                                            habitudes, réduire ton empreinte
+                                            écologique et soutenir des
+                                            initiatives responsables. Grâce à
+                                            des informations claires et des
+                                            actions concrètes, nous voulons
+                                            t'aider à devenir{" "}
+                                            <strong>
+                                                un acteur du changement
+                                            </strong>
+                                            . Ensemble, nous pouvons créer un
+                                            monde plus vert, plus équitable et
+                                            plus prospère pour tous. Chaque
+                                            contribution, qu'elle soit grande ou
+                                            petite, nous rapproche de cet{" "}
+                                            <strong>objectif commun</strong>.
+                                        </p>
+                                    </Disclosure.Panel>
+                                </>
+                            )}
                         </Disclosure>
                     </div>
                 </div>
