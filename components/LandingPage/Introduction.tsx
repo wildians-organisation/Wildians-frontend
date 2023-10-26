@@ -50,7 +50,7 @@ function Introduction() {
                         </div>
                     </div>
                     <div className="text-white text-base mb-16 mt-14 flex justify-center items-center">
-                        <div className="text-white body-typo desc-layout2 border-l-4 pl-4">
+                        <div className="text-white body-typo desc-layout2 border-l-4 pl-4 w-600 text-justify">
                             Ensemble, Ellie, Noa et Fabio forment un trio
                             harmonieux, représentant les trois piliers
                             essentiels du développement durable : la
