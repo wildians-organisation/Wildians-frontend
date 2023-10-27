@@ -9,15 +9,10 @@ export default function Support() {
                 Soutiens notre Projet de Changement : Ensemble vers un Avenir
                 Durable
             </h1>
-            <div className="flex justify-center gap-x-8">
-                <div
-                    className="text-white text-base"
-                    style={{ width: "600px" }}
-                >
-                    <p className="mb-8">
-                        Cher(e) ami(e) du développement durable,
-                    </p>
-                    <p className="mb-8">
+            <div className="flex justify-center gap-x-8 body-typo">
+                <div className="text-white text-base w-600 flex flex-col gap-8">
+                    <p>Cher(e) ami(e) du développement durable,</p>
+                    <p>
                         Tu as sûrement déjà ressenti l'urgence d'agir pour notre
                         planète, pour notre société et pour notre économie sans
                         forcément savoir comment. C'est pourquoi nous avons
@@ -26,7 +21,7 @@ export default function Support() {
                         durable. Mais pour en faire une réalité, nous avons
                         besoin de soutien, et c'est là que tu entres en jeu.
                     </p>
-                    <div className="border-b-2 mb-4">
+                    <div className="border-b-2">
                         <Disclosure>
                             {({ open }) => (
                                 /* Use the `open` state to conditionally change the direction of an icon. */
@@ -57,10 +52,10 @@ export default function Support() {
                                             <strong>
                                                 avenir commun
                                             </strong> :{" "}
-                                            <span className="text-greeny">
+                                            <strong className="text-greeny">
                                                 l'environnement, la société et
                                                 l'économie.
-                                            </span>
+                                            </strong>
                                         </p>
                                         <p>
                                             Lorsque tu choisis d'adopter l'un de
@@ -108,8 +103,9 @@ export default function Support() {
                                         <p>
                                             Le reste des fonds collectés grâce à
                                             ce crowdfunding seront entièrement
-                                            dédiés à la création d'une{" "}
+                                            dédiés à la création d'une
                                             <strong>
+                                                {" "}
                                                 application mobile inédite
                                             </strong>{" "}
                                             et, pour autant,{" "}
@@ -130,9 +126,9 @@ export default function Support() {
                                             initiatives responsables. Grâce à
                                             des informations claires et des
                                             actions concrètes, nous voulons
-                                            t'aider à devenir{" "}
+                                            t'aider à devenir un{" "}
                                             <strong>
-                                                un acteur du changement
+                                                acteur du changement
                                             </strong>
                                             . Ensemble, nous pouvons créer un
                                             monde plus vert, plus équitable et
