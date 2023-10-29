@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+package-lock.json
 
 # testing
 /coverage
@@ -17,6 +18,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env
+.env-preprod
 
 npm-debug.log*
 yarn-debug.log*
@@ -26,3 +29,13 @@ yarn-error.log*
 out/
 
 commit.sh
+
+cypress/videos
+cypress/screenshots
+
+.lighthouseci
+# Local Netlify folder
+.netlify
+
+# Ide
+.idea

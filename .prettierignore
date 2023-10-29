@@ -1,0 +1,10 @@
+.DS_Store
+node_modules
+.env
+.env.*
+/build
+# Ignore files for PNPM, NPM and YARN
+package.json
+package-lock.json
+yarn.lock
+.next
