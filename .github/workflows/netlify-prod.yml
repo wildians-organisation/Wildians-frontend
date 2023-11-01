@@ -93,9 +93,7 @@ jobs:
                   lhci autorun
 
     deploy-app:
-        if:
-            github.event_name == 'push' && github.ref ==
-            'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         environment: prod
         runs-on: ubuntu-latest
         needs:
