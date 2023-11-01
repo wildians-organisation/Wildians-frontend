@@ -4,18 +4,14 @@ import React from "react";
 export default function BottomPartVitrine() {
     return (
         <div
-            className="bg-brown bg-no-repeat bg-cover p-4 h-1000-px"
+            className="flex items-center justify-center bg-brown bg-no-repeat bg-cover p-4 h-1000-px"
             style={{
                 height: "315px",
-                backgroundColor: "#403831",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                padding: "0 150px 0 150px"
+                backgroundColor: "#403831"
             }}
         >
-            <div className="relative flex justify-between">
-                <div className="text-white pl-6 flex justify-between">
+            <div className="relative flex justify-between w-600">
+                <div className="text-white flex justify-between">
                     <a href="/">
                         <Image
                             className="headerLogo"
@@ -26,7 +22,7 @@ export default function BottomPartVitrine() {
                         />
                     </a>
 
-                    <div className="text-white pl-6" style={{ width: "598px" }}>
+                    <div className="text-white pl-6">
                         <p
                             style={{
                                 color: "#FFF",

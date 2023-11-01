@@ -6,7 +6,10 @@ function TopPartVitrine() {
     const router = useRouter();
 
     const handleRedirect = () => {
-        router.push("/#Concept");
+        const conceptSection = document.getElementById("Concept");
+        if (conceptSection) {
+            conceptSection.scrollIntoView({ behavior: "smooth" });
+        }
     };
 
     return (
