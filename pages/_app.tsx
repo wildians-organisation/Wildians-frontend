@@ -7,7 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
 import "styles/footer.css";
 import "../components/NFTCard/NFTCard.css";
-import * as config from "../config/config"
+import * as config from "../config/config";
 
 export default class MyApp extends App {
     componentDidMount() {
@@ -43,15 +43,15 @@ export default class MyApp extends App {
     }
 
     loadClarityAndAblaScripts() {
-        const clarityScript = document.createElement('script');
+        const clarityScript = document.createElement("script");
         clarityScript.src = `https://www.clarity.ms/tag/${config.CLARITY_APPID}`;
-        document.getElementsByTagName('head')[0].appendChild(clarityScript);
+        document.getElementsByTagName("head")[0].appendChild(clarityScript);
 
-        const ablaScript = document.createElement('script');
+        const ablaScript = document.createElement("script");
         ablaScript.dataset.cache = "true";
-        ablaScript.dataset.websiteId = 'b25f950c-8e53-400e-afef-df879dabda06';
-        ablaScript.src = 'https://s.abla.io/abla.js';
-        document.getElementsByTagName('head')[0].appendChild(ablaScript);
+        ablaScript.dataset.websiteId = "b25f950c-8e53-400e-afef-df879dabda06";
+        ablaScript.src = "https://s.abla.io/abla.js";
+        document.getElementsByTagName("head")[0].appendChild(ablaScript);
     }
 
     render() {
