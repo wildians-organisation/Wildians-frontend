@@ -15,7 +15,7 @@ function TopPartVitrine() {
     return (
         <>
             <div
-                className="bg-forest-bg bg-no-repeat" /**className="headerBackground bg-cover  bg-forest-bg font-goghbold p-4 h-500-px"**/
+                className="bg-forest-bg bg-no-repeat " /**className="headerBackground bg-cover  bg-forest-bg font-goghbold p-4 h-500-px"**/
             >
                 <HeaderVitrine />
                 <div className="flex flex-col justify-center h-screen md:ml-32">
@@ -43,7 +43,16 @@ function TopPartVitrine() {
                         Découvrir le concept
                     </button>
                 </div>
+                <div
+                className="w-1/3 h-48 p-2 left-0 bottom-0"
+                style={{
+                    clipPath: "polygon(0 0, 100% 100%, 0 100%)",
+                    backgroundColor: "#223734"
+                }}></div>
+
+
             </div>
+            
         </>
     );
 }
