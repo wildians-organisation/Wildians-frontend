@@ -59,7 +59,9 @@ export default class MyApp extends App {
 
         const Layout = Component.layout || (({ children }) => <>{children}</>);
 
-        this.loadClarityAndAblaScripts();
+        React.useEffect(() => {
+            this.loadClarityAndAblaScripts();
+        }, []);
 
         return (
             <React.Fragment>
