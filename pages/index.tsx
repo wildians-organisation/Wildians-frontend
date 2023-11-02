@@ -7,7 +7,6 @@ import Support from "../components/LandingPage/Support";
 import TopPart from "./../components/LandingPage/TopPart";
 import BottomPart from "./../components/LandingPage/BottomPart";
 import Introduction from "./../components/LandingPage/Introduction";
-import * as config from "../config/config";
 
 export function scrollToSection(sectionId) {
     if (sectionId == "concept") {
@@ -27,23 +26,18 @@ export function scrollToSection(sectionId) {
 }
 
 export default function Landing() {
-    if (config.PROD_VITRINE === "1") {
-        return (
-            <div style={{ backgroundColor: "#223734" }}>
-                <TopPartVitrine />
-                <Concept />
-                <Introduction />
-                <Usage />
-                <Support />
-                <BottomPartVitrine />
-            </div>
-        );
-    } else {
-        return (
-            <div className="">
-                <TopPart />
-                <BottomPart />
-            </div>
-        );
-    }
+    return (
+        <div style={{ backgroundColor: "#223734" }}>
+            <TopPartVitrine />
+            <Concept />
+            <Introduction />
+            <Usage />
+            <Support />
+            <BottomPartVitrine />
+        </div>
+        /*<div className="">
+            <TopPart />
+            <BottomPart />
+        </div>*/
+    );
 }

@@ -83,7 +83,6 @@ jobs:
                   envkey_GCPSTORAGEBUCKET: ${{ secrets.GCPSTORAGEBUCKET }}
                   envkey_BUCKET_REGION: ${{ secrets.BUCKET_REGION }}
                   envkey_NAME: ${{ secrets.NAME }}
-                  envkey_PROD_VITRINE: ${{ secrets.PROD_VITRINE }}
                   envkey_CLARITY_APPID: ${{ secrets.CLARITY_APPID }}
             - name: Install
               run: |
@@ -131,7 +130,6 @@ jobs:
                   envkey_GCPSTORAGEBUCKET: ${{ secrets.GCPSTORAGEBUCKET }}
                   envkey_BUCKET_REGION: ${{ secrets.BUCKET_REGION }}
                   envkey_NAME: ${{ secrets.NAME }}
-                  envkey_PROD_VITRINE: ${{ secrets.PROD_VITRINE }}
                   envkey_CLARITY_APPID: ${{ secrets.CLARITY_APPID }}
             - run: npm install -g yarn
             - run: yarn install --frozen-lockfile

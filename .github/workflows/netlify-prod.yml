@@ -1,8 +1,8 @@
-name: Prod Vitrine workflow
+name: Prod workflow
 
 on:
     push:
-        branches: [prod-vitrine]
+        branches: [main]
 
 jobs:
     prettier:
@@ -46,7 +46,7 @@ jobs:
                   path: ./cypress/videos
 
     lhci:
-        if: github.ref == 'refs/heads/prod-vitrine'
+        if: github.ref == 'refs/heads/main'
         name: Lighthouse CI
         runs-on: ubuntu-latest
         environment: prod
@@ -80,7 +80,6 @@ jobs:
                   envkey_GCPSTORAGEBUCKET: ${{ secrets.GCPSTORAGEBUCKET }}
                   envkey_BUCKET_REGION: ${{ secrets.BUCKET_REGION }}
                   envkey_NAME: ${{ secrets.NAME }}
-                  envkey_PROD_VITRINE: ${{secrets.PROD_VITRINE }}
                   envkey_CLARITY_APPID: ${{secrets.CLARITY_APPID}}
             - name: Install
               run: |
@@ -93,9 +92,7 @@ jobs:
                   lhci autorun
 
     deploy-app:
-        if:
-            github.event_name == 'push' && github.ref ==
-            'refs/heads/prod-vitrine'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         environment: prod
         runs-on: ubuntu-latest
         needs:
@@ -129,7 +126,6 @@ jobs:
                   envkey_GCPSTORAGEBUCKET: ${{ secrets.GCPSTORAGEBUCKET }}
                   envkey_BUCKET_REGION: ${{ secrets.BUCKET_REGION }}
                   envkey_NAME: ${{ secrets.NAME }}
-                  envkey_PROD_VITRINE: ${{secrets.PROD_VITRINE }}
                   envkey_CLARITY_APPID: ${{secrets.CLARITY_APPID}}
             - run: npm install -g yarn
             - run: yarn install --frozen-lockfile
