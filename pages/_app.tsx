@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
 import "styles/footer.css";
 import "../components/NFTCard/NFTCard.css";
+import "../config/config"
 
 export default class MyApp extends App {
     componentDidMount() {
