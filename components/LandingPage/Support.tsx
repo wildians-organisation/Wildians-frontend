@@ -34,8 +34,8 @@ export default function Support() {
                                         <ChevronRightIcon
                                             className={
                                                 open
-                                                    ? "rotate-90 transform w-8 h-8"
-                                                    : "transform -rotate-90 w-8 h-8"
+                                                    ? "transform -rotate-90 w-8 h-8"
+                                                    : "rotate-90 transform w-8 h-8"
                                             }
                                         />
                                     </Disclosure.Button>
@@ -94,8 +94,8 @@ export default function Support() {
                                         <ChevronRightIcon
                                             className={
                                                 open
-                                                    ? "rotate-90 transform w-8 h-8"
-                                                    : "w-8 h-8 transform -rotate-90"
+                                                    ? "transform -rotate-90 w-8 h-8"
+                                                    : "rotate-90 transform w-8 h-8"
                                             }
                                         />
                                     </Disclosure.Button>
