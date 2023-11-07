@@ -51,7 +51,7 @@ export default class MyApp extends App {
             </React.Fragment>
         );
     }
-    
+
     static async getInitialProps({ Component, router, ctx }) {
         let pageProps = {};
 

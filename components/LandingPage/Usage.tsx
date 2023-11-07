@@ -3,17 +3,17 @@ import UsageItem from "./UsageItem";
 export function Usage() {
     return (
         <div className="py-20 mt-40">
-            <h1 className="text-center text-4xl text-white font-bold mb-16">
+            <h1 className="text-center title-typo text-white font-bold mb-16">
                 Wildians, bien plus qu'une simple application !
             </h1>
             <div className="flex justify-center items-center">
-                <div className="flex justify-center" style={{ width: "600px" }}>
-                    <img src="/img/wildians_phone.svg" alt="" />
-                </div>
                 <div
-                    className="flex flex-col gap-y-4"
+                    className="md:flex justify-center hidden"
                     style={{ width: "600px" }}
                 >
+                    <img src="/img/wildians_phone.svg" alt="" />
+                </div>
+                <div className="flex flex-col gap-y-4 w-600 p-4">
                     <UsageItem
                         title="📚 Ressources & Éducation"
                         content="Plonge dans une bibliothèque de contenus, de vidéos et de mini-cours pour enrichir tes connaissances sur le développement durable."
