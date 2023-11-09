@@ -3,7 +3,7 @@ import UsageItem from "./UsageItem";
 export function Usage() {
     return (
         <div className="py-20 mt-40">
-            <h1 className="text-center text-4xl text-white font-bold mb-16">
+            <h1 className="text-center title-typo text-white mb-16">
                 Wildians, bien plus qu'une simple application !
             </h1>
             <div className="flex justify-center items-center">
@@ -11,8 +11,7 @@ export function Usage() {
                     <img src="/img/wildians_phone.svg" alt="" />
                 </div>
                 <div
-                    className="flex flex-col gap-y-4"
-                    style={{ width: "600px" }}
+                    className="flex flex-col gap-y-4 w-600"
                 >
                     <UsageItem
                         title="📚 Ressources & Éducation"

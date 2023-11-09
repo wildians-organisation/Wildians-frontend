@@ -16064,7 +16064,7 @@ select {
 /** TYPO **/
 .header-typo {
     /* Header */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 52px;
     font-style: normal;
     font-weight: 800;
@@ -16073,7 +16073,7 @@ select {
 
 .header-typo2 {
     /* Header */
-    font-family: Gogh;
+    font-family: GOGH-BOLD;
     font-size: 50px;
     font-style: normal;
     font-weight: 800;
@@ -16082,7 +16082,7 @@ select {
 
 .title-typo {
     /* Titre 1 */
-    font-family: Gogh;
+    font-family: GOGH-BOLD;
     font-size: 40px;
     font-style: normal;
     font-weight: 800;
@@ -16090,7 +16090,7 @@ select {
 }
 
 .title-wild-frame-typo {
-    font-family: Gogh;
+    font-family: GOGH-BOLD;
     font-size: 32px;
     font-style: normal;
     font-weight: 800;
@@ -16098,7 +16098,7 @@ select {
 }
 
 .subtitle-typo {
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 20px;
     font-style: normal;
     font-weight: 800;
@@ -16116,7 +16116,7 @@ select {
 
 .body-typo {
     /* Body */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -16125,7 +16125,7 @@ select {
 
 .body-typo strong {
     /* Body highlight */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: normal;
     font-weight: 800;
@@ -16134,7 +16134,7 @@ select {
 
 .body-highlight-typo {
     /* Body highlight */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: normal;
     font-weight: 800;
@@ -16143,7 +16143,7 @@ select {
 
 .body-italic-typo {
     /* Body italic */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: italic;
     font-weight: 400;
@@ -16232,7 +16232,7 @@ select {
     color: var(--blanc, #fff);
 
     /* Body highlight */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: normal;
     font-weight: 800;
@@ -16497,4 +16497,12 @@ select {
 .description-intro {
     margin-top: 10px;
     text-align: center;
+}
+
+.marker-typo {
+    font-family: PERMANENT MARKER;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }

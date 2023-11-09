@@ -22,53 +22,25 @@ export default function BottomPartVitrine() {
                         />
                     </a>
 
-                    <div className="text-white pl-6">
-                        <p
-                            style={{
-                                color: "#FFF",
-                                fontFamily: "GOGH",
-                                fontSize: "40px",
-                                fontStyle: "normal",
-                                fontWeight: 400,
-                                lineHeight: "2.5"
-                            }}
-                        >
+                    <div className="text-white pl-6 align-items">
+                        <div className="marker-typo">
                             WE ARE
-                        </p>
-                        <p
-                            style={{
-                                color: "#FFF",
-                                fontFamily: "GOGH-BOLD",
-                                fontSize: "40px",
-                                fontStyle: "normal",
-                                fontWeight: 800,
-                                lineHeight: "0"
-                            }}
-                        >
+                        </div>
+                        <div className="title-typo">
                             Wildians
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="text-white pl-6" style={{ width: "625px" }}>
-                <p
-                    style={{
-                        color: "#FFF",
-                        fontFamily: "Arial",
-                        fontSize: "40px",
-                        fontStyle: "normal",
-                        fontWeight: 800,
-                        lineHeight: "2.3"
-                    }}
-                >
+                <div className="title-typo w-600 whitespace-nowrap mb-4">
                     Envie de discuter avec nous ?
-                    <b />
-                </p>
-                <p>
+                </div>
+                <div className="body-typo w-600 mb-4">
                     Parce que Wildians c’est avant tout une communauté,
                     participe à la construction de celle-ci en nous partageant
                     tes retours ici :{" "}
-                </p>
+                </div>
                 <div className="flex gap-2 ml-auto mt-3">
                     <a
                         href="https://discord.gg/grjatzrcKp"

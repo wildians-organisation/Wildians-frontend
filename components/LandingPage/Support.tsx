@@ -5,10 +5,10 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 export default function Support() {
     return (
         <div className="py-20" style={{ backgroundColor: "#223734" }}>
-            <h1 className="text-center text-4xl text-white font-bold mb-16">
+            <div className="text-center title-typo text-white mb-16">
                 Soutiens notre Projet de Changement : Ensemble vers un Avenir
                 Durable
-            </h1>
+            </div>
             <div className="flex justify-center gap-x-8 body-typo">
                 <div className="text-white text-base w-600 flex flex-col gap-8">
                     <p>Cher(e) ami(e) du développement durable,</p>

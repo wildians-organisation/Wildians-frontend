@@ -9,18 +9,8 @@ export function Concept() {
                 style={{ height: "800px" }}
             >
                 <div className="relative top-56 h-96">
-                    <div className="text-center text-white get-typo mb-4">
-                        <p
-                            style={{
-                                color: "#FFF",
-                                fontFamily: "Arial",
-                                fontSize: "40px",
-                                fontStyle: "normal",
-                                fontWeight: "800"
-                            }}
-                        >
+                    <div className="text-center text-white title-typo mb-4">
                             Concept
-                        </p>
                     </div>
                 </div>
                 <div
