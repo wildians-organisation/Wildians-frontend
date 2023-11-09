@@ -10,7 +10,7 @@ export function Concept() {
             >
                 <div className="relative top-56 h-96">
                     <div className="text-center text-white title-typo mb-4">
-                            Concept
+                        Concept
                     </div>
                 </div>
                 <div

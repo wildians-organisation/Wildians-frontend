@@ -31,7 +31,7 @@ module.exports = {
                 gogh: ["GOGH-BOLD", "sans-serif"],
                 mulish: ["MULISH", "cursive"],
                 sans: ["MULISH", "sans-serif"],
-                marker: ['Permanent Marker', 'cursive']
+                marker: ["Permanent Marker", "cursive"]
             },
             minHeight: {
                 "screen-75": "75vh"

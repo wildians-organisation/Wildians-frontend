@@ -10,9 +10,7 @@ export function Usage() {
                 <div className="flex justify-center" style={{ width: "600px" }}>
                     <img src="/img/wildians_phone.svg" alt="" />
                 </div>
-                <div
-                    className="flex flex-col gap-y-4 w-600"
-                >
+                <div className="flex flex-col gap-y-4 w-600">
                     <UsageItem
                         title="📚 Ressources & Éducation"
                         content="Plonge dans une bibliothèque de contenus, de vidéos et de mini-cours pour enrichir tes connaissances sur le développement durable."

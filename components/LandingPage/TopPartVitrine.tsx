@@ -18,9 +18,9 @@ function TopPartVitrine() {
                 <HeaderVitrine />
                 <div className="flex flex-col justify-center h-screen md:ml-32">
                     <div className="text-white title-typo first-parag-layout">
-                            L’aventure Wildians :
-                            <br />
-                            Ton parcours vers un mode de vie responsable !
+                        L’aventure Wildians :
+                        <br />
+                        Ton parcours vers un mode de vie responsable !
                     </div>
                     <button
                         onClick={handleRedirect}
@@ -31,15 +31,13 @@ function TopPartVitrine() {
                     </button>
                 </div>
                 <div
-                className="w-1/3 h-48 p-2 left-0 bottom-0"
-                style={{
-                    clipPath: "polygon(0 0, 100% 100%, 0 100%)",
-                    backgroundColor: "#223734"
-                }}></div>
-
-
+                    className="w-1/3 h-48 p-2 left-0 bottom-0"
+                    style={{
+                        clipPath: "polygon(0 0, 100% 100%, 0 100%)",
+                        backgroundColor: "#223734"
+                    }}
+                ></div>
             </div>
-            
         </>
     );
 }

@@ -23,12 +23,8 @@ export default function BottomPartVitrine() {
                     </a>
 
                     <div className="text-white pl-6 align-items">
-                        <div className="marker-typo">
-                            WE ARE
-                        </div>
-                        <div className="title-typo">
-                            Wildians
-                        </div>
+                        <div className="marker-typo">WE ARE</div>
+                        <div className="title-typo">Wildians</div>
                     </div>
                 </div>
             </div>
