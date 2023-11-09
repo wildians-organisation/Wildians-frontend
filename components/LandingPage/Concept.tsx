@@ -8,45 +8,14 @@ export function Concept() {
                 className="bg-no-repeat bg-cover p-4 h-1000-px"
                 style={{ height: "800px" }}
             >
-                <div className="relative top-56 h-96">
-                    <div className="text-center text-white get-typo mb-4 title-typo">
+                <div>
+                    <div className="text-center text-white mb-4 title-typo">
                         <p>Concept</p>
                     </div>
                 </div>
-                <div
-                    className="relative flex justify-between "
-                    style={{
-                        height: "315px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        padding: "0 155px 0 155px"
-                    }}
-                >
-                    <div className="text-white pl-6" style={{ width: "598px" }}>
-                        <p
-                            style={{
-                                color: "#FFF",
-                                fontFamily: "Gogh",
-                                fontSize: "150px",
-                                fontStyle: "normal",
-                                fontWeight: "800",
-                                lineHeight: "50px"
-                            }}
-                        >
-                            {" "}
-                            “ <br />
-                        </p>
-                        <p
-                            style={{
-                                color: "#FFF",
-                                fontFamily: "Arial",
-                                fontSize: "32px",
-                                fontStyle: "normal",
-                                fontWeight: "800",
-                                lineHeight: "normal"
-                            }}
-                        >
+                <div className="flex justify-center flex-col md:flex-row gap-8 pt-32 items-center">
+                    <div className="text-white pl-6 md:w-600">
+                        <p className="title-wild-frame-typo">
                             Wildians,
                             <br />
                             c’est l’ambition de transmettre
@@ -65,17 +34,8 @@ export function Concept() {
                             ensemble.
                         </p>
                     </div>
-                    <div className="text-white pl-6" style={{ width: "598px" }}>
-                        <p
-                            style={{
-                                color: "#FFF",
-                                fontFamily: "Mulish",
-                                fontSize: "16px",
-                                fontStyle: "normal",
-                                fontWeight: "400",
-                                lineHeight: "normal"
-                            }}
-                        >
+                    <div className="text-white pl-6 md:w-600 body-typo">
+                        <p>
                             {" "}
                             Nous constatons qu’il est difficile de visualiser
                             concrètement l’
@@ -126,50 +86,18 @@ export function Concept() {
                             <br />
                             <br />
                         </p>
-                        <p
-                            style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                                alignItems: "center",
-                                color: "#FFF",
-                                fontFamily: "Mulish",
-                                fontSize: "16px",
-                                fontStyle: "normal",
-                                fontWeight: "400",
-                                lineHeight: "normal",
-                                padding: "0 50px",
-                                width: "600px"
-                            }}
-                        >
-                            <img
-                                src={rectangle.src}
-                                alt="rectangle"
-                                width="0.8%"
-                                height="1%"
-                                style={{ marginTop: "20px" }}
-                            />
-                            <b>
-                                <b>
-                                    <br />
-                                    Transformons nos{" "}
-                                    <span style={{ color: "#90E0D3" }}>
-                                        habitudes
-                                    </span>{" "}
-                                    pour un{" "}
-                                    <span style={{ color: "#90E0D3" }}>
-                                        monde plus durable
-                                    </span>
-                                    .
-                                </b>
-                            </b>
-                            <img
-                                src={rectangle.src}
-                                alt="rectangle"
-                                width="0.8%"
-                                height="1%"
-                                style={{ marginTop: "20px" }}
-                            />
-                        </p>
+                        <div className="flex justify-center">
+                            <div className="border-l-2 pl-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
+                                Transformons nos{" "}
+                                <span style={{ color: "#90E0D3" }}>
+                                    habitudes
+                                </span>{" "}
+                                pour un{" "}
+                                <span style={{ color: "#90E0D3" }}>
+                                    monde plus durable
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

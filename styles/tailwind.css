@@ -15955,6 +15955,22 @@ select {
     .md\:w-600 {
         width: 600px;
     }
+
+    .md\:pl-4 {
+        padding-left: 1rem;
+    }
+
+    .md\:pr-4 {
+        padding-right: 1rem;
+    }
+
+    .md\:border-l-2 {
+        border-left: 2px solid white;
+    }
+
+    .md\:border-r-2 {
+        border-right: 2px solid white;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -16134,10 +16150,20 @@ select {
 
 .title-wild-frame-typo {
     font-family: Gogh;
-    font-size: 32px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
+}
+
+@media (min-width: 1280px) {
+    .title-wild-frame-typo {
+        font-family: Gogh;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+    }
 }
 
 .subtitle-typo {
