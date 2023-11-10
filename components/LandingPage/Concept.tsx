@@ -65,17 +65,7 @@ export function Concept() {
                             ensemble.
                         </p>
                     </div>
-                    <div className="text-white pl-6" style={{ width: "598px" }}>
-                        <p
-                            style={{
-                                color: "#FFF",
-                                fontFamily: "Mulish",
-                                fontSize: "16px",
-                                fontStyle: "normal",
-                                fontWeight: "400",
-                                lineHeight: "normal"
-                            }}
-                        >
+                    <div className="text-white body-typo pl-6" style={{ width: "598px" }}>
                             {" "}
                             Nous constatons qu’il est difficile de visualiser
                             concrètement l’
@@ -125,7 +115,6 @@ export function Concept() {
                             , interagis avec d'autres membres, et ensemble ...{" "}
                             <br />
                             <br />
-                        </p>
                         <p
                             style={{
                                 display: "flex",
