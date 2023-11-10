@@ -65,56 +65,59 @@ export function Concept() {
                             ensemble.
                         </p>
                     </div>
-                    <div className="text-white body-typo pl-6" style={{ width: "598px" }}>
-                            {" "}
-                            Nous constatons qu’il est difficile de visualiser
-                            concrètement l’
-                            <b>
-                                <b>impact de nos actions quotidiennes.</b>
-                            </b>
-                            <br />
-                            <br />
-                            Alors comment interpréter les dures conséquences du
-                            dérèglement climatique et des problèmes sociétaux
-                            qui nous entourent ?<br />
-                            <br />
-                            Comment les mettre en lien avec notre impact
-                            personnel et en déduire les actions à mener ?<br />
-                            <br />
-                            La solution : une{" "}
-                            <b>
-                                <b>application mobile</b>
-                            </b>{" "}
-                            permettant, de manière ludique, de{" "}
-                            <b>
-                                <b>comprendre</b>
-                            </b>{" "}
-                            ces causes racines et de créer des{" "}
-                            <b>
-                                <b>habitudes respectueuses de la planète.</b>
-                            </b>
-                            <br />
-                            <br />
-                            Le tout accompagné de ton{" "}
-                            <b>
-                                <b>Wildian</b>
-                            </b>{" "}
-                            : ton{" "}
-                            <b>
-                                <b>compagnon virtuel</b>
-                            </b>
-                            , qui sera le reflet de votre évolution commune sur
-                            les 3 piliers du développement durable, Société,
-                            Economie et Environnement.
-                            <br />
-                            <br />
-                            Alors n’hésite plus !{" "}
-                            <b>
-                                <b>Rejoins notre communauté</b>
-                            </b>
-                            , interagis avec d'autres membres, et ensemble ...{" "}
-                            <br />
-                            <br />
+                    <div
+                        className="text-white body-typo pl-6"
+                        style={{ width: "598px" }}
+                    >
+                        {" "}
+                        Nous constatons qu’il est difficile de visualiser
+                        concrètement l’
+                        <b>
+                            <b>impact de nos actions quotidiennes.</b>
+                        </b>
+                        <br />
+                        <br />
+                        Alors comment interpréter les dures conséquences du
+                        dérèglement climatique et des problèmes sociétaux qui
+                        nous entourent ?<br />
+                        <br />
+                        Comment les mettre en lien avec notre impact personnel
+                        et en déduire les actions à mener ?<br />
+                        <br />
+                        La solution : une{" "}
+                        <b>
+                            <b>application mobile</b>
+                        </b>{" "}
+                        permettant, de manière ludique, de{" "}
+                        <b>
+                            <b>comprendre</b>
+                        </b>{" "}
+                        ces causes racines et de créer des{" "}
+                        <b>
+                            <b>habitudes respectueuses de la planète.</b>
+                        </b>
+                        <br />
+                        <br />
+                        Le tout accompagné de ton{" "}
+                        <b>
+                            <b>Wildian</b>
+                        </b>{" "}
+                        : ton{" "}
+                        <b>
+                            <b>compagnon virtuel</b>
+                        </b>
+                        , qui sera le reflet de votre évolution commune sur les
+                        3 piliers du développement durable, Société, Economie et
+                        Environnement.
+                        <br />
+                        <br />
+                        Alors n’hésite plus !{" "}
+                        <b>
+                            <b>Rejoins notre communauté</b>
+                        </b>
+                        , interagis avec d'autres membres, et ensemble ...{" "}
+                        <br />
+                        <br />
                         <p
                             style={{
                                 display: "flex",
