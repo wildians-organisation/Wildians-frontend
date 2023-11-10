@@ -18,6 +18,7 @@ export default class MyApp extends App {
     }
 
     loadClarityAndAblaScripts() {
+        
         const clarityScript = document.createElement("script");
         clarityScript.src = `https://www.clarity.ms/tag/${config.CLARITY_APPID}`;
         document.getElementsByTagName("head")[0].appendChild(clarityScript);
