@@ -4,13 +4,13 @@ import React from "react";
 export default function BottomPartVitrine() {
     return (
         <div
-            className="flex items-center justify-center bg-brown bg-no-repeat bg-cover p-4 h-1000-px"
+            className="flex items-center flex-col md:flex-row justify-center bg-brown bg-no-repeat bg-cover p-4 h-1000-px"
             style={{
-                height: "315px",
+                height: "350px",
                 backgroundColor: "#403831"
             }}
         >
-            <div className="relative flex justify-between w-600">
+            <div className="relative flex justify-between md:w-600">
                 <div className="text-white flex justify-between">
                     <a href="/">
                         <Image
@@ -22,53 +22,21 @@ export default function BottomPartVitrine() {
                         />
                     </a>
 
-                    <div className="text-white pl-6">
-                        <p
-                            style={{
-                                color: "#FFF",
-                                fontFamily: "GOGH",
-                                fontSize: "40px",
-                                fontStyle: "normal",
-                                fontWeight: 400,
-                                lineHeight: "2.5"
-                            }}
-                        >
-                            WE ARE
-                        </p>
-                        <p
-                            style={{
-                                color: "#FFF",
-                                fontFamily: "GOGH-BOLD",
-                                fontSize: "40px",
-                                fontStyle: "normal",
-                                fontWeight: 800,
-                                lineHeight: "0"
-                            }}
-                        >
-                            Wildians
-                        </p>
+                    <div className="text-white pl-6 align-items">
+                        <div className="marker-typo">WE ARE</div>
+                        <div className="title-typo">Wildians</div>
                     </div>
                 </div>
             </div>
-            <div className="text-white pl-6" style={{ width: "625px" }}>
-                <p
-                    style={{
-                        color: "#FFF",
-                        fontFamily: "Arial",
-                        fontSize: "40px",
-                        fontStyle: "normal",
-                        fontWeight: 800,
-                        lineHeight: "2.3"
-                    }}
-                >
+            <div className="text-white pl-6">
+                <div className="title-typo md:w-600 whitespace-nowrap mb-4">
                     Envie de discuter avec nous ?
-                    <b />
-                </p>
-                <p>
+                </div>
+                <div className="body-typo md:w-600 mb-4">
                     Parce que Wildians c’est avant tout une communauté,
                     participe à la construction de celle-ci en nous partageant
                     tes retours ici :{" "}
-                </p>
+                </div>
                 <div className="flex gap-2 ml-auto mt-3">
                     <a
                         href="https://discord.gg/grjatzrcKp"
