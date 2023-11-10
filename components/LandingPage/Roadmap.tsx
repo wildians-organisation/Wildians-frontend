@@ -1,4 +1,3 @@
-import { Disclosure } from "@headlessui/react";
 import React from "react";
 export default function RoadMapVitrine() {
     return (
@@ -7,7 +6,16 @@ export default function RoadMapVitrine() {
         Notre feuille de route
     </h1>
     <ol>
-        <li>Presentation du concept Wildians</li>
+        <li>
+        <div className="timeline-box">
+                2023
+            </div>
+            Presentation du concept Wildians
+            <div className="timeline-box">
+                2024
+            </div>
+        </li>
+        
         <li><b>Crowdfunding: </b> <br />Première rencontre avec ton Wildian</li>
         <li><b>Alpha de l'application: </b> <br />Ouverture  à une sélection 
 d’ambassadeurs</li>
