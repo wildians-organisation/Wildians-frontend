@@ -15723,6 +15723,12 @@ select {
     src: url("../public/fonts/Mulish/Mulish-VariableFont_wght.ttf");
 }
 
+@font-face {
+    font-family: "PERMANENTMARKER";
+
+    src: url("../public/fonts/PermanentMarker-Regular.ttf");
+}
+
 @media (min-width: 640px) {
     .sm\:max-w-sm {
         max-width: 24rem;
@@ -15952,6 +15958,10 @@ select {
         flex-direction: row;
     }
 
+    .md\:flex-col {
+        flex-direction: column;
+    }
+
     .md\:w-600 {
         width: 600px;
     }
@@ -16092,7 +16102,7 @@ select {
 /** TYPO **/
 .header-typo {
     /* Header */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 52px;
     font-style: normal;
     font-weight: 800;
@@ -16101,7 +16111,7 @@ select {
 
 .header-typo2 {
     /* Header */
-    font-family: Gogh;
+    font-family: GOGH-BOLD;
     font-size: 50px;
     font-style: normal;
     font-weight: 800;
@@ -16110,7 +16120,7 @@ select {
 
 .header-typo3 {
     /* Header */
-    font-family: Gogh;
+    font-family: GOGH-BOLD;
     font-size: 24px;
     font-style: normal;
     font-weight: 800;
@@ -16120,7 +16130,7 @@ select {
 @media (min-width: 1280px) {
     .header-typo3 {
         /* Header */
-        font-family: Gogh;
+        font-family: GOGH-BOLD;
         font-size: 40px;
         font-style: normal;
         font-weight: 800;
@@ -16130,7 +16140,7 @@ select {
 
 .title-typo {
     /* Titre 1 */
-    font-family: Gogh;
+    font-family: GOGH-BOLD;
     font-size: 20px;
     font-style: normal;
     font-weight: 800;
@@ -16140,7 +16150,7 @@ select {
 @media (min-width: 1280px) {
     .title-typo {
         /* Titre 1 */
-        font-family: Gogh;
+        font-family: GOGH-BOLD;
         font-size: 40px;
         font-style: normal;
         font-weight: 800;
@@ -16149,7 +16159,7 @@ select {
 }
 
 .title-wild-frame-typo {
-    font-family: Gogh;
+    font-family: GOGH-BOLD;
     font-size: 16px;
     font-style: normal;
     font-weight: 800;
@@ -16158,7 +16168,7 @@ select {
 
 @media (min-width: 1280px) {
     .title-wild-frame-typo {
-        font-family: Gogh;
+        font-family: GOGH-BOLD;
         font-size: 32px;
         font-style: normal;
         font-weight: 800;
@@ -16167,7 +16177,7 @@ select {
 }
 
 .subtitle-typo {
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: normal;
     font-weight: 800;
@@ -16176,7 +16186,7 @@ select {
 
 @media (min-width: 1280px) {
     .subtitle-typo {
-        font-family: Mulish;
+        font-family: MULISH;
         font-size: 20px;
         font-style: normal;
         font-weight: 800;
@@ -16195,7 +16205,7 @@ select {
 
 .body-typo {
     /* Body */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -16205,7 +16215,7 @@ select {
 @media (min-width: 1280px) {
     .body-typo {
         /* Body */
-        font-family: Mulish;
+        font-family: MULISH;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
@@ -16215,7 +16225,7 @@ select {
 
 .body-typo strong {
     /* Body highlight */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: normal;
     font-weight: 800;
@@ -16224,7 +16234,7 @@ select {
 
 .body-highlight-typo {
     /* Body highlight */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: normal;
     font-weight: 800;
@@ -16233,7 +16243,7 @@ select {
 
 .body-italic-typo {
     /* Body italic */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: italic;
     font-weight: 400;
@@ -16322,7 +16332,7 @@ select {
     color: var(--blanc, #fff);
 
     /* Body highlight */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: normal;
     font-weight: 800;
@@ -16442,7 +16452,7 @@ select {
     color: var(--blanc, #fff);
     text-align: center;
     /* Body */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -16461,7 +16471,7 @@ select {
     color: var(--turquoise, #90e0d3);
     text-align: center;
     /* Body highlight */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: normal;
     font-weight: 800;
@@ -16479,7 +16489,7 @@ select {
     text-align: center;
     color: var(--blanc, #fff);
     /* Body italic */
-    font-family: Mulish;
+    font-family: MULISH;
     font-size: 16px;
     font-style: italic;
     font-weight: 400;
@@ -16586,4 +16596,22 @@ select {
 .description-intro {
     margin-top: 10px;
     text-align: center;
+}
+
+.marker-typo {
+    font-family: PERMANENTMARKER;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media (min-width: 1280px) {
+    .marker-typo {
+        font-family: PERMANENTMARKER;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
 }

@@ -29,7 +29,11 @@ module.exports = {
             fontFamily: {
                 goghbold: ["GOGH-BOLD", "cursive"],
                 mulish: ["MULISH", "GOGH-BOLD", "cursive"],
-                sans: ["MULISH", "sans-serif"]
+                gogh: ["GOGH-BOLD", "sans-serif"],
+                sans: ["MULISH", "sans-serif"],
+                mulish: ["MULISH", "cursive"],
+                sans: ["MULISH", "sans-serif"],
+                marker: ["PERMANENTMARKER", "cursive"]
             },
             minHeight: {
                 "screen-75": "75vh"

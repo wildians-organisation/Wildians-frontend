@@ -22,22 +22,21 @@ export default function BottomPartVitrine() {
                         />
                     </a>
 
-                    <div className="text-white pl-6 title-typo">
-                        <p>WE ARE</p>
-                        <p>Wildians</p>
+                    <div className="text-white pl-6 align-items">
+                        <div className="marker-typo">WE ARE</div>
+                        <div className="title-typo">Wildians</div>
                     </div>
                 </div>
             </div>
-            <div className="text-white pl-6 title-typo2 md:w-600">
-                <p>
+            <div className="text-white pl-6">
+                <div className="title-typo md:w-600 whitespace-nowrap mb-4">
                     Envie de discuter avec nous ?
-                    <b />
-                </p>
-                <p>
+                </div>
+                <div className="body-typo md:w-600 mb-4">
                     Parce que Wildians c’est avant tout une communauté,
                     participe à la construction de celle-ci en nous partageant
                     tes retours ici :{" "}
-                </p>
+                </div>
                 <div className="flex gap-2 ml-auto mt-3">
                     <a
                         href="https://discord.gg/grjatzrcKp"

@@ -14,13 +14,11 @@ function TopPartVitrine() {
 
     return (
         <>
-            <div
-                className="bg-forest-bg bg-no-repeat " /**className="headerBackground bg-cover  bg-forest-bg font-goghbold p-4 h-500-px"**/
-            >
+            <div className="bg-forest-bg bg-no-repeat ">
                 <HeaderVitrine />
                 <div className="flex flex-col justify-center h-screen md:ml-32 gap-8 m-2">
-                    <div className="text-white header-typo3 flex flex-col gap-4">
-                        <p>L’aventure Wildians :</p>
+                    <div className="text-white title-typo flex flex-col gap-4">
+                        L’aventure Wildians:
                         <p className="break-all">
                             Ton parcours vers un mode de vie responsable !
                         </p>

@@ -14,25 +14,23 @@ export function Concept() {
                     </div>
                 </div>
                 <div className="flex justify-center flex-col md:flex-row gap-8 pt-32 items-center">
-                    <div className="text-white pl-6 md:w-600">
-                        <p className="title-wild-frame-typo">
-                            Wildians,
-                            <br />
-                            c’est l’ambition de transmettre
-                            <br />
-                            la culture <br />
-                            du{" "}
-                            <span style={{ color: "#90E0D3" }}>
-                                développement durable
-                            </span>
-                            <br />
-                            et de{" "}
-                            <span style={{ color: "#90E0D3" }}>
-                                passer à l’action
-                            </span>
-                            , <br />
-                            ensemble.
-                        </p>
+                    <div className="text-white md:w-600 title-wild-frame-typo">
+                        Wildians,
+                        <br />
+                        c’est l’ambition de transmettre
+                        <br />
+                        la culture <br />
+                        du{" "}
+                        <span style={{ color: "#90E0D3" }}>
+                            développement durable
+                        </span>
+                        <br />
+                        et de{" "}
+                        <span style={{ color: "#90E0D3" }}>
+                            passer à l’action
+                        </span>
+                        , <br />
+                        ensemble.
                     </div>
                     <div className="text-white pl-6 md:w-600 body-typo">
                         <p>
