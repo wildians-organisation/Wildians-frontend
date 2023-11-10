@@ -1,7 +1,4 @@
 import React from "react";
-import ConnexionWallet from "./../../components/ButtonConnexionWallet/ConnexionWallet";
-import HeaderDropdown from "./../../components/Dropdowns/HeaderDropdown";
-import Link from "next/link";
 import Image from "next/image";
 
 function HeaderVitrine() {

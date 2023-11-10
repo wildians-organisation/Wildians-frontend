@@ -4,13 +4,13 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 export default function Support() {
     return (
-        <div className="py-20" style={{ backgroundColor: "#223734" }}>
-            <h1 className="text-center text-4xl text-white font-bold mb-16">
+        <div className="py-10" style={{ backgroundColor: "#223734" }}>
+            <h1 className="text-center title-typo text-white font-bold mb-16">
                 Soutiens notre Projet de Changement : Ensemble vers un Avenir
                 Durable
             </h1>
-            <div className="flex justify-center gap-x-8 body-typo">
-                <div className="text-white text-base w-600 flex flex-col gap-8">
+            <div className="flex justify-center gap-x-8 body-typo flex-col md:flex-row px-2 gap-4">
+                <div className="text-white text-base md:w-600 flex flex-col gap-8">
                     <p>Cher(e) ami(e) du développement durable,</p>
                     <p>
                         Tu as sûrement déjà ressenti l'urgence d'agir pour notre
@@ -144,10 +144,7 @@ export default function Support() {
                     </div>
                 </div>
                 <div>
-                    <div
-                        className="text-white text-base mb-16 border-l-4 pl-4"
-                        style={{ width: "600px" }}
-                    >
+                    <div className="text-white text-base mb-16 border-l-4 pl-4 md:w-600">
                         <p className="mb-4">
                             Rejoins-nous dans cette aventure passionnante pour
                             un avenir meilleur. Choisis un pilier, soutiens
