@@ -112,8 +112,8 @@ export default function Support() {
                                             <strong>indispensable</strong>.
                                             Cette app sera conçue pour t'
                                             <strong>accompagner</strong>, pas à
-                                            pas, dans ta transition vers un mode
-                                            de vie plus durable.
+                                            pas, dans ta transition vers un <strong className="text-greeny">mode
+                                            de vie plus durable.</strong>
                                         </p>
                                         <p>
                                             Elle t'aidera à comprendre les
