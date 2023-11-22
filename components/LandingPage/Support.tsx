@@ -9,7 +9,7 @@ export default function Support() {
                 Soutiens notre Projet de Changement : Ensemble vers un Avenir
                 Durable
             </h1>
-            <div className="flex justify-center gap-x-8 body-typo flex-col md:flex-row px-2 gap-4">
+            <div className="flex justify-center body-typo flex-col md:flex-row px-4 gap-4">
                 <div className="text-white text-base md:w-600 flex flex-col gap-8">
                     <p>Cher(e) ami(e) du développement durable,</p>
                     <p>
@@ -40,42 +40,46 @@ export default function Support() {
                                         />
                                     </Disclosure.Button>
                                     <Disclosure.Panel>
-                                        <p>
-                                            Nous avons choisi de représenter les
-                                            trois piliers du développement
-                                            durable à travers trois personnages
-                                            inspirants : Ellie le cerf, Noa le
-                                            loup et Fabio le taureau. Chacun
-                                            d'entre eux incarne une{" "}
-                                            <strong>dimension cruciale </strong>
-                                            de notre{" "}
-                                            <strong>
-                                                avenir commun
-                                            </strong> :{" "}
-                                            <strong className="text-greeny">
-                                                l'environnement, la société et
-                                                l'économie.
-                                            </strong>
-                                        </p>
-                                        <p>
-                                            Lorsque tu choisis d'adopter l'un de
-                                            ces personnages, une partie du prix
-                                            de vente est automatiquement
-                                            <strong>
-                                                {" "}
-                                                reversée à une association
-                                            </strong>{" "}
-                                            en lien avec le pilier
-                                            correspondant. Ainsi, en soutenant
-                                            l'un de nos Wildians, tu contribues
-                                            directement à des
-                                            <strong>
-                                                {" "}
-                                                actions concrètes
-                                            </strong>{" "}
-                                            en faveur de l'environnement, de la
-                                            société ou de l'économie.
-                                        </p>
+                                        <div className="leading-7">
+                                            <p>
+                                                Nous avons choisi de représenter
+                                                les trois piliers du
+                                                développement durable à travers
+                                                trois personnages inspirants :
+                                                Ellie le cerf, Noa le loup et
+                                                Fabio le taureau. Chacun d'entre
+                                                eux incarne une{" "}
+                                                <strong>
+                                                    dimension cruciale{" "}
+                                                </strong>
+                                                de notre{" "}
+                                                <strong>avenir commun</strong> :{" "}
+                                                <strong className="text-greeny">
+                                                    l'environnement, la société
+                                                    et l'économie.
+                                                </strong>
+                                            </p>
+                                            <p>
+                                                Lorsque tu choisis d'adopter
+                                                l'un de ces personnages, une
+                                                partie du prix de vente est
+                                                automatiquement
+                                                <strong>
+                                                    {" "}
+                                                    reversée à une association
+                                                </strong>{" "}
+                                                en lien avec le pilier
+                                                correspondant. Ainsi, en
+                                                soutenant l'un de nos Wildians,
+                                                tu contribues directement à des
+                                                <strong>
+                                                    {" "}
+                                                    actions concrètes
+                                                </strong>{" "}
+                                                en faveur de l'environnement, de
+                                                la société ou de l'économie.
+                                            </p>
+                                        </div>
                                     </Disclosure.Panel>
                                 </>
                             )}
@@ -100,45 +104,52 @@ export default function Support() {
                                         />
                                     </Disclosure.Button>
                                     <Disclosure.Panel>
-                                        <p>
-                                            Le reste des fonds collectés grâce à
-                                            ce crowdfunding seront entièrement
-                                            dédiés à la création d'une
-                                            <strong>
-                                                {" "}
-                                                application mobile inédite
-                                            </strong>{" "}
-                                            et, pour autant,{" "}
-                                            <strong>indispensable</strong>.
-                                            Cette app sera conçue pour t'
-                                            <strong>accompagner</strong>, pas à
-                                            pas, dans ta transition vers un{" "}
-                                            <strong className="text-greeny">
-                                                mode de vie plus durable.
-                                            </strong>
-                                        </p>
-                                        <p>
-                                            Elle t'aidera à comprendre les
-                                            enjeux environnementaux, sociétaux
-                                            et économiques qui nous entourent.
-                                            Tu y trouveras des conseils
-                                            pratiques pour changer tes
-                                            habitudes, réduire ton empreinte
-                                            écologique et soutenir des
-                                            initiatives responsables. Grâce à
-                                            des informations claires et des
-                                            actions concrètes, nous voulons
-                                            t'aider à devenir un{" "}
-                                            <strong>
-                                                acteur du changement
-                                            </strong>
-                                            . Ensemble, nous pouvons créer un
-                                            monde plus vert, plus équitable et
-                                            plus prospère pour tous. Chaque
-                                            contribution, qu'elle soit grande ou
-                                            petite, nous rapproche de cet{" "}
-                                            <strong>objectif commun</strong>.
-                                        </p>
+                                        <div className="leading-7">
+                                            <p>
+                                                Le reste des fonds collectés
+                                                grâce à ce crowdfunding seront
+                                                entièrement dédiés à la création
+                                                d'une
+                                                <strong>
+                                                    {" "}
+                                                    application mobile inédite
+                                                </strong>{" "}
+                                                et, pour autant,{" "}
+                                                <strong>indispensable</strong>.
+                                                Cette app sera conçue pour t'
+                                                <strong>accompagner</strong>,
+                                                pas à pas, dans ta transition
+                                                vers un{" "}
+                                                <strong className="text-greeny">
+                                                    mode de vie plus durable.
+                                                </strong>
+                                            </p>
+                                            <p>
+                                                Elle t'aidera à comprendre les
+                                                enjeux environnementaux,
+                                                sociétaux et économiques qui
+                                                nous entourent. Tu y trouveras
+                                                des conseils pratiques pour
+                                                changer tes habitudes, réduire
+                                                ton empreinte écologique et
+                                                soutenir des initiatives
+                                                responsables. Grâce à des
+                                                informations claires et des
+                                                actions concrètes, nous voulons
+                                                t'aider à devenir un{" "}
+                                                <strong>
+                                                    acteur du changement
+                                                </strong>
+                                                . Ensemble, nous pouvons créer
+                                                un monde plus vert, plus
+                                                équitable et plus prospère pour
+                                                tous. Chaque contribution,
+                                                qu'elle soit grande ou petite,
+                                                nous rapproche de cet{" "}
+                                                <strong>objectif commun</strong>
+                                                .
+                                            </p>
+                                        </div>
                                     </Disclosure.Panel>
                                 </>
                             )}
@@ -157,10 +168,15 @@ export default function Support() {
                             Ensemble, nous pouvons changer le monde.
                         </p>
                     </div>
-                    <div className="flex justify-center gap-16">
+                    <div className="justify-center gap-16 hidden md:flex">
                         <img src="/img/Bull%20hoof.svg" alt="" />
                         <img src="/img/Deer%20hoof.svg" alt="" />
                         <img src="/img/Wolf%20paw.svg" alt="" />
+                    </div>
+                    <div className="flex justify-center gap-16 md:hidden">
+                        <img src="/img/Bull%20hoof.svg" width={60} alt="" />
+                        <img src="/img/Deer%20hoof.svg" width={50} alt="" />
+                        <img src="/img/Wolf%20paw.svg" width={80} alt="" />
                     </div>
                 </div>
             </div>

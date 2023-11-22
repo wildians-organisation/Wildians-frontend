@@ -15981,6 +15981,22 @@ select {
     .md\:border-r-2 {
         border-right: 2px solid white;
     }
+
+    .md\:hidden {
+        display: none;
+    }
+
+    .md\:block {
+        display: block;
+    }
+
+    .md\:justify-center {
+        justify-content: center;
+    }
+
+    .md\:h-48 {
+        height: 12rem;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -16147,8 +16163,26 @@ select {
     line-height: normal;
 }
 
+.title-typo2 {
+    /* Titre 1 */
+    font-family: GOGH-BOLD;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
 @media (min-width: 1280px) {
     .title-typo {
+        /* Titre 1 */
+        font-family: GOGH-BOLD;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+    }
+
+    .title-typo2 {
         /* Titre 1 */
         font-family: GOGH-BOLD;
         font-size: 40px;
@@ -16299,13 +16333,6 @@ select {
     display: flex;
     width: 600px;
     height: 65px;
-}
-
-.desc-layout2 {
-    width: 600px;
-    height: 100px;
-    margin-top: 12px;
-    margin-bottom: 7rem;
 }
 
 .nft-card-layout {

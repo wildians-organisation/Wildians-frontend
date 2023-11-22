@@ -19,7 +19,7 @@ function Introduction() {
                                 Fabio
                             </p>
                             <p className="description-intro body-highlight-typo text-white">
-                                Economy
+                                Économie
                             </p>
                         </div>
                         <div className="image-container-intro">
@@ -32,7 +32,7 @@ function Introduction() {
                                 Ellie
                             </p>
                             <p className="description-intro body-highlight-typo text-white">
-                                Environment
+                                Environnement
                             </p>
                         </div>
                         <div className="image-container-intro">
@@ -45,13 +45,13 @@ function Introduction() {
                                 Noa
                             </p>
                             <p className="description-intro body-highlight-typo text-white">
-                                Society
+                                Societé
                             </p>
                         </div>
                     </div>
                     <div className="pl-2 pr-4">
                         <div className="text-white text-base mb-16 mt-14 flex justify-center items-center">
-                            <div className="text-white body-typo desc-layout2 border-l-4 pl-4 w-600 text-justify">
+                            <div className="text-white body-typo border-l-4 pl-4 w-600 text-justify">
                                 Ensemble, Ellie, Noa et Fabio forment un trio
                                 harmonieux, représentant les trois piliers
                                 essentiels du développement durable : la
