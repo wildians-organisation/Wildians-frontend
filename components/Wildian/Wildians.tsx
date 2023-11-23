@@ -132,11 +132,7 @@ function Wildians(Wildians) {
             const statusSales: StatusSale[] = [];
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                const {
-                    status,
-                    openDay,
-                    openTime
-                } = data;
+                const { status, openDay, openTime } = data;
                 statusSales.push({
                     id: doc.id,
                     status,
