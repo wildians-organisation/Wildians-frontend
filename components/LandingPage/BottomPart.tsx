@@ -12,7 +12,6 @@ import SnackbarService, {
 } from "../SnackbarService/SnackbarService";
 import Wildians from "../Wildian/Wildians";
 
-
 export interface ambassadorDocument {
     id: string;
     formData?: {
@@ -136,17 +135,13 @@ function BottomPart() {
             setIsStatusOpen(isOpenDay(sales["openDay"], sales["openTime"]));
         } else setIsStatusOpen(sales["status"]);
     }
-    
+
     const getStatusSales = async () => {
         onSnapshot(salesCollection, (snapshot) => {
             const statusSales: StatusSale[] = [];
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                const {
-                    status,
-                    openDay,
-                    openTime
-                } = data;
+                const { status, openDay, openTime } = data;
                 statusSales.push({
                     id: doc.id,
                     status,
@@ -251,8 +246,7 @@ function BottomPart() {
             let normal_sales_open = salesStatus.status;
             let price_transaction = 1000;
 
-            if (is_ambassador)
-                price_transaction = 0;
+            if (is_ambassador) price_transaction = 0;
 
             try {
                 const op = await contract.methods
