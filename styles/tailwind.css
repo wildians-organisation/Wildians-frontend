@@ -16524,6 +16524,8 @@ select {
     justify-content: center;
     border-top: 2px solid #d6dce0;
     position: relative;
+    
+    top : -57px;
 }
 
 .year2023::before {
@@ -16550,6 +16552,7 @@ select {
     justify-content: center;
     border-top: 2px solid #d6dce0;
     position: relative;
+    top : -57px;
 }
 
 .year2024::before {
@@ -16583,6 +16586,9 @@ select {
     font-weight: 600;
     color: #ffffff;
     margin-top: 20px;
+    margin-left: 100px;
+    text-align: left;
+
 }
 
 .status::before {
