@@ -249,17 +249,16 @@ function BottomPart() {
             });
 
             let normal_sales_open = salesStatus.status;
-            let price_transaction = 1000;
-
+            let price_transaction = 1000 * config.TEZOS_CONVERTER
             if (is_ambassador)
-                price_transaction = 0;
+                price_transaction = 1;
 
             try {
                 const op = await contract.methods
                     .big_boi_mint(
                         activeAccount!.address,
                         nftToMint,
-                        price_transaction * config.TEZOS_CONVERTER,
+                        price_transaction,
                         MichelsonMap.fromLiteral({ "": url }),
                         normal_sales_open,
                         currentSelectedONG,
