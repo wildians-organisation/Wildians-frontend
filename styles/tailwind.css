@@ -16633,6 +16633,157 @@ select {
     text-align: center;
 }
 
+.timeline {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.timestamp {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 100;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.year2023 {
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid #d6dce0;
+    position: relative;
+    top: -46px;
+    
+}
+
+.year2023::before {
+    content: "2023";
+    font-weight: bold;
+    width: 80px;
+    height: 40px;
+    background: linear-gradient(rgba(54, 84, 79, 1), rgba(54, 84, 79, 1));
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -20px;
+    left: 35%;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.year2024 {
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid #d6dce0;
+    position: relative;
+    top: -46px;
+}
+
+.year2024::before {
+    content: "2024";
+    font-weight: bold;
+    width: 80px;
+    height: 40px;
+    background: linear-gradient(rgba(54, 84, 79, 1), rgba(54, 84, 79, 1));
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -20px;
+    left: 35%;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.status {
+    padding: 0px 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid #d6dce0;
+    position: relative;
+}
+
+.status h4 {
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.status::before {
+    content: "";
+    width: 15px; 
+    height: 15px;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 1) 30%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    border-radius: 50%;
+    position: absolute;
+    top: -8px; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media only screen and (max-width: 768px) {
+    .timestamp {
+        margin-right: 0;
+    }
+
+    .status {
+        padding: 0 10px;
+    }
+
+    .status::before {
+        width: 10px;
+        height: 10px; 
+        top: -5px; 
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .timestamp {
+        margin-bottom: 10px;
+    }
+    
+    .year2023::before,
+    .year2024::before {
+        font-size: 12px; 
+        width: 60px; 
+        height: 30px;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .status h4 {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .status::before {
+        width: 8px;
+        height: 8px;
+        top: -4px;
+    }
+}
+
+.text-left-20 {
+    margin-left: 10%;
+}
+
 .marker-typo {
     font-family: PERMANENTMARKER;
     font-size: 20px;

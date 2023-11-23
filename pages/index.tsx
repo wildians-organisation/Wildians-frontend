@@ -7,6 +7,7 @@ import Support from "../components/LandingPage/Support";
 import TopPart from "./../components/LandingPage/TopPart";
 import BottomPart from "./../components/LandingPage/BottomPart";
 import Introduction from "./../components/LandingPage/Introduction";
+import RoadMapVitrine from "../components/LandingPage/Roadmap";
 
 export function scrollToSection(sectionId) {
     if (sectionId == "concept") {
@@ -33,6 +34,7 @@ export default function Landing() {
             <Introduction />
             <Usage />
             <Support />
+            <RoadMapVitrine />
             <BottomPartVitrine />
         </div>
         /*<div className="">
