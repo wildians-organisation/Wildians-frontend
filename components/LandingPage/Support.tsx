@@ -5,8 +5,9 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 export default function Support() {
     return (
         <div className="py-20" style={{ backgroundColor: "#223734" }}>
-            <h1 className="flex justify-center title-typo text-white font-bold mb-16 ">
-                Soutiens notre Projet de Changement : Ensemble vers un Avenir
+            <h1 className="text-center title-typo text-white font-bold mb-16">
+                Soutiens notre Projet de Changement :
+                <br className="hidden md:inline" /> Ensemble vers un Avenir
                 Durable
             </h1>
             <div className="flex justify-center body-typo flex-col md:flex-row px-4 gap-4">
@@ -40,7 +41,7 @@ export default function Support() {
                                         />
                                     </Disclosure.Button>
                                     <Disclosure.Panel>
-                                        <div className="py-4">
+                                        <div className="py-8">
                                             <p>
                                                 Nous avons choisi de représenter
                                                 les trois piliers du
@@ -104,7 +105,7 @@ export default function Support() {
                                         />
                                     </Disclosure.Button>
                                     <Disclosure.Panel>
-                                        <div className="py-4">
+                                        <div className="py-8">
                                             <p>
                                                 Le reste des fonds collectés
                                                 grâce à ce crowdfunding seront

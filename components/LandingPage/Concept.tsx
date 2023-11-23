@@ -10,7 +10,7 @@ export function Concept() {
                         <p>Concept</p>
                     </div>
                 </div>
-                <div className="flex md:justify-center flex-col md:flex-row gap-8 pt-32 md:items-center">
+                <div className="flex md:justify-center flex-col md:flex-row gap-8 pt-16 md:pt-32 md:items-center">
                     <div className="text-white md:w-600 title-wild-frame-typo hidden md:block">
                         Wildians,
                         <br />

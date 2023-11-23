@@ -15997,6 +15997,14 @@ select {
     .md\:h-48 {
         height: 12rem;
     }
+
+    .md\:pt-32 {
+        padding-top: 8rem;
+    }
+
+    .md\:inline {
+        display: inline;
+    }
 }
 
 @media (min-width: 1024px) {
