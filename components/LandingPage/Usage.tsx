@@ -2,7 +2,7 @@ import UsageItem from "./UsageItem";
 
 export function Usage() {
     return (
-        <div className="py-20 mt-40">
+        <div className="py-20">
             <h1 className="text-center title-typo text-white mb-16">
                 Wildians, bien plus qu'une simple application !
             </h1>

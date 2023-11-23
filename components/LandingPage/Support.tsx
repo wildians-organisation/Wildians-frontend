@@ -4,8 +4,8 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 export default function Support() {
     return (
-        <div className="py-10" style={{ backgroundColor: "#223734" }}>
-            <h1 className="text-center title-typo text-white font-bold mb-16">
+        <div className="py-20" style={{ backgroundColor: "#223734" }}>
+            <h1 className="flex justify-center title-typo text-white font-bold mb-16 ">
                 Soutiens notre Projet de Changement : Ensemble vers un Avenir
                 Durable
             </h1>
@@ -40,7 +40,7 @@ export default function Support() {
                                         />
                                     </Disclosure.Button>
                                     <Disclosure.Panel>
-                                        <div className="leading-7">
+                                        <div className="py-4">
                                             <p>
                                                 Nous avons choisi de représenter
                                                 les trois piliers du
@@ -104,7 +104,7 @@ export default function Support() {
                                         />
                                     </Disclosure.Button>
                                     <Disclosure.Panel>
-                                        <div className="leading-7">
+                                        <div className="py-4">
                                             <p>
                                                 Le reste des fonds collectés
                                                 grâce à ce crowdfunding seront
@@ -164,7 +164,7 @@ export default function Support() {
                             notre crowdfunding et deviens le héros de ta propre
                             histoire de développement durable.
                         </p>
-                        <p style={{ color: "#90E0D3" }}>
+                        <p className="font-bold" style={{ color: "#90E0D3" }}>
                             Ensemble, nous pouvons changer le monde.
                         </p>
                     </div>

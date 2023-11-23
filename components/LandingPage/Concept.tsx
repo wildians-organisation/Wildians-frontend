@@ -4,10 +4,7 @@ import rectangle from "../../public/fonts/rectangle-33.png";
 export function Concept() {
     return (
         <div id="Concept">
-            <div
-                className="bg-no-repeat bg-cover p-4 h-1000-px"
-                style={{ height: "800px" }}
-            >
+            <div className="bg-no-repeat bg-cover py-20 px-4">
                 <div>
                     <div className="text-center text-white mb-4 title-typo2">
                         <p>Concept</p>
@@ -98,7 +95,7 @@ export function Concept() {
                             <br />
                         </p>
                         <div className="flex justify-center">
-                            <div className="border-l-2 px-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
+                            <div className="font-bold border-l-2 px-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
                                 Transformons nos{" "}
                                 <span style={{ color: "#90E0D3" }}>
                                     habitudes
