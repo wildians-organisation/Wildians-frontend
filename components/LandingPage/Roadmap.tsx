@@ -10,14 +10,7 @@ export default function RoadMapVitrine() {
                     <div className="timestamp">
                         <span className="Date">&nbsp;</span>
                     </div>
-                    <div className="year2023">
-                        <br />
-                        &nbsp;
-                        <br />
-                        &nbsp;
-                        <br />
-                        &nbsp;
-                    </div>
+                    <div className="year2023"></div>
                 </li>
                 <li className="li complete">
                     <div className="timestamp">
@@ -27,7 +20,7 @@ export default function RoadMapVitrine() {
                     </div>
                     <div className="status">
                         <h4>
-                            Presentation du concept Wildians
+                            Presentation <br /> du concept Wildians
                             <br />
                             <p>&nbsp;</p> <br />
                         </h4>
@@ -37,14 +30,7 @@ export default function RoadMapVitrine() {
                     <div className="timestamp">
                         <span className="Date">&nbsp;</span>
                     </div>
-                    <div className="year2024">
-                        <br />
-                        &nbsp;
-                        <br />
-                        &nbsp;
-                        <br />
-                        &nbsp;
-                    </div>
+                    <div className="year2024"></div>
                 </li>
                 <li className="li complete">
                     <div className="timestamp">
@@ -55,7 +41,7 @@ export default function RoadMapVitrine() {
                     <div className="status">
                         <h4>
                             <b>Crowdfunding: </b> <br />
-                            Première rencontre avec ton Wildian <br />{" "}
+                            Première rencontre <br /> avec ton Wildian
                             <p>&nbsp;</p>
                         </h4>
                     </div>
@@ -67,7 +53,7 @@ export default function RoadMapVitrine() {
                     <div className="status">
                         <h4>
                             <b>Alpha de l'application: </b> <br />
-                            Ouverture à une sélection d’ambassadeurs <br />
+                            Ouverture à une <br />sélection d’ambassadeurs <br />
                             &nbsp;{" "}
                         </h4>
                     </div>
@@ -83,6 +69,7 @@ export default function RoadMapVitrine() {
                             <br />
                             • Premières fonctionnalités
                             <br />• Premiers parcours
+                            <br /> &nbsp;
                         </h4>
                     </div>
                 </li>
