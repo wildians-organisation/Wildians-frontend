@@ -17,21 +17,20 @@ const nftToMint = 1;
 
 const network = { type: NetworkType.GHOSTNET };
 
-export interface WhitelistDocument {
+export interface ambassadorDocument {
     id: string;
     formData?: {
-        commentaire: string;
-        plateformeContact: string;
-        loginMail: string;
         adresseWallet: string;
+        commentaire: string;
+        loginMail: string;
+        name: string;
+        plateformeContact: string;
+        profile: string;
     };
 }
 
 export interface StatusSale {
     id: string;
-    whitelistStatus: boolean;
-    whitelistOpenDay: Date;
-    whitelistOpenTime: Date;
     status: boolean;
     openDay: string;
     openTime: string;
@@ -120,7 +119,7 @@ function Wildians(Wildians) {
             ...doc.data()
         }));
         let tmpWhitelist: string[] = [];
-        documents.forEach((doc: WhitelistDocument) => {
+        documents.forEach((doc: ambassadorDocument) => {
             const whitelistAddress = doc.formData!["adresseWallet"];
             tmpWhitelist.push(whitelistAddress);
         });
@@ -134,18 +133,12 @@ function Wildians(Wildians) {
             snapshot.forEach((doc) => {
                 const data = doc.data();
                 const {
-                    whitelistStatus,
-                    whitelistOpenDay,
-                    whitelistOpenTime,
                     status,
                     openDay,
                     openTime
                 } = data;
                 statusSales.push({
                     id: doc.id,
-                    whitelistStatus,
-                    whitelistOpenDay,
-                    whitelistOpenTime,
                     status,
                     openDay,
                     openTime
@@ -303,7 +296,7 @@ function Wildians(Wildians) {
             const salesStatus = querySnapshotSales.docs[0].data();
 
             let is_whitelisted = false;
-            whitelistedUsers.map((user: WhitelistDocument) => {
+            whitelistedUsers.map((user: ambassadorDocument) => {
                 if (user.formData!.adresseWallet == activeAccount!.address) {
                     is_whitelisted = true;
                     return;
