@@ -17,7 +17,7 @@ const nftToMint = 1;
 
 const network = { type: NetworkType.GHOSTNET };
 
-export interface ambassadorDocument {
+export interface WhitelistDocument {
     id: string;
     formData?: {
         adresseWallet: string;
@@ -119,7 +119,7 @@ function Wildians(Wildians) {
             ...doc.data()
         }));
         let tmpWhitelist: string[] = [];
-        documents.forEach((doc: ambassadorDocument) => {
+        documents.forEach((doc: WhitelistDocument) => {
             const whitelistAddress = doc.formData!["adresseWallet"];
             tmpWhitelist.push(whitelistAddress);
         });
@@ -296,7 +296,7 @@ function Wildians(Wildians) {
             const salesStatus = querySnapshotSales.docs[0].data();
 
             let is_whitelisted = false;
-            whitelistedUsers.map((user: ambassadorDocument) => {
+            whitelistedUsers.map((user: WhitelistDocument) => {
                 if (user.formData!.adresseWallet == activeAccount!.address) {
                     is_whitelisted = true;
                     return;

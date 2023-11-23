@@ -51,9 +51,6 @@ function BottomPart() {
     ]);
     const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
-    const [whitelistedUsers, setWhitelistedUsers] = React.useState<string[]>(
-        []
-    );
     const [userAddress, setUserAddress] = React.useState<string | null>("");
     const [wallet, setWallet] = React.useState<BeaconWallet>();
     const [token_id, setToken_id] = React.useState(-1);
@@ -256,7 +253,7 @@ function BottomPart() {
 
             if (is_ambassador)
                 price_transaction = 0;
-            
+
             try {
                 const op = await contract.methods
                     .big_boi_mint(
