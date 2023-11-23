@@ -16524,8 +16524,6 @@ select {
     justify-content: center;
     border-top: 2px solid #d6dce0;
     position: relative;
-    top: -46px;
-    
 }
 
 .year2023::before {
@@ -16552,7 +16550,6 @@ select {
     justify-content: center;
     border-top: 2px solid #d6dce0;
     position: relative;
-    top: -46px;
 }
 
 .year2024::before {
@@ -16590,7 +16587,7 @@ select {
 
 .status::before {
     content: "";
-    width: 15px; 
+    width: 15px;
     height: 15px;
     background: radial-gradient(
         circle,
@@ -16599,7 +16596,7 @@ select {
     );
     border-radius: 50%;
     position: absolute;
-    top: -8px; 
+    top: -8px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -16615,8 +16612,8 @@ select {
 
     .status::before {
         width: 10px;
-        height: 10px; 
-        top: -5px; 
+        height: 10px;
+        top: -5px;
     }
 }
 
@@ -16624,11 +16621,11 @@ select {
     .timestamp {
         margin-bottom: 10px;
     }
-    
+
     .year2023::before,
     .year2024::before {
-        font-size: 12px; 
-        width: 60px; 
+        font-size: 12px;
+        width: 60px;
         height: 30px;
         top: -15px;
         left: 50%;
