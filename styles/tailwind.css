@@ -16005,6 +16005,19 @@ select {
     .md\:inline {
         display: inline;
     }
+
+    .md\:pb-0 {
+        padding-bottom: 0;
+    }
+
+    .md\:justify-between {
+        justify-content: space-between;
+    }
+
+    .md\:px-32 {
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -16657,8 +16670,8 @@ select {
     justify-content: center;
     border-top: 2px solid #d6dce0;
     position: relative;
-    
-    top : -57px;
+
+    top: -57px;
 }
 
 .year2023::before {
@@ -16685,7 +16698,7 @@ select {
     justify-content: center;
     border-top: 2px solid #d6dce0;
     position: relative;
-    top : -57px;
+    top: -57px;
 }
 
 .year2024::before {
@@ -16721,7 +16734,6 @@ select {
     margin-top: 20px;
     margin-left: 100px;
     text-align: left;
-
 }
 
 .status::before {
