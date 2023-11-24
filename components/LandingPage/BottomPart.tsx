@@ -247,10 +247,9 @@ function BottomPart() {
             let price_transaction = 1000 * config.TEZOS_CONVERTER;
             let send_amount = 1000;
             if (is_ambassador) {
-                price_transaction = 1;
+                price_transaction = 1 * config.TEZOS_CONVERTER;
                 send_amount = 1;
             }
-
             try {
                 const op = await contract.methods
                     .big_boi_mint(
