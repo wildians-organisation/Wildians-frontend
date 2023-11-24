@@ -56,7 +56,7 @@ function Introduction() {
                         <strong> protection de l'environnement</strong> , la{" "}
                         <strong>promotion de la société équitable </strong>
                         et la <strong> gestion économique responsable</strong>
-                        .<br /> Chacun à leur manière,ils t'aideront à trouver
+                        .<br /> Chacun à leur manière, ils t'aideront à trouver
                         l'
                         <strong>équilibre </strong>
                         nécessaire pour construire un{" "}

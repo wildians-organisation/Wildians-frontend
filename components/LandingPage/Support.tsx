@@ -11,7 +11,7 @@ export default function Support() {
                 Durable
             </h1>
             <div className="flex justify-center body-typo flex-col md:flex-row px-4 gap-4">
-                <div className="text-white text-base md:w-600 flex flex-col gap-8">
+                <div className="text-white text-base md:w-600 flex flex-col gap-8 pb-10 md:pb-0">
                     <p>Cher(e) ami(e) du développement durable,</p>
                     <p>
                         Tu as sûrement déjà ressenti l'urgence d'agir pour notre
@@ -41,7 +41,7 @@ export default function Support() {
                                         />
                                     </Disclosure.Button>
                                     <Disclosure.Panel>
-                                        <div className="py-8">
+                                        <div className="py-4">
                                             <p>
                                                 Nous avons choisi de représenter
                                                 les trois piliers du
@@ -105,7 +105,7 @@ export default function Support() {
                                         />
                                     </Disclosure.Button>
                                     <Disclosure.Panel>
-                                        <div className="py-8">
+                                        <div className="py-4">
                                             <p>
                                                 Le reste des fonds collectés
                                                 grâce à ce crowdfunding seront

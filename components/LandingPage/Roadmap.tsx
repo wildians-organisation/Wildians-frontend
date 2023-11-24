@@ -53,7 +53,8 @@ export default function RoadMapVitrine() {
                     <div className="status">
                         <h4>
                             <b>Alpha de l'application: </b> <br />
-                            Ouverture à une <br />sélection d’ambassadeurs <br />
+                            Ouverture à une <br />
+                            sélection d’ambassadeurs <br />
                             &nbsp;{" "}
                         </h4>
                     </div>
