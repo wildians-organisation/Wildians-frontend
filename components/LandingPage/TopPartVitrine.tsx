@@ -16,9 +16,9 @@ function TopPartVitrine() {
         <>
             <div className="bg-forest-bg bg-no-repeat ">
                 <HeaderVitrine />
-                <div className="flex flex-col justify-center h-screen md:ml-32 gap-8 m-2">
+                <div className="flex flex-col justify-center h-screen md:ml-32 gap-8 mx-2">
                     <div className="text-white title-typo flex flex-col gap-4">
-                        L’aventure Wildians:
+                        L’aventure Wildians :
                         <p className="break-all">
                             Ton parcours vers un mode de vie responsable !
                         </p>
@@ -33,7 +33,7 @@ function TopPartVitrine() {
                     </div>
                 </div>
                 <div
-                    className="w-1/3 h-48 p-2 left-0 bottom-0"
+                    className="w-1/3 h-32 md:h-48 p-2 left-0 bottom-0"
                     style={{
                         clipPath: "polygon(0 0, 100% 100%, 0 100%)",
                         backgroundColor: "#223734"

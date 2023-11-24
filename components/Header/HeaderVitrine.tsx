@@ -3,8 +3,8 @@ import Image from "next/image";
 
 function HeaderVitrine() {
     return (
-        <div className="header-layout flex justify-between items-center h-20 px-32">
-            <div className="flex items-center">
+        <div className="h-20 flex md:px-32 md:justify-between pt-4">
+            <div className="">
                 <a href="/">
                     <Image
                         className="headerLogo"
@@ -15,7 +15,7 @@ function HeaderVitrine() {
                     />
                 </a>
             </div>
-            <div className="flex gap-2 ml-auto mt-0">
+            <div className="gap-2 hidden md:flex">
                 <a
                     href="https://discord.gg/grjatzrcKp"
                     target="_blank"

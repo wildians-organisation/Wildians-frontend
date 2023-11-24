@@ -2,9 +2,7 @@ name: Preprod workflow
 
 on:
     push:
-        branches-ignore:
-            - "dev"
-            - "main"
+        branches: [preprod]
 
 jobs:
     prettier:

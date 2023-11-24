@@ -4,17 +4,14 @@ import rectangle from "../../public/fonts/rectangle-33.png";
 export function Concept() {
     return (
         <div id="Concept">
-            <div
-                className="bg-no-repeat bg-cover p-4 h-1000-px"
-                style={{ height: "800px" }}
-            >
+            <div className="bg-no-repeat bg-cover py-20 px-4">
                 <div>
-                    <div className="text-center text-white mb-4 title-typo">
+                    <div className="text-center text-white mb-4 title-typo2">
                         <p>Concept</p>
                     </div>
                 </div>
-                <div className="flex justify-center flex-col md:flex-row gap-8 pt-32 items-center">
-                    <div className="text-white md:w-600 title-wild-frame-typo">
+                <div className="flex md:justify-center flex-col md:flex-row gap-8 pt-16 md:pt-32 md:items-center">
+                    <div className="text-white md:w-600 title-wild-frame-typo hidden md:block">
                         Wildians,
                         <br />
                         c’est l’ambition de transmettre
@@ -32,7 +29,20 @@ export function Concept() {
                         , <br />
                         ensemble.
                     </div>
-                    <div className="text-white pl-6 md:w-600 body-typo">
+                    <div className="text-white md:w-600 title-wild-frame-typo md:hidden">
+                        Wildians, c’est l’ambition de transmettre la culture du
+                        <span style={{ color: "#90E0D3" }}>
+                            {" "}
+                            développement durable{" "}
+                        </span>
+                        et de
+                        <span style={{ color: "#90E0D3" }}>
+                            {" "}
+                            passer à l’action
+                        </span>
+                        , ensemble.
+                    </div>
+                    <div className="text-white md:w-600 body-typo">
                         <p>
                             {" "}
                             Nous constatons qu’il est difficile de visualiser
@@ -85,7 +95,7 @@ export function Concept() {
                             <br />
                         </p>
                         <div className="flex justify-center">
-                            <div className="border-l-2 pl-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
+                            <div className="font-bold border-l-2 px-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
                                 Transformons nos{" "}
                                 <span style={{ color: "#90E0D3" }}>
                                     habitudes

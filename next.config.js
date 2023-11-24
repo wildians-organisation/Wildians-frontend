@@ -20,7 +20,7 @@ module.exports = {
         gcp_messaging_sender_id: process.env.GCPMESSAGINGSENDERID,
         gcp_app_id: process.env.GCPAPPID,
         measurement_id: process.env.MEASUREMENTID,
-        prod_vitrine: process.env.PROD_VITRINE
+        clarity_appid: process.env.CLARITY_APPID
     },
     trailingSlash: true,
     images: {
