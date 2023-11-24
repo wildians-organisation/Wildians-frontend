@@ -2,7 +2,6 @@ import React from "react";
 import Attribute from "./Attribute";
 
 function NFTCard({ metadata, nftNumber }) {
-
     const getColorClass = () => {
         switch (metadata.name) {
             case "BICHE":
@@ -104,7 +103,9 @@ function NFTCard({ metadata, nftNumber }) {
                         <div className=" bio-desc-layout">
                             <span className="text-white">
                                 By adopting me, you supported{" "}
-                                <span className={getColorClass()}>{getONGName(animal)}</span>
+                                <span className={getColorClass()}>
+                                    {getONGName(animal)}
+                                </span>
                             </span>
                         </div>
                         <div className="text-white md:cursor-pointer btn-layout white-btn-style body-highlight-typo hover:learn-hover">
