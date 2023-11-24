@@ -2,6 +2,20 @@ import React from "react";
 import Attribute from "./Attribute";
 
 function NFTCard({ metadata, nftNumber }) {
+
+    const getColorClass = () => {
+        switch (metadata.name) {
+            case "BICHE":
+                return "text-blue-500";
+            case "WOLF":
+                return "text-green-500";
+            case "BULL":
+                return "text-red-500";
+            default:
+                return "";
+        }
+    };
+
     const getAnimalImage = () => {
         const biche_IMG = "/img/v2/visuels/Deer.png";
         const wolf_IMG = "/img/v2/visuels/Wolf.png";
@@ -71,7 +85,7 @@ function NFTCard({ metadata, nftNumber }) {
                 />
             </div>
             <div className="w-3/5 p-4 flex-1 items-center justify-items-center">
-                <div className="flex text-white items-baseline">
+                <div className={`flex items-baseline ${getColorClass()}`}>
                     <span className="title-typo nft-name-layout name-layout mt-4 ml-6">
                         {metadata.name}{" "}
                     </span>
@@ -90,7 +104,7 @@ function NFTCard({ metadata, nftNumber }) {
                         <div className=" bio-desc-layout">
                             <span className="text-white">
                                 By adopting me, you supported{" "}
-                                {getONGName(animal)}
+                                <span className={getColorClass()}>{getONGName(animal)}</span>
                             </span>
                         </div>
                         <div className="text-white md:cursor-pointer btn-layout white-btn-style body-highlight-typo hover:learn-hover">
@@ -108,23 +122,6 @@ function NFTCard({ metadata, nftNumber }) {
                             title="Birthday"
                             description={formatDate(date)}
                         />
-                    </div>
-                </div>
-                <div>
-                    <div className="title-typo text-white nft-name-layout attribute-layout mt-6 ml-6">
-                        Attributes
-                    </div>
-                    <div className="flex text-white flex-col">
-                        <div className="flex flex-row justify-center">
-                            <Attribute title="Horn" description="Red" />
-                            <Attribute title="Fur" description="Red" />
-                            <Attribute title="Hoof" description="Red" />
-                        </div>
-                        <div className="flex flex-row justify-center">
-                            <Attribute title="Ear" description="Red" />
-                            <Attribute title="Tail" description="Red" />
-                            <Attribute title="Decoration" description="Red" />
-                        </div>
                     </div>
                 </div>
             </div>
