@@ -20,16 +20,18 @@ const ClarityScript = () => {
     useEffect(() => {
         const clarityId = config.CLARITY_APPID;
 
-        window.clarity = window.clarity || function () {
-            (window.clarity.q = window.clarity.q || []).push(arguments);
-        };
+        window.clarity =
+            window.clarity ||
+            function () {
+                (window.clarity.q = window.clarity.q || []).push(arguments);
+            };
 
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
+        const script = document.createElement("script");
+        script.type = "text/javascript";
         script.async = true;
         script.src = `https://www.clarity.ms/tag/${clarityId}`;
 
-        const scriptTag = document.getElementsByTagName('script')[0];
+        const scriptTag = document.getElementsByTagName("script")[0];
         if (scriptTag.parentNode) {
             scriptTag.parentNode.insertBefore(script, scriptTag);
         }
