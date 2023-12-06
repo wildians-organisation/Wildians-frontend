@@ -27,7 +27,7 @@ export default function Support() {
                             {({ open }) => (
                                 /* Use the `open` state to conditionally change the direction of an icon. */
                                 <>
-                                    <Disclosure.Button className="flex justify-between w-full">
+                                    <Disclosure.Button className="flex justify-between w-full focus:outline-none">
                                         <strong>
                                             Comment fonctionne notre
                                             crowdfunding ?
@@ -91,7 +91,7 @@ export default function Support() {
                             {({ open }) => (
                                 /* Use the `open` state to conditionally change the direction of an icon. */
                                 <>
-                                    <Disclosure.Button className="flex justify-between w-full">
+                                    <Disclosure.Button className="flex justify-between w-full focus:outline-none">
                                         <strong>
                                             Pourquoi avons-nous besoin de ton
                                             soutien ?

@@ -26,7 +26,7 @@ function TopPartVitrine() {
                     <div className="flex justify-center md:justify-start">
                         <button
                             onClick={handleRedirect}
-                            className="text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover xl:my-8 w-52"
+                            className="text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover xl:my-8 w-64"
                         >
                             Découvrir le concept
                         </button>
