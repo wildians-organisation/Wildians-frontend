@@ -20,18 +20,17 @@ const network = { type: NetworkType.GHOSTNET };
 export interface WhitelistDocument {
     id: string;
     formData?: {
-        commentaire: string;
-        plateformeContact: string;
-        loginMail: string;
         adresseWallet: string;
+        commentaire: string;
+        loginMail: string;
+        name: string;
+        plateformeContact: string;
+        profile: string;
     };
 }
 
 export interface StatusSale {
     id: string;
-    whitelistStatus: boolean;
-    whitelistOpenDay: Date;
-    whitelistOpenTime: Date;
     status: boolean;
     openDay: string;
     openTime: string;
@@ -133,19 +132,9 @@ function Wildians(Wildians) {
             const statusSales: StatusSale[] = [];
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                const {
-                    whitelistStatus,
-                    whitelistOpenDay,
-                    whitelistOpenTime,
-                    status,
-                    openDay,
-                    openTime
-                } = data;
+                const { status, openDay, openTime } = data;
                 statusSales.push({
                     id: doc.id,
-                    whitelistStatus,
-                    whitelistOpenDay,
-                    whitelistOpenTime,
                     status,
                     openDay,
                     openTime

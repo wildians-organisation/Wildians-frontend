@@ -1,10 +1,6 @@
 import React, { useContext } from "react";
 import axios from "axios";
 import * as config from "../../config/config";
-import Wildians, {
-    StatusSale,
-    WhitelistDocument
-} from "./../../components/Wildian/Wildians";
 import { firestore } from "../../firebaseConfig";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
 import { BeaconWallet } from "@taquito/beacon-wallet";
@@ -15,6 +11,26 @@ import SnackbarService, {
     SnackbarType
 } from "../SnackbarService/SnackbarService";
 import Link from "next/link";
+import Wildians from "../Wildian/Wildians";
+
+export interface ambassadorDocument {
+    id: string;
+    formData?: {
+        adresseWallet: string;
+        commentaire: string;
+        loginMail: string;
+        name: string;
+        plateformeContact: string;
+        profile: string;
+    };
+}
+
+export interface StatusSale {
+    id: string;
+    status: boolean;
+    openDay: string;
+    openTime: string;
+}
 
 const network = { type: NetworkType.GHOSTNET };
 
@@ -35,9 +51,6 @@ function BottomPart() {
     ]);
     const [nbTokenMinted, setNbTokenMinted] = React.useState(0);
     const [isStatusOpen, setIsStatusOpen] = React.useState(false);
-    const [whitelistedUsers, setWhitelistedUsers] = React.useState<string[]>(
-        []
-    );
     const [userAddress, setUserAddress] = React.useState<string | null>("");
     const [wallet, setWallet] = React.useState<BeaconWallet>();
     const [token_id, setToken_id] = React.useState(-1);
@@ -50,7 +63,7 @@ function BottomPart() {
     const SnackbarContext = useContext(SnackbarService);
 
     const salesCollection = collection(firestore, "sales");
-    const whitelistCollection = collection(firestore, "whitelist");
+    const ambassadorCollection = collection(firestore, "AmbassadorList");
     const deerONG = ["WWF", "Oceana", "GreenPeace"];
     const wolfONG = [
         "Action Against Hunger",
@@ -118,60 +131,21 @@ function BottomPart() {
             return newData;
         });
     }
-    const fetchWhitelistData = async () => {
-        const querySnapshot = await getDocs(whitelistCollection);
-        const documents = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data()
-        }));
-        let tmpWhitelist: string[] = [];
-        documents.forEach((doc: WhitelistDocument) => {
-            const whitelistAddress = doc.formData!["adresseWallet"];
-            tmpWhitelist.push(whitelistAddress);
-        });
-        setWhitelistedUsers(tmpWhitelist);
-        return tmpWhitelist;
-    };
-
-    function handleWhitelistScheduledOpening(sales) {
-        if (sales["whitelistOpenDay"] !== "") {
-            if (
-                isOpenDay(sales["whitelistOpenDay"], sales["whitelistOpenTime"])
-            )
-                setIsStatusOpen(true);
-            else if (!sales["status"]) setIsStatusOpen(false);
-        } else setIsStatusOpen(sales["whitelistStatus"] || sales["status"]);
-    }
 
     function handleScheduledOpening(sales) {
-        fetchWhitelistData().then((address) => {
-            if (sales["openDay"] !== "") {
-                setIsStatusOpen(isOpenDay(sales["openDay"], sales["openTime"]));
-            } else setIsStatusOpen(sales["status"]);
-
-            if (address.includes(userAddress!)) {
-                handleWhitelistScheduledOpening(sales);
-            }
-        });
+        if (sales["openDay"] !== "") {
+            setIsStatusOpen(isOpenDay(sales["openDay"], sales["openTime"]));
+        } else setIsStatusOpen(sales["status"]);
     }
+
     const getStatusSales = async () => {
         onSnapshot(salesCollection, (snapshot) => {
             const statusSales: StatusSale[] = [];
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                const {
-                    whitelistStatus,
-                    whitelistOpenDay,
-                    whitelistOpenTime,
-                    status,
-                    openDay,
-                    openTime
-                } = data;
+                const { status, openDay, openTime } = data;
                 statusSales.push({
                     id: doc.id,
-                    whitelistStatus,
-                    whitelistOpenDay,
-                    whitelistOpenTime,
                     status,
                     openDay,
                     openTime
@@ -358,8 +332,8 @@ function BottomPart() {
             const activeAccount = await wallet!.client.getActiveAccount();
             setUserAddress(activeAccount!.address);
 
-            const querySnapshotWL = await getDocs(whitelistCollection);
-            const whitelistedUsers = querySnapshotWL.docs.map((doc) => ({
+            const querySnapshotWL = await getDocs(ambassadorCollection);
+            const ambassadorList = querySnapshotWL.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data()
             }));
@@ -367,30 +341,34 @@ function BottomPart() {
             const querySnapshotSales = await getDocs(salesCollection);
             const salesStatus = querySnapshotSales.docs[0].data();
 
-            let is_whitelisted = false;
-            whitelistedUsers.map((user: WhitelistDocument) => {
+            let is_ambassador = false;
+            ambassadorList.map((user: ambassadorDocument) => {
                 if (user.formData!.adresseWallet == activeAccount!.address) {
-                    is_whitelisted = true;
+                    is_ambassador = true;
                     return;
                 }
             });
 
             let normal_sales_open = salesStatus.status;
             let WL_sales_open = salesStatus.whitelistStatus;
+            let price_transaction = 1000 * config.TEZOS_CONVERTER;
+            let send_amount = 1000;
+            if (is_ambassador) {
+                price_transaction = 1 * config.TEZOS_CONVERTER;
+                send_amount = 1;
+            }
             try {
                 const op = await contract.methods
                     .big_boi_mint(
-                        WL_sales_open,
                         activeAccount!.address,
                         nftToMint,
-                        1000 * config.TEZOS_CONVERTER,
-                        is_whitelisted,
+                        price_transaction,
                         MichelsonMap.fromLiteral({ "": url }),
                         normal_sales_open,
                         currentSelectedONG,
                         token_id
                     )
-                    .send({ amount: 1000 });
+                    .send({ amount: send_amount });
 
                 await op.confirmation(3);
                 showSuccessModal();

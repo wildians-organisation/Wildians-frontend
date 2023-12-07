@@ -2,6 +2,7 @@ import React from "react";
 import App from "next/app";
 import Head from "next/head";
 import { SnackbarProvider } from "../components/SnackbarService/SnackbarService";
+import { useEffect } from "react";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
@@ -9,26 +10,37 @@ import "styles/footer.css";
 import "../components/NFTCard/NFTCard.css";
 import * as config from "../config/config";
 
-export default class MyApp extends App {
-    componentDidMount() {
-        if (super.componentDidMount) {
-            super.componentDidMount();
+declare global {
+    interface Window {
+        clarity: any;
+    }
+}
+
+const ClarityScript = () => {
+    useEffect(() => {
+        const clarityId = config.CLARITY_APPID;
+
+        window.clarity =
+            window.clarity ||
+            function () {
+                (window.clarity.q = window.clarity.q || []).push(arguments);
+            };
+
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.async = true;
+        script.src = `https://www.clarity.ms/tag/${clarityId}`;
+
+        const scriptTag = document.getElementsByTagName("script")[0];
+        if (scriptTag.parentNode) {
+            scriptTag.parentNode.insertBefore(script, scriptTag);
         }
-        this.loadClarityAndAblaScripts();
-    }
+    }, []);
 
-    loadClarityAndAblaScripts() {
-        const clarityScript = document.createElement("script");
-        clarityScript.src = `https://www.clarity.ms/tag/${config.CLARITY_APPID}`;
-        document.getElementsByTagName("head")[0].appendChild(clarityScript);
+    return null;
+};
 
-        const ablaScript = document.createElement("script");
-        ablaScript.dataset.cache = "true";
-        ablaScript.dataset.websiteId = "b25f950c-8e53-400e-afef-df879dabda06";
-        ablaScript.src = "https://s.abla.io/abla.js";
-        document.getElementsByTagName("head")[0].appendChild(ablaScript);
-    }
-
+export default class MyApp extends App {
     render() {
         const { Component, pageProps } = this.props;
 
@@ -43,6 +55,7 @@ export default class MyApp extends App {
                     />
                     <title>Wildians</title>
                 </Head>
+                <ClarityScript />
                 <SnackbarProvider>
                     <Layout>
                         <Component {...pageProps} />
