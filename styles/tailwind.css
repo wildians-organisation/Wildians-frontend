@@ -16839,8 +16839,7 @@ select {
     align-items: center;
     background: var(--Vert-fonc, #36544f);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    max-width: 100%; 
-    overflow: auto;
+    max-width: 100%;
 }
 
 .modal-close {
@@ -16849,11 +16848,14 @@ select {
     right: 12px;
     background: none;
     color: #ffffff;
+    cursor: pointer;
+    max-height: 100%;
+    overflow: hidden;
 }
 
 .modal-content {
     display: flex;
-    gap: 20px; 
+    gap: 20px;
 }
 
 .modal-image {
@@ -16868,7 +16870,7 @@ select {
     width: 100%;
     height: auto;
     border-radius: var(--desktop-border-radius, 20px);
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 .modal-text {
