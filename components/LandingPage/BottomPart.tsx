@@ -384,8 +384,6 @@ function BottomPart() {
 
             let normal_sales_open = salesStatus.status;
             let WL_sales_open = salesStatus.whitelistStatus;
-
-            //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
             try {
                 const op = await contract.methods
                     .big_boi_mint(
@@ -404,11 +402,6 @@ function BottomPart() {
                 await op.confirmation(3);
                 showSuccessModal();
                 getTransactionsInformations();
-                // SnackbarContext!.showSnackbar(
-                //     "Successful transaction!",
-                //     SnackbarType.Success
-                // );
-
                 return op;
             } catch (error) {
                 SnackbarContext!.showSnackbar(
