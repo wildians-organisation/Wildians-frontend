@@ -279,7 +279,9 @@ function BottomPart() {
                             <br />
                             <p>
                                 Rends toi sur la page{" "}
-                                <Link href="nft-collection" style={{
+                                <Link
+                                    href="nft-collection"
+                                    style={{
                                         fontWeight: "bold",
                                         textDecoration: "underline",
                                         cursor: "pointer"
@@ -312,8 +314,17 @@ function BottomPart() {
                                     </svg>
                                 </a>
                                 <a href="https://twitter.com/Wildians_off">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="30" viewBox="0 0 21 21" fill="none">
-                                        <path d="M12.2262 8.8875L19.8739 0H18.0617L11.4211 7.71689L6.1173 0H0L8.02038 11.6693L0 20.9892H1.81238L8.82498 12.8399L14.4262 20.9892H20.5435L12.2257 8.8875H12.2262ZM9.74386 11.7721L8.93123 10.6101L2.46541 1.36396H5.24912L10.4671 8.8259L11.2797 9.9879L18.0625 19.6873H15.2788L9.74386 11.7726V11.7721Z" fill="white"/>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="21"
+                                        height="30"
+                                        viewBox="0 0 21 21"
+                                        fill="none"
+                                    >
+                                        <path
+                                            d="M12.2262 8.8875L19.8739 0H18.0617L11.4211 7.71689L6.1173 0H0L8.02038 11.6693L0 20.9892H1.81238L8.82498 12.8399L14.4262 20.9892H20.5435L12.2257 8.8875H12.2262ZM9.74386 11.7721L8.93123 10.6101L2.46541 1.36396H5.24912L10.4671 8.8259L11.2797 9.9879L18.0625 19.6873H15.2788L9.74386 11.7726V11.7721Z"
+                                            fill="white"
+                                        />
                                     </svg>
                                 </a>
                             </div>
@@ -337,9 +348,7 @@ function BottomPart() {
     };
 
     const handleMint = () => {
-        
-        showSuccessModal();
-        // mintNFT(currentNFTAddress, currentSelectedOng);
+        mintNFT(currentNFTAddress, currentSelectedOng);
     };
     const getSmartContract = async () => {
             const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);

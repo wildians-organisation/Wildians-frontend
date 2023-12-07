@@ -16832,18 +16832,19 @@ select {
 
 .modal {
     position: relative;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-left: 83px;
-    border-radius: 20px; 
+    padding: 50px;
+    border-radius: 20px;
     display: flex;
-    align-items: flex-start;
-    background: var(--Vert-fonc, #36544F);
+    flex-direction: column; /* Adjusted for better responsiveness */
+    align-items: center; /* Centered content */
+    background: var(--Vert-fonc, #36544f);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 100%; /* Ensures the modal doesn't exceed the screen width */
+    overflow: auto; /* Enables scrolling if content overflows */
 }
 
 .modal-close {
-    position: absolute; 
+    position: absolute;
     top: 12px;
     right: 12px;
     background: none;
@@ -16852,42 +16853,39 @@ select {
 
 .modal-content {
     display: flex;
-    gap: 75px; 
+    gap: 20px; /* Adjusted for better spacing */
 }
 
 .modal-image {
-    flex: 1;
+    width: 40%; /* Ensures the image takes the full width of the modal */
     overflow: hidden;
     border-radius: var(--desktop-border-radius, 20px);
     background: lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
-    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.30);
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
 .modal-image img {
-    width: 400px;
-    height: 300px;
+    width: 100%; /* Ensures the image takes the full width of its container */
+    height: auto; /* Maintains aspect ratio */
     border-radius: var(--desktop-border-radius, 20px);
-    object-fit: fill;
+    object-fit: cover; /* Ensures the image covers the container */
 }
 
-
 .modal-text {
-    flex: 3;
+    width: 100%; /* Ensures text takes the full width of the modal */
 }
 
 .modal-text h1 {
-    color: var(--Blanc, #FFF);
-    font-family: 'Gogh', sans-serif;
-    font-size: 40px;
-    font-style: normal;
+    color: var(--Blanc, #fff);
+    font-family: "Gogh", sans-serif;
+    font-size: 2rem; /* Adjusted for better readability */
     font-weight: 800;
     line-height: normal;
 }
 
 .modal-text p {
-    font-family: 'Mulish', sans-serif;
-    font-size: 16px;
-    font-style: normal;
+    font-family: "Mulish", sans-serif;
+    font-size: 1rem; /* Adjusted for better readability */
     font-weight: 400;
     line-height: normal;
     color: #ffffff;
@@ -16895,7 +16893,7 @@ select {
 
 .logo-container {
     display: flex;
-    gap: var(--desktop-spacing-small, 16px);
+    gap: 16px; /* Adjusted for better spacing */
     margin-top: 20px;
 }
 
