@@ -44,6 +44,7 @@ function BottomPart() {
     const [time, setTime] = React.useState(
         new Date().toLocaleTimeString().slice(0, 5)
     );
+    const [showModal, setShowModal] = React.useState(false);
     const [day, setDay] = React.useState(new Date().toISOString().slice(0, 10));
     const SnackbarContext = useContext(SnackbarService);
 
@@ -71,6 +72,7 @@ function BottomPart() {
         return false;
     }
 
+    
     async function updateSelectedOngNFTAddress() {
         for (const element in display_ong_selection) {
             if (display_ong_selection[element] != "") {
@@ -215,6 +217,10 @@ function BottomPart() {
         }
     };
 
+    function showSuccessModal() {
+        setShowModal(true);
+    }
+
     const disconnect = async () => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         await wallet!.clearActiveAccount();
@@ -222,6 +228,54 @@ function BottomPart() {
         setUserAddress(null);
     };
 
+    const Modal = () => {
+
+        const closeModal = function() {
+            setTimeout(() => {
+                console.log("Closing modal");
+            }, 1000);
+            setShowModal(false);
+        };
+        
+
+        return (
+            <div className="modal-overlay">
+                <div className="modal">
+                    <button className="modal-close" onClick={() => closeModal()}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white">
+                        <path d="M5.50172 0.898279C4.89819 0.315373 4.08987 -0.00716997 3.25084 0.000120968C2.41181 0.00741191 1.60921 0.343953 1.0159 0.937259C0.422597 1.53057 0.0860556 2.33316 0.0787646 3.17219C0.0714737 4.01122 0.394017 4.81955 0.976923 5.42308L11.5145 15.9607L0.976923 26.4983C0.67129 26.7935 0.427507 27.1466 0.259798 27.537C0.0920892 27.9274 0.00381303 28.3473 0.000120823 28.7722C-0.00357139 29.1971 0.0773934 29.6185 0.238292 30.0117C0.399191 30.405 0.636801 30.7623 0.937258 31.0627C1.23771 31.3632 1.595 31.6008 1.98827 31.7617C2.38154 31.9226 2.80291 32.0036 3.22781 31.9999C3.6527 31.9962 4.0726 31.9079 4.46302 31.7402C4.85343 31.5725 5.20653 31.3287 5.50172 31.0231L16.0393 20.4855L26.5769 31.0231C27.1805 31.606 27.9888 31.9285 28.8278 31.9212C29.6668 31.9139 30.4694 31.5774 31.0627 30.9841C31.656 30.3908 31.9926 29.5882 31.9999 28.7492C32.0072 27.9101 31.6846 27.1018 31.1017 26.4983L20.5641 15.9607L31.1017 5.42308C31.6846 4.81955 32.0072 4.01122 31.9999 3.17219C31.9926 2.33316 31.656 1.53057 31.0627 0.937259C30.4694 0.343953 29.6668 0.00741191 28.8278 0.000120968C27.9888 -0.00716997 27.1805 0.315373 26.5769 0.898279L16.0393 11.4359L5.50172 0.898279Z" fill="white"/>
+                    </svg>
+                    </button>
+                    <div className="modal-content">
+                        <div className="modal-image">
+                            <img src="/img/v2/visuels/Wolf.png" alt="Modal" />
+                        </div>
+                        <div className="modal-text">
+                            <h1>Félicitation,
+                                <br />
+                                tu viens d’adopter Noa !
+                            </h1> <br />
+                            <p style={{ fontSize: '20px' }}>
+                                <b>
+                                    En faisant cela, tu soutiens l’association
+                                    <span style={{ color: '#90E0D3' }}> {currentSelectedOng}</span>.
+                                </b>
+                            </p> < br/>
+                            <p >Rends toi sur la page <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Collection</span> pour retrouver tous tes Wildians et rejoins ta nouvelle 
+                            < br/> famille sur les réseaux:
+                            </p>
+                            <div className="logo-container">
+                                <img src="/img/v2/visuels/Wolf.png" alt="Discord Logo" className="logo" />
+                                <img src="/img/v2/visuels/Wolf.png" alt="Instagram Logo" className="logo" />
+                                <img src="/img/v2/visuels/Wolf.png" alt="X Logo" className="logo" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+    
     const getTokenID = async () => {
         try {
             const response = await axios.get(
@@ -235,7 +289,8 @@ function BottomPart() {
     };
 
     const handleMint = () => {
-        mintNFT(currentNFTAddress, currentSelectedOng);
+        showSuccessModal();
+        // mintNFT(currentNFTAddress, currentSelectedOng);
     };
     const getSmartContract = async () => {
             const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
@@ -271,6 +326,7 @@ function BottomPart() {
 
             let normal_sales_open = salesStatus.status;
             let WL_sales_open = salesStatus.whitelistStatus;
+            
             //const op = await contract.methods.mint(config.WALLET_ADRESS, nftToMint, MichelsonMap.fromLiteral({ '': url }), token_id).send();
             try {
                 const op = await contract.methods
@@ -288,11 +344,15 @@ function BottomPart() {
                     .send({ amount: 1000 });
 
                 await op.confirmation(3);
+                
+                showSuccessModal();
                 getTransactionsInformations();
-                SnackbarContext!.showSnackbar(
-                    "Successful transaction!",
-                    SnackbarType.Success
-                );
+                // SnackbarContext!.showSnackbar(
+                //     "Successful transaction!",
+                //     SnackbarType.Success
+                // );
+                // TODO popup success message with specific css on top of the screen
+
                 return op;
             } catch (error) {
                 SnackbarContext!.showSnackbar(
@@ -373,6 +433,7 @@ function BottomPart() {
                     >
                         {!isStatusOpen ? "Sells are currently closed" : "Mint"}
                     </button>
+                    {showModal && <Modal/>}
                 </div>
             </div>
         </div>
