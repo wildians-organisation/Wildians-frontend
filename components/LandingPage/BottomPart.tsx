@@ -66,7 +66,6 @@ function BottomPart() {
     const wolfONG = [
         "Action Against Hunger",
         "Save the Children",
-        "Wikimedia Foundation (Wikipedia)",
         "Charity: Water"
     ];
     const bullONG = [
@@ -74,6 +73,7 @@ function BottomPart() {
         "UNICEF",
         "MADRE",
         "Relief International Inc.",
+        "Wikimedia Foundation (Wikipedia)",
         "Amnesty International"
     ];
 
@@ -256,6 +256,7 @@ function BottomPart() {
                         activeAccount!.address,
                         nftToMint,
                         price_transaction,
+                        is_ambassador,
                         MichelsonMap.fromLiteral({ "": url }),
                         normal_sales_open,
                         currentSelectedONG,
