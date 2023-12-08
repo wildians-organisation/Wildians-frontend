@@ -2,6 +2,10 @@ import React from "react";
 import Attribute from "./Attribute";
 
 function NFTCard({ metadata, nftNumber }) {
+
+    const animal = metadata.name;
+    const date = metadata.firstTime;
+
     const getColorClass = () => {
         switch (metadata.name) {
             case "BICHE":
@@ -28,7 +32,7 @@ function NFTCard({ metadata, nftNumber }) {
             case "BULL":
                 return bull_IMG;
             default:
-                return ""; // Image par défaut au cas où le nom de l'animal n'est pas reconnu
+                return "";
         }
     };
 
@@ -71,19 +75,16 @@ function NFTCard({ metadata, nftNumber }) {
         return formattedDate;
     };
 
-    const animal = metadata.name;
-    const date = metadata.firstTime;
-
     return (
         <div className="card nft-card-layout nft-card-style flex ">
-            <div className="w-2/5 object-cover flex justify-center">
+            <div className="w-1/2 object-cover flex justify-center">
                 <img
                     className="object-cover pic-border"
                     src={getAnimalImage()}
                     alt={`${metadata.name}_Image`}
                 />
             </div>
-            <div className="w-3/5 p-4 flex-1 items-center justify-items-center">
+            <div className="w-1/2 p-4 flex-1 items-center justify-items-center">
                 <div className={`flex items-baseline ${getColorClass()}`}>
                     <span className="title-typo nft-name-layout name-layout mt-4 ml-6">
                         {metadata.name}{" "}
@@ -100,7 +101,7 @@ function NFTCard({ metadata, nftNumber }) {
                         Bio
                     </div>
                     <div className="flex justify-between ml-6">
-                        <div className=" bio-desc-layout">
+                        <div className=" bio-desc-layout whitespace-nowrap">
                             <span className="text-white">
                                 By adopting me, you supported{" "}
                                 <span className={getColorClass()}>
@@ -108,17 +109,17 @@ function NFTCard({ metadata, nftNumber }) {
                                 </span>
                             </span>
                         </div>
-                        <div className="text-white md:cursor-pointer btn-layout white-btn-style body-highlight-typo hover:learn-hover">
-                            <a
-                                href={getONGLink()}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <div>Learn more &gt;</div>
-                            </a>
-                        </div>
                     </div>
-                    <div className="ml-6">
+                    <div className="ml-6 text-white md:cursor-pointer btn-layout white-btn-style body-highlight-typo hover:learn-hover">
+                        <a
+                            href={getONGLink()}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <div>Learn more &gt;</div>
+                        </a>
+                    </div>
+                    <div className="ml-6 body-highlight-typo">
                         <Attribute
                             title="Birthday"
                             description={formatDate(date)}
