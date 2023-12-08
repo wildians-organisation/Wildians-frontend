@@ -2,27 +2,26 @@ import React from "react";
 import Attribute from "./Attribute";
 
 function NFTCard({ metadata, nftNumber }) {
-
     const animal = metadata.name;
     const date = metadata.firstTime;
 
     const getColorClass = () => {
         switch (metadata.name) {
             case "BICHE":
-                return "text-blue-500";
+                return "text-greeny";
             case "WOLF":
-                return "text-green-500";
+                return "text-red-400"
             case "BULL":
-                return "text-red-500";
+                return "text-yellow-200";
             default:
                 return "";
         }
     };
 
     const getAnimalImage = () => {
-        const biche_IMG = "/img/v2/visuels/Deer.png";
-        const wolf_IMG = "/img/v2/visuels/Wolf.png";
-        const bull_IMG = "/img/v2/visuels/Bull.png";
+        const biche_IMG = "/img/v2/visuels/cerf.jpg";
+        const wolf_IMG = "/img/v2/visuels/loup.jpg";
+        const bull_IMG = "/img/v2/visuels/taureau.jpg";
 
         switch (metadata.name) {
             case "BICHE":
