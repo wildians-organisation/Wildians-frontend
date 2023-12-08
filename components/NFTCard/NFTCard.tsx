@@ -2,15 +2,19 @@ import React from "react";
 import Attribute from "./Attribute";
 
 function NFTCard({ metadata, nftNumber }) {
-    const animal = metadata.name;
+    var animal = metadata.name;
+
+    if (animal === "BICHE") {
+        animal = "DEER";
+    }
     const date = metadata.firstTime;
 
     const getColorClass = () => {
-        switch (metadata.name) {
-            case "BICHE":
+        switch (animal) {
+            case "DEER":
                 return "text-greeny";
             case "WOLF":
-                return "text-red-400"
+                return "text-red-400";
             case "BULL":
                 return "text-yellow-200";
             default:
@@ -19,13 +23,13 @@ function NFTCard({ metadata, nftNumber }) {
     };
 
     const getAnimalImage = () => {
-        const biche_IMG = "/img/v2/visuels/cerf.jpg";
+        const deer_IMG = "/img/v2/visuels/cerf.jpg";
         const wolf_IMG = "/img/v2/visuels/loup.jpg";
         const bull_IMG = "/img/v2/visuels/taureau.jpg";
 
-        switch (metadata.name) {
-            case "BICHE":
-                return biche_IMG;
+        switch (animal) {
+            case "DEER":
+                return deer_IMG;
             case "WOLF":
                 return wolf_IMG;
             case "BULL":
@@ -41,7 +45,7 @@ function NFTCard({ metadata, nftNumber }) {
                 return "Charity Watter";
             case "BULL":
                 return "Amnesty International";
-            case "BICHE":
+            case "DEER":
                 return "WWF";
             default:
                 return "";
@@ -49,8 +53,8 @@ function NFTCard({ metadata, nftNumber }) {
     };
 
     const getONGLink = () => {
-        switch (metadata.name) {
-            case "BICHE":
+        switch (animal) {
+            case "DEER":
                 return "https://www.wwf.fr/";
             case "WOLF":
                 return "https://www.charitywater.org/";
