@@ -15986,10 +15986,6 @@ select {
         display: none;
     }
 
-    .md\:block {
-        display: block;
-    }
-
     .md\:justify-center {
         justify-content: center;
     }
@@ -16057,6 +16053,13 @@ select {
 }
 
 @media (min-width: 1280px) {
+    .xl\:block {
+        display: block;
+    }
+
+    .xl\:hidden {
+        display: none;
+    }
 }
 
 @media (min-width: 1536px) {
