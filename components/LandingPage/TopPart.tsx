@@ -46,6 +46,13 @@ function TopPart() {
                         </div>
                     </div>
                 </div>
+                <div
+                    className="w-1/3 h-32 md:h-48 p-2 left-0 bottom-0"
+                    style={{
+                        clipPath: "polygon(0 0, 100% 100%, 0 100%)",
+                        backgroundColor: "#223734"
+                    }}
+                ></div>
             </div>
         </>
     );
