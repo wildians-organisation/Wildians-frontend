@@ -90,7 +90,7 @@ export function Concept() {
                             <br />
                         </p>
                         <div className="flex justify-center">
-                            <div className="font-bold border-l-2 px-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
+                            <div className="font-black border-l-2 px-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
                                 Transformons nos{" "}
                                 <span style={{ color: "#90E0D3" }}>
                                     habitudes
