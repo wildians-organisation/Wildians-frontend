@@ -1,7 +1,7 @@
 import React from "react";
 export default function RoadMapVitrine() {
     return (
-        <>
+        <div className="pb-10">
             <div className="hidden xl:block">
                 <h1 className=" text-l text-white font-bold mb-16 text-left-20">
                     Notre feuille de route
@@ -379,6 +379,6 @@ export default function RoadMapVitrine() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }

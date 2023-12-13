@@ -5,11 +5,6 @@ export function Concept() {
     return (
         <div id="Concept">
             <div className="bg-no-repeat bg-cover py-20 px-4">
-                <div>
-                    <div className="text-center text-white mb-4 title-typo2">
-                        <p>Concept</p>
-                    </div>
-                </div>
                 <div className="flex md:justify-center flex-col md:flex-row gap-8 pt-16 md:pt-32 md:items-center">
                     <div className="text-white md:w-600 title-wild-frame-typo hidden md:block">
                         Wildians,
@@ -95,7 +90,7 @@ export function Concept() {
                             <br />
                         </p>
                         <div className="flex justify-center">
-                            <div className="font-bold border-l-2 px-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
+                            <div className="font-black border-l-2 px-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
                                 Transformons nos{" "}
                                 <span style={{ color: "#90E0D3" }}>
                                     habitudes
