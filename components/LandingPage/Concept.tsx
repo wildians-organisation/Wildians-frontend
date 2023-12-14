@@ -5,7 +5,7 @@ export function Concept() {
     return (
         <div id="Concept">
             <div className="bg-no-repeat bg-cover py-20 px-4">
-                <div className="flex md:justify-center flex-col md:flex-row gap-8 pt-16 md:pt-32 md:items-center">
+                <div className="flex md:justify-center flex-col md:flex-row gap-8 md:items-center">
                     <div className="text-white md:w-600 title-wild-frame-typo hidden md:block">
                         Wildians,
                         <br />
@@ -25,7 +25,9 @@ export function Concept() {
                         ensemble.
                     </div>
                     <div className="text-white md:w-600 title-wild-frame-typo md:hidden">
-                        Wildians, c’est l’ambition de transmettre la culture du
+                        Wildians,
+                        <br />
+                        c’est l’ambition de transmettre la culture du
                         <span style={{ color: "#90E0D3" }}>
                             {" "}
                             développement durable{" "}
