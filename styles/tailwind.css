@@ -6365,7 +6365,7 @@ select {
     margin: 24rem;
 }
 
-.m-auto {
+. {
     margin: auto;
 }
 
@@ -16343,6 +16343,11 @@ select {
     background: var(--saillance, #951f2a);
 }
 
+.closed-btn-style {
+    border-radius: var(--desktop-border-radius, 20px);
+    background: var(--saillance, #787676);
+}
+
 .hover\:get-hover:hover {
     border-radius: var(--desktop-border-radius, 20px);
     background: var(--economy, #e35958);
@@ -16481,6 +16486,16 @@ select {
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
+.nft-frame-image-deer-grey {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--desktop-border-radius, 20px);
+    background: url("../public/img/v2/visuels/Deer_grey.png"),
+        lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    /* Shading miniatures */
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
+}
+
 .nft-frame-image-wolf {
     width: 280px;
     height: 280px;
@@ -16490,12 +16505,23 @@ select {
     /* Shading miniatures */
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
 }
+/*ajouter wolf grey*/
 
 .nft-frame-image-bull {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
     background: url("../public/img/v2/visuels/Bull.png"),
+        lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    /* Shading miniatures */
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+.nft-frame-image-bull-grey {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--desktop-border-radius, 20px);
+    background: url("../public/img/v2/visuels/Bull_grey.png"),
         lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
@@ -16534,6 +16560,17 @@ select {
     /* Body highlight */
     font-family: MULISH;
     font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.nft-frame-name {
+    color: var(--turquoise, #90e0d3);
+    text-align: center;
+    /* Body highlight */
+    font-family: MULISH;
+    font-size: 32px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;

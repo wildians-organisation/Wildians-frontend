@@ -330,7 +330,6 @@ function Wildians(Wildians) {
                 );
             }
         };
-
     return (
         <div className="nft-frame">
             {Wildians.image === "/img/v2/visuels/Bull.png" ? (
@@ -339,53 +338,25 @@ function Wildians(Wildians) {
                 <div className="nft-frame-image-deer"></div>
             ) : Wildians.image === "/img/v2/visuels/Wolf.png" ? (
                 <div className="nft-frame-image-wolf"></div>
+            ) : Wildians.image === "/img/v2/visuels/Bull_grey.png" ? (
+                <div className="nft-frame-image-bull-grey"></div>
+            ) : Wildians.image === "/img/v2/visuels/Wolf.png" ? (
+                <div className="nft-frame-image-wolf"></div> //a changer ajouter wolf grey
+            ) : Wildians.image === "/img/v2/visuels/Deer_grey.png" ? (
+                <div className="nft-frame-image-deer-grey"></div>
             ) : null}
             <div className="nft-frame-below-img">
-                <div className="text-center body-highlight-typo py-4">
+                <div className="nft-frame-name">
+                    {Wildians.name}
+                </div>
+                <div className="text-center body-highlight-typo">
                     {Wildians.pillar}
                 </div>
-                <div className="nft-frame-description">
-                    {Wildians.description}
+                <div className="nft-frame-adopted py-4">
+                    {Wildians.nft_sold} adoptés
                 </div>
-
-                <div className="nft-frame-adopted">
-                    {Wildians.nft_sold} adopted !
-                </div>
-                <div className="display-pillars">
-                    {Wildians.image === "/img/v2/visuels/Bull.png"
-                        ? bullONG.map((item, idx) => (
-                              <button
-                                  onClick={() => handleONGButtonClick(item)}
-                              >
-                                  <img src={item} width={40} height={40} />
-                              </button>
-                          ))
-                        : Wildians.image === "/img/v2/visuels/Deer.png"
-                        ? deerONG.map((item, idx) => (
-                              <button
-                                  onClick={() => handleONGButtonClick(item)}
-                              >
-                                  <img src={item} width={40} height={40} />
-                              </button>
-                          ))
-                        : Wildians.image === "/img/v2/visuels/Wolf.png"
-                        ? wolfONG.map((item, idx) => (
-                              <button
-                                  onClick={() => handleONGButtonClick(item)}
-                              >
-                                  <img src={item} width={40} height={40} />
-                              </button>
-                          ))
-                        : null}
-                </div>
-                <div className="nft-frame-ONG-name">
-                    {Wildians.image === "/img/v2/visuels/Bull.png"
-                        ? Wildians.display_ong_selection[2]
-                        : Wildians.image === "/img/v2/visuels/Deer.png"
-                        ? Wildians.display_ong_selection[0]
-                        : Wildians.image === "/img/v2/visuels/Wolf.png"
-                        ? Wildians.display_ong_selection[1]
-                        : null}
+                <div className="text-center body-italic-typo">
+                    {Wildians.ong}
                 </div>
             </div>
         </div>
