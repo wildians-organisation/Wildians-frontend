@@ -25,7 +25,9 @@ export function Concept() {
                         ensemble.
                     </div>
                     <div className="text-white md:w-600 title-wild-frame-typo md:hidden">
-                        Wildians, c’est l’ambition de transmettre la culture du
+                        Wildians,
+                        <br />
+                        c’est l’ambition de transmettre la culture du
                         <span style={{ color: "#90E0D3" }}>
                             {" "}
                             développement durable{" "}
