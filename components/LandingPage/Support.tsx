@@ -4,13 +4,13 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 export default function Support() {
     return (
-        <div className="py-20" style={{ backgroundColor: "#223734" }}>
-            <h1 className="text-center title-typo text-white font-bold mb-16">
+        <div className="px-4 py-20" style={{ backgroundColor: "#223734" }}>
+            <h1 className="md:text-center title-typo text-white font-bold mb-16">
                 Soutiens notre Projet de Changement :
                 <br className="hidden md:inline" /> Ensemble vers un Avenir
                 Durable
             </h1>
-            <div className="flex justify-center body-typo flex-col md:flex-row px-4 gap-4">
+            <div className="flex justify-center body-typo flex-col md:flex-row gap-4">
                 <div className="text-white text-base md:w-600 flex flex-col gap-8 pb-10 md:pb-0">
                     <p>Cher(e) ami(e) du développement durable,</p>
                     <p>

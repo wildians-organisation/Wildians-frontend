@@ -48,7 +48,7 @@ export default function BottomPartVitrine() {
                         rel="noreferrer"
                     >
                         <svg
-                            className="headerDiscord mr-4 default-logo-fill hover:turquoise"
+                            className="headerDiscord mr-4 default-logo-fill-footer hover:turquoise"
                             xmlns="http://www.w3.org/2000/svg"
                             height="1em"
                             viewBox="0 0 640 512"
@@ -63,7 +63,7 @@ export default function BottomPartVitrine() {
                         rel="noreferrer"
                     >
                         <svg
-                            className="headerInsta mr-4 default-logo-fill hover:turquoise"
+                            className="headerInsta mr-4 default-logo-fill-footer hover:turquoise"
                             xmlns="http://www.w3.org/2000/svg"
                             height="1em"
                             viewBox="0 0 448 512"
@@ -78,7 +78,7 @@ export default function BottomPartVitrine() {
                         rel="noreferrer"
                     >
                         <svg
-                            className="headerTwitter mr-4 default-logo-fill hover:turquoise"
+                            className="headerTwitter mr-4 default-logo-fill-footer hover:turquoise"
                             xmlns="http://www.w3.org/2000/svg"
                             style={{ height: "1.9em", width: "1.5em" }}
                             viewBox="0 0 21 22"

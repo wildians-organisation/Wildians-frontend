@@ -264,7 +264,7 @@ function BottomPart() {
                             <div className="logo-container">
                                 <a href="https://discord.gg/grjatzrcKp">
                                     <svg
-                                        className="headerDiscord default-logo-fill hover:turquoise"
+                                        className="headerDiscord default-logo-fill-footer hover:turquoise"
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 640 512"
                                     >
@@ -273,7 +273,7 @@ function BottomPart() {
                                 </a>
                                 <a href="https://www.instagram.com/wildians/">
                                     <svg
-                                        className="headerInsta default-logo-fill hover:turquoise"
+                                        className="headerInsta default-logo-fill-footer hover:turquoise"
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 448 512"
                                     >

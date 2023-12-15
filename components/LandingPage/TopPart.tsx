@@ -47,14 +47,14 @@ function TopPart() {
                     </div>
                 </div>
                 <div
-                    className="w-1/3 h-32 md:h-48 left-0 bottom-0 hidden md:block"
+                    className="w-1/3 h-32 md:h-48 relative left-0 top-1 hidden md:block"
                     style={{
                         clipPath: "polygon(0 0, 100% 100%, 0 100%)",
                         backgroundColor: "#223734"
                     }}
                 ></div>
                 <div
-                    className="w-1/3 h-16 md:h-48 left-0 bottom-0 md:hidden"
+                    className="w-1/3 h-16 md:h-48 relative left-0 top-1 md:hidden"
                     style={{
                         clipPath: "polygon(0 0, 100% 100%, 0 100%)",
                         backgroundColor: "#223734"

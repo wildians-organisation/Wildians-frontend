@@ -7,6 +7,19 @@ export function Concept() {
             <div className="bg-no-repeat bg-cover py-20 px-4">
                 <div className="flex md:justify-center flex-col md:flex-row gap-8 md:items-center">
                     <div className="text-white md:w-600 title-wild-frame-typo hidden md:block">
+                        <p
+                            style={{
+                                color: "#FFF",
+                                fontFamily: "Gogh",
+                                fontSize: "150px",
+                                fontStyle: "normal",
+                                fontWeight: "800",
+                                lineHeight: "40px"
+                            }}
+                        >
+                            {" "}
+                            “ <br />
+                        </p>
                         Wildians,
                         <br />
                         c’est l’ambition de transmettre
@@ -25,6 +38,19 @@ export function Concept() {
                         ensemble.
                     </div>
                     <div className="text-white md:w-600 title-wild-frame-typo md:hidden">
+                        <p
+                            style={{
+                                color: "#FFF",
+                                fontFamily: "Gogh",
+                                fontSize: "100px",
+                                fontStyle: "normal",
+                                fontWeight: "400",
+                                lineHeight: "0px"
+                            }}
+                        >
+                            {" "}
+                            “ <br />
+                        </p>
                         Wildians,
                         <br />
                         c’est l’ambition de transmettre la culture du
