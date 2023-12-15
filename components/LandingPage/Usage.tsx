@@ -3,11 +3,11 @@ import UsageItem from "./UsageItem";
 export function Usage() {
     return (
         <div className="py-20">
-            <h1 className="text-center title-typo text-white mb-16">
+            <h1 className="px-4 md:text-center title-typo text-white mb-16">
                 Wildians, bien plus qu'une simple application !
             </h1>
             <div className="flex justify-center items-center">
-                <div className="md:flex justify-center hidden w-600">
+                <div className="justify-center absolute phone md:static w-600 md:flex">
                     <img src="/img/wildians_phone.svg" alt="" />
                 </div>
                 <div className="flex flex-col gap-y-4 w-600 p-4">

@@ -15729,6 +15729,11 @@ select {
     src: url("../public/fonts/PermanentMarker-Regular.ttf");
 }
 
+.phone {
+    left: calc(50% - 139px);
+    opacity: 0.1;
+}
+
 @media (min-width: 640px) {
     .sm\:max-w-sm {
         max-width: 24rem;
@@ -16013,6 +16018,18 @@ select {
     .md\:px-32 {
         padding-left: 8rem;
         padding-right: 8rem;
+    }
+
+    .md\:text-center {
+        text-align: center;
+    }
+
+    .phone {
+        opacity: 1;
+    }
+
+    .md\:static {
+        position: static;
     }
 }
 
@@ -16432,9 +16449,16 @@ select {
     background-size: contain;
 }
 
-.default-logo-fill {
+.default-logo-fill-header {
     fill: white;
-    height: 42px;
+    height: 40px;
+    width: 40px;
+}
+
+.default-logo-fill-footer {
+    fill: white;
+    height: 30px;
+    width: 30px;
 }
 
 .bg-hero-collection {
