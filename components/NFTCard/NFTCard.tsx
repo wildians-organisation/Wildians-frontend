@@ -164,15 +164,3 @@ function NFTCard({ metadata, nftNumber }) {
 }
 
 export default NFTCard;
-
-/*
-<div className="ml-6 white-btn-style" style={{ marginTop: '2.7rem'}}>
-                        
-                        <div className="text-center text-white" style={{ marginTop: '0.6rem'}}>
-                            {<span><b><b>Birthday</b></b></span>}
-                            </div>
-                            <div className="text-center text-white" style={{ marginBottom: '0.8rem', marginRight: '1rem', marginLeft: '1rem'}}>
-                            {formatDate(date)}
-                            </div>
-                            
-                    </div>*/
