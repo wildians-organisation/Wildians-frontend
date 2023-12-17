@@ -7243,6 +7243,10 @@ select {
     margin-left: 1.5rem;
 }
 
+.ml-6_5 {
+    margin-left: 1.58rem;
+}
+
 .mt-7 {
     margin-top: 1.75rem;
 }
@@ -13088,6 +13092,11 @@ select {
     color: rgba(20, 83, 45, var(--tw-text-opacity));
 }
 
+.text-green-deer {
+    --tw-text-opacity: 1;
+    color: rgba(66, 193, 174, var(--tw-text-opacity));
+}
+
 .text-yellow-50 {
     --tw-text-opacity: 1;
     color: rgba(254, 252, 232, var(--tw-text-opacity));
@@ -13136,6 +13145,11 @@ select {
 .text-yellow-900 {
     --tw-text-opacity: 1;
     color: rgba(113, 63, 18, var(--tw-text-opacity));
+}
+
+.text-yellow-bull {
+    --tw-text-opacity: 1;
+    color: rgba(244, 186, 100, var(--tw-text-opacity));
 }
 
 .text-orange-500 {
@@ -13191,6 +13205,11 @@ select {
 .text-red-900 {
     --tw-text-opacity: 1;
     color: rgba(127, 29, 29, var(--tw-text-opacity));
+}
+
+.text-red-wolf {
+    --tw-text-opacity: 1;
+    color: rgba(241, 124, 116, var(--tw-text-opacity));
 }
 
 .text-gray-50 {

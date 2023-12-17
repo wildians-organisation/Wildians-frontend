@@ -12,11 +12,11 @@ function NFTCard({ metadata, nftNumber }) {
     const getColorClass = () => {
         switch (animal) {
             case "DEER":
-                return "text-greeny";
+                return "text-green-deer";
             case "WOLF":
-                return "text-red-400";
+                return "text-red-wolf";
             case "BULL":
-                return "text-yellow-200";
+                return "text-yellow-bull";
             default:
                 return "";
         }
@@ -108,7 +108,7 @@ function NFTCard({ metadata, nftNumber }) {
                             <span className="text-white">
                                 By adopting me, you supported{" "}
                                 <span className={getColorClass()}>
-                                    {getONGName(animal)}
+                                    <b><b>{getONGName(animal)}</b></b>
                                 </span>
                             </span>
                         </div>
@@ -119,15 +119,18 @@ function NFTCard({ metadata, nftNumber }) {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <div>Learn more &gt;</div>
+                            <div><span className={getColorClass()}>Learn more &gt;</span></div>
                         </a>
                     </div>
-                    <div className="ml-6 body-highlight-typo">
-                        <Attribute
-                            title="Birthday"
-                            description={formatDate(date)}
-                        />
+                    <div className="ml-6" style={{ marginTop: '2.7rem', backgroundColor: 'attributegreen', borderRadius: '10px' }}>
+                        <div className="text-center text-white" style={{ marginTop: '0.6rem' }}>
+                            <span><b><b>Birthday</b></b></span>
+                        </div>
+                        <div className="text-center text-white" style={{ marginBottom: '0.7rem', marginRight: '1rem', marginLeft: '1rem'}}>
+                            {formatDate(date)}
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -135,3 +138,15 @@ function NFTCard({ metadata, nftNumber }) {
 }
 
 export default NFTCard;
+
+/*
+<div className="ml-6 white-btn-style" style={{ marginTop: '2.7rem'}}>
+                        
+                        <div className="text-center text-white" style={{ marginTop: '0.6rem'}}>
+                            {<span><b><b>Birthday</b></b></span>}
+                            </div>
+                            <div className="text-center text-white" style={{ marginBottom: '0.8rem', marginRight: '1rem', marginLeft: '1rem'}}>
+                            {formatDate(date)}
+                            </div>
+                            
+                    </div>*/
