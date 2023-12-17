@@ -1,6 +1,6 @@
 import React from "react";
 import Attribute from "./Attribute";
-import WOLF_Wallet from "../../public/assets/WOLF_WALLET.png";
+import WOLF_WALLET from "../../public/assets/WOLF_WALLET.png";
 import DEER_WALLET from "../../public/assets/DEER_WALLET.png";
 import BULL_WALLET from "../../public/assets/BULL_WALLET.png";
 
