@@ -42,7 +42,7 @@ function NFTCard({ metadata, nftNumber }) {
     const getONGName = (animal) => {
         switch (animal) {
             case "WOLF":
-                return "Charity Watter";
+                return "Charity: Watter";
             case "BULL":
                 return "Amnesty International";
             case "DEER":
