@@ -13,3 +13,8 @@
     font-family: "MULISH";
     src: url("../public/fonts/Mulish/Mulish-VariableFont_wght.ttf");
 }
+
+@font-face {
+    font-family: "salsa";
+    src: url("../public/fonts/Salsa-Regular.ttf");
+}

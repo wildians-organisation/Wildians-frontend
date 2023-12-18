@@ -1,7 +1,12 @@
 import React from "react";
 export default function RoadMapVitrine() {
     return (
-        <div className="pb-10">
+        <div
+            className="pb-10"
+            style={{
+                fontFamily: "MULISH"
+            }}
+        >
             <div className="hidden xl:block">
                 <h1 className=" text-l text-white font-bold mb-16 text-left-20">
                     Notre feuille de route
@@ -110,7 +115,7 @@ export default function RoadMapVitrine() {
                                 background: "white",
                                 boxShadow: "10px 10px 10px ",
                                 borderRadius: 9999,
-                                filter: "blur(10px)"
+                                filter: "blur(3px)"
                             }}
                         />
                         <div
@@ -123,7 +128,7 @@ export default function RoadMapVitrine() {
                                 background: "white",
                                 boxShadow: "10px 10px 10px ",
                                 borderRadius: 9999,
-                                filter: "blur(10px)"
+                                filter: "blur(3px)"
                             }}
                         />
                         <div
@@ -136,7 +141,7 @@ export default function RoadMapVitrine() {
                                 background: "white",
                                 boxShadow: "10px 10px 10px ",
                                 borderRadius: 9999,
-                                filter: "blur(10px)"
+                                filter: "blur(3px)"
                             }}
                         />
                         <div
@@ -149,7 +154,7 @@ export default function RoadMapVitrine() {
                                 background: "white",
                                 boxShadow: "10px 10px 10px ",
                                 borderRadius: 9999,
-                                filter: "blur(10px)"
+                                filter: "blur(3px)"
                             }}
                         />
                         <div
@@ -159,7 +164,7 @@ export default function RoadMapVitrine() {
                                 position: "absolute",
                                 color: "white",
                                 fontSize: 14,
-                                fontFamily: "Mulish",
+                                fontFamily: "MULISH",
                                 fontWeight: "800",
                                 wordWrap: "break-word"
                             }}
@@ -173,7 +178,7 @@ export default function RoadMapVitrine() {
                                 position: "absolute",
                                 color: "white",
                                 fontSize: 14,
-                                fontFamily: "Mulish",
+                                fontFamily: "MULISH",
                                 fontWeight: "400",
                                 wordWrap: "break-word"
                             }}
@@ -192,7 +197,7 @@ export default function RoadMapVitrine() {
                                 style={{
                                     color: "white",
                                     fontSize: 14,
-                                    fontFamily: "Mulish",
+                                    fontFamily: "MULISH",
                                     fontWeight: "800",
                                     wordWrap: "break-word"
                                 }}
@@ -204,7 +209,7 @@ export default function RoadMapVitrine() {
                                 style={{
                                     color: "white",
                                     fontSize: 14,
-                                    fontFamily: "Mulish",
+                                    fontFamily: "MULISH",
                                     fontWeight: "400",
                                     wordWrap: "break-word"
                                 }}
@@ -220,7 +225,7 @@ export default function RoadMapVitrine() {
                                 position: "absolute",
                                 color: "white",
                                 fontSize: 14,
-                                fontFamily: "Mulish",
+                                fontFamily: "MULISH",
                                 fontWeight: "800",
                                 wordWrap: "break-word"
                             }}
@@ -239,7 +244,7 @@ export default function RoadMapVitrine() {
                                 style={{
                                     color: "white",
                                     fontSize: 14,
-                                    fontFamily: "Mulish",
+                                    fontFamily: "MULISH",
                                     fontWeight: "800",
                                     wordWrap: "break-word"
                                 }}
@@ -251,7 +256,7 @@ export default function RoadMapVitrine() {
                                 style={{
                                     color: "white",
                                     fontSize: 14,
-                                    fontFamily: "Mulish",
+                                    fontFamily: "MULISH",
                                     fontWeight: "400",
                                     wordWrap: "break-word"
                                 }}
@@ -272,7 +277,7 @@ export default function RoadMapVitrine() {
                                 style={{
                                     color: "white",
                                     fontSize: 14,
-                                    fontFamily: "Mulish",
+                                    fontFamily: "MULISH",
                                     fontWeight: "800",
                                     wordWrap: "break-word"
                                 }}
@@ -284,7 +289,7 @@ export default function RoadMapVitrine() {
                                 style={{
                                     color: "white",
                                     fontSize: 14,
-                                    fontFamily: "Mulish",
+                                    fontFamily: "MULISH",
                                     fontWeight: "400",
                                     wordWrap: "break-word"
                                 }}
@@ -320,7 +325,7 @@ export default function RoadMapVitrine() {
                                 style={{
                                     color: "white",
                                     fontSize: 14,
-                                    fontFamily: "Mulish",
+                                    fontFamily: "MULISH",
                                     fontWeight: "800",
                                     wordWrap: "break-word"
                                 }}
@@ -354,7 +359,7 @@ export default function RoadMapVitrine() {
                                 style={{
                                     color: "white",
                                     fontSize: 14,
-                                    fontFamily: "Mulish",
+                                    fontFamily: "MULISH",
                                     fontWeight: "800",
                                     wordWrap: "break-word"
                                 }}
@@ -370,7 +375,7 @@ export default function RoadMapVitrine() {
                             position: "absolute",
                             color: "white",
                             fontSize: 16,
-                            fontFamily: "Gogh",
+                            fontFamily: "GOGH",
                             fontWeight: "800",
                             wordWrap: "break-word"
                         }}

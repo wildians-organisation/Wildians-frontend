@@ -10,7 +10,7 @@ export function Concept() {
                         <p
                             style={{
                                 color: "#FFF",
-                                fontFamily: "Gogh",
+                                fontFamily: "salsa",
                                 fontSize: "150px",
                                 fontStyle: "normal",
                                 fontWeight: "800",
@@ -41,7 +41,7 @@ export function Concept() {
                         <p
                             style={{
                                 color: "#FFF",
-                                fontFamily: "Gogh",
+                                fontFamily: "salsa",
                                 fontSize: "100px",
                                 fontStyle: "normal",
                                 fontWeight: "400",
