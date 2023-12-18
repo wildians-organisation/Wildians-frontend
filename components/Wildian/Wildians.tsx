@@ -332,23 +332,21 @@ function Wildians(Wildians) {
         };
     return (
         <div className="nft-frame">
-            {Wildians.image === "/img/v2/visuels/Bull.png" ? (
+            {Wildians.image === "/img/v2/visuels/taureau.jpg" ? (
                 <div className="nft-frame-image-bull"></div>
-            ) : Wildians.image === "/img/v2/visuels/Deer.png" ? (
+            ) : Wildians.image === "/img/v2/visuels/cerf.jpg" ? (
                 <div className="nft-frame-image-deer"></div>
-            ) : Wildians.image === "/img/v2/visuels/Wolf.png" ? (
+            ) : Wildians.image === "/img/v2/visuels/loup.jpg" ? (
                 <div className="nft-frame-image-wolf"></div>
-            ) : Wildians.image === "/img/v2/visuels/Bull_grey.png" ? (
+            ) : Wildians.image === "/img/v2/visuels/taureau-grey.jpg" ? (
                 <div className="nft-frame-image-bull-grey"></div>
-            ) : Wildians.image === "/img/v2/visuels/Wolf.png" ? (
-                <div className="nft-frame-image-wolf"></div> //a changer ajouter wolf grey
-            ) : Wildians.image === "/img/v2/visuels/Deer_grey.png" ? (
+            ) : Wildians.image === "/img/v2/visuels/loup-grey.jpg" ? (
+                <div className="nft-frame-image-wolf-grey"></div>
+            ) : Wildians.image === "/img/v2/visuels/cerf-grey.jpg" ? (
                 <div className="nft-frame-image-deer-grey"></div>
             ) : null}
             <div className="nft-frame-below-img">
-                <div className="nft-frame-name">
-                    {Wildians.name}
-                </div>
+                <div className="nft-frame-name">{Wildians.name}</div>
                 <div className="text-center body-highlight-typo">
                     {Wildians.pillar}
                 </div>

@@ -40,7 +40,7 @@ export default function Landing() {
         <div style={{ backgroundColor: "#223734" }}>
             <TopPart />
             <Concept />
-             <Usage />
+            <Usage />
             <BottomPart />
             <Support />
             <BottomPartVitrine />

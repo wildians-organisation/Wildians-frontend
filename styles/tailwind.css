@@ -16480,7 +16480,7 @@ select {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
-    background: url("../public/img/v2/visuels/Deer.png"),
+    background: url("../public/img/v2/visuels/cerf.jpg"),
         lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
@@ -16490,7 +16490,7 @@ select {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
-    background: url("../public/img/v2/visuels/Deer_grey.png"),
+    background: url("../public/img/v2/visuels/cerf-grey.jpg"),
         lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
@@ -16500,18 +16500,27 @@ select {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
-    background: url("../public/img/v2/visuels/Wolf.png"),
+    background: url("../public/img/v2/visuels/loup.jpg"),
         lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
 }
-/*ajouter wolf grey*/
+
+.nft-frame-image-wolf-grey {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--desktop-border-radius, 20px);
+    background: url("../public/img/v2/visuels/loup-grey.jpg"),
+        lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    /* Shading miniatures */
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
+}
 
 .nft-frame-image-bull {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
-    background: url("../public/img/v2/visuels/Bull.png"),
+    background: url("../public/img/v2/visuels/taureau.jpg"),
         lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
@@ -16521,7 +16530,7 @@ select {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
-    background: url("../public/img/v2/visuels/Bull_grey.png"),
+    background: url("../public/img/v2/visuels/taureau-grey.jpg"),
         lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
@@ -16606,7 +16615,7 @@ select {
 .mint-button {
     display: flex;
     padding: 8px 20px;
-    width: 205px;
+    width: 215px;
     height: 36px;
     align-items: center;
     justify-content: center;
