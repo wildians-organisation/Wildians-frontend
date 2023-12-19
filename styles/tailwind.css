@@ -15729,6 +15729,11 @@ select {
     src: url("../public/fonts/PermanentMarker-Regular.ttf");
 }
 
+@font-face {
+    font-family: "salsa";
+    src: url("../public/fonts/Salsa-Regular.ttf");
+}
+
 .phone {
     left: calc(50% - 139px);
     opacity: 0.1;
@@ -16453,6 +16458,12 @@ select {
     fill: white;
     height: 40px;
     width: 40px;
+}
+
+.default-logo-fill-header-twitter {
+    fill: white;
+    height: 34px;
+    width: 34px;
 }
 
 .default-logo-fill-footer {

@@ -33,7 +33,8 @@ module.exports = {
                 sans: ["MULISH", "sans-serif"],
                 mulish: ["MULISH", "cursive"],
                 sans: ["MULISH", "sans-serif"],
-                marker: ["PERMANENTMARKER", "cursive"]
+                marker: ["PERMANENTMARKER", "cursive"],
+                salsa: ["salsa"]
             },
             minHeight: {
                 "screen-75": "75vh"

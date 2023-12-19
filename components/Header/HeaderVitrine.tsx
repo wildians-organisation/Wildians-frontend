@@ -15,7 +15,7 @@ function HeaderVitrine() {
                     />
                 </a>
             </div>
-            <div className="gap-2 hidden md:flex">
+            <div className="gap-2 hidden md:flex items-center">
                 <a
                     href="https://www.instagram.com/wildians/"
                     target="_blank"
@@ -37,7 +37,7 @@ function HeaderVitrine() {
                     rel="noreferrer"
                 >
                     <svg
-                        className="headerTwitter mr-4 default-logo-fill-header hover:turquoise"
+                        className="headerTwitter mr-4 default-logo-fill-header-twitter hover:turquoise"
                         xmlns="http://www.w3.org/2000/svg"
                         height="1em"
                         viewBox="0 0 21 22"
