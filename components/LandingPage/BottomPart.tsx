@@ -450,6 +450,19 @@ function BottomPart() {
                 <div className="text-center header-typo3 text-white">
                     Adopte ton Wildian
                 </div>
+                {is_ambassador && (
+                        <div className="max-w-5xl flex content-center items-center mx-auto">
+                            <img
+                                src="/img/v2/visuels/mingcute_award-fill.png"
+                                width="45"
+                                height="45">
+                            </img>
+                            <div className="text-white body-italic-typo m-10 mx-auto">
+                            <p>Bienvenue cher ambassadeur !</p> 
+Pour te remercier de ta contribution, nous t’offrons le Wildian de ton choix. Alors n’attends plus et sélectionne le ci-dessous !
+                            </div>
+                        </div>
+                    )}
                 <div className="mt-12 mb-14 md:hidden">
                     <Slider {...settings}>
                         <button
@@ -804,27 +817,36 @@ function BottomPart() {
                         </button>
                     )}
                     {isStatusOpen && selectedWildian && is_ambassador && (
-                        <button
-                            onClick={() => {
-                                handleMint();
-                            }}
-                            className="mint-button text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
-                            type="button"
-                        >
-                            Adopte ton Wildian {currentSelectedPillar}
-                        </button>
+                        <div className="flex flex-col items-center justify-center text-center">
+                            <div className="text-white small-body-typo m-2 mx-auto">
+                                Pillier : {currentSelectedPillar}
+                            </div>
+                            <button
+                                onClick={() => {
+                                    handleMint();
+                                }}
+                                className="mint-button text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
+                                type="button"
+                            >
+                                Adopte ton Wildian
+                            </button>
+                        </div>
                     )}
                     {isStatusOpen && selectedWildian && !is_ambassador && (
-                        <button
-                            onClick={() => {
-                                handleMint();
-                            }}
-                            className="mint-button text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
-                            type="button"
-                        >
-                            Adopter un Wildian {currentSelectedPillar} pour 333
-                            XTZ
-                        </button>
+                        <div className="flex flex-col items-center justify-center text-center">
+                        <div className="text-white small-body-typo m-2 mx-auto">
+                            Pillier : {currentSelectedPillar}
+                        </div>
+                            <button
+                                onClick={() => {
+                                    handleMint();
+                                }}
+                                className="mint-button text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
+                                type="button"
+                            >
+                                Adopter pour 333 XTZ
+                            </button>
+                        </div>
                     )}
 
                     {showModal && <Modal />}
