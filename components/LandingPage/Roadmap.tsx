@@ -8,7 +8,7 @@ export default function RoadMapVitrine() {
             }}
         >
             <div className="hidden xl:block">
-                <h1 className=" text-l text-white font-bold mb-16 text-left-20">
+                <h1 className="text-l text-white font-extrabold mb-16 text-left-20">
                     Notre feuille de route
                 </h1>
                 <ul className="timeline">
@@ -21,7 +21,7 @@ export default function RoadMapVitrine() {
                     <li className="li complete">
                         <div className="timestamp">
                             <span className="Date">
-                                <b>Octobre</b>
+                                <b>Décembre</b>
                             </span>
                         </div>
                         <div className="status">
@@ -41,7 +41,7 @@ export default function RoadMapVitrine() {
                     <li className="li complete">
                         <div className="timestamp">
                             <span className="Date">
-                                <b> Q1 </b>
+                                <b> T1 2024 </b>
                             </span>
                         </div>
                         <div className="status">
@@ -54,7 +54,9 @@ export default function RoadMapVitrine() {
                     </li>
                     <li className="li complete">
                         <div className="timestamp">
-                            <span className="Date">&nbsp;</span>
+                            <span className="Date">
+                                <b> T2 2024 </b>
+                            </span>
                         </div>
                         <div className="status">
                             <h4>
@@ -67,7 +69,9 @@ export default function RoadMapVitrine() {
                     </li>
                     <li className="li complete">
                         <div className="timestamp">
-                            <span className="Date">&nbsp;</span>
+                            <span className="Date">
+                                <b> T3 2024 </b>
+                            </span>
                         </div>
                         <div className="status">
                             <h4>
@@ -159,8 +163,8 @@ export default function RoadMapVitrine() {
                         />
                         <div
                             style={{
-                                left: 0,
-                                top: 69,
+                                left: -17,
+                                top: 71,
                                 position: "absolute",
                                 color: "white",
                                 fontSize: 14,
@@ -169,7 +173,7 @@ export default function RoadMapVitrine() {
                                 wordWrap: "break-word"
                             }}
                         >
-                            Octobre
+                            Décembre
                         </div>
                         <div
                             style={{
@@ -220,8 +224,8 @@ export default function RoadMapVitrine() {
                         </div>
                         <div
                             style={{
-                                left: 17,
-                                top: 173,
+                                left: -10,
+                                top: 174,
                                 position: "absolute",
                                 color: "white",
                                 fontSize: 14,
@@ -230,9 +234,36 @@ export default function RoadMapVitrine() {
                                 wordWrap: "break-word"
                             }}
                         >
-                            Q1
+                            T1 2024
                         </div>
-                        <div></div>
+                        <div
+                            style={{
+                                left: -10,
+                                top: 378,
+                                position: "absolute",
+                                color: "white",
+                                fontSize: 14,
+                                fontFamily: "MULISH",
+                                fontWeight: "800",
+                                wordWrap: "break-word"
+                            }}
+                        >
+                            T3 2024
+                        </div>
+                        <div
+                            style={{
+                                left: -10,
+                                top: 275,
+                                position: "absolute",
+                                color: "white",
+                                fontSize: 14,
+                                fontFamily: "MULISH",
+                                fontWeight: "800",
+                                wordWrap: "break-word"
+                            }}
+                        >
+                            T2 2024
+                        </div>
                         <div
                             style={{
                                 left: 116,
@@ -370,7 +401,7 @@ export default function RoadMapVitrine() {
                     </div>
                     <div
                         style={{
-                            left: 44,
+                            left: 20,
                             top: 0,
                             position: "absolute",
                             color: "white",
