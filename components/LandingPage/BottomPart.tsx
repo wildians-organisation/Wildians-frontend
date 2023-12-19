@@ -12,6 +12,10 @@ import SnackbarService, {
 } from "../SnackbarService/SnackbarService";
 import Link from "next/link";
 import Wildians from "../Wildian/Wildians";
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 export interface ambassadorDocument {
     id: string;
@@ -32,6 +36,23 @@ export interface StatusSale {
     openTime: string;
 }
 
+const settings = {
+    dots: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    adaptiveHeight: true,
+    arrows: false,
+    dotsClass: 'slick-dots', 
+    dotsActiveClass: 'slick-active',
+    dotsPlacement: 'bottom-center', 
+    dotsSeparate: true,
+    dotsSpeed: 300,
+    dotsFade: true,
+    slide: "button"
+  };
+
 const network = { type: NetworkType.GHOSTNET };
 
 const nftToMint = 1;
@@ -43,6 +64,7 @@ function BottomPart() {
         { name: "ECONOMY", value: 0 }
     ]);
     const [currentSelectedOng, setCurrentSelectedOng] = React.useState("");
+    const [currentSelectedPillar, setCurrentSelectedPillar] = React.useState("");
     const [currentNFTAddress, setCurrentNFTAddress] = React.useState("");
     const [display_ong_selection, setDisplay_ong_selection] = React.useState([
         "",
@@ -340,6 +362,12 @@ function BottomPart() {
     function handleWildianClick(selectedONG) {
         setSelectedWildian(true);
         setCurrentSelectedOng(selectedONG);
+        if (selectedONG == "WWF")
+            setCurrentSelectedPillar("Environnement")
+        if (selectedONG == "Charity: Water")
+            setCurrentSelectedPillar("Société")
+        if (selectedONG == "Amnesty international")
+            setCurrentSelectedPillar("Économie")
     }
 
     const handleMint = () => {
@@ -423,8 +451,72 @@ function BottomPart() {
                 <div className="text-center header-typo3 text-white">
                     Adopte ton Wildian
                 </div>
-                
-                <div className="explanationPart nft-global-frame flex justify-evenly items-stretch text-white mt-12 mb-10">
+                <div className="mt-12 mb-14 md:hidden">
+                    <Slider {...settings}>
+                        <button className="mb-5" onClick={() => handleWildianClick("WWF")}>
+                                <Wildians
+                                    name="Ellie"
+                                    image={"/img/v2/visuels/cerf.jpg"}
+                                    title="Deer_3D"
+                                    pillar="Environnement"
+                                    ong="WWF"
+                                    nft_adress={config.DEER_NFT}
+                                    ong_list={deerONG}
+                                    nft_sold={dataFinance[0].value}
+                                    set_display_ong_selection={
+                                        setDisplay_ong_selection
+                                    }
+                                    display_ong_selection={display_ong_selection}
+                                />
+                            </button>
+                        <button className="mb-5"
+                                    onClick={() =>
+                                        handleWildianClick("Charity: Water")
+                                    }
+                                >
+                                    <Wildians
+                                        name="Noa"
+                                        image={"/img/v2/visuels/loup.jpg"}
+                                        title="Wolf_3D"
+                                        pillar="Société"
+                                        ong="Charity: Water"
+                                        nft_adress={config.WOLF_NFT}
+                                        ong_list={wolfONG}
+                                        nft_sold={dataFinance[1].value}
+                                        set_display_ong_selection={
+                                            setDisplay_ong_selection
+                                        }
+                                        display_ong_selection={
+                                            display_ong_selection
+                                        }
+                                    />
+                                </button>
+                        <button className="mb-5"
+                                    onClick={() =>
+                                        handleWildianClick("Amnesty international")
+                                    }
+                                >
+                                    <Wildians
+                                        name="Fabio"
+                                        image={"/img/v2/visuels/taureau.jpg"}
+                                        title="Bull_3D"
+                                        pillar="Économie"
+                                        ong="Amnesty international"
+                                        nft_adress={config.BULL_NFT}
+                                        ong_list={bullONG}
+                                        nft_sold={dataFinance[2].value}
+                                        set_display_ong_selection={
+                                            setDisplay_ong_selection
+                                        }
+                                        display_ong_selection={
+                                            display_ong_selection
+                                        }
+                                    />
+                                </button>
+                    </Slider>
+                    </div>
+
+                    <div className="explanationPart nft-global-frame flex justify-evenly items-stretch text-white mt-12 mb-10 hidden md:block">
                     {selectedWildian && currentSelectedOng == "WWF" && (
                         <button onClick={() => handleWildianClick("WWF")}>
                             <Wildians
@@ -689,6 +781,7 @@ function BottomPart() {
                         </button>
                     )}
                 </div>
+                
 
                 <div className="bottom-buttons">
                     {!isStatusOpen && (
@@ -721,7 +814,7 @@ function BottomPart() {
                             className="mint-button text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
                             type="button"
                         >
-                            Adopte ton Wildian
+                            Adopte ton Wildian {currentSelectedPillar}
                         </button>
                     )}
                     {isStatusOpen && selectedWildian && !is_ambassador && (
@@ -732,7 +825,7 @@ function BottomPart() {
                             className="mint-button text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
                             type="button"
                         >
-                            Adopter pour 333 XTZ
+                            Adopter un Wildian {currentSelectedPillar} pour 333 XTZ
                         </button>
                     )}
 

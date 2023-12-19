@@ -347,13 +347,13 @@ function Wildians(Wildians) {
             ) : null}
             <div className="nft-frame-below-img">
                 <div className="nft-frame-name">{Wildians.name}</div>
-                <div className="text-center body-highlight-typo">
+                <div className="text-center body-highlight-typo text-white">
                     {Wildians.pillar}
                 </div>
                 <div className="nft-frame-adopted py-4">
                     {Wildians.nft_sold} adoptés
                 </div>
-                <div className="text-center body-italic-typo">
+                <div className="text-center body-italic-typo text-white">
                     {Wildians.ong}
                 </div>
             </div>

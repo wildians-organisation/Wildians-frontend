@@ -6365,7 +6365,7 @@ select {
     margin: 24rem;
 }
 
-. {
+.m-auto {
     margin: auto;
 }
 
@@ -16962,4 +16962,37 @@ select {
     width: 40px;
     height: auto;
     border-radius: 8px;
+}
+
+
+.slick-dots li.slick-active {
+    border-radius: 50%;
+    background-color: #90E0D3; /* Change active dot color to blue */
+  }
+  
+  .slick-dots li.slick-active:hover,
+  .slick-dots li.slick-active:focus {
+    background-color: #90E0D3; /* Change active dot hover color to darker blue */
+  }
+  
+  .slick-dots li {
+    border: 1px solid #90E0D3;
+    border-radius: 50%;
+    background-color: #36544F; /* Change inactive dot color to gray */
+  }
+
+  .slick-dots li.slick-active button:before {
+    display: none;
+}
+.slick-dots li button:before {
+    
+    display: none;
+}
+
+.slick-track {
+    margin:auto;
+}
+
+.text-white {
+    color: white;
 }
