@@ -834,7 +834,7 @@ Pour te remercier de ta contribution, nous t’offrons le Wildian de ton choix. 
                     )}
                     {isStatusOpen && selectedWildian && !is_ambassador && (
                         <div className="flex flex-col items-center justify-center text-center">
-                        <div className="text-white small-body-typo m-2 mx-auto">
+                        <div className="text-white body-typo m-2 mx-auto">
                             Pillier : {currentSelectedPillar}
                         </div>
                             <button

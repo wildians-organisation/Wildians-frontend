@@ -16270,15 +16270,6 @@ select {
     line-height: normal;
 }
 
-.small-body-typo {
-    /* Body */
-    font-family: MULISH;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
 @media (min-width: 1280px) {
     .body-typo {
         /* Body */
