@@ -12,6 +12,9 @@ import SnackbarService, {
 } from "../SnackbarService/SnackbarService";
 import Link from "next/link";
 import Wildians from "../Wildian/Wildians";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export interface ambassadorDocument {
     id: string;
@@ -32,6 +35,23 @@ export interface StatusSale {
     openTime: string;
 }
 
+const settings = {
+    dots: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    adaptiveHeight: true,
+    arrows: false,
+    dotsClass: "slick-dots",
+    dotsActiveClass: "slick-active",
+    dotsPlacement: "bottom-center",
+    dotsSeparate: true,
+    dotsSpeed: 300,
+    dotsFade: true,
+    slide: "button"
+};
+
 const network = { type: NetworkType.GHOSTNET };
 
 const nftToMint = 1;
@@ -43,6 +63,8 @@ function BottomPart() {
         { name: "ECONOMY", value: 0 }
     ]);
     const [currentSelectedOng, setCurrentSelectedOng] = React.useState("");
+    const [currentSelectedPillar, setCurrentSelectedPillar] =
+        React.useState("");
     const [currentNFTAddress, setCurrentNFTAddress] = React.useState("");
     const [display_ong_selection, setDisplay_ong_selection] = React.useState([
         "",
@@ -61,7 +83,8 @@ function BottomPart() {
     const [showModal, setShowModal] = React.useState(false);
     const [day, setDay] = React.useState(new Date().toISOString().slice(0, 10));
     const SnackbarContext = useContext(SnackbarService);
-
+    const [is_ambassador, setIs_ambassador] = React.useState(false);
+    const [selectedWildian, setSelectedWildian] = React.useState(false);
     const salesCollection = collection(firestore, "sales");
     const ambassadorCollection = collection(firestore, "AmbassadorList");
     const deerONG = ["WWF", "Oceana", "GreenPeace"];
@@ -78,6 +101,27 @@ function BottomPart() {
         "Relief International Inc.",
         "Amnesty International"
     ];
+
+    async function is_user_ambassador() {
+        if (!wallet) return;
+        const activeAccount = await wallet!.client.getActiveAccount();
+        if (activeAccount) {
+            setUserAddress(activeAccount.address);
+            const querySnapshotWL = await getDocs(ambassadorCollection);
+            const ambassadorList = querySnapshotWL.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            ambassadorList.map((user: ambassadorDocument) => {
+                if (user.formData!.adresseWallet == activeAccount!.address) {
+                    setIs_ambassador(true);
+                    return;
+                }
+            });
+        } else {
+            return;
+        }
+    }
 
     function isOpenDay(openDay, openTime) {
         if (day > openDay || (day === openDay && time >= openTime)) {
@@ -174,6 +218,7 @@ function BottomPart() {
         }
     }
     React.useEffect(() => {
+        is_user_ambassador();
         getTransactionsInformations();
         updateSelectedOngNFTAddress();
         initializeWallet();
@@ -224,7 +269,7 @@ function BottomPart() {
                     </button>
                     <div className="modal-content">
                         <div className="modal-image">
-                            <img src="/img/v2/visuels/Wolf.png" alt="Modal" />
+                            <img src="/img/v2/visuels/loup.jpg" alt="Modal" />
                         </div>
                         <div className="modal-text">
                             <h1>
@@ -314,6 +359,16 @@ function BottomPart() {
         }
     };
 
+    function handleWildianClick(selectedONG) {
+        setSelectedWildian(true);
+        setCurrentSelectedOng(selectedONG);
+        if (selectedONG == "WWF") setCurrentSelectedPillar("Environnement");
+        if (selectedONG == "Charity: Water")
+            setCurrentSelectedPillar("Société");
+        if (selectedONG == "Amnesty international")
+            setCurrentSelectedPillar("Économie");
+    }
+
     const handleMint = () => {
         mintNFT(currentNFTAddress, currentSelectedOng);
     };
@@ -341,10 +396,9 @@ function BottomPart() {
             const querySnapshotSales = await getDocs(salesCollection);
             const salesStatus = querySnapshotSales.docs[0].data();
 
-            let is_ambassador = false;
             ambassadorList.map((user: ambassadorDocument) => {
                 if (user.formData!.adresseWallet == activeAccount!.address) {
-                    is_ambassador = true;
+                    setIs_ambassador(true);
                     return;
                 }
             });
@@ -391,69 +445,432 @@ function BottomPart() {
         return () => clearInterval(timer);
     }, [time, day, showModal]);
     return (
-        <div className="bg-wood-bg bg-no-repeat bg-cover p-4 h-1000-px">
-            <div className="relative top-48 h-96">
-                <div className="text-center text-white get-typo">
-                    GET YOUR WILDIAN
+        <div className="bg-no-repeat bg-cover py-20 px-4">
+            <div>
+                <div className="text-center header-typo3 text-white">
+                    Adopte ton Wildian
                 </div>
-                <div className="text-center body-typo text-white flex-col">
-                    Each pillar allows you to contribute to a different
-                    association. Which one will you choose?
+                {is_ambassador && (
+                    <div className="max-w-5xl flex content-center items-center mx-auto">
+                        <img
+                            src="/img/v2/visuels/mingcute_award-fill.png"
+                            width="45"
+                            height="45"
+                        ></img>
+                        <div className="text-white body-italic-typo m-10 mx-auto">
+                            <p>Bienvenue cher ambassadeur !</p>
+                            Pour te remercier de ta contribution, nous t’offrons
+                            le Wildian de ton choix. Alors n’attends plus et
+                            sélectionne le ci-dessous !
+                        </div>
+                    </div>
+                )}
+                <div className="mt-12 mb-14 md:hidden">
+                    <Slider {...settings}>
+                        <button
+                            className="mb-5"
+                            onClick={() => handleWildianClick("WWF")}
+                        >
+                            <Wildians
+                                name="Ellie"
+                                image={"/img/v2/visuels/cerf.jpg"}
+                                title="Deer_3D"
+                                pillar="Environnement"
+                                ong="WWF"
+                                nft_adress={config.DEER_NFT}
+                                ong_list={deerONG}
+                                nft_sold={dataFinance[0].value}
+                                set_display_ong_selection={
+                                    setDisplay_ong_selection
+                                }
+                                display_ong_selection={display_ong_selection}
+                            />
+                        </button>
+                        <button
+                            className="mb-5"
+                            onClick={() => handleWildianClick("Charity: Water")}
+                        >
+                            <Wildians
+                                name="Noa"
+                                image={"/img/v2/visuels/loup.jpg"}
+                                title="Wolf_3D"
+                                pillar="Société"
+                                ong="Charity: Water"
+                                nft_adress={config.WOLF_NFT}
+                                ong_list={wolfONG}
+                                nft_sold={dataFinance[1].value}
+                                set_display_ong_selection={
+                                    setDisplay_ong_selection
+                                }
+                                display_ong_selection={display_ong_selection}
+                            />
+                        </button>
+                        <button
+                            className="mb-5"
+                            onClick={() =>
+                                handleWildianClick("Amnesty international")
+                            }
+                        >
+                            <Wildians
+                                name="Fabio"
+                                image={"/img/v2/visuels/taureau.jpg"}
+                                title="Bull_3D"
+                                pillar="Économie"
+                                ong="Amnesty international"
+                                nft_adress={config.BULL_NFT}
+                                ong_list={bullONG}
+                                nft_sold={dataFinance[2].value}
+                                set_display_ong_selection={
+                                    setDisplay_ong_selection
+                                }
+                                display_ong_selection={display_ong_selection}
+                            />
+                        </button>
+                    </Slider>
                 </div>
-                <div className="explanationPart nft-global-frame flex justify-evenly items-stretch text-white mt-12 mb-10">
-                    <Wildians
-                        image={"/img/v2/visuels/Deer.png"}
-                        title="Deer_3D"
-                        pillar="ENVIRONNEMENT"
-                        description="With the deer contribute directly to the environnement ONG(s)."
-                        nft_adress={config.DEER_NFT}
-                        ong_list={deerONG}
-                        nft_sold={dataFinance[0].value}
-                        set_display_ong_selection={setDisplay_ong_selection}
-                        display_ong_selection={display_ong_selection}
-                    />
-                    <Wildians
-                        image={"/img/v2/visuels/Wolf.png"}
-                        title="Wolf_3D"
-                        pillar="SOCIETY"
-                        description="With the wolf contribute directly to the society ONG(s)."
-                        nft_adress={config.WOLF_NFT}
-                        ong_list={wolfONG}
-                        nft_sold={dataFinance[1].value}
-                        set_display_ong_selection={setDisplay_ong_selection}
-                        display_ong_selection={display_ong_selection}
-                    />
-                    <Wildians
-                        image={"/img/v2/visuels/Bull.png"}
-                        title="Bull_3D"
-                        pillar="ECONOMY"
-                        description="With the bull contribute directly to the economy ONG(s)."
-                        nft_adress={config.BULL_NFT}
-                        ong_list={bullONG}
-                        nft_sold={dataFinance[2].value}
-                        set_display_ong_selection={setDisplay_ong_selection}
-                        display_ong_selection={display_ong_selection}
-                    />
+
+                <div className="justify-evenly items-stretch text-white mt-12 mb-10 hidden md:flex">
+                    {selectedWildian && currentSelectedOng == "WWF" && (
+                        <button onClick={() => handleWildianClick("WWF")}>
+                            <Wildians
+                                name="Ellie"
+                                image={"/img/v2/visuels/cerf.jpg"}
+                                title="Deer_3D"
+                                pillar="Environnement"
+                                ong="WWF"
+                                nft_adress={config.DEER_NFT}
+                                ong_list={deerONG}
+                                nft_sold={dataFinance[0].value}
+                                set_display_ong_selection={
+                                    setDisplay_ong_selection
+                                }
+                                display_ong_selection={display_ong_selection}
+                            />
+                        </button>
+                    )}
+                    {selectedWildian && currentSelectedOng == "WWF" && (
+                        <button
+                            onClick={() => handleWildianClick("Charity: Water")}
+                        >
+                            <Wildians
+                                name="Noa"
+                                image={"/img/v2/visuels/loup-grey.jpg"}
+                                title="Wolf_3D"
+                                pillar="Société"
+                                ong="Charity: Water"
+                                nft_adress={config.WOLF_NFT}
+                                ong_list={wolfONG}
+                                nft_sold={dataFinance[1].value}
+                                set_display_ong_selection={
+                                    setDisplay_ong_selection
+                                }
+                                display_ong_selection={display_ong_selection}
+                            />
+                        </button>
+                    )}
+                    {selectedWildian && currentSelectedOng == "WWF" && (
+                        <button
+                            onClick={() =>
+                                handleWildianClick("Amnesty international")
+                            }
+                        >
+                            <Wildians
+                                name="Fabio"
+                                image={"/img/v2/visuels/taureau-grey.jpg"}
+                                title="Bull_3D"
+                                pillar="Économie"
+                                ong="Amnesty international"
+                                nft_adress={config.BULL_NFT}
+                                ong_list={bullONG}
+                                nft_sold={dataFinance[2].value}
+                                set_display_ong_selection={
+                                    setDisplay_ong_selection
+                                }
+                                display_ong_selection={display_ong_selection}
+                            />
+                        </button>
+                    )}
+
+                    {selectedWildian &&
+                        currentSelectedOng == "Charity: Water" && (
+                            <button onClick={() => handleWildianClick("WWF")}>
+                                <Wildians
+                                    name="Ellie"
+                                    image={"/img/v2/visuels/cerf-grey.jpg"}
+                                    title="Deer_3D"
+                                    pillar="Environnement"
+                                    ong="WWF"
+                                    nft_adress={config.DEER_NFT}
+                                    ong_list={deerONG}
+                                    nft_sold={dataFinance[0].value}
+                                    set_display_ong_selection={
+                                        setDisplay_ong_selection
+                                    }
+                                    display_ong_selection={
+                                        display_ong_selection
+                                    }
+                                />
+                            </button>
+                        )}
+                    {selectedWildian &&
+                        currentSelectedOng == "Charity: Water" && (
+                            <button
+                                onClick={() =>
+                                    handleWildianClick("Charity: Water")
+                                }
+                            >
+                                <Wildians
+                                    name="Noa"
+                                    image={"/img/v2/visuels/loup.jpg"}
+                                    title="Wolf_3D"
+                                    pillar="Société"
+                                    ong="Charity: Water"
+                                    nft_adress={config.WOLF_NFT}
+                                    ong_list={wolfONG}
+                                    nft_sold={dataFinance[1].value}
+                                    set_display_ong_selection={
+                                        setDisplay_ong_selection
+                                    }
+                                    display_ong_selection={
+                                        display_ong_selection
+                                    }
+                                />
+                            </button>
+                        )}
+                    {selectedWildian &&
+                        currentSelectedOng == "Charity: Water" && (
+                            <button
+                                onClick={() =>
+                                    handleWildianClick("Amnesty international")
+                                }
+                            >
+                                <Wildians
+                                    name="Fabio"
+                                    image={"/img/v2/visuels/taureau-grey.jpg"}
+                                    title="Bull_3D"
+                                    pillar="Économie"
+                                    ong="Amnesty international"
+                                    nft_adress={config.BULL_NFT}
+                                    ong_list={bullONG}
+                                    nft_sold={dataFinance[2].value}
+                                    set_display_ong_selection={
+                                        setDisplay_ong_selection
+                                    }
+                                    display_ong_selection={
+                                        display_ong_selection
+                                    }
+                                />
+                            </button>
+                        )}
+                    {selectedWildian &&
+                        currentSelectedOng == "Amnesty international" && (
+                            <button onClick={() => handleWildianClick("WWF")}>
+                                <Wildians
+                                    name="Ellie"
+                                    image={"/img/v2/visuels/cerf-grey.jpg"}
+                                    title="Deer_3D"
+                                    pillar="Environnement"
+                                    ong="WWF"
+                                    nft_adress={config.DEER_NFT}
+                                    ong_list={deerONG}
+                                    nft_sold={dataFinance[0].value}
+                                    set_display_ong_selection={
+                                        setDisplay_ong_selection
+                                    }
+                                    display_ong_selection={
+                                        display_ong_selection
+                                    }
+                                />
+                            </button>
+                        )}
+                    {selectedWildian &&
+                        currentSelectedOng == "Amnesty international" && (
+                            <button
+                                onClick={() =>
+                                    handleWildianClick("Charity: Water")
+                                }
+                            >
+                                <Wildians
+                                    name="Noa"
+                                    image={"/img/v2/visuels/loup-grey.jpg"}
+                                    title="Wolf_3D"
+                                    pillar="Société"
+                                    ong="Charity: Water"
+                                    nft_adress={config.WOLF_NFT}
+                                    ong_list={wolfONG}
+                                    nft_sold={dataFinance[1].value}
+                                    set_display_ong_selection={
+                                        setDisplay_ong_selection
+                                    }
+                                    display_ong_selection={
+                                        display_ong_selection
+                                    }
+                                />
+                            </button>
+                        )}
+                    {selectedWildian &&
+                        currentSelectedOng == "Amnesty international" && (
+                            <button
+                                onClick={() =>
+                                    handleWildianClick("Amnesty international")
+                                }
+                            >
+                                <Wildians
+                                    name="Fabio"
+                                    image={"/img/v2/visuels/taureau.jpg"}
+                                    title="Bull_3D"
+                                    pillar="Économie"
+                                    ong="Amnesty international"
+                                    nft_adress={config.BULL_NFT}
+                                    ong_list={bullONG}
+                                    nft_sold={dataFinance[2].value}
+                                    set_display_ong_selection={
+                                        setDisplay_ong_selection
+                                    }
+                                    display_ong_selection={
+                                        display_ong_selection
+                                    }
+                                />
+                            </button>
+                        )}
+                    {!selectedWildian && (
+                        <button onClick={() => handleWildianClick("WWF")}>
+                            <Wildians
+                                name="Ellie"
+                                image={"/img/v2/visuels/cerf.jpg"}
+                                title="Deer_3D"
+                                pillar="Environnement"
+                                ong="WWF"
+                                nft_adress={config.DEER_NFT}
+                                ong_list={deerONG}
+                                nft_sold={dataFinance[0].value}
+                                set_display_ong_selection={
+                                    setDisplay_ong_selection
+                                }
+                                display_ong_selection={display_ong_selection}
+                            />
+                        </button>
+                    )}
+                    {!selectedWildian && (
+                        <button
+                            onClick={() => handleWildianClick("Charity: Water")}
+                        >
+                            <Wildians
+                                name="Noa"
+                                image={"/img/v2/visuels/loup.jpg"}
+                                title="Wolf_3D"
+                                pillar="Société"
+                                ong="Charity: Water"
+                                nft_adress={config.WOLF_NFT}
+                                ong_list={wolfONG}
+                                nft_sold={dataFinance[1].value}
+                                set_display_ong_selection={
+                                    setDisplay_ong_selection
+                                }
+                                display_ong_selection={display_ong_selection}
+                            />
+                        </button>
+                    )}
+                    {!selectedWildian && (
+                        <button
+                            onClick={() =>
+                                handleWildianClick("Amnesty international")
+                            }
+                        >
+                            <Wildians
+                                name="Fabio"
+                                image={"/img/v2/visuels/taureau.jpg"}
+                                title="Bull_3D"
+                                pillar="Économie"
+                                ong="Amnesty international"
+                                nft_adress={config.BULL_NFT}
+                                ong_list={bullONG}
+                                nft_sold={dataFinance[2].value}
+                                set_display_ong_selection={
+                                    setDisplay_ong_selection
+                                }
+                                display_ong_selection={display_ong_selection}
+                            />
+                        </button>
+                    )}
                 </div>
 
                 <div className="bottom-buttons">
-                    <button
-                        className="take-the-test-button md:uppercase default-connexion hover:connexion body-highlight-typo text-greeny md:whitespace-nowrap md:hover:text-greenkaki"
-                        type="button"
-                    >
-                        Take the test
-                    </button>
-                    <button
-                        onClick={() => {
-                            handleMint();
-                        }}
-                        className="mint-button text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover "
-                        type="button"
-                        disabled={!isStatusOpen}
-                    >
-                        {!isStatusOpen ? "Sells are currently closed" : "Mint"}
-                    </button>
+                    {!isStatusOpen && (
+                        <button
+                            disabled
+                            className={
+                                "mint-button text-white md:cursor-pointer btn-layout closed-btn-style body-highlight-typo"
+                            }
+                            type="button"
+                        >
+                            Les ventes sont fermées
+                        </button>
+                    )}
+                    {isStatusOpen && !selectedWildian && (
+                        <button
+                            disabled
+                            className={
+                                "mint-button text-white md:cursor-pointer btn-layout closed-btn-style body-highlight-typo"
+                            }
+                            type="button"
+                        >
+                            Choisi ton Wildians
+                        </button>
+                    )}
+                    {isStatusOpen && selectedWildian && is_ambassador && (
+                        <div className="flex flex-col items-center justify-center text-center">
+                            <div className="text-white small-body-typo m-2 mx-auto">
+                                Pillier : {currentSelectedPillar}
+                            </div>
+                            <button
+                                onClick={() => {
+                                    handleMint();
+                                }}
+                                className="mint-button text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
+                                type="button"
+                            >
+                                Adopte ton Wildian
+                            </button>
+                        </div>
+                    )}
+                    {isStatusOpen && selectedWildian && !is_ambassador && (
+                        <div className="flex flex-col items-center justify-center text-center">
+                            <div className="text-white body-typo m-2 mx-auto">
+                                Pillier : {currentSelectedPillar}
+                            </div>
+                            <button
+                                onClick={() => {
+                                    handleMint();
+                                }}
+                                className="mint-button text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
+                                type="button"
+                            >
+                                Adopter pour 333 XTZ
+                            </button>
+                        </div>
+                    )}
+
                     {showModal && <Modal />}
+                </div>
+                <div
+                    className="text-white text-base border-l-4 pl-4 m-10 mx-auto md:w-600"
+                    style={{ fontSize: "15px" }}
+                >
+                    <p className="mb-4">
+                        Ensemble, Ellie, Noa et Fabio forment un trio
+                        harmonieux, représentant les trois piliers essentiels du
+                        développement durable : la{" "}
+                        <b>protection de l'environnement</b>, la{" "}
+                        <b>promotion de la société équitable</b>, et la{" "}
+                        <b>gestion économique responsable. </b>
+                        Chacun à leur manière, ils t'aideront à trouver l'
+                        <b>équilibre</b> nécessaire pour construire un{" "}
+                        <span style={{ color: "#90E0D3" }}>
+                            <b>avenir durable</b>
+                        </span>{" "}
+                        pour notre planète et ses habitants.
+                    </p>
                 </div>
             </div>
         </div>

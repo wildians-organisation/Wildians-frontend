@@ -16365,6 +16365,11 @@ select {
     background: var(--saillance, #951f2a);
 }
 
+.closed-btn-style {
+    border-radius: var(--desktop-border-radius, 20px);
+    background: var(--saillance, #787676);
+}
+
 .hover\:get-hover:hover {
     border-radius: var(--desktop-border-radius, 20px);
     background: var(--economy, #e35958);
@@ -16510,7 +16515,17 @@ select {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
-    background: url("../public/img/v2/visuels/Deer.png"),
+    background: url("../public/img/v2/visuels/cerf.jpg"),
+        lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    /* Shading miniatures */
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+.nft-frame-image-deer-grey {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--desktop-border-radius, 20px);
+    background: url("../public/img/v2/visuels/cerf-grey.jpg"),
         lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
@@ -16520,7 +16535,17 @@ select {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
-    background: url("../public/img/v2/visuels/Wolf.png"),
+    background: url("../public/img/v2/visuels/loup.jpg"),
+        lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    /* Shading miniatures */
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+.nft-frame-image-wolf-grey {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--desktop-border-radius, 20px);
+    background: url("../public/img/v2/visuels/loup-grey.jpg"),
         lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
@@ -16530,7 +16555,17 @@ select {
     width: 280px;
     height: 280px;
     border-radius: var(--desktop-border-radius, 20px);
-    background: url("../public/img/v2/visuels/Bull.png"),
+    background: url("../public/img/v2/visuels/taureau.jpg"),
+        lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
+    /* Shading miniatures */
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+.nft-frame-image-bull-grey {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--desktop-border-radius, 20px);
+    background: url("../public/img/v2/visuels/taureau-grey.jpg"),
         lightgray -25.585px -37.49px / 115.596% 115.229% no-repeat;
     /* Shading miniatures */
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
@@ -16574,6 +16609,17 @@ select {
     line-height: normal;
 }
 
+.nft-frame-name {
+    color: var(--turquoise, #90e0d3);
+    text-align: center;
+    /* Body highlight */
+    font-family: MULISH;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
 .display-pillars {
     display: flex;
     justify-content: center;
@@ -16604,7 +16650,7 @@ select {
 .mint-button {
     display: flex;
     padding: 8px 20px;
-    width: 205px;
+    width: 215px;
     height: 36px;
     align-items: center;
     justify-content: center;
@@ -16951,4 +16997,31 @@ select {
     width: 40px;
     height: auto;
     border-radius: 8px;
+}
+
+.slick-dots li.slick-active {
+    border-radius: 50%;
+    background-color: #90e0d3; /* Change active dot color to blue */
+}
+
+.slick-dots li.slick-active:hover,
+.slick-dots li.slick-active:focus {
+    background-color: #90e0d3; /* Change active dot hover color to darker blue */
+}
+
+.slick-dots li {
+    border: 1px solid #90e0d3;
+    border-radius: 50%;
+    background-color: #36544f; /* Change inactive dot color to gray */
+}
+
+.slick-dots li.slick-active button:before {
+    display: none;
+}
+.slick-dots li button:before {
+    display: none;
+}
+
+.slick-track {
+    margin: auto;
 }
