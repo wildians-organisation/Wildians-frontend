@@ -16004,6 +16004,10 @@ select {
         height: 12rem;
     }
 
+    .md\p-2 {
+        padding: 2px;
+    }
+
     .md\:pt-32 {
         padding-top: 8rem;
     }
