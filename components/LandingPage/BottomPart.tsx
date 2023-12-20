@@ -451,18 +451,20 @@ function BottomPart() {
                     Adopte ton Wildian
                 </div>
                 {is_ambassador && (
-                        <div className="max-w-5xl flex content-center items-center mx-auto">
-                            <img
-                                src="/img/v2/visuels/mingcute_award-fill.png"
-                                width="45"
-                                height="45">
-                            </img>
-                            <div className="text-white body-italic-typo m-10 mx-auto">
-                            <p>Bienvenue cher ambassadeur !</p> 
-Pour te remercier de ta contribution, nous t’offrons le Wildian de ton choix. Alors n’attends plus et sélectionne le ci-dessous !
-                            </div>
+                    <div className="max-w-5xl flex content-center items-center mx-auto">
+                        <img
+                            src="/img/v2/visuels/mingcute_award-fill.png"
+                            width="45"
+                            height="45"
+                        ></img>
+                        <div className="text-white body-italic-typo m-10 mx-auto">
+                            <p>Bienvenue cher ambassadeur !</p>
+                            Pour te remercier de ta contribution, nous t’offrons
+                            le Wildian de ton choix. Alors n’attends plus et
+                            sélectionne le ci-dessous !
                         </div>
-                    )}
+                    </div>
+                )}
                 <div className="mt-12 mb-14 md:hidden">
                     <Slider {...settings}>
                         <button
@@ -834,9 +836,9 @@ Pour te remercier de ta contribution, nous t’offrons le Wildian de ton choix. 
                     )}
                     {isStatusOpen && selectedWildian && !is_ambassador && (
                         <div className="flex flex-col items-center justify-center text-center">
-                        <div className="text-white body-typo m-2 mx-auto">
-                            Pillier : {currentSelectedPillar}
-                        </div>
+                            <div className="text-white body-typo m-2 mx-auto">
+                                Pillier : {currentSelectedPillar}
+                            </div>
                             <button
                                 onClick={() => {
                                     handleMint();
