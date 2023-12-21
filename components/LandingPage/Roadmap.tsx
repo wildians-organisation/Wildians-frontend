@@ -4,7 +4,7 @@ export default function RoadMapVitrine() {
         <div
             className="pb-10"
             style={{
-                fontFamily: "GOGH"
+                fontFamily: "GOGH-BOLD"
             }}
         >
             <div className="hidden xl:block">
@@ -406,7 +406,7 @@ export default function RoadMapVitrine() {
                             position: "absolute",
                             color: "white",
                             fontSize: 16,
-                            fontFamily: "GOGH",
+                            fontFamily: "GOGH-BOLD",
                             fontWeight: "800",
                             wordWrap: "break-word"
                         }}
