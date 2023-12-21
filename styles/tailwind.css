@@ -16256,6 +16256,24 @@ select {
     }
 }
 
+.title-wild-frame-typo2 {
+    font-family: GOGH-BOLD;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+@media (max-width: 390px) {
+    .title-wild-frame-typo2 {
+        font-family: GOGH-BOLD;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+    }
+}
+
 .subtitle-typo {
     font-family: MULISH;
     font-size: 16px;
@@ -16268,6 +16286,16 @@ select {
     .subtitle-typo {
         font-family: MULISH;
         font-size: 20px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+    }
+}
+
+@media (max-width: 390px) {
+    .subtitle-typo {
+        font-family: MULISH;
+        font-size: 14px;
         font-style: normal;
         font-weight: 800;
         line-height: normal;
@@ -16297,6 +16325,16 @@ select {
         /* Body */
         font-family: MULISH;
         font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+
+@media (max-width: 390px) {
+    .body-typo {
+        font-family: MULISH;
+        font-size: 14px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -16509,6 +16547,20 @@ select {
     gap: var(--desktop-spacing-medium, 40px);
     border-radius: var(--desktop-border-radius, 20px);
     background: var(--vert-fonc, #36544f);
+}
+
+.team-frame {
+    display: flex;
+    width: 195px;
+    height: 298px;
+    padding: var(--Desktop-Spacing-medium, 40px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--Desktop-Spacing-medium, 40px);
+    flex-shrink: 0;
+    border-radius: var(--Desktop-Border-radius, 20px);
+    background: var(--Vert-fonc, #36544f);
 }
 
 .nft-frame-image-deer {
@@ -16727,6 +16779,20 @@ select {
 .component-container-intro {
     display: flex;
     justify-content: space-evenly;
+}
+
+.container-team-pres {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 390px) {
+    .container-team-pres {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--Mobile-Spacing-large, 40px);
+    }
 }
 
 .image-container-intro {
@@ -17024,4 +17090,17 @@ select {
 
 .slick-track {
     margin: auto;
+}
+
+.team-image {
+    height: 135px;
+    width: 135px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 390px) {
+    .team-image {
+        height: 120px;
+        width: 120px;
+    }
 }
