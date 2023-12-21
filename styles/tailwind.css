@@ -16246,6 +16246,16 @@ select {
     line-height: normal;
 }
 
+@media (min-width: 1280px) {
+    .title-wild-frame-typo {
+        font-family: GOGH-BOLD;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+    }
+}
+
 .title-wild-frame-typo2 {
     font-family: GOGH-BOLD;
     font-size: 32px;
@@ -16254,10 +16264,10 @@ select {
     line-height: normal;
 }
 
-@media (min-width: 1280px) {
-    .title-wild-frame-typo {
+@media (max-width: 390px) {
+    .title-wild-frame-typo2 {
         font-family: GOGH-BOLD;
-        font-size: 32px;
+        font-size: 16px;
         font-style: normal;
         font-weight: 800;
         line-height: normal;
@@ -16276,6 +16286,16 @@ select {
     .subtitle-typo {
         font-family: MULISH;
         font-size: 20px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+    }
+}
+
+@media (max-width: 390px) {
+    .subtitle-typo {
+        font-family: MULISH;
+        font-size: 14px;
         font-style: normal;
         font-weight: 800;
         line-height: normal;
@@ -16305,6 +16325,16 @@ select {
         /* Body */
         font-family: MULISH;
         font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+
+@media (max-width: 390px) {
+    .body-typo {
+        font-family: MULISH;
+        font-size: 14px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -16751,14 +16781,19 @@ select {
     justify-content: space-evenly;
 }
 
+
 .container-team-pres {
     display: flex;
-    width: 1198px;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: flex-start;
-    gap: var(--Desktop-Spacing-medium, 40px) var(--Desktop-Spacing-large, 80px);
-    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 390px) {
+    .container-team-pres {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--Mobile-Spacing-large, 40px);
+    }
 }
 
 .image-container-intro {
@@ -17061,4 +17096,11 @@ select {
 .team-image {
     height: 135px;
     width: 135px;
+}
+
+@media (max-width: 390px) {
+    .team-image {
+        height: 120px;
+        width: 120px;
+    }
 }

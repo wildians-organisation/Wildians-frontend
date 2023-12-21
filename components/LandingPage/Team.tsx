@@ -6,7 +6,7 @@ function Team() {
             <div className="text-center text-white title-typo mb-20">
                 Wildians, une équipe de passionnés
             </div>
-            <div className="component-container-intro mb-20">
+            <div className="container-team-pres mb-20">
                 <div className="team-frame">
                     <img
                         className="team-image"
@@ -66,11 +66,11 @@ function Team() {
             </div>
             <div className="pl-2 pr-4 mb-40">
                 <div className="text-white text-base mt-14 flex justify-center items-center">
-                    <div className="text-white body-typo pl-4 w-600 text-justify">
+                    <div className="text-white body-typo pl-4 w-600 text-center">
                         Un grand merci à tout ceux qui ont posé une brique dans
                         l’édifice Wildians :<br />
                         <strong>
-                            Romain, le PAE SIGL (Johnny et Sach), Eva, Rebecca,
+                            Romain, le PAE SIGL, Eva, Rebecca,
                             Gwen, Hugo x2, Alice
                         </strong>
                     </div>
