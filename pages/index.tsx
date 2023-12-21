@@ -8,6 +8,7 @@ import TopPart from "./../components/LandingPage/TopPart";
 import BottomPart from "./../components/LandingPage/BottomPart";
 import Introduction from "./../components/LandingPage/Introduction";
 import RoadMapVitrine from "../components/LandingPage/Roadmap";
+import Separator from "../components/LandingPage/Separator";
 import Team from "../components/LandingPage/Team";
 
 export function scrollToSection(sectionId) {
@@ -29,17 +30,20 @@ export function scrollToSection(sectionId) {
 
 export default function Landing() {
     return (
-        /*<div style={{ backgroundColor: "#223734" }}>
+        <div style={{ backgroundColor: "#223734" }}>
             <TopPartVitrine />
             <Concept />
+            <Separator />
             <Introduction />
+            <Separator />
             <Usage />
+            <Separator />
             <Support />
             <RoadMapVitrine />
             <Team />
             <BottomPartVitrine />
-        </div>*/
-        <div style={{ backgroundColor: "#223734" }}>
+        </div>
+        /*<div style={{ backgroundColor: "#223734" }}>
             <TopPart />
             <Concept />
             <Usage />
@@ -47,6 +51,6 @@ export default function Landing() {
             <Support />
             <Team />
             <BottomPartVitrine />
-        </div>
+        </div>*/
     );
 }

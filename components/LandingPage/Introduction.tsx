@@ -1,4 +1,16 @@
 import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerMode: true
+};
 
 function Introduction() {
     return (
@@ -6,7 +18,50 @@ function Introduction() {
             <div className="text-center text-white title-typo">
                 Wildians, qui sommes-nous ?
             </div>
-            <div className="component-container-intro">
+            <div className="md:hidden">
+                <Slider {...settings}>
+                    <div className="image-container-intro">
+                        <img
+                            src={"/img/v2/visuels/bull_shadow.png"}
+                            width={300}
+                            height={300}
+                        />
+                        <p className="description-intro title-wild-frame-typo text-greeny">
+                            Fabio
+                        </p>
+                        <p className="description-intro body-highlight-typo text-white">
+                            Économie
+                        </p>
+                    </div>
+                    <div className="image-container-intro">
+                        <img
+                            src={"/img/v2/visuels/deer_shadow.png"}
+                            width={300}
+                            height={300}
+                        />
+                        <p className="description-intro title-wild-frame-typo text-greeny">
+                            Ellie
+                        </p>
+                        <p className="description-intro body-highlight-typo text-white">
+                            Environnement
+                        </p>
+                    </div>
+                    <div className="image-container-intro">
+                        <img
+                            src={"/img/v2/visuels/wolf_shadow.png"}
+                            width={300}
+                            height={300}
+                        />
+                        <p className="description-intro title-wild-frame-typo text-greeny">
+                            Noa
+                        </p>
+                        <p className="description-intro body-highlight-typo text-white">
+                            Societé
+                        </p>
+                    </div>
+                </Slider>
+            </div>
+            <div className="hidden md:flex justify-evenly">
                 <div className="image-container-intro">
                     <img
                         src={"/img/v2/visuels/bull_shadow.png"}

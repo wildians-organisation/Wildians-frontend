@@ -15714,7 +15714,7 @@ select {
 @font-face {
     font-family: "GOGH-BOLD";
 
-    src: url("../public/fonts/Gogh-ExtraBold.otf");
+    src: url("../public/fonts/Gogh-ExtraBold.otf") format("opentype");
 }
 
 @font-face {
@@ -16002,6 +16002,10 @@ select {
 
     .md\:h-48 {
         height: 12rem;
+    }
+
+    .md\p-2 {
+        padding: 2px;
     }
 
     .md\:pt-32 {
@@ -16869,7 +16873,6 @@ select {
     top: -20px;
     left: 35%;
     color: #ffffff;
-    cursor: pointer;
     z-index: 1;
 }
 
@@ -16896,7 +16899,6 @@ select {
     top: -20px;
     left: 35%;
     color: #ffffff;
-    cursor: pointer;
     z-index: 1;
 }
 
@@ -17083,6 +17085,45 @@ select {
     width: 40px;
     height: auto;
     border-radius: 8px;
+}
+
+.separator {
+    position: relative;
+    bottom: 10px;
+}
+
+.hr-left,
+.hr-right {
+    line-height: 1em;
+    position: absolute;
+    outline: 0;
+    border: 0;
+    left: 25%;
+    color: #000;
+    text-align: center;
+    height: 1.5em;
+    opacity: 0.5;
+    width: 50%;
+}
+
+.hr-left:before {
+    content: "";
+    background: linear-gradient(90deg, transparent, #fff);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 50%;
+    height: 2px;
+}
+
+.hr-right:before {
+    content: "";
+    background: linear-gradient(90deg, #fff, transparent);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 50%;
+    height: 2px;
 }
 
 .slick-dots li.slick-active {

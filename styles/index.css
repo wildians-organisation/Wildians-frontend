@@ -3,18 +3,3 @@
 @tailwind components;
 
 @tailwind utilities;
-
-@font-face {
-    font-family: "GOGH-BOLD";
-    src: url("../public/fonts/Gogh-ExtraBold.otf");
-}
-
-@font-face {
-    font-family: "MULISH";
-    src: url("../public/fonts/Mulish/Mulish-VariableFont_wght.ttf");
-}
-
-@font-face {
-    font-family: "salsa";
-    src: url("../public/fonts/Salsa-Regular.ttf");
-}

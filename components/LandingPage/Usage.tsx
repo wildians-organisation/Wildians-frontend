@@ -7,7 +7,7 @@ export function Usage() {
                 Wildians, bien plus qu'une simple application !
             </h1>
             <div className="flex justify-center items-center">
-                <div className="justify-center absolute phone md:static w-600 md:flex">
+                <div className="justify-center absolute phone md:static md:flex">
                     <img src="/img/wildians_phone.svg" alt="" />
                 </div>
                 <div className="flex flex-col gap-y-4 w-600 p-4">
