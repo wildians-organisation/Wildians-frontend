@@ -9,6 +9,7 @@ import BottomPart from "./../components/LandingPage/BottomPart";
 import Introduction from "./../components/LandingPage/Introduction";
 import RoadMapVitrine from "../components/LandingPage/Roadmap";
 import Separator from "../components/LandingPage/Separator";
+import Team from "../components/LandingPage/Team";
 
 export function scrollToSection(sectionId) {
     if (sectionId == "concept") {
@@ -39,14 +40,16 @@ export default function Landing() {
             <Separator />
             <Support />
             <RoadMapVitrine />
+            <Team />
             <BottomPartVitrine />
         </div>
         /*<div style={{ backgroundColor: "#223734" }}>
             <TopPart />
             <Concept />
-             <Usage />
+            <Usage />
             <BottomPart />
             <Support />
+            <Team />
             <BottomPartVitrine />
         </div>*/
     );
