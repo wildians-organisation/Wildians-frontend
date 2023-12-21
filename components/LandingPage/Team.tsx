@@ -9,7 +9,7 @@ function Team() {
             <div className="container-team-pres mb-20">
                 <div className="team-frame">
                     <img
-                        className="team-image"
+                        className="team-image max-w-none"
                         src={"../img/v2/visuels/Maxime.png"}
                     />
                     <div className="below-image">
@@ -23,7 +23,7 @@ function Team() {
                 </div>
                 <div className="team-frame">
                     <img
-                        className="team-image"
+                        className="team-image max-w-none"
                         src={"../img/v2/visuels/Aurélie.png"}
                     />
                     <div className="below-image">
@@ -37,7 +37,7 @@ function Team() {
                 </div>
                 <div className="team-frame">
                     <img
-                        className="team-image"
+                        className="team-image max-w-none"
                         src={"../img/v2/visuels/Elea.png"}
                     />
                     <div className="below-image">
@@ -51,7 +51,7 @@ function Team() {
                 </div>
                 <div className="team-frame">
                     <img
-                        className="team-image"
+                        className="team-image max-w-none"
                         src={"../img/v2/visuels/Bastien.png"}
                     />
                     <div className="below-image">
