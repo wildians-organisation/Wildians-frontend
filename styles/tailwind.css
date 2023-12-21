@@ -16246,6 +16246,14 @@ select {
     line-height: normal;
 }
 
+.title-wild-frame-typo2 {
+    font-family: GOGH-BOLD;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
 @media (min-width: 1280px) {
     .title-wild-frame-typo {
         font-family: GOGH-BOLD;
@@ -16511,6 +16519,20 @@ select {
     background: var(--vert-fonc, #36544f);
 }
 
+.team-frame {
+    display: flex;
+    width: 195px;
+    height: 298px;
+    padding: var(--Desktop-Spacing-medium, 40px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--Desktop-Spacing-medium, 40px);
+    flex-shrink: 0;
+    border-radius: var(--Desktop-Border-radius, 20px);
+    background: var(--Vert-fonc, #36544F);
+}
+
 .nft-frame-image-deer {
     width: 280px;
     height: 280px;
@@ -16727,6 +16749,16 @@ select {
 .component-container-intro {
     display: flex;
     justify-content: space-evenly;
+}
+
+.container-team-pres {
+    display: flex;
+    width: 1198px;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: var(--Desktop-Spacing-medium, 40px) var(--Desktop-Spacing-large, 80px);
+    flex-wrap: wrap;
 }
 
 .image-container-intro {
@@ -17024,4 +17056,9 @@ select {
 
 .slick-track {
     margin: auto;
+}
+
+.team-image {
+    height: 135px;
+    width: 135px;
 }
