@@ -58,8 +58,8 @@ function Team() {
                         <div className="title-wild-frame-typo2 text-greeny text-center">
                             Bastien
                         </div>
-                        <div className="subtitle-typo text-white text-center">
-                            Illustration3D
+                        <div className="subtitle-typo text-white text-center whitespace-nowrap">
+                            Illustration 3D
                         </div>
                     </div>
                 </div>

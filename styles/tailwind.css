@@ -16264,7 +16264,7 @@ select {
     line-height: normal;
 }
 
-@media (max-width: 390px) {
+@media (max-width: 800px) {
     .title-wild-frame-typo2 {
         font-family: GOGH-BOLD;
         font-size: 16px;
@@ -16292,7 +16292,7 @@ select {
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 800px) {
     .subtitle-typo {
         font-family: MULISH;
         font-size: 14px;
@@ -16331,7 +16331,7 @@ select {
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 800px) {
     .body-typo {
         font-family: MULISH;
         font-size: 14px;
@@ -16806,7 +16806,7 @@ select {
     justify-content: space-evenly;
 }
 
-@media (max-width: 390px) {
+@media (max-width: 800px) {
     .container-team-pres {
         display: flex;
         flex-direction: column;
@@ -17121,7 +17121,7 @@ select {
     flex-shrink: 0;
 }
 
-@media (max-width: 390px) {
+@media (max-width: 800px) {
     .team-image {
         height: 120px;
         width: 120px;
