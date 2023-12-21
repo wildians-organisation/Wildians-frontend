@@ -17095,7 +17095,7 @@ select {
 .team-image {
     height: 135px;
     width: 135px;
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 @media (max-width: 390px) {
