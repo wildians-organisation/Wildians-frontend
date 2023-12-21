@@ -16709,6 +16709,26 @@ select {
     gap: 10px;
 }
 
+.mint-button-2 {
+    display: flex;
+    padding: 8px 20px;
+    width: 225px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.mint-button-closed {
+    display: flex;
+    padding: 8px 20px;
+    width: 235px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
 .take-the-test-button {
     display: flex;
     width: 205px;
@@ -17088,8 +17108,11 @@ select {
     display: none;
 }
 
-.slick-track {
-    margin: auto;
+.slick-slide > div {
+    margin: 0 7px;
+}
+.slick-list {
+    margin: 0 -7px;
 }
 
 .team-image {
