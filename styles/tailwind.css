@@ -16530,7 +16530,7 @@ select {
     gap: var(--Desktop-Spacing-medium, 40px);
     flex-shrink: 0;
     border-radius: var(--Desktop-Border-radius, 20px);
-    background: var(--Vert-fonc, #36544F);
+    background: var(--Vert-fonc, #36544f);
 }
 
 .nft-frame-image-deer {

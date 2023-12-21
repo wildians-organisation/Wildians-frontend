@@ -8,31 +8,59 @@ function Team() {
             </div>
             <div className="component-container-intro mb-20">
                 <div className="team-frame">
-                    <img className='team-image' src={"../img/v2/visuels/Maxime.png"}/>
+                    <img
+                        className="team-image"
+                        src={"../img/v2/visuels/Maxime.png"}
+                    />
                     <div className="below-image">
-                        <div className="title-wild-frame-typo2 text-greeny text-center">Maxime</div>
-                        <div className="subtitle-typo text-white text-center">Fondateur</div>
+                        <div className="title-wild-frame-typo2 text-greeny text-center">
+                            Maxime
+                        </div>
+                        <div className="subtitle-typo text-white text-center">
+                            Fondateur
+                        </div>
                     </div>
                 </div>
                 <div className="team-frame">
-                    <img className='team-image' src={"../img/v2/visuels/Aurélie.png"}/>
+                    <img
+                        className="team-image"
+                        src={"../img/v2/visuels/Aurélie.png"}
+                    />
                     <div className="below-image">
-                        <div className="title-wild-frame-typo2 text-greeny text-center">Aurélie</div>
-                        <div className="subtitle-typo text-white text-center">UX Design</div>
+                        <div className="title-wild-frame-typo2 text-greeny text-center">
+                            Aurélie
+                        </div>
+                        <div className="subtitle-typo text-white text-center">
+                            UX Design
+                        </div>
                     </div>
                 </div>
                 <div className="team-frame">
-                    <img className='team-image' src={"../img/v2/visuels/Elea.png"}/>
+                    <img
+                        className="team-image"
+                        src={"../img/v2/visuels/Elea.png"}
+                    />
                     <div className="below-image">
-                        <div className="title-wild-frame-typo2 text-greeny text-center">Elea</div>
-                        <div className="subtitle-typo text-white text-center">Communication</div>
+                        <div className="title-wild-frame-typo2 text-greeny text-center">
+                            Elea
+                        </div>
+                        <div className="subtitle-typo text-white text-center">
+                            Communication
+                        </div>
                     </div>
                 </div>
                 <div className="team-frame">
-                    <img className='team-image' src={"../img/v2/visuels/Bastien.png"}/>
+                    <img
+                        className="team-image"
+                        src={"../img/v2/visuels/Bastien.png"}
+                    />
                     <div className="below-image">
-                        <div className="title-wild-frame-typo2 text-greeny text-center">Bastien</div>
-                        <div className="subtitle-typo text-white text-center">Illustration3D</div>
+                        <div className="title-wild-frame-typo2 text-greeny text-center">
+                            Bastien
+                        </div>
+                        <div className="subtitle-typo text-white text-center">
+                            Illustration3D
+                        </div>
                     </div>
                 </div>
             </div>
