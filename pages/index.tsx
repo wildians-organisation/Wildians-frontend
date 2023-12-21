@@ -30,15 +30,15 @@ export function scrollToSection(sectionId) {
 export default function Landing() {
     return (
         <div style={{ backgroundColor: "#223734" }}>
-             <TopPartVitrine />
-             <Concept />
-             <Introduction />
-             <Usage />
-             <Support />
-             <RoadMapVitrine />
-             <Team />
-             <BottomPartVitrine />
-         </div>
+            <TopPartVitrine />
+            <Concept />
+            <Introduction />
+            <Usage />
+            <Support />
+            <RoadMapVitrine />
+            <Team />
+            <BottomPartVitrine />
+        </div>
         /*<div className="">
             <TopPart />
             <BottomPart />
