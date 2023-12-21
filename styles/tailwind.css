@@ -15712,9 +15712,9 @@ select {
 }
 
 @font-face {
-    font-family: "GOGH-BOLD";
+    font-family: "GOGH";
 
-    src: url("../public/fonts/Gogh-ExtraBold.otf");
+    src: url("../public/fonts/Gogh-ExtraBold.otf") format("opentype");
 }
 
 @font-face {

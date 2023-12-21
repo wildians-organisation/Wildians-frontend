@@ -27,9 +27,9 @@ module.exports = {
             },
 
             fontFamily: {
-                goghbold: ["GOGH-BOLD", "cursive"],
+                goghbold: ["GOGH", "cursive"],
                 mulish: ["MULISH", "GOGH-BOLD", "cursive"],
-                gogh: ["GOGH-BOLD", "sans-serif"],
+                gogh: ["GOGH", "sans-serif"],
                 sans: ["MULISH", "sans-serif"],
                 mulish: ["MULISH", "cursive"],
                 sans: ["MULISH", "sans-serif"],
