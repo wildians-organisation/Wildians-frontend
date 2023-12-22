@@ -5,13 +5,21 @@ export function Concept() {
     return (
         <div id="Concept">
             <div className="bg-no-repeat bg-cover py-20 px-4">
-                <div>
-                    <div className="text-center text-white mb-4 title-typo2">
-                        <p>Concept</p>
-                    </div>
-                </div>
-                <div className="flex md:justify-center flex-col md:flex-row gap-8 pt-16 md:pt-32 md:items-center">
+                <div className="flex md:justify-center flex-col md:flex-row gap-8 md:items-center">
                     <div className="text-white md:w-600 title-wild-frame-typo hidden md:block">
+                        <p
+                            style={{
+                                color: "#FFF",
+                                fontFamily: "salsa",
+                                fontSize: "150px",
+                                fontStyle: "normal",
+                                fontWeight: "800",
+                                lineHeight: "40px"
+                            }}
+                        >
+                            {" "}
+                            “ <br />
+                        </p>
                         Wildians,
                         <br />
                         c’est l’ambition de transmettre
@@ -30,7 +38,22 @@ export function Concept() {
                         ensemble.
                     </div>
                     <div className="text-white md:w-600 title-wild-frame-typo md:hidden">
-                        Wildians, c’est l’ambition de transmettre la culture du
+                        <p
+                            style={{
+                                color: "#FFF",
+                                fontFamily: "salsa",
+                                fontSize: "100px",
+                                fontStyle: "normal",
+                                fontWeight: "400",
+                                lineHeight: "0px"
+                            }}
+                        >
+                            {" "}
+                            “ <br />
+                        </p>
+                        Wildians,
+                        <br />
+                        c’est l’ambition de transmettre la culture du
                         <span style={{ color: "#90E0D3" }}>
                             {" "}
                             développement durable{" "}
@@ -95,7 +118,7 @@ export function Concept() {
                             <br />
                         </p>
                         <div className="flex justify-center">
-                            <div className="font-bold border-l-2 px-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
+                            <div className="text-center font-black border-l-2  md:px-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
                                 Transformons nos{" "}
                                 <span style={{ color: "#90E0D3" }}>
                                     habitudes

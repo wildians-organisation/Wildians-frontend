@@ -8,6 +8,8 @@ import TopPart from "./../components/LandingPage/TopPart";
 import BottomPart from "./../components/LandingPage/BottomPart";
 import Introduction from "./../components/LandingPage/Introduction";
 import RoadMapVitrine from "../components/LandingPage/Roadmap";
+import Separator from "../components/LandingPage/Separator";
+import Team from "../components/LandingPage/Team";
 
 export function scrollToSection(sectionId) {
     if (sectionId == "concept") {
@@ -31,15 +33,24 @@ export default function Landing() {
         <div style={{ backgroundColor: "#223734" }}>
             <TopPartVitrine />
             <Concept />
+            <Separator />
             <Introduction />
+            <Separator />
             <Usage />
+            <Separator />
             <Support />
             <RoadMapVitrine />
+            <Team />
             <BottomPartVitrine />
         </div>
-        /*<div className="">
+        /*<div style={{ backgroundColor: "#223734" }}>
             <TopPart />
+            <Concept />
+            <Usage />
             <BottomPart />
+            <Support />
+            <Team />
+            <BottomPartVitrine />
         </div>*/
     );
 }
