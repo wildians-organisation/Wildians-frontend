@@ -65,7 +65,7 @@ export function Concept() {
                         </span>
                         , ensemble.
                     </div>
-                    <div className="text-white md:w-600 body-typo">
+                    <div className="flex flex-col items-center  text-white md:w-600 body-typo">
                         <p>
                             {" "}
                             Nous constatons qu’il est difficile de visualiser
@@ -117,8 +117,8 @@ export function Concept() {
                             <br />
                             <br />
                         </p>
-                        <div className="flex justify-center">
-                            <div className="text-center font-black border-l-2  md:px-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
+                        <div className="flex justify-center w-52 md:w-fit">
+                            <div className="text-center font-black border-l-2 md:px-2 border-r-2 p-r-2 md:border-l-2 md:border-r-2 md:pl-4 md:pr-4">
                                 Transformons nos{" "}
                                 <span style={{ color: "#90E0D3" }}>
                                     habitudes
