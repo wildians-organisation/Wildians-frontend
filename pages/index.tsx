@@ -42,8 +42,8 @@ export default function Landing() {
             <RoadMapVitrine />
             <Team />
             <BottomPartVitrine />
-        </div>
-        /*<div style={{ backgroundColor: "#223734" }}>
+        </div> /*
+        <div style={{ backgroundColor: "#223734" }}>
             <TopPart />
             <Concept />
             <Usage />
