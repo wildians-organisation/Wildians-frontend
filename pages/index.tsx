@@ -30,7 +30,7 @@ export function scrollToSection(sectionId) {
 
 export default function Landing() {
     return (
-        <div style={{ backgroundColor: "#223734" }}>
+        /*<div style={{ backgroundColor: "#223734" }}>
             <TopPartVitrine />
             <Concept />
             <Separator />
@@ -42,15 +42,20 @@ export default function Landing() {
             <RoadMapVitrine />
             <Team />
             <BottomPartVitrine />
-        </div> /*
+        </div> */
         <div style={{ backgroundColor: "#223734" }}>
             <TopPart />
             <Concept />
+            <Separator />
             <Usage />
+            <Separator />
             <BottomPart />
+            <Separator />
             <Support />
+            <RoadMapVitrine />
+            <Separator />
             <Team />
             <BottomPartVitrine />
-        </div>*/
+        </div>
     );
 }
