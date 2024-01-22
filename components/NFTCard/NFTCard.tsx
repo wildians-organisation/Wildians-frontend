@@ -23,9 +23,9 @@ function NFTCard({ metadata, nftNumber }) {
     };
 
     const getAnimalImage = () => {
-        const deer_IMG = "/img/v2/visuels/cerf.jpg";
-        const wolf_IMG = "/img/v2/visuels/loup.jpg";
-        const bull_IMG = "/img/v2/visuels/taureau.jpg";
+        const deer_IMG = "/img/v2/visuels/cerf-collection.jpg";
+        const wolf_IMG = "/img/v2/visuels/loup-collection.jpg";
+        const bull_IMG = "/img/v2/visuels/taureau-collection.jpg";
 
         switch (animal) {
             case "DEER":

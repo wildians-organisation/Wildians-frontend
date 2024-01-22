@@ -1,8 +1,5 @@
 import React from "react";
 import Attribute from "./Attribute";
-import WOLF_WALLET from "../../public/assets/WOLF_WALLET.png";
-import DEER_WALLET from "../../public/assets/DEER_WALLET.png";
-import BULL_WALLET from "../../public/assets/BULL_WALLET.png";
 
 function NFTCardMobile({ metadata }) {
     return (
