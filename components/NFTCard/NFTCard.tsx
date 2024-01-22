@@ -128,18 +128,38 @@ function NFTCard({ metadata, nftNumber }) {
                             </div>
                         </a>
                     </div>
-                    <div className="ml-6" style={{ marginTop: '2.7rem', backgroundColor: '#3d5953', borderRadius: '10px' }}>
-                        <div className="text-center text-white" style={{ marginTop: '0.6rem' }}>
-                            <span><b><b>Birthday</b></b></span>
+                    <div
+                        className="ml-6"
+                        style={{
+                            marginTop: "2.7rem",
+                            backgroundColor: "#3d5953",
+                            borderRadius: "10px"
+                        }}
+                    >
+                        <div
+                            className="text-center text-white"
+                            style={{ marginTop: "0.6rem" }}
+                        >
+                            <span>
+                                <b>
+                                    <b>Birthday</b>
+                                </b>
+                            </span>
                         </div>
-                        <div className="text-center text-white" style={{ marginBottom: '0.8rem', marginRight: '1rem', marginLeft: '1rem' }}>
+                        <div
+                            className="text-center text-white"
+                            style={{
+                                marginBottom: "0.8rem",
+                                marginRight: "1rem",
+                                marginLeft: "1rem"
+                            }}
+                        >
                             {formatDate(date)}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
     );
 }
 

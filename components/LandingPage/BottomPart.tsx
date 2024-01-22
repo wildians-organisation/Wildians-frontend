@@ -152,7 +152,8 @@ function BottomPart() {
     async function getTransactionsInformations() {
         const querySnapshot = await getDocs(smartcontract);
         querySnapshot.docs.map((doc) => {
-        setSmartcontract_addr(doc.data().address)})
+            setSmartcontract_addr(doc.data().address);
+        });
         const response = await axios.get(
             `https://api.ghostnet.tzkt.io/v1/contracts/${smartcontract_addr}/storage/history?limit=1000`
         );
