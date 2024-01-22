@@ -57,6 +57,7 @@ const network = { type: NetworkType.GHOSTNET };
 const nftToMint = 1;
 
 function BottomPart() {
+    const [smartcontract_addr, setSmartcontract_addr] = React.useState("");
     const [dataFinance, setDataFinance] = React.useState([
         { name: "ENVIRONMENT", value: 0 },
         { name: "SOCIETY", value: 0 },
@@ -87,6 +88,7 @@ function BottomPart() {
     const [selectedWildian, setSelectedWildian] = React.useState(false);
     const salesCollection = collection(firestore, "sales");
     const ambassadorCollection = collection(firestore, "AmbassadorList");
+    const smartcontract = collection(firestore, "smartcontract");
     const deerONG = ["WWF", "Oceana", "GreenPeace"];
     const wolfONG = [
         "Action Against Hunger",
@@ -148,8 +150,11 @@ function BottomPart() {
     }
 
     async function getTransactionsInformations() {
+        const querySnapshot = await getDocs(smartcontract);
+        querySnapshot.docs.map((doc) => {
+        setSmartcontract_addr(doc.data().address)})
         const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history?limit=1000`
+            `https://api.ghostnet.tzkt.io/v1/contracts/${smartcontract_addr}/storage/history?limit=1000`
         );
         let environment = 0;
         let society = 0;
