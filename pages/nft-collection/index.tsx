@@ -9,6 +9,7 @@ interface UserAccount {
     creators: string;
     displayUri: string;
     description: string;
+    firstTime: string;
 }
 
 export default function UserNFTs(props) {
@@ -18,7 +19,8 @@ export default function UserNFTs(props) {
         name: "",
         creators: "",
         displayUri: "",
-        description: ""
+        description: "",
+        firstTime: ""
     });
 
     const fetchData = async (userAddressToFetch) => {
@@ -28,10 +30,22 @@ export default function UserNFTs(props) {
                 `https://api.ghostnet.tzkt.io/v1/tokens/balances?account=${userAddressToFetch}`
             );
             for (let i = 0; i < response["data"].length; i++) {
-                if (!response["data"][i]["token"]["metadata"]) continue;
+                if (
+                    !response["data"][i]["token"]["metadata"] ||
+                    !response["data"][i]["firstTime"]
+                )
+                    continue;
                 const { name, creators, displayUri, description } =
                     response["data"][i]["token"]["metadata"];
-                if (!name || !creators || !displayUri || !description) continue;
+                const firstTime = response["data"][i]["firstTime"];
+                if (
+                    !name ||
+                    !creators ||
+                    !displayUri ||
+                    !description ||
+                    !firstTime
+                )
+                    continue;
                 let tmp_obj = {
                     name: response["data"][i]["token"]["metadata"]["name"],
                     creators:
@@ -39,7 +53,8 @@ export default function UserNFTs(props) {
                     displayUri:
                         response["data"][i]["token"]["metadata"]["displayUri"],
                     description:
-                        response["data"][i]["token"]["metadata"]["description"]
+                        response["data"][i]["token"]["metadata"]["description"],
+                    firstTime: response["data"][i]["firstTime"]
                 };
                 tmp_nft.push(tmp_obj);
             }
@@ -67,16 +82,16 @@ export default function UserNFTs(props) {
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="header-typo text-white ml-24">COLLECTION</div>
                 <div className="w-1000 justify-center align-items-center">
-                    {userNFTs.map((nft, key) => (
+                    {userNFTs.map((nft, index) => (
                         <div
-                            key={key}
+                            key={index}
                             className="mb-20 mt-24 ml-24 nft-card-layout justify-center"
                         >
                             <div className="md:hidden aspect-w-1 aspect-h-1 w-11/12 m-auto overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                                 <NFTCardMobile metadata={nft} />
                             </div>
                             <div>
-                                <NFTCard metadata={nft} />
+                                <NFTCard metadata={nft} nftNumber={index + 1} />
                             </div>
                         </div>
                     ))}
