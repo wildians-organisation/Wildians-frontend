@@ -57,7 +57,6 @@ const network = { type: NetworkType.GHOSTNET };
 const nftToMint = 1;
 
 function BottomPart() {
-    const [smartcontract_addr, setSmartcontract_addr] = React.useState("");
     const [dataFinance, setDataFinance] = React.useState([
         { name: "ENVIRONMENT", value: 0 },
         { name: "SOCIETY", value: 0 },
@@ -89,19 +88,12 @@ function BottomPart() {
     const salesCollection = collection(firestore, "sales");
     const ambassadorCollection = collection(firestore, "AmbassadorList");
     const smartcontract = collection(firestore, "smartcontract");
-    const deerONG = ["WWF", "Oceana", "GreenPeace"];
+    const deerONG = ["WWF"];
     const wolfONG = [
-        "Action Against Hunger",
-        "Save the Children",
-        "Wikimedia Foundation (Wikipedia)",
         "Charity: Water"
     ];
     const bullONG = [
-        "AIDS",
-        "UNICEF",
-        "MADRE",
-        "Relief International Inc.",
-        "Amnesty International"
+        "Amnesty international"
     ];
 
     async function is_user_ambassador() {
@@ -150,12 +142,8 @@ function BottomPart() {
     }
 
     async function getTransactionsInformations() {
-        const querySnapshot = await getDocs(smartcontract);
-        querySnapshot.docs.map((doc) => {
-            setSmartcontract_addr(doc.data().address);
-        });
         const response = await axios.get(
-            `https://api.ghostnet.tzkt.io/v1/contracts/${smartcontract_addr}/storage/history?limit=1000`
+            `https://api.ghostnet.tzkt.io/v1/contracts/${config.CONTRACT_ADDRESS}/storage/history?limit=1000`
         );
         let environment = 0;
         let society = 0;
@@ -408,11 +396,9 @@ function BottomPart() {
                     return;
                 }
             });
-
             let normal_sales_open = salesStatus.status;
-            let WL_sales_open = salesStatus.whitelistStatus;
-            let price_transaction = 1000 * config.TEZOS_CONVERTER;
-            let send_amount = 1000;
+            let price_transaction = 1 * config.TEZOS_CONVERTER; // Remettre le prix initial (1000)
+            let send_amount = 1; // Remettre le prix initial (1000)
             if (is_ambassador) {
                 price_transaction = 1 * config.TEZOS_CONVERTER;
                 send_amount = 1;
@@ -423,6 +409,7 @@ function BottomPart() {
                         activeAccount!.address,
                         nftToMint,
                         price_transaction,
+                        is_ambassador,
                         MichelsonMap.fromLiteral({ "": url }),
                         normal_sales_open,
                         currentSelectedONG,
@@ -431,7 +418,7 @@ function BottomPart() {
                     .send({ amount: send_amount });
 
                 await op.confirmation(3);
-                showSuccessModal();
+                //showSuccessModal();
                 getTransactionsInformations();
                 return op;
             } catch (error) {
@@ -1171,7 +1158,7 @@ function BottomPart() {
                                 className="mint-button-2 text-white md:cursor-pointer btn-layout btn-style body-highlight-typo hover:get-hover"
                                 type="button"
                             >
-                                Adopter pour 333 XTZ
+                                Adopter pour 1000 XTZ
                             </button>
                         </div>
                     )}
