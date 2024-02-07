@@ -21,16 +21,16 @@ This repository hosts the frontend source code. The corresponding website functi
 
 Before proceeding, ensure you have Node.js and Yarn installed via your preferred package manager. You can obtain them from their official websites. Additionally, configure the necessary environment variables as per your requirements.
 
-- Nodejs: minimum version 20
-- Yarn: the version 1.22 works fine
+- Nodejs: minimum version 18
+- Yarn: recommended version 1.22
 
 ### Install nodejs
 
 Go to the Node.js website here: https://nodejs.org/en
 
-Run the downloaded installer and follow the installation instructions. Make sure to select the option to install Node.js with a minimal version 20.
+Run the downloaded installer and follow the installation instructions. Make sure to select the option to install Node.js with a minimal version 18.
 
-After installation, open your command prompt or PowerShell and run the following command to verify that Node.js is at least version 20:
+After installation, open your command prompt or PowerShell and run the following command to verify that Node.js is at least version 18:
 
 ```bash
 node --version
