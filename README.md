@@ -73,7 +73,7 @@ Our deployment strategy includes automatic deployment to production (main branch
 
 We employ Husky as a pre-commit tool to validate our code and enforce the Git flow as follow:
 
-![image](https://github.com/areschain-organization/Wildians-frontend/assets/70762494/1793bec2-54b2-40ed-a6b1-c535a424e020
+![image](https://github.com/areschain-organization/Wildians-frontend/assets/70762494/1793bec2-54b2-40ed-a6b1-c535a424e020)
 
 
 
