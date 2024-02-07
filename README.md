@@ -12,71 +12,68 @@ This repository hosts the frontend source code. The corresponding website functi
 
 ## Technologies
 
-In our frontend, we use Next.js. Next.js empowering us to construct high-quality web applications seamlessly utilizing React components. Furthermore, our frontend architecture benefits significantly from Firebase integration. Firebase enriches our frontend with critical functionalities including efficient database management, comprehensive analytics, and secure authentication mechanisms. We leverage Taquito as our payment gateway to accept cryptocurrency payments. We utilize Tailwind CSS for styling purposes. Tailwind CSS is a highly customizable CSS framework that offers utility-first CSS classes, allowing for rapid and flexible styling development. 
+- Next.js empowering us to construct high-quality web applications seamlessly utilizing React components.
+- Firebase: Firebase enriches our frontend with critical functionalities including database management, comprehensive analytics, and secure authentication mechanisms.
+- Taquito as our payment gateway to accept cryptocurrency payments.
+- Tailwind CSS for styling purposes. Tailwind CSS is a highly customizable CSS framework that offers utility-first CSS classes, allowing for rapid and flexible styling development. 
 
 ## How to use it
 
-Before proceeding, ensure you have Node.js and Yarn installed via your preferred package manager. You can obtain them from their official websites. Additionally, configure the necessary environment variables as per your requirements. 
+Before proceeding, ensure you have Node.js and Yarn installed via your preferred package manager. You can obtain them from their official websites. Additionally, configure the necessary environment variables as per your requirements.
 
-## Update nodejs and yarn.
+- Nodejs: minimum version 20
+- Yarn: the version 1.22 works fine
 
 ### Install nodejs
 
-Visit Node.js Website:
-Go to the Node.js website here.
+Go to the Node.js website here: https://nodejs.org/en
 
-Download Node.js Installer:
-Download the Node.js installer for Windows.
+Run the downloaded installer and follow the installation instructions. Make sure to select the option to install Node.js with a minimal version 20.
 
-Run Installer:
-Run the downloaded installer and follow the installation instructions. Make sure to select the option to install Node.js with a minimal version 18.
+After installation, open your command prompt or PowerShell and run the following command to verify that Node.js is at least version 20:
 
-Verify Node.js Version:
-After installation, open your command prompt or PowerShell and run the following command to verify that Node.js is at least version 18:
+```bash
+node --version
+```
 
+### Install yarn
 
+Run the following command in your console to install Yarn globally:
 
+```bash
+npm install --global yarn
+```
 
-Installing Dependencies:
+After installation, verify that Yarn is installed correctly by running:
+
+```bash
+yarn --version
+```
+
+### Setup project
+Clone the repository and install the dependencies:
 
 To install project dependencies, execute the following command in your terminal
 
 ```bash
-node -v
+yarn
 ```
 
-Installing Yarn
+Run the project as dev mode
 
-To install Yarn, follow these steps:
-
-    Open Console:
-    Open your preferred console or terminal.
-
-    Install Yarn:
-    Run the following command in your console to install Yarn globally:
-
-    bash
-
-npm install --global yarn
-
-Verify Installation:
-After installation, verify that Yarn is installed correctly by running:
-
-bash
-
-yarn --version
+```bash
+yarn run dev
+```
 
 ## CI/CD & Deploy / GitFlow
 
-A continuous integration pipeline is provided to automatically check the code. This ensures that each code change is thoroughly tested before merging.
+A continuous integration pipeline is provided to automatically check the code before merging.
 
-Our deployment strategy includes automatic deployment to production (main branch), pre-production (preprod branch), and development (dev branch) environments. This enables automatic deployment.
+Our deployment strategy includes automatic deployment to production (main branch), pre-production (preprod branch), and development (dev branch) environments.
 
 We employ Husky as a pre-commit tool to validate our code and enforce the Git flow as follow:
 
-![image](https://github.com/areschain-organization/Wildians-frontend/assets/70762494/1793bec2-54b2-40ed-a6b1-c535a424e020)
-
-
+![image](https://github.com/areschain-organization/Wildians-frontend/assets/70762494/1793bec2-54b2-40ed-a6b1-c535a424e020
 
 
 
