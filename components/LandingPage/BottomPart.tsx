@@ -89,12 +89,8 @@ function BottomPart() {
     const ambassadorCollection = collection(firestore, "AmbassadorList");
     const smartcontract = collection(firestore, "smartcontract");
     const deerONG = ["WWF"];
-    const wolfONG = [
-        "Charity: Water"
-    ];
-    const bullONG = [
-        "Amnesty international"
-    ];
+    const wolfONG = ["Charity: Water"];
+    const bullONG = ["Amnesty international"];
 
     async function is_user_ambassador() {
         if (!wallet) return;
