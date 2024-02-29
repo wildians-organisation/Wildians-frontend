@@ -10,7 +10,7 @@ function Team() {
                 <div className="team-frame">
                     <img
                         className="team-image max-w-none"
-                        src={"../img/v2/visuels/Maxime.png"}
+                        src={"../img/v2/visuels/maxime.png"}
                     />
                     <div className="below-image">
                         <div className="title-wild-frame-typo2 text-greeny text-center">
@@ -24,7 +24,7 @@ function Team() {
                 <div className="team-frame">
                     <img
                         className="team-image max-w-none"
-                        src={"../img/v2/visuels/Aurélie.png"}
+                        src={"../img/v2/visuels/aurelie.png"}
                     />
                     <div className="below-image">
                         <div className="title-wild-frame-typo2 text-greeny text-center">
@@ -38,28 +38,42 @@ function Team() {
                 <div className="team-frame">
                     <img
                         className="team-image max-w-none"
-                        src={"../img/v2/visuels/Elea.png"}
+                        src={"../img/v2/visuels/elea.png"}
                     />
                     <div className="below-image">
                         <div className="title-wild-frame-typo2 text-greeny text-center">
                             Elea
                         </div>
                         <div className="subtitle-typo text-white text-center">
-                            Communication
+                            Communauté
                         </div>
                     </div>
                 </div>
                 <div className="team-frame">
                     <img
                         className="team-image max-w-none"
-                        src={"../img/v2/visuels/Bastien.png"}
+                        src={"../img/v2/visuels/solene.png"}
+                    />
+                    <div className="below-image">
+                        <div className="title-wild-frame-typo2 text-greeny text-center">
+                            Solène
+                        </div>
+                        <div className="subtitle-typo text-white text-center">
+                            Communauté
+                        </div>
+                    </div>
+                </div>
+                <div className="team-frame">
+                    <img
+                        className="team-image max-w-none"
+                        src={"../img/v2/visuels/bastien.png"}
                     />
                     <div className="below-image">
                         <div className="title-wild-frame-typo2 text-greeny text-center">
                             Bastien
                         </div>
                         <div className="subtitle-typo text-white text-center">
-                            Illustration3D
+                            3D Design
                         </div>
                     </div>
                 </div>

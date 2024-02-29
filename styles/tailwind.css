@@ -16830,7 +16830,11 @@ select {
 
 .container-team-pres {
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 100px;
+    padding-left: 40px;
+    padding-right: 40px;
+    justify-content: center;
 }
 
 @media (max-width: 390px) {

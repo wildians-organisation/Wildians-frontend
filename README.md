@@ -6,7 +6,7 @@ This repository hosts the frontend source code. The corresponding website functi
 
 
 ## Links
-- https://wildians-prod.netlify.app/
+- https://wildians.org/
 - https://preprod.wildians.org/
 - https://dev.wildians.org/
 
