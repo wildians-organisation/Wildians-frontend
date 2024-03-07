@@ -81,7 +81,7 @@ function Team() {
             <div className="pl-2 pr-4 mb-40">
                 <div className="text-white text-base mt-14 flex justify-center items-center">
                     <div className="text-white body-typo pl-4 w-600 text-center">
-                        Un grand merci à tout ceux qui ont posé une brique dans
+                        Un grand merci à tous ceux qui ont apporté leur pierre à
                         l’édifice Wildians :<br />
                         <strong>
                             Romain, le PAE SIGL, Eva, Rebecca, Gwen, Hugo x2,
