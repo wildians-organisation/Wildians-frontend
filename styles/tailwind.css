@@ -17098,6 +17098,8 @@ select {
 .separator {
     position: relative;
     bottom: 10px;
+    padding-top: 70px;
+    padding-bottom: 70px;
 }
 
 .hr-left,

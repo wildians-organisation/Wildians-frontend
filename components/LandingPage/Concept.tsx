@@ -123,9 +123,9 @@ export function Concept() {
                                 <span style={{ color: "#90E0D3" }}>
                                     habitudes
                                 </span>{" "}
-                                pour un{" "}
+                                pour une{" "}
                                 <span style={{ color: "#90E0D3" }}>
-                                    monde plus durable
+                                    société plus responsable
                                 </span>
                             </div>
                         </div>

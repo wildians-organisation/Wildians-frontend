@@ -2,7 +2,7 @@ import React from "react";
 
 function Team() {
     return (
-        <div className="py-20 mt-40">
+        <div className="py-20 pt-40 pb-40">
             <div className="text-center text-white title-typo mb-20">
                 Wildians, une équipe de passionnés
             </div>
@@ -78,7 +78,7 @@ function Team() {
                     </div>
                 </div>
             </div>
-            <div className="pl-2 pr-4 mb-40">
+            <div className="pl-2 pr-4">
                 <div className="text-white text-base mt-14 flex justify-center items-center">
                     <div className="text-white body-typo pl-4 w-600 text-center">
                         Un grand merci à tous ceux qui ont apporté leur pierre à
