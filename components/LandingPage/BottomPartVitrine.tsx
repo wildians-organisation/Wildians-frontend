@@ -43,7 +43,7 @@ export default function BottomPartVitrine() {
                 </div>
                 <div className="flex gap-2 ml-auto mt-3">
                     <a
-                        href="https://www.instagram.com/wildians/"
+                        href="https://www.instagram.com/wildians_/"
                         target="_blank"
                         rel="noreferrer"
                     >

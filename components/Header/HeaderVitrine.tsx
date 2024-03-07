@@ -17,7 +17,7 @@ function HeaderVitrine() {
             </div>
             <div className="gap-2 hidden md:flex items-center">
                 <a
-                    href="https://www.instagram.com/wildians/"
+                    href="https://www.instagram.com/wildians_/"
                     target="_blank"
                     rel="noreferrer"
                 >
