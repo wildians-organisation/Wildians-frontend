@@ -42,7 +42,7 @@ function Team() {
                     />
                     <div className="below-image">
                         <div className="title-wild-frame-typo2 text-greeny text-center">
-                            Elea
+                            Éléa
                         </div>
                         <div className="subtitle-typo text-white text-center">
                             Communauté
