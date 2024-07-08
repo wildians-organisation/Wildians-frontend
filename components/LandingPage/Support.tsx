@@ -48,7 +48,7 @@ export default function Support() {
                                                 développement durable à travers
                                                 trois personnages inspirants :
                                                 Ellie le cerf, Noa le loup et
-                                                Fabio le taureau. Chacun d'entre
+                                                Gaby le taureau. Chacun d'entre
                                                 eux incarne une{" "}
                                                 <strong>
                                                     dimension cruciale{" "}

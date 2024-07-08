@@ -523,7 +523,7 @@ function BottomPart() {
                                 }
                             >
                                 <Wildians
-                                    name="Fabio"
+                                    name="Gaby"
                                     image={"/img/v2/visuels/taureau.jpg"}
                                     title="Bull_3D"
                                     pillar="Économie"
@@ -596,7 +596,7 @@ function BottomPart() {
                                 }
                             >
                                 <Wildians
-                                    name="Fabio"
+                                    name="Gaby"
                                     image={"/img/v2/visuels/taureau-grey.jpg"}
                                     title="Bull_3D"
                                     pillar="Économie"
@@ -674,7 +674,7 @@ function BottomPart() {
                                     }
                                 >
                                     <Wildians
-                                        name="Fabio"
+                                        name="Gaby"
                                         image={
                                             "/img/v2/visuels/taureau-grey.jpg"
                                         }
@@ -754,7 +754,7 @@ function BottomPart() {
                                     }
                                 >
                                     <Wildians
-                                        name="Fabio"
+                                        name="Gaby"
                                         image={"/img/v2/visuels/taureau.jpg"}
                                         title="Bull_3D"
                                         pillar="Économie"
@@ -886,7 +886,7 @@ function BottomPart() {
                                 }
                             >
                                 <Wildians
-                                    name="Fabio"
+                                    name="Gaby"
                                     image={"/img/v2/visuels/taureau-grey.jpg"}
                                     title="Bull_3D"
                                     pillar="Économie"
@@ -961,7 +961,7 @@ function BottomPart() {
                                 }
                             >
                                 <Wildians
-                                    name="Fabio"
+                                    name="Gaby"
                                     image={"/img/v2/visuels/taureau-grey.jpg"}
                                     title="Bull_3D"
                                     pillar="Économie"
@@ -1035,7 +1035,7 @@ function BottomPart() {
                                 }
                             >
                                 <Wildians
-                                    name="Fabio"
+                                    name="Gaby"
                                     image={"/img/v2/visuels/taureau.jpg"}
                                     title="Bull_3D"
                                     pillar="Économie"
@@ -1097,7 +1097,7 @@ function BottomPart() {
                             }
                         >
                             <Wildians
-                                name="Fabio"
+                                name="Gaby"
                                 image={"/img/v2/visuels/taureau.jpg"}
                                 title="Bull_3D"
                                 pillar="Économie"
@@ -1177,8 +1177,8 @@ function BottomPart() {
                     style={{ fontSize: "15px" }}
                 >
                     <p className="mb-4">
-                        Ensemble, Ellie, Noa et Fabio forment un trio
-                        harmonieux, représentant les trois piliers essentiels du
+                        Ensemble, Ellie, Noa et Gaby forment un trio harmonieux,
+                        représentant les trois piliers essentiels du
                         développement durable : la{" "}
                         <b>protection de l'environnement</b>, la{" "}
                         <b>promotion de la société équitable</b>, et la{" "}
