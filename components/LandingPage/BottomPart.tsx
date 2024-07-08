@@ -1177,8 +1177,8 @@ function BottomPart() {
                     style={{ fontSize: "15px" }}
                 >
                     <p className="mb-4">
-                        Ensemble, Ellie, Noa et Gaby forment un trio
-                        harmonieux, représentant les trois piliers essentiels du
+                        Ensemble, Ellie, Noa et Gaby forment un trio harmonieux,
+                        représentant les trois piliers essentiels du
                         développement durable : la{" "}
                         <b>protection de l'environnement</b>, la{" "}
                         <b>promotion de la société équitable</b>, et la{" "}

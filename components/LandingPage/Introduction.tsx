@@ -105,8 +105,8 @@ function Introduction() {
             <div className="pl-2 pr-4">
                 <div className="text-white text-base mt-14 flex justify-center items-center">
                     <div className="text-white body-typo border-l-4 pl-4 w-600 text-justify">
-                        Ensemble, Ellie, Noa et Gaby forment un trio
-                        harmonieux, représentant les trois piliers essentiels du
+                        Ensemble, Ellie, Noa et Gaby forment un trio harmonieux,
+                        représentant les trois piliers essentiels du
                         développement durable : la
                         <strong> protection de l'environnement</strong> , la{" "}
                         <strong>promotion de la société équitable </strong>
