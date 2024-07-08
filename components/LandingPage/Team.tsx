@@ -70,7 +70,8 @@ function Team() {
                         Un grand merci à tous ceux qui ont apporté leur pierre à
                         l’édifice Wildians :<br />
                         <strong>
-                            Romain, le PAE SIGL, Bastien, Eva, Rebecca, Gwen, Hugo x2, Alice
+                            Romain, le PAE SIGL, Bastien, Eva, Rebecca, Gwen,
+                            Hugo x2, Alice
                         </strong>
                     </div>
                 </div>
