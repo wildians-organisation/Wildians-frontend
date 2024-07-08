@@ -63,20 +63,6 @@ function Team() {
                         </div>
                     </div>
                 </div>
-                <div className="team-frame">
-                    <img
-                        className="team-image max-w-none"
-                        src={"../img/v2/visuels/bastien.png"}
-                    />
-                    <div className="below-image">
-                        <div className="title-wild-frame-typo2 text-greeny text-center">
-                            Bastien
-                        </div>
-                        <div className="subtitle-typo text-white text-center">
-                            3D Design
-                        </div>
-                    </div>
-                </div>
             </div>
             <div className="pl-2 pr-4">
                 <div className="text-white text-base mt-14 flex justify-center items-center">
@@ -84,8 +70,7 @@ function Team() {
                         Un grand merci à tous ceux qui ont apporté leur pierre à
                         l’édifice Wildians :<br />
                         <strong>
-                            Romain, le PAE SIGL, Eva, Rebecca, Gwen, Hugo x2,
-                            Alice
+                            Romain, le PAE SIGL, Bastien, Eva, Rebecca, Gwen, Hugo x2, Alice
                         </strong>
                     </div>
                 </div>

@@ -27,7 +27,7 @@ function Introduction() {
                             height={300}
                         />
                         <p className="description-intro title-wild-frame-typo text-greeny">
-                            Fabio
+                            Gaby
                         </p>
                         <p className="description-intro body-highlight-typo text-white">
                             Économie
