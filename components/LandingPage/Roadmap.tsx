@@ -41,7 +41,7 @@ export default function RoadMapVitrine() {
                     <li className="li complete">
                         <div className="timestamp">
                             <span className="Date">
-                                <b> T1 2024 </b>
+                                <b> T3 2024 </b>
                             </span>
                         </div>
                         <div className="status">
@@ -55,7 +55,7 @@ export default function RoadMapVitrine() {
                     <li className="li complete">
                         <div className="timestamp">
                             <span className="Date">
-                                <b> T2 2024 </b>
+                                <b> T3 2024 </b>
                             </span>
                         </div>
                         <div className="status">
@@ -70,7 +70,7 @@ export default function RoadMapVitrine() {
                     <li className="li complete">
                         <div className="timestamp">
                             <span className="Date">
-                                <b> T3 2024 </b>
+                                <b> T4 2024 </b>
                             </span>
                         </div>
                         <div className="status">
