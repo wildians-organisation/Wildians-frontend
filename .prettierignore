@@ -1,10 +1,8 @@
-.DS_Store
-node_modules
+public
 .env
 .env.*
-/build
-# Ignore files for PNPM, NPM and YARN
-package.json
-package-lock.json
-yarn.lock
-.next
+node_modules
+*.lockjson
+
+# Privacy policy generated file should not be formatted
+pages/privacy-policy.html
