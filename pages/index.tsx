@@ -4,8 +4,6 @@ import Concept from "../components/LandingPage/Concept";
 import React from "react";
 import BottomPartVitrine from "../components/LandingPage/BottomPartVitrine";
 import Support from "../components/LandingPage/Support";
-import TopPart from "./../components/LandingPage/TopPart";
-import BottomPart from "./../components/LandingPage/BottomPart";
 import Introduction from "./../components/LandingPage/Introduction";
 import RoadMapVitrine from "../components/LandingPage/Roadmap";
 import Separator from "../components/LandingPage/Separator";
@@ -42,15 +40,6 @@ export default function Landing() {
             <RoadMapVitrine />
             <Team />
             <BottomPartVitrine />
-        </div> /*
-        <div style={{ backgroundColor: "#223734" }}>
-            <TopPart />
-            <Concept />
-            <Usage />
-            <BottomPart />
-            <Support />
-            <Team />
-            <BottomPartVitrine />
-        </div>*/
+        </div>
     );
 }
