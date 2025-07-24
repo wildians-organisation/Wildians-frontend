@@ -5,46 +5,38 @@ import { SnackbarProvider } from "../components/SnackbarService/SnackbarService"
 import { useEffect } from "react";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "styles/tailwind.css";
-import "styles/footer.css";
-import "../components/NFTCard/NFTCard.css";
-import * as config from "../config/config";
-
-declare global {
-    interface Window {
-        clarity: any;
-    }
-}
+import "../styles/tailwind.css";
 
 const ClarityScript = () => {
     useEffect(() => {
-        const clarityId = config.CLARITY_APPID;
-
-        window.clarity =
-            window.clarity ||
-            function () {
-                (window.clarity.q = window.clarity.q || []).push(arguments);
-            };
-
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.async = true;
-        script.src = `https://www.clarity.ms/tag/${clarityId}`;
-
-        const scriptTag = document.getElementsByTagName("script")[0];
-        if (scriptTag.parentNode) {
-            scriptTag.parentNode.insertBefore(script, scriptTag);
+        const clarityId = process.env.NEXT_PUBLIC_CLARITY_APPID;
+        if (clarityId && typeof window !== "undefined" && !window.clarity) {
+            (function (c: any, l: Document, a: string, r: string, i: string, t?: HTMLScriptElement, y?: Element) {
+                c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                t = l.createElement(r) as HTMLScriptElement;
+                t.async = true;
+                t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0];
+                if (y && y.parentNode) {
+                    y.parentNode.insertBefore(t, y);
+                }
+            })(window, document, "clarity", "script", clarityId);
+            console.log("Microsoft Clarity script loaded.");
         }
     }, []);
 
     return null;
 };
 
-export default class MyApp extends App {
+declare global {
+    interface Window {
+        clarity?: any;
+    }
+}
+
+class MyApp extends App {
     render() {
         const { Component, pageProps } = this.props;
-
-        const Layout = Component.layout || (({ children }) => <>{children}</>);
 
         return (
             <React.Fragment>
@@ -55,23 +47,13 @@ export default class MyApp extends App {
                     />
                     <title>Wildians</title>
                 </Head>
-                <ClarityScript />
                 <SnackbarProvider>
-                    <Layout>
-                        <Component {...pageProps} />
-                    </Layout>
+                    <ClarityScript />
+                    <Component {...pageProps} />
                 </SnackbarProvider>
             </React.Fragment>
         );
     }
-
-    static async getInitialProps({ Component, router, ctx }) {
-        let pageProps = {};
-
-        if (Component.getInitialProps) {
-            pageProps = await Component.getInitialProps(ctx);
-        }
-
-        return { pageProps };
-    }
 }
+
+export default MyApp;

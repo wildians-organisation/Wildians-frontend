@@ -9,7 +9,7 @@ function Header() {
             <div className="flex items-center mt-3_5 mr-30">
                 <a href="/">
                     <Image
-                        className="headerLogo"
+                        className="header-logo"
                         src={"/img/v2/visuels/logo.svg"}
                         alt="Wildians logo"
                         width={89}

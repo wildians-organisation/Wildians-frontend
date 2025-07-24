@@ -6,6 +6,12 @@ class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
+                    {/* Termly Consent Management Platform - MUST BE FIRST SCRIPT */}
+                    <script
+                        src="https://app.termly.io/resource-blocker/3b3cb168-99e4-4e4f-8bb5-68119d7cabdc?autoBlock=on"
+                        async
+                    />
+
                     <meta charSet="utf-8" />
                     <meta name="theme-color" content="#000000" />
                     <link rel="shortcut icon" href="/img/brand/favicon.ico" />
