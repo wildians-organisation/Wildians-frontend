@@ -8,4 +8,5 @@ node_modules
 pages/privacy-policy.html
 pages/data-usage.html
 pages/terms-and-conditions.html
-
+out
+.next
