@@ -10,6 +10,7 @@ module.exports = {
                 "best-practices",
                 "seo"
             ],
+            chromePath: process.env.CHROME_PATH,
             settings: {
                 chromeFlags: [
                     "--no-sandbox",
@@ -22,7 +23,7 @@ module.exports = {
                     "--disable-background-timer-throttling",
                     "--disable-backgrounding-occluded-windows",
                     "--disable-renderer-backgrounding",
-                    "--disable-features=TranslateUI",
+                    "--disable-features=TranslateUI,VizDisplayCompositor,AudioServiceOutOfProcess",
                     "--disable-ipc-flooding-protection",
                     "--disable-background-networking",
                     "--disable-background-mode",
@@ -39,21 +40,17 @@ module.exports = {
                     "--password-store=basic",
                     "--use-mock-keychain",
                     "--disable-component-extensions-with-background-pages",
-                    "--disable-background-timer-throttling",
-                    "--disable-backgrounding-occluded-windows",
-                    "--disable-renderer-backgrounding",
                     "--disable-field-trial-config",
                     "--disable-back-forward-cache",
                     "--disable-breakpad",
                     "--disable-component-update",
                     "--disable-domain-reliability",
-                    "--disable-sync",
-                    "--disable-features=VizDisplayCompositor,AudioServiceOutOfProcess",
                     "--run-all-compositor-stages-before-draw",
                     "--disable-threaded-animation",
                     "--disable-threaded-scrolling",
                     "--disable-checker-imaging",
-                    "--disable-image-animation-resync"
+                    "--disable-image-animation-resync",
+                    "--single-process"
                 ]
             }
         },
