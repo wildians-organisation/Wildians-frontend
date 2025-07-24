@@ -9,7 +9,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Prettier
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
             - name: Prettier check
               run:
                   npx prettier --write pages/ && npx prettier
@@ -19,19 +19,19 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
             - name: Setup Node.js environment
-              uses: actions/setup-node@v3.5.1
+              uses: actions/setup-node@v4
               with:
-                  node-version: 16.17.1
+                  node-version: 18
             # Install NPM dependencies, cache them correctly
             # and run all Cypress tests
             - name: run cypress tests with chrome
-              uses: cypress-io/github-action@v5
+              uses: cypress-io/github-action@v6
               timeout-minutes: 10
               with:
                   browser: chrome
-                  configFile: baseUrl=http://localhost:3000
+                  config: baseUrl=http://localhost:3000
                   build: yarn run build
                   start: yarn run dev
             - uses: actions/upload-artifact@v4
@@ -51,13 +51,13 @@ jobs:
         runs-on: ubuntu-latest
         environment: preprod
         steps:
-            - uses: actions/checkout@v1
-            - name: Use Node.js 16.17.1
-              uses: actions/setup-node@v1
+            - uses: actions/checkout@v4
+            - name: Use Node.js 18
+              uses: actions/setup-node@v4
               with:
-                  node-version: 16.17.1
+                  node-version: 18
             - name: Make envfile
-              uses: SpicyPizza/create-envfile@v1.3
+              uses: SpicyPizza/create-envfile@v2.0
               with:
                   file_name: .env
                   fail_on_empty: true
@@ -99,12 +99,12 @@ jobs:
         needs:
             - cypress-run
         steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
               with:
-                  node-version: 16.17.1
+                  node-version: 18
             - name: Make envfile
-              uses: SpicyPizza/create-envfile@v1.3
+              uses: SpicyPizza/create-envfile@v2.0
               with:
                   file_name: .env
                   fail_on_empty: true
@@ -134,9 +134,10 @@ jobs:
             - run: yarn build
 
             - name: Netlify deploy
-              uses: jsmrcaga/action-netlify-deploy@v2.0.0
+              uses: South-Paw/action-netlify-cli@v2
+              id: netlify
               with:
-                  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+                  args: 'deploy --prod --dir ./out --message "Deploy from GitHub Actions [${{ github.sha }}]"'
+              env:
                   NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-                  NETLIFY_DEPLOY_TO_PROD: true
-                  build_directory: out/
+                  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
