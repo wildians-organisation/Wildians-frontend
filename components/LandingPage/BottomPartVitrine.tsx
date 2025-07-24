@@ -93,6 +93,15 @@ export default function BottomPartVitrine() {
                     >
                         Terms and Conditions
                     </a>
+                    <span className="text-white hidden md:inline">|</span>
+                    <a
+                        href="/data-usage"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-gray-300 transition-colors duration-300 underline"
+                    >
+                        Cookie Policy
+                    </a>
                 </div>
             </div>
         </div>

@@ -6,3 +6,6 @@ node_modules
 
 # Privacy policy generated file should not be formatted
 pages/privacy-policy.html
+pages/data-usage.html
+pages/terms-and-conditions.html
+

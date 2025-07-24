@@ -46,7 +46,7 @@ async function addWallet(walletAddress) {
     }
 }
 
-const network = { type: NetworkType.GHOSTNET };
+const network = { type: NetworkType.GHOSTNET as any };
 
 /*** Function to connect to wallet, with useState to avoid creating multiple instances ***/
 export default function ConnexionWallet() {
@@ -122,7 +122,7 @@ export default function ConnexionWallet() {
             <div
                 onClick={() => connectToWallet()}
                 className="flex items-center md:uppercase btn-layout default-connexion hover:connexion body-highlight-typo text-greeny md:whitespace-nowrap md:hover:text-greenkaki md:cursor-pointer"
-                /** className="connexionWallet group flex items-center px-2 py-2 md:h-min md:text-sm  md:text-greenkaki md:bg-greeny md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:hover:bg-greenkaki md:hover:text-greeny md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap"**/
+            /** className="connexionWallet group flex items-center px-2 py-2 md:h-min md:text-sm  md:text-greenkaki md:bg-greeny md:text-xs md:font-bold md:uppercase md:px-4 md:py-2 md:rounded-full md:shadow md:hover:shadow-lg md:hover:bg-greenkaki md:hover:text-greeny md:outline-none md:focus:outline-none md:mr-1 md:mb-0 md:ml-3  md:ease-linear md:transition-all md:duration-150 md:whitespace-nowrap"**/
             >
                 {!userAddress ? (
                     <div>Connect Your Wallet</div>
