@@ -111,10 +111,14 @@ jobs:
             - name: run Lighthouse CI
               run: |
                   npm install -g @lhci/cli@0.15.x
-                  lhci autorun
+                  echo "Testing Chrome with sandbox flags..."
+                  ${{ steps.setup-chrome.outputs.chrome-path }} --headless --no-sandbox --disable-gpu --version || echo "Chrome test failed"
+                  echo "Running LHCI with explicit Chrome flags..."
+                  lhci autorun --collect.settings.chromeFlags="--no-sandbox --disable-setuid-sandbox --headless --disable-gpu --disable-dev-shm-usage --single-process"
               env:
                   CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
-                  PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+                  PUPPETEER_EXECUTABLE_PATH:
+                      ${{ steps.setup-chrome.outputs.chrome-path }}
 
     deploy-app:
         if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
