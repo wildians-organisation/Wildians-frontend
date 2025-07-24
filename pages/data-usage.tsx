@@ -18,16 +18,16 @@ export default function DataUsage({ dataUsageContent }: DataUsageProps) {
                     content="Data Usage Policy for Wildians - Learn how we use cookies and tracking technologies on our website."
                 />
                 <meta name="robots" content="index, follow" />
-                <meta property="og:title" content="Data Usage Policy - Wildians" />
+                <meta
+                    property="og:title"
+                    content="Data Usage Policy - Wildians"
+                />
                 <meta
                     property="og:description"
                     content="Data Usage Policy for Wildians - Learn how we use cookies and tracking technologies on our website."
                 />
                 <meta property="og:type" content="website" />
-                <link
-                    rel="canonical"
-                    href="https://wildians.org/data-usage"
-                />
+                <link rel="canonical" href="https://wildians.org/data-usage" />
             </Head>
 
             {/* Full-screen background matching the brown color from BottomPartVitrine */}
@@ -42,7 +42,9 @@ export default function DataUsage({ dataUsageContent }: DataUsageProps) {
                     {/* Data usage content container */}
                     <div className="content-container">
                         <div
-                            dangerouslySetInnerHTML={{ __html: dataUsageContent }}
+                            dangerouslySetInnerHTML={{
+                                __html: dataUsageContent
+                            }}
                             className="data-usage-content"
                         />
                     </div>
@@ -181,11 +183,7 @@ export default function DataUsage({ dataUsageContent }: DataUsageProps) {
 // This function gets called at build time on server-side
 export async function getStaticProps() {
     try {
-        const filePath = path.join(
-            process.cwd(),
-            "pages",
-            "data-usage.html"
-        );
+        const filePath = path.join(process.cwd(), "pages", "data-usage.html");
         const dataUsageContent = fs.readFileSync(filePath, "utf8");
 
         return {

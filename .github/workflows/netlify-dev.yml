@@ -54,10 +54,16 @@ jobs:
         environment: dev
         steps:
             - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 20
             - name: Use Node.js 18
               uses: actions/setup-node@v4
               with:
                   node-version: 18
+            - name: Install Chrome
+              uses: browser-actions/setup-chrome@v1
+              with:
+                  chrome-version: stable
             - name: Make envfile
               uses: SpicyPizza/create-envfile@v2.0
               with:
@@ -84,15 +90,18 @@ jobs:
                   envkey_BUCKET_REGION: ${{ secrets.BUCKET_REGION }}
                   envkey_NAME: ${{ secrets.NAME }}
                   envkey_CLARITY_APPID: ${{secrets.CLARITY_APPID}}
-            - name: Install
+            - name: Install dependencies
               run: |
                   npm install -g yarn
-            - run: yarn install --frozen-lockfile
+                  yarn install --frozen-lockfile
+            - name: Build project
+              run: yarn run build
             - name: run Lighthouse CI
               run: |
-                  yarn global add @lhci/cli@0.3.x
-                  yarn run build
+                  npm install -g @lhci/cli@0.15.x
                   lhci autorun
+              env:
+                  CHROME_PATH: /opt/hostedtoolcache/chrome/stable/x64/chrome
 
     deploy-app:
         if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
