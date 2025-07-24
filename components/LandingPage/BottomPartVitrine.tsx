@@ -102,6 +102,13 @@ export default function BottomPartVitrine() {
                     >
                         Cookie Policy
                     </a>
+                    <span className="text-white hidden md:inline">|</span>
+                    <a
+                        href="#"
+                        className="termly-display-preferences text-white hover:text-gray-300 transition-colors duration-300 underline"
+                    >
+                        Consent Preferences
+                    </a>
                 </div>
             </div>
         </div>
