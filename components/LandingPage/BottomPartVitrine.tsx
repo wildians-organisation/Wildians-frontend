@@ -41,7 +41,7 @@ export default function BottomPartVitrine() {
                     participe à la construction de celle-ci en nous partageant
                     tes retours ici :{" "}
                 </div>
-                <div className="flex gap-2 ml-auto mt-3">
+                <div className="flex gap-2 ml-auto mt-3 flex-wrap">
                     <a
                         href="https://www.instagram.com/wildians/"
                         target="_blank"
@@ -71,6 +71,27 @@ export default function BottomPartVitrine() {
                             <style></style>
                             <path d="M12.6832 9.3875L20.331 0.5H18.5187L11.8781 8.21689L6.57433 0.5H0.457031L8.47741 12.1693L0.457031 21.4892H2.26941L9.28201 13.3399L14.8832 21.4892H21.0005L12.6827 9.3875H12.6832ZM10.2009 12.2721L9.38826 11.1101L2.92244 1.86396H5.70615L10.9241 9.3259L11.7368 10.4879L18.5195 20.1873H15.7358L10.2009 12.2726V12.2721Z" />
                         </svg>
+                    </a>
+                </div>
+
+                {/* Legal Links */}
+                <div className="flex flex-col md:flex-row gap-2 mt-4 text-sm">
+                    <a
+                        href="/privacy-policy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-gray-300 transition-colors duration-300 underline"
+                    >
+                        Privacy Policy
+                    </a>
+                    <span className="text-white hidden md:inline">|</span>
+                    <a
+                        href="/terms-of-service"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-gray-300 transition-colors duration-300 underline"
+                    >
+                        Terms of Service
                     </a>
                 </div>
             </div>
