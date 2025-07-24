@@ -52,7 +52,7 @@ const settings = {
     slide: "button"
 };
 
-const network = { type: NetworkType.GHOSTNET };
+const network = { type: NetworkType.GHOSTNET as any };
 
 const nftToMint = 1;
 
@@ -373,9 +373,9 @@ function BottomPart() {
         mintNFT(currentNFTAddress, currentSelectedOng);
     };
     const getSmartContract = async () => {
-            const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
-            return contract;
-        },
+        const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
+        return contract;
+    },
         /*** Function to mint the nft ***/
         mintNFT = async (url, currentSelectedONG) => {
             await disconnect();

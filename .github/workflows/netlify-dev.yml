@@ -60,10 +60,12 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 18
-            - name: Install Chrome
-              uses: browser-actions/setup-chrome@v1
+            - name: Setup Chrome
+              uses: browser-actions/setup-chrome@v2
+              id: setup-chrome
               with:
                   chrome-version: stable
+                  install-dependencies: true
             - name: Make envfile
               uses: SpicyPizza/create-envfile@v2.0
               with:
@@ -101,7 +103,7 @@ jobs:
                   npm install -g @lhci/cli@0.15.x
                   lhci autorun
               env:
-                  CHROME_PATH: /opt/hostedtoolcache/chrome/stable/x64/chrome
+                  CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
 
     deploy-app:
         if: github.event_name == 'push' && github.ref == 'refs/heads/dev'

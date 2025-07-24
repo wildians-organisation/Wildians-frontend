@@ -15,7 +15,7 @@ import SnackbarService, {
 import BottomPart from "../LandingPage/BottomPart";
 const nftToMint = 1;
 
-const network = { type: NetworkType.GHOSTNET };
+const network = { type: NetworkType.GHOSTNET as any };
 
 export interface WhitelistDocument {
     id: string;
@@ -268,9 +268,9 @@ function Wildians(Wildians) {
     };
     /*** Function to get the smart contract ***/
     const getSmartContract = async () => {
-            const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
-            return contract;
-        },
+        const contract = await Tezos.wallet.at(config.CONTRACT_ADDRESS);
+        return contract;
+    },
         /*** Function to mint the nft ***/
         mintNFT = async (url, selectedONG) => {
             await disconnect();
