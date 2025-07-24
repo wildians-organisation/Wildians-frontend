@@ -23,7 +23,11 @@
         "start": "next start -p $PORT",
         "build": "next build",
         "dev": "next dev",
-        "prettier": "prettier --write ."
+        "prettier": "prettier --write .",
+        "cypress:open": "cypress open",
+        "cypress:run": "cypress run",
+        "e2e": "cypress open --e2e",
+        "e2e:headless": "cypress run --e2e"
     },
     "browserslist": {
         "production": [
@@ -39,6 +43,8 @@
     },
     "devDependencies": {
         "autoprefixer": "^10.4.14",
+        "cypress": "^13.17.0",
+        "jquery": "^3.7.1",
         "postcss": "^8.4.23",
         "prettier": "^2.8.8"
     }
