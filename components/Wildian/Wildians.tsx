@@ -15,7 +15,7 @@ import SnackbarService, {
 import BottomPart from "../LandingPage/BottomPart";
 const nftToMint = 1;
 
-const network = { type: NetworkType.GHOSTNET };
+const network = { type: NetworkType.GHOSTNET as any };
 
 export interface WhitelistDocument {
     id: string;

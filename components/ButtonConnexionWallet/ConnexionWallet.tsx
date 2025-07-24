@@ -46,7 +46,7 @@ async function addWallet(walletAddress) {
     }
 }
 
-const network = { type: NetworkType.GHOSTNET };
+const network = { type: NetworkType.GHOSTNET as any };
 
 /*** Function to connect to wallet, with useState to avoid creating multiple instances ***/
 export default function ConnexionWallet() {

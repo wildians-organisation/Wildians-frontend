@@ -52,7 +52,7 @@ const settings = {
     slide: "button"
 };
 
-const network = { type: NetworkType.GHOSTNET };
+const network = { type: NetworkType.GHOSTNET as any };
 
 const nftToMint = 1;
 
