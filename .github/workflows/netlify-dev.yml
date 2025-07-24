@@ -66,6 +66,16 @@ jobs:
               with:
                   chrome-version: stable
                   install-dependencies: true
+            - name: Verify Chrome Installation
+              run: |
+                  echo "Chrome path: ${{ steps.setup-chrome.outputs.chrome-path }}"
+                  echo "Chrome version:"
+                  ${{ steps.setup-chrome.outputs.chrome-path }} --version
+                  echo "Testing Chrome flags:"
+                  ${{ steps.setup-chrome.outputs.chrome-path }} --headless --disable-gpu --no-sandbox --version
+                  echo "System info:"
+                  uname -a
+                  cat /etc/os-release
             - name: Make envfile
               uses: SpicyPizza/create-envfile@v2.0
               with:
@@ -104,6 +114,7 @@ jobs:
                   lhci autorun
               env:
                   CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+                  PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
 
     deploy-app:
         if: github.event_name == 'push' && github.ref == 'refs/heads/dev'

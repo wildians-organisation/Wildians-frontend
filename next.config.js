@@ -1,6 +1,6 @@
 module.exports = {
     reactStrictMode: true,
-    output: 'export',
+    output: "export",
     env: {
         name: process.env.NAME,
         contract_adress: process.env.CONTRACT_ADDRESS,
