@@ -10,7 +10,19 @@ module.exports = {
                 "best-practices",
                 "seo"
             ],
-            chromeFlags: "--no-sandbox"
+            chromeFlags: [
+                "--no-sandbox",
+                "--headless",
+                "--disable-gpu",
+                "--disable-dev-shm-usage",
+                "--disable-extensions",
+                "--no-first-run",
+                "--disable-background-timer-throttling",
+                "--disable-backgrounding-occluded-windows",
+                "--disable-renderer-backgrounding",
+                "--disable-features=TranslateUI",
+                "--disable-ipc-flooding-protection"
+            ].join(" ")
         },
         upload: {
             target: "temporary-public-storage"
