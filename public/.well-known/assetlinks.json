@@ -1,0 +1,28 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "org.wildians.app",
+            "sha256_cert_fingerprints": [
+                "38:A5:F1:F2:D5:1B:E7:02:16:97:9B:E6:BC:C7:82:3C:9C:3A:00:E7:69:8A:FA:8E:FE:1D:D3:EE:80:CF:3B:DC",
+                "34:A5:53:36:EF:E7:EC:75:F8:8E:0B:B5:03:1C:CD:5B:61:FB:6C:F8:00:75:1D:75:F0:9F:00:C4:21:55:80:39"
+            ]
+        }
+    },
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "org.wildians.app.preprod",
+            "sha256_cert_fingerprints": [
+                "38:A5:F1:F2:D5:1B:E7:02:16:97:9B:E6:BC:C7:82:3C:9C:3A:00:E7:69:8A:FA:8E:FE:1D:D3:EE:80:CF:3B:DC",
+                "34:A5:53:36:EF:E7:EC:75:F8:8E:0B:B5:03:1C:CD:5B:61:FB:6C:F8:00:75:1D:75:F0:9F:00:C4:21:55:80:39"
+            ]
+        }
+    }
+]

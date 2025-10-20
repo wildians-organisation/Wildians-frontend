@@ -1,0 +1,27 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "AUZ49X3A8C.org.wildians.app",
+          "AUZ49X3A8C.org.wildians.app.preprod"
+        ],
+        "paths": [
+          "*"
+        ],
+        "components": [
+          {
+            "/": "/*"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "AUZ49X3A8C.org.wildians.app",
+      "AUZ49X3A8C.org.wildians.app.preprod"
+    ]
+  }
+}
