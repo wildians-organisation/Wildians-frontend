@@ -5,6 +5,13 @@
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
+# Serve .well-known files directly without redirects (required for mobile deep linking)
+[[redirects]]
+  from = "/.well-known/*"
+  to = "/.well-known/:splat"
+  status = 200
+  force = true
+
 # Handle trailing slashes for static export
 [[redirects]]
   from = "/*"
